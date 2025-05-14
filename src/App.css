@@ -1,0 +1,107 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #171717;
+  width: 100vw;
+  min-width: 0;
+  overflow-x: hidden;
+}
+
+html {
+  width: 100vw;
+  min-width: 0;
+  overflow-x: hidden;
+}
+
+.contenido {
+  min-height: 100vh;
+  color: white;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.contenido.visible {
+  opacity: 1;
+}
+
+main {
+  flex: 1;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+/* Barra scroll estilo general */
+
+/* Estilos personalizados para el scrollbar */
+body::-webkit-scrollbar {
+  width: 120px;
+}
+
+body::-webkit-scrollbar-track {
+  background: #0f0f0f; /* Fondo del track */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #663399; /* Color de tu marca */
+  border-radius: 10px;
+  border: 2px solid #0f0f0f;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background-color: #7e4ccf;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #663399 #0f0f0f;
+}
+
+/* Styles for Transition Elements */
+/* .black-overlay (fixed version) is removed or commented if not needed globally */
+/*
+.black-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000000; 
+  opacity: 0;
+  z-index: 40; 
+  pointer-events: none;
+}
+*/
+
+/* .transition-section-black is no longer needed as VideoSection handles its own visuals */
+/*
+.transition-section-black { 
+  height: 100vh;
+  background-color: #000000;
+  position: relative; 
+  z-index: 100; 
+}
+*/
+
+.final-logo-display {
+  position: absolute; 
+  opacity: 0;
+  /* z-index relative to its parent, procesoWrapperRef. 
+     Needs to be above Proceso's content. */
+  z-index: 5; 
+  width: 150px; 
+  height: auto;
+  pointer-events: none;
+}
+
+#servicios {
+  position: relative; 
+  /* z-index: 10; // May not be needed if transition-section-black handles covering */
+}
+
+/* ProcesoWrapperRef has z-index: 1 in its inline style in App.jsx, 
+   so it's below transition-section-black */

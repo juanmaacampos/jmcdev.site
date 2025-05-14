@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JMCdev: Experiencias digitales</title>
+
+    <!-- SEO Meta -->
+    <meta name="description" content="Diseñamos sitios web únicos y optimizamos redes sociales usando fotografías profesionales para conectar con tu audiencia y crecer tu negocio con creatividad y tecnología." />
+    <meta name="keywords" content="desarrollo web, diseño web, SEO, páginas web, sitios web, Argentina" />
+    <meta name="author" content="JMCdev" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
+    <meta property="og:url" content="https://www.jmcdev.site/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="JMCdev: Experiencias digitales que venden." />
+    <meta property="og:description" content="Diseñamos sitios web únicos y optimizamos redes sociales usando fotografías profesionales para conectar con tu audiencia y crecer tu negocio con creatividad y tecnología." />
+    <meta property="og:image" content="https://www.jmcdev.site/loguito.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="es_AR" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="JMCdev: Experiencias digitales que venden." />
+    <meta name="twitter:description" content="Diseñamos sitios web únicos y optimizamos redes sociales usando fotografías profesionales para conectar con tu audiencia y crecer tu negocio con creatividad y tecnología." />
+    <meta name="twitter:image" content="https://www.jmcdev.site/loguito.png" />
+    <meta name="twitter:image:alt" content="JMCdev Desarrollo Web" />
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "JMCdev",
+      "url": "https://www.jmcdev.site/",
+      "description": "Diseño y desarrollo de sitios web y redes optimizados para negocios.",
+      "image": "https://www.jmcdev.site/loguito.png"
+    }
+    </script>
+    
+    <!-- Preload important assets -->
+    <link rel="preload" href="/loguito.png" as="image" />
+  </head>
+  <body>
+    <!-- 
+      Add a visually hidden img tag to "use" the preloaded logo early.
+      This helps satisfy the browser's preload checker if the actual 
+      display by React components is slightly delayed.
+    -->
+    <img src="/loguito.png" alt="" style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0;" aria-hidden="true" />
+    <main id="root"></main>
+    <script type="module" src="./src/main.jsx"></script>
+  </body>
+</html>

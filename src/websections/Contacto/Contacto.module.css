@@ -1,0 +1,402 @@
+.contactoNuevaSection {
+  padding: 60px 20px;
+  background: linear-gradient(to bottom, #171717 50%, #000000 100%); /* #171717 top to mid, then degrades to #000000 by bottom */
+  color: #f0f0f0; /* Light text color for contrast */
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative; /* Added for pseudo-element positioning */
+}
+
+.contactoNuevaSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(
+    to right,
+    #55D3C4,
+    #271D31,
+    #55D3C4,
+    #472a64,
+    #55D3C4
+  );
+  background-size: 200% 100%;
+  animation: gradientFlow 3s linear infinite;
+}
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: -200% 0%;
+  }
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.titulo {
+  margin-bottom: 15px;
+  font-size: 2.8rem; /* Using CoolTitle's inherent styling, adjust if needed */
+  /* color: #2c3e50; */ /* Removed to allow CoolTitle component styles to apply */
+  /* Let CoolTitle component handle its own coloring for gradient/effects */
+}
+
+.subtitulo {
+  font-size: 1.1rem;
+  color: #cccccc; /* Lighter gray for dark background */
+  margin-bottom: 40px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.contenidoGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  text-align: left;
+}
+
+@media (min-width: 992px) {
+  .contenidoGrid {
+    grid-template-columns: 2fr 1fr; /* Form takes more space */
+    gap: 60px;
+  }
+}
+
+.formularioWrapper,
+.infoDirectaWrapper {
+  background-color: #2a2a2a; /* Darker shade for form/info boxes */
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Adjusted shadow for dark theme */
+  border: 1px solid #444; /* Subtle border */
+  position: relative; /* Ensure z-index is applied correctly */
+  z-index: 2; /* Make sure these are above the animated SVG (which will be z-index: 1) */
+}
+
+.formTitle,
+.infoTitle {
+  font-size: 1.8rem;
+  color: #e0e0e0; /* Light color for titles */
+  margin-bottom: 25px;
+  border-bottom: 2px solid #55d3c4; /* Teal/cyan accent */
+  padding-bottom: 10px;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-size: 0.95rem;
+  color: #bbbbbb; /* Light gray for labels */
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.input,
+.select,
+.textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #555; /* Darker border */
+  border-radius: 5px;
+  font-size: 1rem;
+  color: #f0f0f0; /* Light text color for inputs */
+  background-color: #333333; /* Dark background for inputs */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  /* Ensure box-sizing is border-box if padding affects layout */
+  box-sizing: border-box; 
+}
+
+.input:focus,
+.select:focus,
+.textarea:focus {
+  outline: none;
+  border-color: #55d3c4; /* Teal/cyan highlight on focus */
+  box-shadow: 0 0 0 3px rgba(85, 211, 196, 0.25); /* Teal/cyan glow */
+}
+
+.select {
+  appearance: none; /* Remove default arrow */
+  -webkit-appearance: none; /* Remove default arrow for Safari/Chrome */
+  -moz-appearance: none; /* Remove default arrow for Firefox */
+
+  /* Custom arrow using an embedded SVG - changed fill to white (#fff) */
+  background-image: url("data:image/svg+xml;utf8,<svg fill='%23ffffff' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5H7z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 0.7em center; /* Position arrow to the right */
+  background-size: 1.2em; /* Size of the arrow */
+
+  /* Adjust padding-right to make space for the arrow.
+     This should be larger than your horizontal padding to accommodate the arrow.
+     For example, if your left padding is 15px, right padding might be 35px or 2.5em. */
+  padding-right: 2.5em !important; /* Added !important to ensure it overrides if needed, adjust value as necessary */
+}
+
+/* Hide the default arrow in Internet Explorer */
+.select::-ms-expand {
+  display: none;
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* Styling for multi-select */
+.multiSelect {
+  height: auto; /* Override fixed height if any from .select */
+  min-height: 100px; /* Ensure it's tall enough to show multiple options */
+  padding-right: 15px !important; /* Override custom arrow padding if it was applied */
+  background-image: none !important; /* Remove custom arrow for multi-select */
+}
+
+.multiSelect option {
+  padding: 8px 10px; /* Add some padding to options for better readability */
+  color: #f0f0f0; /* Text color for options */
+  background-color: #333333; /* Background for options, same as input */
+}
+
+/* Style for selected options in a multi-select (browser-dependent) */
+.multiSelect option:checked {
+  background: #55d3c4; /* Teal/cyan highlight */
+  color: #171717; /* Dark text for contrast on highlight */
+}
+
+/* New Styles for Adicionales Picker and Pills */
+.adicionalesPickerContainer {
+  position: relative; /* For dropdown positioning */
+  margin-bottom: 10px; /* Space below the picker area */
+}
+
+.adicionalesPickerButton {
+  width: 100%;
+  padding: 10px 15px;
+  background-color: #3a3a3a; /* Slightly lighter than input background */
+  color: #e0e0e0;
+  border: 1px solid #555;
+  border-radius: 5px;
+  text-align: left;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.adicionalesPickerButton:hover,
+.adicionalesPickerButton:focus {
+  background-color: #444;
+  border-color: #55d3c4; /* Teal/cyan highlight */
+  outline: none;
+}
+
+.adicionalesDropdown {
+  position: absolute;
+  top: 100%; /* Position below the button */
+  left: 0;
+  right: 0;
+  background-color: #2c2c2c; /* Dark background for dropdown */
+  border: 1px solid #555;
+  border-top: none; /* Avoid double border with button */
+  border-radius: 0 0 5px 5px;
+  max-height: 200px; /* Limit height and make scrollable */
+  overflow-y: auto;
+  z-index: 10; /* Ensure it's above other form elements */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.adicionalDropdownItem {
+  padding: 10px 15px;
+  color: #cccccc;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background-color 0.2s ease;
+}
+
+.adicionalDropdownItem:hover {
+  background-color: #3a3a3a;
+}
+
+.adicionalDropdownItemSelected {
+  background-color: rgba(85, 211, 196, 0.15); /* Light teal for selected */
+  color: #55d3c4; /* Teal text for selected */
+  font-weight: 600;
+}
+
+.adicionalCheckbox {
+  margin-right: 8px;
+  pointer-events: none; /* Checkbox is visual only, click handled by item div */
+  accent-color: #55d3c4; /* Style the checkbox color */
+}
+
+.adicionalesPillsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 15px; /* Space above the pills */
+}
+
+.adicionalPill {
+  background-color: #55d3c4; /* Teal/cyan background for pills */
+  color: #171717; /* Dark text for contrast */
+  padding: 5px 10px;
+  border-radius: 15px; /* Rounded pills */
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.removePillButton {
+  background: none;
+  border: none;
+  color: #171717; /* Dark color for 'x' */
+  margin-left: 8px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+  padding: 0 2px;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.removePillButton:hover {
+  opacity: 1;
+}
+
+.submitButton {
+  margin-top: 10px;
+  /* Button component styles will apply, this class is for potential overrides */
+  /* Ensure Button component's primary effect matches the desired theme */
+}
+
+.infoText {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #cccccc; /* Lighter gray for info text */
+  margin-bottom: 25px;
+}
+
+.infoItem {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  font-size: 1rem;
+}
+
+.infoIcon {
+  font-size: 1.5rem;
+  color: #55d3c4; /* Teal/cyan accent for icons */
+}
+
+.infoItem strong {
+  color: #e0e0e0; /* Light color for strong text */
+  display: block;
+}
+
+.infoLink {
+  color: #55d3c4; /* Teal/cyan for links */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.infoLink:hover {
+  color: #7fffd4; /* Lighter teal/cyan on hover (aquamarine) */
+  text-decoration: underline;
+}
+
+.availabilityInfo {
+  font-size: 0.9rem;
+  color: #aaaaaa; /* Mid-light gray for availability info */
+  margin-top: 20px;
+  font-style: italic;
+}
+
+/* Add a hidden field for Netlify forms if you plan to use Netlify */
+form[data-netlify="true"] input[name="form-name"] {
+  display: none;
+}
+
+/* In Contacto.module.css */
+.planLink {
+  color: #55d3c4; /* Or your site's link color */
+  text-decoration: underline;
+}
+
+.planLink:hover {
+  text-decoration: none;
+}
+
+/* Add this for global smooth scrolling */
+:global(html) {
+  scroll-behavior: smooth;
+}
+
+/* Styles for validation errors */
+.errorMessage {
+  color: #ff6b6b; /* A light red for errors */
+  font-size: 0.85rem;
+  margin-top: 5px;
+}
+
+.inputError {
+  border-color: #ff6b6b !important; /* Override focus style if error */
+  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.25) !important; /* Red glow for error */
+}
+
+/* Styles for success message */
+.successMessage {
+  padding: 20px;
+  background-color: rgba(85, 211, 196, 0.1); /* Light teal background */
+  border: 1px solid #55d3c4; /* Teal border */
+  border-radius: 5px;
+  text-align: center;
+  color: #e0e0e0;
+}
+
+.successMessage h3 {
+  color: #55d3c4; /* Teal color for success title */
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.successMessage p {
+  margin-bottom: 0;
+  font-size: 1rem;
+}
+
+/* Style for visually hidden honeypot field */
+/* Using .hiddenHoneypot class on the <p> tag for more reliable hiding */
+.hiddenHoneypot {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 0;
+  width: 0;
+  z-index: -1;
+  /* Or use Netlify's recommended way if they provide one,
+     but `display: none;` on the input itself is also common.
+     The <p> wrapper with these styles is robust. */
+}

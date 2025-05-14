@@ -1,0 +1,353 @@
+.servicioCard {
+  perspective: 1200px;
+  width: 100%;
+  min-height: 260px; /* Default min-height */
+  background: none;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px #0004;
+  transition: box-shadow 0.2s;
+  position: relative;
+  height: 100%; /* Default height */
+  display: flex;
+  flex-direction: column;
+}
+
+.cardInner {
+  width: 100%;
+  height: 100%; /* Default height */
+  min-height: 260px; /* Default min-height */
+  transition: transform 0.6s cubic-bezier(.4,2,.6,1);
+  transform-style: preserve-3d;
+  position: relative;
+  flex: 1 1 auto; /* For when .servicioCard is a flex container */
+  display: flex; /* Default display */
+}
+
+.flipped .cardInner {
+  transform: rotateY(180deg);
+}
+
+.cardFront, .cardBack {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  min-height: 260px; /* Default min-height for faces */
+  backface-visibility: hidden;
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background: #222;
+  color: #fff;
+  padding: 2rem 1.5rem;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  overflow: hidden; /* Default overflow */
+}
+
+.cardFront {
+  z-index: 2;
+  background: #222;
+}
+
+.cardBack {
+  background: #18191a;
+  color: #a3ffe5;
+  transform: rotateY(180deg);
+  z-index: 3;
+  overflow-y: auto;
+  padding: 2rem 1.5rem;
+  justify-content: flex-start;
+  min-height: 260px;
+  max-height: 100%;
+}
+
+.cardBackTabs {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.cardBackTab {
+  margin-bottom: 0.7rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #23272f;
+}
+
+.cardBackTabIcon {
+  margin-right: 0.5em;
+  color: #55d3c4;
+  font-size: 1.1em;
+}
+
+.cardBackTabLabel {
+  font-weight: 600;
+  color: #a3ffe5;
+}
+
+.cardBackTabContent {
+  margin-top: 0.3em;
+  color: #fff;
+  font-size: 0.97em;
+}
+
+.cardBackClose {
+  margin-top: auto;
+  background: #23272f;
+  color: #55d3c4;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5em 1.2em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  align-self: center;
+}
+
+.cardBackClose:hover {
+  background: #55d3c4;
+  color: #18191a;
+}
+
+.coverImage {
+  width: 100%;
+  max-height: 120px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 0.7rem;
+}
+
+.servicioCard:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 8px 32px #663399;
+}
+
+.iconSvgWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  width: 64px;         /* Increased from 48px to 64px */
+  height: 64px;        /* Increased from 48px to 64px */
+  max-width: 64px;     /* Increased from 48px to 64px */
+  max-height: 64px;    /* Increased from 48px to 64px */
+  min-width: 64px;     /* Increased from 48px to 64px */
+  min-height: 64px;    /* Increased from 48px to 64px */
+  margin-left: auto;
+  margin-right: auto;
+  overflow: visible;   /* Changed from hidden to visible */
+}
+
+.icon {
+  display: none;
+}
+
+.cardBack .icon {
+  display: none !important;
+}
+
+.servicioCard h3 {
+  margin-bottom: 0.7rem;
+  font-size: 1.3rem;
+  color: #A3FFE5;
+}
+
+.servicioCard p {
+  color: #ccc;
+  font-size: 1rem;
+}
+
+/* New Click/Flip cue for card front - MOVED HERE */
+.cardFront::after {
+  content: '↻'; 
+  position: absolute;
+  bottom: 8px; 
+  right: 12px; 
+  font-size: 1.6rem; 
+  line-height: 1;
+  color: rgba(163, 255, 229, 0.6); 
+  z-index: 5; 
+  pointer-events: none;
+  transform: rotate(0deg); 
+}
+
+/* Scroll cue gradient for card back - MOVED HERE */
+.cardBack::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40px; /* Made gradient taller */
+  background: linear-gradient(to bottom, transparent, #18191a 95%); /* More pronounced fade */
+  pointer-events: none; 
+  z-index: 4; 
+  border-bottom-left-radius: 18px; 
+  border-bottom-right-radius: 18px;
+}
+
+/* Scroll cue arrow for card back - MOVED HERE */
+.cardBack::before { 
+  content: '▼'; /* Downwards black arrow */
+  position: absolute;
+  bottom: 5px; /* Position at the very bottom */
+  left: 50%;
+  /* transform: translateX(-50%); Combined with animation */
+  font-size: 1.6rem; /* Increased size */
+  color: rgba(163, 255, 229, 0.5); /* Themed color, semi-transparent */
+  z-index: 5; /* Above the gradient */
+  pointer-events: none;
+  animation: bobbingArrow 1.5s infinite ease-in-out;
+  opacity: 1;
+  transition: opacity 0.3s ease-out;
+}
+
+/* Style to hide the arrow when cardBack has .isScrolled class - MOVED HERE */
+.cardBack.isScrolled::before {
+  opacity: 0;
+  animation-play-state: paused; /* Optional: stop animation when hidden */
+}
+
+.cardTitle {
+  margin-bottom: 0.7rem;
+  font-size: 1.15rem;
+  color: #A3FFE5;
+  font-weight: 700;
+  text-align: center;
+}
+
+.cardDescription {
+  color: #ccc;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.headerContent {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 0.7rem;
+}
+
+.title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #55d3c4 0%, #a3ffe5 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.2rem;
+  line-height: 1.1;
+  text-align: center;
+}
+
+.subtitle {
+  color: #a3ffe5;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: 0.1em;
+}
+
+.description {
+  color: #b7c2d2;
+  font-size: 1rem;
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+@media (max-width: 1024px) {
+  .servicioCard {
+    padding: 1.5rem 1rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .servicioCard {
+    padding: 1rem 0.5rem;
+  }
+}
+
+/* Define the bobbing animation */
+@keyframes bobbingArrow {
+  0%, 100% {
+    transform: translateY(0) translateX(-50%);
+  }
+  50% {
+    transform: translateY(7px) translateX(-50%); /* Adjusted bobbing distance */
+  }
+}
+
+/* Media query for mobile screens */
+@media screen and (max-width: 768px) {
+  .servicioCard {
+    height: auto !important; /* Override default height */
+    min-height: 0 !important; /* Override default min-height */
+    /* display: flex; flex-direction: column; are fine */
+  }
+
+  .cardInner {
+    width: 100%; 
+    height: auto !important; /* Override default height */
+    min-height: 0 !important; /* Override default min-height */
+    position: relative; /* Already relative, ensure it stays */
+    display: block; /* Override display:flex from general styles */
+    /* transform-style and transition are inherited */
+  }
+
+  .cardFront {
+    position: relative; /* Key for .cardInner to get height from this */
+    width: 100%; 
+    height: auto !important; 
+    min-height: 0 !important; /* Override face min-height */
+    max-height: none !important; 
+    overflow: visible !important; /* Show all content */
+    /* display:flex and other styling for content within cardFront are inherited */
+    /* padding is inherited, adjust specific padding for cue */
+    padding-bottom: 30px; 
+    /* z-index is not strictly needed if it's relative and cardBack is absolute */
+    /* background, color, border-radius, box-sizing are inherited */
+  }
+
+  .cardBack {
+    position: absolute; /* Ensure it's absolute */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100% !important; /* Fill the .cardInner, which now has auto height from .cardFront */
+    min-height: 0 !important; /* Override face min-height */
+    max-height: none !important; 
+    overflow-y: auto !important; 
+    /* transform: rotateY(180deg) is inherited for the flipped state */
+    /* backface-visibility is inherited */
+    /* display:flex and other styling for content within cardBack are inherited */
+    /* padding is inherited, adjust specific padding for cues */
+    padding-bottom: 40px; 
+    /* background, color, border-radius, box-sizing, z-index are inherited */
+  }
+
+  .iconSvgWrapper {
+    flex-shrink: 0; /* Prevent icon from shrinking */
+  }
+
+  .cardTitle {
+    flex-shrink: 0; /* Prevent title from shrinking */
+    margin: 10px 0;
+  }
+
+  .cardDescription {
+    flex-grow: 1; /* Allow description to take up remaining space */
+    overflow-y: visible !important; /* Ensure content is not hidden */
+    white-space: normal !important; /* Allow text to wrap */
+    word-wrap: break-word !important; /* Break long words */
+    -webkit-line-clamp: unset !important; /* Remove any line clamping */
+    -webkit-box-orient: unset !important;
+    display: block !important; /* Ensure it's not an inline element restricting height */
+    height: auto !important; /* Explicitly allow auto height */
+    max-height: none !important; /* Remove any max-height restriction */
+  }
+}

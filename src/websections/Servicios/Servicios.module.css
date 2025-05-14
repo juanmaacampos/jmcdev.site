@@ -1,0 +1,151 @@
+.serviciosSection {
+  background: #18191a;
+  color: #fff; /* Asegura texto blanco en la sección */
+  padding: 2rem 0 4rem 0;
+  text-align: center;
+  position: relative; /* Ensures z-index is effective */
+  /* overflow: hidden; */ /* Potentially problematic for nested scroll with wheel on desktop, removed for desktop below */
+}
+
+.titulo {
+  margin-bottom: 2.5rem;
+  transition: all 0.5s ease;
+  opacity: 0.7;
+  text-shadow: none;
+}
+
+.tituloMaskActive {
+  text-shadow: 0 0 15px rgba(163, 86, 255, 0.7);
+  transition: all 0.5s ease;
+  opacity: 1;
+}
+
+.cardInstructionText {
+  font-size: 0.85rem;
+  color: #ccc;
+  opacity: 0.8;
+  margin-top: -1.5rem; /* Adjust to position it closer to the title */
+  margin-bottom: 2.5rem; /* Keep original title margin bottom */
+  font-style: italic;
+}
+
+.serviciosGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem; /* Ajusta según lo que prefieras */
+  padding-top: 0%;
+  padding-bottom: 3rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  justify-items: stretch; /* Las tarjetas ocupan todo el ancho de la celda */
+}
+
+.cardWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Importante: pasa los eventos al hijo */
+}
+
+.cardWrapper > * {
+  pointer-events: auto; /* Restaura los eventos solo para la card */
+}
+
+.parallaxBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; /* Cambiado de 100vh a 100% */
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.parallaxVideo {
+  width: 100vw;
+  height: 100%;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  object-position: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.18;
+  z-index: 2;
+  pointer-events: none;
+  background: #18191a;
+  transition: opacity 0.3s;
+}
+
+.parallaxImage {
+  display: none;
+  width: 100vw;
+  height: 100%;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  object-position: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.18;
+  z-index: 1;
+  pointer-events: none;
+  background: #18191a;
+}
+
+.videoRevealMask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100%;
+  z-index: 2; /* z-index within serviciosSection, ensure it's above parallaxBackground if needed */
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+
+@media (min-width: 769px) { /* Apply only to desktop-like screens */
+  .serviciosSection {
+    z-index: 10; /* Attempt to ensure this section is above other page elements for event handling */
+    overflow: visible; /* Explicitly allow overflow, overriding the general rule if it was there */
+  }
+}
+
+@media (max-width: 1024px) {
+  .serviciosGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .serviciosSection { /* Add overflow:hidden back for mobile if it was intended */
+    overflow: hidden;
+  }
+  .videoRevealMask {
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+    opacity: 1 !important; /* Forzar opacidad completa */
+  }
+  .parallaxVideo {
+    display: none;
+  }
+  .parallaxImage {
+    display: block;
+    width: 100vw;
+    height: 100%;
+    min-width: 100vw;
+    min-height: 100%;
+    max-width: none;
+    max-height: none;
+    opacity: 0.18; /* Asegura la opacidad deseada */
+  }
+}
+
+@media (max-width: 700px) {
+  .serviciosGrid {
+    grid-template-columns: 1fr;
+  }
+}

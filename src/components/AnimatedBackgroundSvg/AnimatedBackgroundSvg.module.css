@@ -1,0 +1,22 @@
+.container {
+  position: fixed;
+  /* Initial position set by GSAP, but good to have a fallback or define via GSAP 'from' */
+  top: 0; /* GSAP will control x, y, effectively overriding this if it starts elsewhere */
+  left: 0;
+  width: 150px; /* Adjust size as needed */
+  height: 150px;
+  /* Changed z-index to a higher default. Note: inline style 'zIndex: index' from JSX will override this. */
+  /* For the first SVG (index=0), z-index will be 0, which might be behind other content. */
+  z-index: 5; 
+  pointer-events: none; /* Allow clicks to pass through */
+  /* opacity: 0; */ /* Original: Start hidden, GSAP controls visibility */
+  opacity: 1; /* Debug: Set to 1 to make it visible by default. GSAP should still control it during animation. */
+  will-change: transform, opacity; /* Performance hint */
+  /* transform: translate(-50%, -50%); /* If positioning from center */
+}
+
+.svgImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

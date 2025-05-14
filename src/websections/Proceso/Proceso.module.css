@@ -1,0 +1,10 @@
+.procesoSection {
+  padding-bottom: 3rem;
+  background: #000000; 
+  text-align: center;
+  overflow-x: hidden; 
+}
+
+.titulo {
+  margin-bottom: 3.5rem; 
+}

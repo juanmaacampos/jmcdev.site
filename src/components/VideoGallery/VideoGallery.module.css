@@ -1,0 +1,367 @@
+.galleryContainer {
+  width: 100%;
+  position: relative;
+}
+
+.galleryTitle {
+  font-size: 3rem;
+  margin-bottom: 3rem;
+  text-align: center;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.03em;
+  padding: 0 2rem;
+}
+
+.galleryDescription {
+  font-size: 1.25rem;
+  color: #c9f7ee;
+  text-align: center;
+  margin-bottom: 2rem;
+  margin-top: -2rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  padding: 0 2rem;
+  opacity: 0.85;
+}
+
+.galleryWrapper {
+  width: 100%;
+  height: 520px;
+  overflow: hidden;
+  position: relative;
+  cursor: none;
+}
+
+.gallerySlider {
+  display: flex;
+  height: 100%;
+  position: absolute;
+  will-change: transform;
+  padding: 1rem 0;
+}
+
+.projectCard {
+  flex: 0 0 auto;
+  width: 640px;
+  height: 360px;
+  border-radius: 30px;
+  overflow: hidden;
+  margin: 0 25px;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  will-change: transform;
+  cursor: pointer;
+  aspect-ratio: 16/9;
+}
+
+.projectCard:hover {
+  box-shadow: 0 20px 40px rgba(85, 211, 196, 0.3), 0 0 15px rgba(85, 211, 196, 0.2);
+  animation: cardGlow 2s infinite ease-in-out;
+}
+
+.imageContainer {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #000;
+}
+
+.projectImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: transform;
+}
+
+.projectVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: transform;
+  transition: opacity 0.2s ease;
+}
+
+.projectOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.1) 100%);
+  flex-direction: column;
+}
+
+.projectTitle {
+  color: #ffffff;
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 1.2rem 2rem;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  border-radius: 12px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  max-width: 80%;
+  font-family: var(--font-headings);
+  text-shadow: 0 0 10px rgba(85, 211, 196, 0.7);
+  border: 1px solid rgba(85, 211, 196, 0.2);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.projectDescription {
+  color: #c9f7ee;
+  font-size: 1.1rem;
+  font-weight: 400;
+  text-align: center;
+  margin-top: 0.7rem;
+  margin-bottom: 0;
+  padding: 0.8rem 1.5rem;
+  opacity: 0.92;
+  line-height: 1.4;
+  text-shadow: 0 0 6px rgba(85, 211, 196, 0.25);
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.18);
+  border: 1px solid rgba(85, 211, 196, 0.13);
+  transition: background 0.3s;
+}
+
+@supports (backdrop-filter: blur(8px)) {
+  .projectTitle {
+    background: rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* Flechas instructivas */
+.instructionArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  pointer-events: none;
+  animation: fadeInOut 3s ease-in-out forwards;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateY(-50%) scale(0.3);
+    filter: blur(5px);
+  }
+  15% {
+    opacity: 1;
+    transform: translateY(-50%) scale(1.1);
+    filter: blur(0px);
+  }
+  25% {
+    transform: translateY(-50%) scale(1);
+  }
+  75% {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-50%) scale(0.7);
+    filter: blur(3px);
+  }
+}
+
+.instructionArrow svg {
+  width: 36px;
+  height: 36px;
+  filter: drop-shadow(0 0 8px rgba(85, 211, 196, 0.8));
+}
+
+.instructionArrow svg path {
+  stroke: #A3FFE5;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.instructionArrow:nth-of-type(1) {
+  left: 40px;
+}
+
+.instructionArrow.right {
+  right: 40px;
+}
+
+@keyframes cardGlow {
+  0%, 100% {
+    box-shadow: 0 20px 40px rgba(85, 211, 196, 0.2), 0 0 15px rgba(85, 211, 196, 0.1);
+  }
+  50% {
+    box-shadow: 0 20px 40px rgba(85, 211, 196, 0.3), 0 0 20px rgba(85, 211, 196, 0.2);
+  }
+}
+
+/* Personalización del cursor */
+.galleryWrapper:hover {
+  cursor: grab;
+}
+
+.galleryWrapper:active {
+  cursor: grabbing;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .galleryWrapper {
+    height: 450px;
+  }
+  
+  .projectCard {
+    width: 533px;
+    height: 300px;
+    margin: 0 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .galleryTitle {
+    font-size: 2.5rem;
+  }
+  
+  .galleryWrapper {
+    height: 380px;
+  }
+  
+  .projectCard {
+    width: 426px;
+    height: 240px;
+    margin: 0 15px;
+  }
+  
+  .projectTitle {
+    font-size: 1.5rem;
+    padding: 1rem 1.5rem;
+  }
+  
+  .instructionArrow svg {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .instructionArrow:nth-of-type(1) {
+    left: 30px;
+  }
+  
+  .instructionArrow.right {
+    right: 30px;
+  }
+}
+
+@media (max-width: 576px) {
+  .projectCard {
+    width: 320px;
+    height: 180px;
+    margin: 0 12px;
+  }
+}
+
+/* Mobile styles */
+.mobileGalleryWrapper {
+  display: flex;
+  overflow-x: auto;
+  gap: 16px;
+  padding: 12px 0;
+  margin: 0 -8px;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  background: transparent;
+  width: calc(100% + 16px);
+}
+
+.mobileCard {
+  min-width: 80vw;
+  max-width: 85vw;
+  flex: 0 0 auto;
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+  scroll-snap-align: center;
+  transition: box-shadow 0.2s;
+  background: transparent;
+}
+
+.mobileCardImage {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+  background: transparent;
+}
+
+.mobileCardOverlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.85);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 28px 18px 24px 18px;
+  text-align: center;
+  z-index: 2;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.25);
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+.mobileCardOverlayContent {
+  pointer-events: auto;
+  width: 100%;
+}
+
+.mobileCardTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.7em;
+  letter-spacing: 0.01em;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.18);
+}
+
+.mobileCardDescription {
+  font-size: 1.07rem;
+  margin-bottom: 1.2em;
+  line-height: 1.4;
+  opacity: 0.97;
+  color: #eaeaea;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.13);
+}
+
+.mobileCardHint {
+  display: inline-block;
+  margin-top: 0.5em;
+  font-size: 0.97em;
+  opacity: 0.85;
+  background: rgba(85, 211, 196, 0.25);
+  border-radius: 8px;
+  padding: 0.38em 1.1em;
+  color: #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.13);
+  border: 1px solid rgba(85, 211, 196, 0.3);
+}

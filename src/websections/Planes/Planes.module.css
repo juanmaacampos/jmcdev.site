@@ -1,0 +1,257 @@
+.planesSection {
+  padding: 80px 20px;
+  text-align: center;
+  /* background: #151617; */ /* Eliminado para que se vea el fondo de ParticleBackground */
+  position: relative; /* Necesario para contener el ParticleBackground */
+  overflow: hidden;   /* Para asegurar que las partículas no se desborden visualmente */
+}
+
+.titulo {
+  margin-bottom: 50px;
+  position: relative; /* Para que se muestre sobre el ParticleBackground */
+  z-index: 2;         /* Para que se muestre sobre el ParticleBackground */
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px; /* Increased gap for more spacing between cards */
+  padding: 20px;
+  width: 100%;
+  max-width: 1200px; /* Limita el ancho máximo del grid */
+  margin: 0 auto; /* Centra el grid */
+  z-index: 1;
+}
+
+.planCard {
+  background: #232425;
+  border-radius: 18px;
+  padding: 2.5rem 1.7rem 2rem 1.7rem;
+  width: 300px;
+  color: #fff;
+  box-shadow: 0 4px 24px #0004;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid transparent;
+  transition: transform 0.2s, box-shadow 0.2s, border 0.2s;
+}
+
+.planCard:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 8px 32px #55d3c466;
+  border: 2px solid #55d3c4;
+}
+
+.destacado {
+  border: 2px solid #B687F7;
+  box-shadow: 0 8px 32px #B687F766;
+}
+
+.precio {
+  font-size: 2rem;
+  color: #A3FFE5;
+  margin: 0.7rem 0 0.5rem 0;
+  font-weight: bold;
+}
+
+.descripcion {
+  color: #ccc;
+  margin-bottom: 1rem;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1.2rem;
+}
+
+li {
+  margin-bottom: 0.4rem;
+  color: #A3FFE5;
+}
+
+/* Update the radialFadeTop class to have a linear gradient instead of radial */
+.radialFadeTop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  background: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Ensure the content has a higher z-index */
+.titulo, .grid {
+  position: relative;
+  z-index: 2;
+}
+
+.permissionButtonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Align button in the center if container is wider */
+  margin-bottom: 25px; 
+  margin-top: 15px; 
+  z-index: 1; 
+  padding: 0 20px; /* Add some padding so button doesn't touch screen edges on small views */
+  max-width: 320px; /* Constrain the max-width of the container */
+  margin-left: auto; /* Center the container itself */
+  margin-right: auto; /* Center the container itself */
+  margin-bottom: 40px; /* Add some space below the button */
+}
+
+/* Styles for the custom Button component if needed, or remove if Button's own styles are sufficient */
+/* The .permissionButton class might not be directly applied to the custom Button component itself, 
+   but can be used for a wrapper or if the custom Button accepts a className that we want to style further.
+   For now, assuming the custom Button component handles its main styling. 
+   If specific overrides are needed for this context, they can be added here.
+   The custom Button component uses CSS variables like --button-color, so we can set those if needed.
+*/
+.permissionButton { /* This class will be passed to the custom Button component */
+  /* Example of setting custom properties if your Button component uses them */
+  /* --button-color: #007bff; */
+  /* --button-glow: #007bff40; */
+  /* Add any specific layout or additional styles for the button in this context */
+  display: inline-flex; /* Ensures Lottie and text align well if Button doesn't handle it */
+  align-items: center;
+  color: #55d3c4;
+}
+
+.permissionButton {
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #ffffff;
+  background-color: #55d3c4; 
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.permissionButton:hover {
+  background-color: #55d3c4; 
+  transform: translateY(-2px);
+}
+
+.permissionButton:active {
+  transform: translateY(0);
+  background-color: #55d3c4a2;
+}
+
+/* Styles for the themed neon button */
+/* Replace #00D9FF with your page's primary accent color if different */
+.themedNeonButton {
+  padding: 12px 25px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #00D9FF; /* Neon color for text */
+  background-color: transparent;
+  border: 2px solid #00D9FF; /* Neon border */
+  border-radius: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 5px #00D9FF, 0 0 10px #55d3c4, inset 0 0 5px #55d3c4; /* Neon glow */
+  display: flex; /* To align icon and text if Button component supports it */
+  align-items: center; /* To align icon and text */
+  justify-content: center; /* To align icon and text */
+}
+
+.themedNeonButton:hover:not([disabled]) {
+  color: #1a1a1a; /* Darker text on hover for contrast */
+  background-color: #55d3c4; /* Fill with neon color */
+  box-shadow: 0 0 10px #55d3c4, 0 0 20px #55d3c4, 0 0 30px #55d3c4, inset 0 0 10px #55d3c4; /* Intensify glow */
+}
+
+.themedNeonButton[disabled] {
+  color: #777; /* Greyed out text for disabled state */
+  border-color: #555;
+  box-shadow: none;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* If the Button component renders its icon in a specific way, you might need to target it. */
+/* For example, if the icon is an SVG: */
+.themedNeonButton svg {
+  /* fill: #00D9FF; /* Or currentColor to inherit from button's text color */
+  /* Adjust if Lottie icon needs specific color handling not covered by its JSON */
+}
+
+/* Adicionales Section Styles */
+.adicionalesContainer {
+  background: rgba(22, 22, 29, 0.8); /* From cardContainer */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* From cardContainer */
+  border-radius: 15px; /* From cardContainer */
+  padding: 30px; /* From cardContainer */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* From cardContainer */
+  color: #fff; /* Default text color, from cardContainer */
+  backdrop-filter: blur(5px); /* From cardContainer */
+  max-width: 1200px; /* Match the .grid max-width */
+  margin: 60px auto 20px auto; /* Top margin, centered, bottom margin */
+  text-align: left; /* Default text align for content inside */
+  position: relative; /* For z-indexing if needed */
+  z-index: 2; /* Ensure it's above particle background */
+}
+
+.adicionalesTitleContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0; 
+  position: relative; 
+}
+
+.adicionalesTitle {
+  font-size: 1.8rem; 
+  color: #A3FFE5; 
+  margin-bottom: 25px; 
+  text-shadow: 0 0 5px #A3FFE5, 0 0 10px #A3FFE5; 
+  text-align: center; 
+}
+
+.consultarText {
+  font-size: 1rem; /* Smaller than title */
+  color: #ccc; /* Lighter color */
+  font-weight: normal;
+}
+
+.adicionalesList {
+  list-style: none;
+  padding: 0;
+  margin: 15px auto 25px auto; 
+  max-width: 600px; 
+}
+
+.adicionalItem {
+  font-size: 0.95rem; /* From cardContent ul li */
+  color: #b0b0b0; /* From cardContent ul li */
+  margin-bottom: 10px; /* Increased margin */
+  padding-left: 25px; /* Space for check icon */
+  position: relative;
+}
+
+.checkIcon { /* This class is on a span in the JSX */
+  color: #A3FFE5; /* From cardContent ul li::before */
+  position: absolute;
+  left: 0;
+  top: 0; /* Adjust alignment if needed */
+  font-weight: bold;
+}
+
+.footerNote {
+  font-size: 0.85rem;
+  color: #aaa;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.footerNote:first-of-type {
+  margin-top: 25px; /* More space before the first note */
+}

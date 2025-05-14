@@ -1,0 +1,332 @@
+.header {
+  padding-top: 100px; /* Baja el header para evitar la navbar */
+  min-height: 100vh;
+  height: 100vh;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  display: flex;
+  align-items: center;
+  /* background: linear-gradient(
+    135deg,
+    rgba(17, 17, 17, 0.98) 0%,
+    rgba(23, 23, 23, 0.98) 100%
+  ); */ /* Removed to let ParticleBackground be the sole background */
+  position: relative;
+  overflow: hidden;
+  /* Elimina cualquier margin-top negativo */
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at top right,
+    rgba(85, 211, 196, 0.15) 0%,
+    transparent 50%
+  );
+  pointer-events: none;
+}
+
+.container {
+  width: 100%;
+  max-width: 1400px;
+  position: relative; /* Ensure container can be layered */
+  z-index: 1; /* Place container content above ParticleBackground */
+  margin: 0 auto;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  width: 100%;
+  padding-bottom: 10rem;
+  padding-top: 10rem;
+}
+
+.textContent {
+  flex: 1 1 0;
+  max-width: 650px;
+  min-width: 0;
+  padding-right: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.imageWrapper {
+  flex: 1 1 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 0;
+  width: 100%;
+  max-width: 750px; /* Aumentado para imagen más grande */
+  margin: 1rem auto 0 auto; /* Sube la imagen en desktop */
+}
+
+.headerImage {
+  width: 100%;
+  max-width: 650px; /* Aumentado para imagen más grande */
+  min-width: 320px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  filter: drop-shadow(0 0 20px rgba(85, 211, 196, 0.2));
+  animation: float 6s ease-in-out infinite;
+  transition: content 0.5s ease-in-out, filter 0.3s ease; /* Transición en el content */
+}
+
+.headerImage:hover {
+  content: url('/src/assets/images/header_img_2.png'); /* Cambia la imagen */
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 30px rgba(85, 211, 196, 0.4));
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+/* Título más ancho */
+.coolTitle {
+  /* Si usas CoolTitle.module.css, pon esto ahí. Si el h1 está aquí, ajusta aquí: */
+  display: block;
+  width: 100%;
+  max-width: none;
+  font-size: 2.5rem;
+  line-height: 1.1;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  /* Si el CoolTitle está en otro archivo, mueve esto allá */
+}
+
+.description {
+  font-size: 1.5rem;
+  line-height: 1.6;
+  color: #a0a0a0;
+  margin-bottom: 1.5rem; /* Sube el párrafo */
+  margin-top: 0.5rem;    /* Opcional: lo acerca más al título */
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 0.8rem;
+
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row !important; /* Fuerza horizontal incluso en mobile */
+  gap: 1.2rem;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 1.5rem;
+  margin-bottom: 0;
+  max-width: 320px;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.buttons > * {
+  padding: 0.75rem 1.8rem;
+  border-radius: 0.7rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  border: none;
+  outline: none;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 12px 0 rgba(85,211,196,0.08);
+  cursor: pointer;
+  min-width: 120px;
+}
+
+.buttons > *:hover {
+  filter: brightness(0.95);
+  box-shadow: 0 4px 24px 0 rgba(85,211,196,0.18);
+}
+
+@media (max-width: 1200px) {
+  .content {
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
+
+  .imageWrapper {
+    max-width: 550px;
+    margin-top: 1.5rem; /* Sube la imagen también en pantallas medianas */
+  }
+
+  .headerImage {
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .content {
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
+
+  .description {
+    font-size: 1.3rem;
+    max-width: 600px;
+  }
+
+  .headerImage {
+    max-width: 400px;
+  }
+
+  .imageWrapper {
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 992px) {
+  .content {
+    padding: 2rem;
+    gap: 3rem;
+  }
+  
+  .imageWrapper {
+    max-width: 500px;
+    right: -5%;
+    width: 55%;
+  }
+}
+
+@media (max-width: 900px) {
+  .content {
+    flex-direction: column-reverse;
+    align-items: center;
+    text-align: center;
+    gap: 2rem;
+    padding: 0 1rem;
+  }
+
+  .imageWrapper {
+    max-width: 350px;
+    margin-bottom: 2rem;
+    margin-top: 0; /* Restablece para mobile */
+  }
+
+  .headerImage {
+    max-width: 320px;
+    min-width: 0;
+  }
+
+  .textContent {
+    max-width: 100%;
+    padding-right: 0;
+  }
+
+  .buttons {
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding-top: 90px; /* Ajusta para móvil si la navbar es más chica */
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 2rem;
+    min-height: auto;
+    /* Elimina margin-top negativo */
+  }
+
+  .content {
+    flex-direction: column-reverse;
+    text-align: center;
+    padding: 0;
+    gap: 2rem;
+  }
+
+  .textContent {
+    flex: none;
+    padding: 0;
+    max-width: 100%;
+  }
+
+  .description {
+    font-size: 1.1rem;
+    margin: 1.5rem auto;
+    max-width: 90%;
+    margin-bottom: 1rem; /* Sube el párrafo en mobile */
+    margin-top: 0.5rem;
+  }
+
+  .buttons {
+    flex-direction: row !important; /* Mantiene los botones en fila en mobile */
+    gap: 1rem;
+    max-width: 320px;
+    margin: 1.5rem auto 0 auto;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .imageWrapper {
+    flex: none;
+    margin: 2rem auto 0 auto; /* Baja la imagen en mobile */
+    width: 100%;
+    max-width: 320px;
+    transform: none;
+  }
+
+  .headerImage {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .header {
+    padding: 4rem 0.5rem 2rem;
+  }
+
+  .content {
+    gap: 1.5rem;
+    padding: 0 0.5rem;
+  }
+
+  .imageWrapper {
+    max-width: 95vw;
+  }
+
+  .headerImage {
+    max-width: 95vw;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 3rem 0.5rem 1rem;
+  }
+
+  .imageWrapper {
+    max-width: 98vw;
+  }
+
+  .headerImage {
+    max-width: 98vw;
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+}
+
+.parallaxContainer {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.1s ease-out; /* Smooth transition */
+}

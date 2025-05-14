@@ -1,0 +1,166 @@
+.testimoniosSection {
+  padding: 80px 20px; /* Increased padding */
+  background-image: #171717, #000000; /* Gradient background */
+  text-align: center;
+  position: relative; 
+}
+
+.contentBox { /* New style for the container wrapping title and grid */
+  background-color: #3c2a4d48; /* Dark, desaturated purple, inspired by the image's main container */
+  padding: 40px; /* Padding inside the content box */
+  border-radius: 25px; /* Rounded corners for the content box */
+  max-width: 1280px; /* Max width for the content box */
+  margin: 0 auto; /* Center the content box */
+  box-shadow: 0 10px 40px rgba(0,0,0,0.3); /* Optional: shadow for the content box */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Added transition for smooth hover */
+}
+
+.contentBox:hover { /* Hover effect for the content box */
+  transform: translateY(-5px); /* Slightly lift the box */
+  box-shadow: 0 15px 50px rgba(0,0,0,0.5); /* Darker shadow, consider a subtle violet tint if desired */
+}
+
+.titulo {
+  margin-bottom: 50px; /* Adjusted margin for title within contentBox */
+  /* CoolTitle should handle its own gradient styling. Ensure it's visible on dark bg. */
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjusted minmax for potentially tighter fit */
+  gap: 30px; /* Gap between cards */
+  /* max-width and margin:auto are now on contentBox */
+}
+
+.testimonioCard {
+  background-color: #2e1f3e6e; /* Slightly darker/distinct purple for the cards */
+  border-radius: 15px; /* More rounded corners */
+  padding: 35px 30px; /* Increased padding */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Softer, more spread shadow for dark theme */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  border: 1px solid #4A3A5F; /* Subtle, slightly lighter purple border */
+  height: 100%; /* Ensure cards in a row can be of same height if content differs slightly */
+}
+
+.testimonioCard:hover {
+  transform: translateY(-10px); /* More pronounced hover effect */
+  box-shadow: 0 15px 35px rgba(45, 212, 191, 0.25); /* Green accent shadow, slightly more visible */
+  border-color: #2DD4BF; /* Change border to green accent on hover */
+}
+
+.testimonioImagen {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 25px; /* Increased margin */
+  border: 4px solid #2dd4be96; /* Vibrant cyan/teal border, as in image */
+  box-shadow: 0 0 15px rgba(45, 212, 191, 0.5); /* Glow effect for the image border */
+}
+
+.texto {
+  font-size: 1.05rem;
+  color: #D1D5DB; /* Light gray text for readability on dark background */
+  line-height: 1.7;
+  margin-bottom: 25px; /* Increased margin */
+  font-style: italic;
+  position: relative;
+  padding: 0 10px; /* Add some padding so quotes don't touch text edges */
+}
+
+.texto::before {
+  content: '“';
+  font-size: 3rem; /* Larger quote marks */
+  color: #594A6F; /* Muted purple for quote marks */
+  position: absolute;
+  left: -5px; /* Adjust position */
+  top: -15px; /* Adjust position */
+  font-family: Georgia, serif;
+  line-height: 1;
+}
+
+.texto::after {
+  content: '”';
+  font-size: 3rem; /* Larger quote marks */
+  color: #594A6F; /* Muted purple for quote marks */
+  position: absolute;
+  right: -5px; /* Adjust position */
+  bottom: -20px; /* Adjust position */
+  font-family: Georgia, serif;
+  line-height: 1;
+}
+
+.nombre {
+  font-size: 1.25rem; /* Slightly larger name */
+  font-weight: 600;
+  color: #F9FAFB; /* Brighter white for name */
+  margin-bottom: 8px; /* Increased margin */
+}
+
+.puesto {
+  font-size: 1rem; /* Slightly larger puesto */
+  color: #2DD4BF; /* Vibrant cyan/teal for puesto, as in image */
+  font-weight: 500;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .testimoniosSection {
+    padding: 60px 15px;
+  }
+
+  .contentBox {
+    padding: 30px 20px; /* Adjust padding for smaller screens */
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .testimonioCard {
+    padding: 30px 25px;
+  }
+
+  .texto {
+    font-size: 1rem;
+  }
+  
+  .texto::before, .texto::after {
+    font-size: 2.5rem; 
+  }
+
+  .nombre {
+    font-size: 1.15rem;
+  }
+
+  .puesto {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contentBox {
+    padding: 20px 15px; /* Further adjust padding */
+  }
+  .testimonioImagen {
+    width: 85px;
+    height: 85px;
+    margin-bottom: 20px;
+  }
+  .texto {
+    font-size: 0.95rem;
+  }
+  .texto::before {
+    left: 0px;
+    top: -10px;
+  }
+  .texto::after {
+    right: 0px;
+    bottom: -15px;
+  }
+}

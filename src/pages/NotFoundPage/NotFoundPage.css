@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Roboto:wght@300;400&display=swap');
+
+.notfound-container {
+    /* Updated brand colors to better match header */
+    --brand-background-start: #10101A; 
+    --brand-background-mid: #181824;   
+    --brand-background-end: #10101A;   
+    --brand-text-primary: #FFFFFF;     
+    --brand-text-secondary: #B0B8C0;   
+    --brand-accent: #55D3C4;           /* Teal accent from header (approx. rgba(85, 211, 196, 1)) */
+    --brand-accent-hover: #45BAA4;     /* Darker Teal for hover */
+    --brand-accent-shadow: rgba(85, 211, 196, 0.25); /* Shadow for teal accent, similar to header image */
+    --brand-secondary-accent: #D43DFF; 
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--brand-background-start) 0%, var(--brand-background-mid) 50%, var(--brand-background-end) 100%);
+    color: var(--brand-text-primary);
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    padding: 20px;
+    overflow: hidden; /* Prevents scrollbars from GSAP movements */
+    perspective: 1000px; /* For 3D effects */
+    position: relative; /* Needed for the ::before pseudo-element */
+}
+
+.notfound-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        circle at top right,
+        rgba(85, 211, 196, 0.15) 0%, /* Teal accent from header */
+        transparent 50%
+    ), radial-gradient(
+        circle at bottom left,
+        var(--brand-accent-gradient-start) 0%,
+        transparent 50%
+    );
+    pointer-events: none;
+    z-index: 0; /* Behind the content */
+}
+
+.notfound-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative; /* Ensure content is above the ::before pseudo-element */
+    z-index: 1;
+}
+
+.notfound-title {
+    font-family: 'Montserrat', sans-serif; /* This font is specifically for the large 404 title */
+    font-size: clamp(10rem, 25vw, 20rem); /* Responsive font size */
+    font-weight: 900;
+    margin: 0;
+    color: var(--brand-accent); 
+    text-shadow: 
+        0 0 15px var(--brand-accent-shadow),
+        0 0 25px var(--brand-accent-shadow),
+        0 0 35px rgba(85, 211, 196, 0.15); /* Softer, wider glow */
+    display: flex; /* To allow individual digit manipulation */
+    user-select: none; /* Prevent text selection during interaction */
+}
+
+.digit {
+    display: inline-block; /* Important for GSAP transforms */
+    transition: transform 0.1s ease-out; /* Smooth fallback if JS is slow */
+}
+
+.notfound-text {
+    font-family: var(--font-primary); /* Use the primary font from index.css */
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    font-weight: 300; /* DM Sans might look better with a slightly higher weight, e.g., 400 */
+    margin: 10px 0;
+    color: var(--brand-text-secondary); 
+    max-width: 600px;
+}
+
+.notfound-text:first-of-type {
+    margin-top: 20px;
+}
+
+/* Remove old .notfound-link styles as the Button component will have its own */
+/* 
+.notfound-link {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 12px 25px;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    font-weight: bold;
+    color: var(--brand-text-primary); 
+    background-color: var(--brand-accent); 
+    border: none;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 15px var(--brand-accent-shadow); 
+}
+
+.notfound-link:hover {
+    background-color: var(--brand-accent-hover); 
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(0,0,0, 0.3); 
+}
+
+.notfound-link:active {
+    transform: translateY(-1px) scale(1.02);
+}
+*/
+
+/* Optional: Add some margin to the button container if needed, 
+   though the Button component might handle its own spacing.
+   The inline style in the JSX already adds marginTop.
+*/

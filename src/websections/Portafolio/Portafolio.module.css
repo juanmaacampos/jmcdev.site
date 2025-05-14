@@ -1,0 +1,508 @@
+.portafolioSection {
+  width: 100%;
+  padding: 4rem 0;
+  margin: 0;
+  background-color: #0f1014; /* Base dark background color */
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+  z-index: 1;
+}
+
+/* Background elements styles */
+.backgroundElements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0; /* Changed from width: 100% */
+  bottom: 0; /* Changed from height: 100% */
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.backgroundBase {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #0a0c14 0%, #171721 100%);
+}
+
+.glowEffect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(
+    circle at 50% 50%, 
+    rgba(85, 211, 196, 0.25) 0%, 
+    rgba(85, 211, 196, 0.15) 20%,
+    rgba(85, 211, 196, 0.05) 40%,
+    transparent 60%
+  );
+  transition: background-image 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+  mix-blend-mode: screen;
+  z-index: 1;
+}
+
+.noiseTexture {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  z-index: 2;
+}
+
+.container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 2rem 0 0;
+  position: relative;
+  z-index: 5; /* Higher z-index to ensure content is above background */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.heading {
+  font-size: 3.5rem;
+  margin-bottom: 4rem;
+  text-align: center;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.03em;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 3;
+  text-shadow: 0 0 20px rgba(85, 211, 196, 0.4);
+}
+
+.heading:after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, rgba(85, 211, 196, 0.7), rgba(85, 211, 196, 0.3));
+  border-radius: 2px;
+}
+
+.projectsTitle {
+  font-size: 4rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 3.5rem;
+  background: linear-gradient(90deg, #55d3c4, #A3FFE5);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  position: relative;
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  text-shadow: 0 0 20px rgba(85, 211, 196, 0.3);
+}
+
+.projectsTitle::after {
+  content: '';
+  position: absolute;
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, #55d3c4, transparent);
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.projectsTitle::before {
+  content: '';
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border: 1px dashed rgba(85, 211, 196, 0.3);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+/* Ensure gallery wrapper maintains horizontal layout */
+.galleryWrapper {
+  width: 100%;
+  overflow: hidden;
+  margin: 0 auto;
+  height: 520px;
+  position: relative;
+  cursor: none;
+}
+
+.galleryContainer {
+  display: flex;
+  height: 100%;
+  position: absolute;
+  will-change: transform;
+  padding: 1rem 0;
+}
+
+.projectCard {
+  flex: 0 0 auto;
+  width: 640px;
+  height: 360px;
+  border-radius: 30px;
+  overflow: hidden;
+  margin: 0 25px;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  will-change: transform;
+  cursor: pointer;
+  aspect-ratio: 16/9;
+}
+
+.projectCard:hover {
+  box-shadow: 0 20px 40px rgba(85, 211, 196, 0.3), 0 0 15px rgba(85, 211, 196, 0.2);
+}
+
+.imageContainer {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #000;
+}
+
+.projectImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: transform;
+}
+
+.projectVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: transform;
+  transition: opacity 0.2s ease;
+}
+
+.projectOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.1) 100%);
+}
+
+.projectTitle {
+  color: #ffffff;
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 1.2rem 2rem;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  border-radius: 12px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  max-width: 80%;
+  font-family: var(--font-headings);
+  text-shadow: 0 0 10px rgba(85, 211, 196, 0.7);
+  border: 1px solid rgba(85, 211, 196, 0.2);
+}
+
+@supports (backdrop-filter: blur(8px)) {
+  .projectTitle {
+    background: rgba(0, 0, 0, 0.5);
+  }
+}
+
+.instructionArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  pointer-events: none;
+  animation: fadeInOut 3s ease-in-out forwards;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateY(-50%) scale(0.3);
+    filter: blur(5px);
+  }
+  15% {
+    opacity: 1;
+    transform: translateY(-50%) scale(1.1);
+    filter: blur(0px);
+  }
+  25% {
+    transform: translateY(-50%) scale(1);
+  }
+  75% {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-50%) scale(0.7);
+    filter: blur(3px);
+  }
+}
+
+.instructionArrow svg {
+  width: 36px;
+  height: 36px;
+  filter: drop-shadow(0 0 8px rgba(85, 211, 196, 0.8));
+}
+
+.instructionArrow svg path {
+  stroke: #A3FFE5;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.instructionArrow:nth-of-type(1) {
+  left: 40px;
+}
+
+.instructionArrow.right {
+  right: 40px;
+}
+
+@media (max-width: 768px) {
+  .instructionArrow svg {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .instructionArrow:nth-of-type(1) {
+    left: 30px;
+  }
+  
+  .instructionArrow.right {
+    right: 30px;
+  }
+}
+
+.navIndicator.left {
+  left: 20px;
+}
+
+.navIndicator.right {
+  right: 20px;
+}
+
+.navIndicator.active {
+  opacity: 1;
+}
+
+@media (max-width: 1200px) {
+  .galleryWrapper {
+    height: 450px;
+  }
+  
+  .projectCard {
+    width: 533px;
+    height: 300px;
+    margin: 0 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .heading {
+    font-size: 2.8rem;
+  }
+  
+  .galleryWrapper {
+    height: 380px;
+  }
+  
+  .projectCard {
+    width: 426px;
+    height: 240px;
+    margin: 0 15px;
+  }
+  
+  .projectTitle {
+    font-size: 1.5rem;
+    padding: 1rem 1.5rem;
+  }
+  
+  .gridPattern {
+    background-size: 30px 30px;
+  }
+  
+  /* Removed width: 80% for glowEffect to ensure it's full width */
+  /* .glowEffect {
+    width: 80%; 
+  } */
+
+  .blueprintGrid {
+    background-size: 15px 15px;
+  }
+  
+  .blueprintLines {
+    background-size: 60px 60px;
+  }
+  
+  .projectsTitle {
+    font-size: 2.8rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .projectCard {
+    width: 320px;
+    height: 180px;
+    margin: 0 12px;
+  }
+}
+
+.galleryWrapper:hover {
+  cursor: grab;
+}
+
+.galleryWrapper:active {
+  cursor: grabbing;
+}
+
+@keyframes cardGlow {
+  0%, 100% {
+    box-shadow: 0 20px 40px rgba(85, 211, 196, 0.2), 0 0 15px rgba(85, 211, 196, 0.1);
+  }
+  50% {
+    box-shadow: 0 20px 40px rgba(85, 211, 196, 0.3), 0 0 20px rgba(85, 211, 196, 0.2);
+  }
+}
+
+.projectCard:hover {
+  animation: cardGlow 2s infinite ease-in-out;
+}
+
+/* Title container - maintain horizontal layout */
+.titleContainer {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: center;
+  margin-bottom: 3.5rem;
+  width: 100%;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Title styles */
+.coolTitlePart,
+.machineTypePart {
+  font-size: 3.8rem !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  letter-spacing: -0.02em;
+  height: auto !important;
+  font-family: 'Geologica', sans-serif !important;
+  display: inline !important;
+}
+
+.coolTitlePart {
+  color: #fff !important;
+  transform: none !important;
+  padding-right: 0 !important;
+  margin-right: -0.2rem !important;
+}
+
+.machineTypePart {
+  background: linear-gradient(to right, #D0F8F0, #55D3C4); /* Gradient like the image */
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important; /* Makes the background gradient visible through the text */
+  padding-left: 0 !important;
+  margin-left: 0 !important;
+  position: relative;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .titleContainer {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 2.5rem;
+  }
+  
+  .coolTitlePart,
+  .machineTypePart {
+    font-size: 2.5rem !important;
+    margin-bottom: 0;
+  }
+}
+
+.fadeOverlay {
+  pointer-events: none;
+  z-index: 1; /* Lower z-index so it doesn't cover content */
+  opacity: 0.5; /* Reduce opacity */
+}
+
+.topFadeAnimation {
+  pointer-events: none;
+  will-change: opacity;
+  z-index: 1; /* Lower z-index so it doesn't cover content */
+  opacity: 0.5; /* Reduce opacity */
+}
+
+/* Ensure content is always visible */
+.visibleContent {
+  opacity: 1 !important;
+  visibility: visible !important;
+  z-index: 10 !important;
+  position: relative;
+}
+
+/* Add these new classes to your existing CSS file */
+
+.topGradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  background: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
+  z-index: 1;
+  pointer-events: none;
+}
+
+.bottomGradient {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  background: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0));
+  z-index: 1;
+  pointer-events: none;
+}
