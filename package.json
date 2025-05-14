@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "homepage": "https://github.com/juanmaacampos/jmcdev.site",
+  "homepage": "https://jmcdev.site",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
