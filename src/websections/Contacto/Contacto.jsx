@@ -212,7 +212,7 @@ export default function Contacto() {
       // and Netlify should pick them up if they are submitted.
       // If using FormData, we need to explicitly add them if the select name doesn't automatically get picked up for all selected options.
       // A common way is to remove any existing 'selectedAdicionales' and then append.
-      netlifyFormData.delete('selectedAdicionales'); // Clear if already set by default select
+      // netlifyFormData.delete('selectedAdicionales'); // Clear if already set by default select
       formData.selectedAdicionales.forEach(adicional => {
         netlifyFormData.append('selectedAdicionales', adicional);
       });
@@ -225,6 +225,37 @@ export default function Contacto() {
           body: netlifyFormData, // Send FormData directly
         });
         setFormSuccess(true); // Actual success
+
+        // Construct WhatsApp message
+        let message = "Nueva consulta desde el formulario web:\n\n";
+        message += `Nombre: ${formData.nombreCompleto}\n`;
+        message += `Email: ${formData.email}\n`;
+        message += `Tipo de Consulta: ${formData.tipoConsulta}\n`;
+
+        if (formData.tipoConsulta === "paginaWeb") {
+          if (formData.tipoWeb) {
+            message += `Rubro Web: ${formData.tipoWeb}\n`;
+          }
+          if (selectedPlan) {
+            let planFullName = "";
+            if (selectedPlan === "basica") planFullName = "Web Básica / Landing Page";
+            else if (selectedPlan === "estandar") planFullName = "Web Estándar / Multi-página";
+            else if (selectedPlan === "premium") planFullName = "Web Premium / Avanzada";
+            message += `Plan de Referencia: ${planFullName || selectedPlan}\n`;
+          }
+          if (formData.selectedAdicionales.length > 0) {
+            message += `Adicionales: ${formData.selectedAdicionales.join(', ')}\n`;
+          }
+        }
+        message += `Mensaje: ${formData.mensaje}\n`;
+        message += `Cómo nos conociste: ${formData.comoConociste}\n`;
+
+        const whatsappNumber = "5491123867041";
+        const encodedMessage = encodeURIComponent(message);
+        const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodedMessage}`; // More compatible URL
+        
+        window.open(whatsappUrl, '_blank');
+
         setFormData(initialFormData);
         setSelectedPlan("");
         // setFormErrors({}); // Errors are already empty

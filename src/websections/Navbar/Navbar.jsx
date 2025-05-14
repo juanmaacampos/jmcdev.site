@@ -8,6 +8,7 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrollDirection, setScrollDirection] = useState(null);
   const [prevOffset, setPrevOffset] = useState(0);
+  const menuRef = React.useRef(null); // Create a ref for the menu
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,6 +29,31 @@ const Navbar = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, [prevOffset]);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        // Clicked outside the menu
+        if (isMenuOpen) {
+          // Check if the click was on the menu button itself
+          const menuButton = document.querySelector('.menu-button');
+          if (menuButton && !menuButton.contains(event.target)) {
+            setIsMenuOpen(false);
+          }
+        }
+      }
+    };
+
+    if (isMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isMenuOpen]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -62,12 +88,12 @@ const Navbar = () => {
       </div>
 
       {/* Mobile dropdown menu */}
-      <div className={`mobile-dropdown ${isMenuOpen ? 'active' : ''}`}>
+      <div ref={menuRef} className={`mobile-dropdown ${isMenuOpen ? 'active' : ''}`}>
         <div className="mobile-menu-items">
-          <Button label="Servicios" effect="neon" size="small" icon={<FaUser />} scrollTarget="servicios" />
-          <Button label="Planes" effect="neon" size="small" icon={<FaClipboardList />} scrollTarget="planes" />
-          <Button label="Proyectos" effect="neon" size="small" icon={<FaBriefcase />} scrollTarget="portafolio" />
-          <Button label="Contacto" effect="primary" size="small" icon={<FaEnvelope />} color='#663399' scrollTarget="contacto" />
+          <Button label="Servicios" effect="neon" size="small" icon={<FaUser />} scrollTarget="servicios" onClick={() => setIsMenuOpen(false)} />
+          <Button label="Planes" effect="neon" size="small" icon={<FaClipboardList />} scrollTarget="planes" onClick={() => setIsMenuOpen(false)} />
+          <Button label="Proyectos" effect="neon" size="small" icon={<FaBriefcase />} scrollTarget="portafolio" onClick={() => setIsMenuOpen(false)} />
+          <Button label="Contacto" effect="primary" size="small" icon={<FaEnvelope />} color='#663399' scrollTarget="contacto" onClick={() => setIsMenuOpen(false)} />
         </div>
       </div>
     </nav>

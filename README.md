@@ -21,6 +21,14 @@ Sitio web profesional para servicios de desarrollo web, realizado en React con V
   - [ParallaxMouseImage](#parallaxmouseimage)
   - [ProyectoCard](#proyectocard)
   - [ParticleBackground](#particlebackground)
+  - [PageWrapper](#pagewrapper)
+  - [VideoMaskEffect](#videomaskeffect)
+  - [TopButton](#topbutton)
+  - [AnimatedBackgroundSvg](#animatedbackgroundsvg)
+  - [VideoGallery](#videogallery)
+  - [Timeline](#timeline)
+  - [PlanesCard3d](#planescard3d)
+  - [AdicionalesCard](#adicionalescard)
 - [Secciones Principales](#secciones-principales)
   - [Navbar](#navbar)
   - [Header](#header)
@@ -31,9 +39,12 @@ Sitio web profesional para servicios de desarrollo web, realizado en React con V
   - [Testimonios](#testimonios)
   - [Contacto](#contacto)
   - [Footer](#footer)
+- [Páginas](#páginas)
+  - [NotFoundPage](#notfoundpage)
 - [Estilos y Responsividad](#estilos-y-responsividad)
 - [Animaciones](#animaciones)
 - [Recursos y Assets](#recursos-y-assets)
+- [Enrutamiento](#enrutamiento)
 - [Bibliotecas NPM Utilizadas](#bibliotecas-npm-utilizadas)
 - [Cómo Usar el Proyecto](#cómo-usar-el-proyecto)
 - [Ejemplo de Uso en App.jsx](#ejemplo-de-uso-en-appjsx)
@@ -46,6 +57,8 @@ Sitio web profesional para servicios de desarrollo web, realizado en React con V
 ```
 src/
   components/
+    AdicionalesCard/
+    AnimatedBackgroundSvg/
     Button/
     CardModal/
     CoolTitle/
@@ -53,11 +66,19 @@ src/
     Loader/
     Logo/
     MachineTypeTitle/
+    PageWrapper/
     ParallaxMouseImage/
     ParticleBackground/
+    PlanesCard3d/
     ProyectoCard/
     ServicioCard/
     Svg/
+    Timeline/
+    TopButton/
+    VideoGallery/
+    VideoMaskEffect/
+  pages/
+    NotFoundPage/
   websections/
     Contacto/
     Header/
@@ -67,6 +88,7 @@ src/
     Proceso/
     Servicios/
     Testimonios/
+    VideoSection/
     footer/
   assets/
     images/
@@ -83,16 +105,19 @@ src/
 
 El orden de renderizado en `App.jsx` es:
 
-1. **LoaderDiagonal** (pantalla de carga)
+1. **PageWrapper** (gestiona la carga con LoaderDiagonal y el smooth scroll)
 2. **Navbar** (barra de navegación fija)
 3. **Header** (hero principal, pantalla completa)
 4. **Servicios** (parallax con cards y modales)
-5. **Proceso** (pasos de trabajo)
-6. **Planes** (tarjetas de planes)
-7. **Portafolio** (proyectos recientes)
-8. **Testimonios** (opiniones de clientes)
-9. **Contacto** (formulario y datos)
-10. **Footer** (pie de página)
+5. **VideoMaskEffect** (efecto de máscara de video con animaciones)
+6. **Proceso** (timeline de pasos de trabajo)
+7. **Portafolio** (proyectos recientes con VideoGallery)
+8. **Planes** (tarjetas 3D de planes)
+9. **Testimonios** (opiniones de clientes)
+10. **Contacto** (formulario y datos)
+11. **Footer** (pie de página)
+12. **TopButton** (botón para volver arriba)
+13. **AnimatedBackgroundSvg** (SVGs animados en el fondo durante scroll)
 
 ---
 
@@ -356,6 +381,168 @@ Componente para renderizar un fondo de partículas animadas. Usualmente configur
 
 ---
 
+### PageWrapper
+
+**Función:**  
+Componente contenedor que gestiona la carga inicial, las transiciones de contenido y configura el smooth scroll con Lenis.
+
+**Props:**
+- `children`: Función que recibe el estado de visibilidad del contenido y devuelve los componentes a renderizar.
+
+**Uso:**
+```jsx
+<PageWrapper>
+  {(contentIsVisible) => (
+    <>
+      <Navbar />
+      <Header />
+      {/* Otros componentes que usan contentIsVisible */}
+    </>
+  )}
+</PageWrapper>
+```
+
+---
+
+### VideoMaskEffect
+
+**Función:**  
+Crea un efecto de máscara SVG sobre una sección de video, revelándola gradualmente durante el scroll.
+
+**Props:**
+- `videoSectionRef`: Referencia al contenedor del video.
+- `videoOverlayRef`: Referencia al overlay del video que tendrá la máscara.
+- `contentVisible`: Boolean que indica si el contenido está listo para mostrarse.
+
+**Uso:**
+```jsx
+<VideoMaskEffect
+  videoSectionRef={videoSectionRef}
+  videoOverlayRef={videoOverlayRef}
+  contentVisible={contentIsVisible}
+/>
+```
+
+---
+
+### TopButton
+
+**Función:**  
+Botón para volver al inicio de la página que aparece después de scrollear y se ajusta dinámicamente para no solaparse con el footer.
+
+**Props:** No requiere props directamente.
+
+**Uso:**
+```jsx
+<TopButton />
+```
+
+---
+
+### AnimatedBackgroundSvg
+
+**Función:**  
+Añade SVGs animados que se desplazan en el fondo durante el scroll entre secciones específicas.
+
+**Props:**
+- `svgPaths`: Array de rutas a los SVGs a animar.
+- `startTriggerId`: ID del elemento donde comienza la animación.
+- `endTriggerId`: ID del elemento donde termina la animación.
+- `contentIsVisible`: Boolean para controlar cuándo inicializar las animaciones.
+
+**Uso:**
+```jsx
+<AnimatedBackgroundSvg
+  svgPaths={[logoSvg1, logoSvg2, logoSvg3]}
+  startTriggerId="planes"
+  endTriggerId="contacto"
+  contentIsVisible={contentIsVisible}
+/>
+```
+
+---
+
+### VideoGallery
+
+**Función:**  
+Galería interactiva de proyectos que muestra videos o imágenes con efectos al hover.
+
+**Props:**
+- `projects`: Array de objetos con datos de los proyectos.
+- `title`: String opcional para el título de la galería.
+- `description`: String opcional para la descripción de la galería.
+
+**Uso:**
+```jsx
+<VideoGallery
+  projects={proyectosData}
+  title="Nuestros Proyectos"
+  description="Explora algunos de nuestros trabajos más recientes"
+/>
+```
+
+---
+
+### Timeline
+
+**Función:**  
+Componente que crea una línea de tiempo visual animada, ideal para mostrar procesos o pasos.
+
+**Props:**
+- `items`: Array de objetos con datos para cada paso (título, descripción, icono).
+
+**Uso:**
+```jsx
+<Timeline
+  items={[
+    { titulo: "Paso 1", desc: "Análisis inicial", icon: <FaSearch /> },
+    { titulo: "Paso 2", desc: "Diseño y planificación", icon: <FaPencilRuler /> }
+  ]}
+/>
+```
+
+---
+
+### PlanesCard3d
+
+**Función:**  
+Tarjetas de planes con efecto 3D que responden al movimiento del mouse o a la orientación del dispositivo.
+
+**Props:**
+- `plan`: Objeto con datos del plan (nombre, precio, descripción, beneficios).
+- `destacado`: Boolean para marcar un plan como destacado.
+- `motionActive`: Boolean para habilitar efectos de movimiento.
+
+**Uso:**
+```jsx
+<PlanesCard3d
+  plan={{
+    nombre: "Plan Profesional",
+    precio: "$299",
+    descripcion: "Plan completo para empresas",
+    beneficios: ["Hosting incluido", "SEO optimizado"]
+  }}
+  destacado={true}
+  motionActive={true}
+/>
+```
+
+---
+
+### AdicionalesCard
+
+**Función:**  
+Componente interactivo que muestra servicios adicionales con una lista seleccionable y contenido dinámico.
+
+**Props:** No requiere props directamente, utiliza datos internos.
+
+**Uso:**
+```jsx
+<AdicionalesCard />
+```
+
+---
+
 ## Secciones Principales
 
 ### Navbar
@@ -409,6 +596,16 @@ Componente para renderizar un fondo de partículas animadas. Usualmente configur
 
 ---
 
+## Páginas
+
+### NotFoundPage
+
+- Página 404 personalizada con animación interactiva.
+- Efecto de seguimiento al cursor con elementos numerados.
+- Botón para regresar a la página principal.
+
+---
+
 ## Estilos y Responsividad
 
 - **CSS Modules**: Cada componente/sección tiene su propio archivo de estilos.
@@ -450,8 +647,13 @@ Componente para renderizar un fondo de partículas animadas. Usualmente configur
 - **CoolTitle**: Animaciones de fuente y gradiente.
 - **MachineTypeTitle**: Efecto máquina de escribir.
 - **LoaderDiagonal**: Franjas animadas en pantalla de carga.
-- **ServicioCard**: Hover y apertura de modal.
-- **Servicios**: Efecto reveal del video con el cursor (desktop).
+- **GSAP y ScrollTrigger**: Controlan animaciones complejas basadas en scroll.
+- **Lenis**: Proporciona scroll suave para una mejor experiencia de usuario.
+- **VideoMaskEffect**: Efecto de revelado con máscara SVG durante el scroll.
+- **PlanesCard3d**: Efectos tridimensionales que responden al movimiento.
+- **Timeline**: Animación de línea de tiempo con aparición progresiva.
+- **AnimatedBackgroundSvg**: SVGs flotantes animados durante el scroll.
+- **NotFoundPage**: Animación de seguimiento al cursor con GSAP.
 
 ---
 
@@ -464,6 +666,15 @@ Componente para renderizar un fondo de partículas animadas. Usualmente configur
 
 ---
 
+## Enrutamiento
+
+- **React Router DOM**: Gestiona la navegación entre páginas.
+- **Estructura de rutas**:
+  - `/`: Página principal con todas las secciones
+  - `/*`: NotFoundPage (404)
+
+---
+
 ## Bibliotecas NPM Utilizadas
 
 Este proyecto utiliza varias bibliotecas NPM para su funcionamiento y características:
@@ -473,12 +684,12 @@ Este proyecto utiliza varias bibliotecas NPM para su funcionamiento y caracterí
 - **React Router DOM (`react-router-dom`)**: Para la gestión de rutas y navegación en la aplicación.
 - **GSAP (`gsap`)**: Para animaciones avanzadas y ScrollTrigger.
 - **Lenis (`@studio-freight/lenis`)**: Para un scrolling suave y personalizable.
-- **SplideJS (`@splidejs/react-splide`)**: Para carruseles/sliders, utilizado en la sección de Portafolio.
+- **Framer Motion (`framer-motion`)**: Para animaciones y gestos de alta calidad.
 - **AOS (`aos`)**: Para animaciones al hacer scroll (Animate On Scroll).
 - **Lottie React (`lottie-react`)**: Para renderizar animaciones Lottie (archivos JSON).
 - **React Icons (`react-icons`)**: Para una amplia variedad de iconos SVG.
+- **React tsParticles (`react-tsparticles`)**: Para fondos con partículas interactivas.
 - **Vite (`vite`)**: Herramienta de frontend para un desarrollo rápido y optimizado.
-- **Prop Types (`prop-types`)**: Para la validación de tipos de las props en los componentes React.
 
 ---
 
@@ -528,34 +739,64 @@ Sigue estos pasos para configurar y ejecutar el proyecto en tu entorno local:
 ## Ejemplo de Uso en App.jsx
 
 ```jsx
-import LoaderDiagonal from "./components/Loader/Loader";
-import Navbar from "./websections/Navbar/Navbar";
-import Header from "./websections/Header/Header";
-import Servicios from "./websections/Servicios/Servicios";
-import Proceso from "./websections/Proceso/Proceso";
-import Planes from "./websections/Planes/Planes";
-import Portafolio from "./websections/Portafolio/Portafolio";
-import Testimonios from "./websections/Testimonios/Testimonios";
-import Contacto from "./websections/Contacto/Contacto";
-import Footer from "./websections/footer/Footer";
+import { useRef } from "react";
+import { Routes, Route } from "react-router-dom";
+import PageWrapper from "./components/PageWrapper/PageWrapper";
+import VideoMaskEffect from "./components/VideoMaskEffect/VideoMaskEffect";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
+import TopButton from "./components/TopButton/TopButton";
+import AnimatedBackgroundSvg from "./components/AnimatedBackgroundSvg/AnimatedBackgroundSvg";
+import logoAnimatedSvg from './assets/images/logoanimated.svg';
+
+// Define el MainLayout para la página principal
+const MainLayout = ({ contentIsVisible, videoSectionRef, videoOverlayRef }) => (
+  <>
+    <Navbar />
+    <Header />
+    <Servicios id="servicios" />
+    <VideoMaskEffect
+      videoSectionRef={videoSectionRef}
+      videoOverlayRef={videoOverlayRef}
+      contentVisible={contentIsVisible}
+    />
+    <Proceso />
+    <Portafolio />
+    <Planes />
+    <Testimonios />
+    <Contacto />
+    <Footer />
+    <TopButton />
+    <AnimatedBackgroundSvg
+      svgPaths={[logoAnimatedSvg, logoAnimatedSvg, logoAnimatedSvg]}
+      startTriggerId="planes"
+      endTriggerId="contacto"
+      contentIsVisible={contentIsVisible}
+    />
+  </>
+);
 
 function App() {
-  // ...loading logic...
+  const videoSectionRef = useRef(null);
+  const videoOverlayRef = useRef(null);
+
   return (
-    <>
-      <LoaderDiagonal isVisible={loading} />
-      <div className={`contenido ${contentVisible ? 'visible' : ''}`}>
-        <Navbar />
-        <Header />
-        <Servicios />
-        <Proceso />
-        <Planes />
-        <Portafolio />
-        <Testimonios />
-        <Contacto />
-        <Footer />
-      </div>
-    </>
+    <PageWrapper>
+      {(contentIsVisible) => (
+        <Routes>
+          <Route 
+            path="/" 
+            element={
+              <MainLayout 
+                contentIsVisible={contentIsVisible} 
+                videoSectionRef={videoSectionRef} 
+                videoOverlayRef={videoOverlayRef} 
+              />
+            } 
+          />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      )}
+    </PageWrapper>
   );
 }
 ```
