@@ -4,16 +4,18 @@ import CoolTitle from "../../components/CoolTitle/CoolTitle";
 import Button from "../../components/Button/Button"; // Import custom Button
 import Lottie from "lottie-react"; // Import Lottie
 import accelerometerAnimationData from "../../assets/images/accelerometer.json"; // Import Lottie JSON
-// Import the new AdicionalesCard component
-const AdicionalesCard = lazy(() => import("../../components/AdicionalesCard/AdicionalesCard"));
+// Import ADICIONALES_DATA from the updated AdicionalesCard.jsx
+import { ADICIONALES_DATA } from "../../components/AdicionalesCard/AdicionalesCard";
+// Import the new AdicionalesIconList component
+const AdicionalesIconList = lazy(() => import("../../components/AdicionalesIconList/AdicionalesIconList"));
 
 const ParticleBackground = lazy(() => import("../../components/ParticleBackground/ParticleBackground"));
 const Card3D = lazy(() => import("../../components/PlanesCard3d/3dCard"));
 
 const ParticleFallback = () => <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: -1, backgroundColor: 'transparent' }} />;
 const Card3DFallback = () => <div style={{ minHeight: '350px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', background: 'rgba(255,255,255,0.05)', borderRadius: '15px', margin: '10px', padding: '20px', border: '1px solid rgba(255,255,255,0.1)' }}>Cargando plan...</div>;
-// Fallback for AdicionalesCard
-const AdicionalesCardFallback = () => <div style={{ minHeight: '300px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', background: 'rgba(22,22,29,0.8)', borderRadius: '10px', margin: '15px 0', padding: '20px', border: '1px solid rgba(163,255,229,0.2)' }}>Cargando adicionales...</div>;
+// Fallback for AdicionalesIconList
+const AdicionalesIconListFallback = () => <div style={{ minHeight: '100px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', background: 'rgba(10,10,15,0.5)', borderRadius: '8px', margin: '15px 0', padding: '20px' }}>Cargando iconos...</div>;
 
 const planes = [
   {
@@ -57,6 +59,7 @@ const planes = [
 export default function Planes() {
   const [iosGlobalPermissionState, setIosGlobalPermissionState] = useState('prompt'); // 'prompt', 'granted', 'denied'
   const [isIOSForPermission, setIsIOSForPermission] = useState(false);
+  const [selectedAdicionalId, setSelectedAdicionalId] = useState(ADICIONALES_DATA[0]?.id || null);
 
   useEffect(() => {
     const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
@@ -86,6 +89,8 @@ export default function Planes() {
       style={{ width: 100, height: 100, marginRight: '0px', filter: 'brightness(1.2)' }} // Added filter to change color to match #A3FFE5
     />
   );
+
+  const selectedAdicional = ADICIONALES_DATA.find(ad => ad.id === selectedAdicionalId);
 
   return (
     <section className={styles.planesSection} id="planes">
@@ -125,19 +130,57 @@ export default function Planes() {
         ))}
       </div>
 
-      <div className={styles.adicionalesContainer}>
-        <div className={styles.adicionalesTitleContainer}>
-          <h3 className={styles.adicionalesTitle}>
-            Personaliza tu plan con estos adicionales<span className={styles.consultarText}> (consultar)</span>
+      {/* New Adicionales Section Layout */}
+      <div className={styles.adicionalesSectionWrapper} id="adicionales">
+        <div className={styles.adicionalesMainTitleContainer}>
+          <h3 className={styles.adicionalesMainTitle}>
+            Personaliza tu plan con adicionales
+            <span className={styles.consultarTextMain}> (consultar precio)</span>
           </h3>
         </div>
-        <Suspense fallback={<AdicionalesCardFallback />}>
-          <AdicionalesCard />
-        </Suspense>
-        <div className={styles.footerNotes}>
-          <p className={styles.footerNote}>Todos los planes son compatibles con celular y PC.</p>
-          <p className={styles.footerNote}><strong>*Precios referenciales. El costo y tiempo final dependen del proyecto del cliente.</strong></p>
+
+        <div className={styles.adicionalesTwoColumnLayout}>
+          {/* Left Pane: Icon List */}
+          <div className={styles.adicionalesIconPane}>
+            <Suspense fallback={<AdicionalesIconListFallback />}>
+              <AdicionalesIconList
+                adicionales={ADICIONALES_DATA}
+                selectedAdicionalId={selectedAdicionalId}
+                onAdicionalSelect={setSelectedAdicionalId}
+                motionActive={motionActiveForCards} // Pass motion permission state
+              />
+            </Suspense>
+          </div>
+
+          {/* Right Pane: Content Display */}
+          <div className={styles.adicionalesContentPane}>
+            {selectedAdicional ? (
+              <>
+                <h4 className={styles.selectedAdicionalTitle}>{selectedAdicional.name}</h4>
+                <p className={styles.selectedAdicionalDescription}>{selectedAdicional.description}</p>
+                {selectedAdicional.imageSrc ? (
+                  <img 
+                    src={selectedAdicional.imageSrc} 
+                    alt={selectedAdicional.name} 
+                    className={styles.selectedAdicionalImage} 
+                  />
+                ) : (
+                  <div className={styles.selectedAdicionalImagePlaceholder}>
+                    Visualización del adicional
+                  </div>
+                )}
+              </>
+            ) : (
+              <p className={styles.noAdicionalSelectedText}>Selecciona un adicional de la lista.</p>
+            )}
+          </div>
         </div>
+      </div>
+      {/* End of New Adicionales Section Layout */}
+
+      <div className={styles.footerNotes}>
+        <p className={styles.footerNote}>Todos los planes son compatibles con celular y PC.</p>
+        <p className={styles.footerNote}><strong>*Precios referenciales. El costo y tiempo final dependen del proyecto del cliente.</strong></p>
       </div>
     </section>
   );

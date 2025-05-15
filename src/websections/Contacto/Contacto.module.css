@@ -290,6 +290,11 @@
   /* Ensure Button component's primary effect matches the desired theme */
 }
 
+.sendAnotherButton {
+  /* Add other styles for this button if needed */
+  margin-top: 20px; /* Or any other value you prefer for spacing */
+}
+
 .infoText {
   font-size: 1rem;
   line-height: 1.7;

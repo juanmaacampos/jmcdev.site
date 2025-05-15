@@ -184,45 +184,189 @@ li {
   /* Adjust if Lottie icon needs specific color handling not covered by its JSON */
 }
 
-/* Adicionales Section Styles */
+/* === New Adicionales Section Styles === */
+.adicionalesSectionWrapper {
+  background: rgba(18, 18, 22, 0.85); /* Dark, slightly transparent background */
+  border: 1px solid rgba(163, 255, 229, 0.1); /* Subtle border */
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  color: #e0e0e0; /* Light text color */
+  backdrop-filter: blur(10px);
+  max-width: 1100px;
+  margin: 70px auto 40px auto;
+  position: relative;
+  z-index: 2;
+}
+
+.adicionalesMainTitleContainer {
+  text-align: center;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(163, 255, 229, 0.15);
+}
+
+.adicionalesMainTitle {
+  font-size: 1.8rem; /* Adjusted from 2rem for balance */
+  color: #A3FFE5;
+  text-shadow: 0 0 8px rgba(163, 255, 229, 0.6);
+  font-weight: 600;
+}
+
+.consultarTextMain {
+  font-size: 0.9rem;
+  color: #b0b0b0;
+  font-weight: 400;
+  margin-left: 8px;
+}
+
+.adicionalesTwoColumnLayout {
+  display: flex;
+  flex-direction: row; /* Default for wider screens */
+  gap: 30px;
+}
+
+.adicionalesIconPane {
+  flex: 2; 
+  min-width: 0; 
+  /* min-height: 300px; */ /* Consider removing or adjusting this if AdicionalesIconList controls its own height */
+  display: flex; 
+  align-items: flex-start; /* Align items to the start of the cross axis */
+  justify-content: center; /* Center the icon list if it's narrower than the pane */
+}
+
+.adicionalesContentPane {
+  flex: 3; 
+  background-color: rgba(28, 28, 35, 0.7); /* Background for content area */
+  padding: 25px;
+  border-radius: 10px;
+  border: 1px solid rgba(163, 255, 229, 0.15);
+  display: flex;
+  flex-direction: column;
+  min-height: 350px; /* Ensure it has some height */
+}
+
+.selectedAdicionalTitle {
+  color: #A3FFE5;
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 15px;
+  border-bottom: 1px solid rgba(163, 255, 229, 0.2);
+  padding-bottom: 10px;
+}
+
+.selectedAdicionalDescription {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #c0c0c0; /* Slightly lighter than default text for emphasis */
+  margin-bottom: 20px;
+  flex-grow: 1; /* Allows description to take space */
+  white-space: pre-line;
+}
+
+.selectedAdicionalImage {
+  width: 100%;
+  max-height: 220px; /* Adjust as needed */
+  object-fit: cover;
+  border-radius: 8px;
+  margin-top: auto; /* Pushes image to bottom if description is short */
+  border: 1px solid rgba(163, 255, 229, 0.2);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.selectedAdicionalImagePlaceholder {
+  width: 100%;
+  min-height: 180px;
+  background-color: rgba(163, 255, 229, 0.05);
+  border: 2px dashed rgba(163, 255, 229, 0.4);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(163, 255, 229, 0.7);
+  font-weight: 500;
+  font-size: 0.9rem;
+  margin-top: auto;
+}
+
+.noAdicionalSelectedText {
+  color: #888;
+  text-align: center;
+  margin: auto; /* Center it if no item is selected */
+}
+
+
+/* Responsive adjustments for the new layout */
+@media (max-width: 992px) { /* Adjust breakpoint if needed */
+  .adicionalesTwoColumnLayout {
+    flex-direction: column;
+  }
+  .adicionalesIconPane {
+    flex: none; /* Reset flex grow/shrink for column layout */
+    width: 100%; /* Full width */
+    margin-bottom: 20px; /* Space when stacked */
+  }
+  .adicionalesContentPane {
+    flex: none;
+    width: 100%;
+  }
+  .selectedAdicionalTitle {
+    font-size: 1.4rem;
+  }
+  .selectedAdicionalDescription {
+    font-size: 0.9rem;
+  }
+}
+
+
+/* Old .adicionalesContainer, .adicionalesTitleContainer, .adicionalesTitle, .consultarText, .adicionalesList, .adicionalItem, .checkIcon can be removed or commented out if no longer used by other parts */
+/* For now, I'm keeping them commented in case they are referenced elsewhere, but the new styles above take precedence for this section. */
+
+/*
 .adicionalesContainer {
-  background: rgba(22, 22, 29, 0.8); /* From cardContainer */
-  border: 1px solid rgba(255, 255, 255, 0.1); /* From cardContainer */
-  border-radius: 15px; /* From cardContainer */
-  padding: 30px; /* From cardContainer */
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* From cardContainer */
-  color: #fff; /* Default text color, from cardContainer */
-  backdrop-filter: blur(5px); /* From cardContainer */
-  max-width: 1200px; /* Match the .grid max-width */
-  margin: 60px auto 20px auto; /* Top margin, centered, bottom margin */
-  text-align: left; /* Default text align for content inside */
-  position: relative; /* For z-indexing if needed */
-  z-index: 2; /* Ensure it's above particle background */
+  background: rgba(22, 22, 29, 0.7); 
+  border: 1px solid rgba(163, 255, 229, 0.15); 
+  border-radius: 15px; 
+  padding: 35px; 
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); 
+  color: #fff; 
+  backdrop-filter: blur(10px); 
+  max-width: 1100px; 
+  margin: 70px auto 40px auto; 
+  text-align: left; 
+  position: relative; 
+  z-index: 2; 
 }
 
 .adicionalesTitleContainer {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px 0; 
+  padding: 0 0 15px 0; 
   position: relative; 
+  border-bottom: 1px solid rgba(163, 255, 229, 0.1); 
+  margin-bottom: 30px; 
 }
 
 .adicionalesTitle {
-  font-size: 1.8rem; 
+  font-size: 2rem;  
   color: #A3FFE5; 
-  margin-bottom: 25px; 
-  text-shadow: 0 0 5px #A3FFE5, 0 0 10px #A3FFE5; 
+  margin-bottom: 0; 
+  text-shadow: 0 0 8px rgba(163, 255, 229, 0.7); 
   text-align: center; 
+  font-weight: 600;
 }
 
 .consultarText {
-  font-size: 1rem; /* Smaller than title */
-  color: #ccc; /* Lighter color */
-  font-weight: normal;
+  font-size: 0.9rem; 
+  color: #b0b0b0; 
+  font-weight: 400; 
+  margin-left: 8px; 
 }
+*/
 
-.adicionalesList {
+.adicionalesList { /* This class might be used by something else, if not, can be removed */
   list-style: none;
   padding: 0;
   margin: 15px auto 25px auto; 

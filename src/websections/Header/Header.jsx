@@ -28,8 +28,11 @@ function Header() {
                 color="#B687F7" // o "linear-gradient(45deg, #fff 30%, #B687F7 100%)"
               />
               
-              <p className={styles.description}>
-              <strong>Diseñamos sitios web únicos y optimizamos redes sociales usando fotografías profesionales</strong> para conectar con tu audiencia y crecer tu negocio con creatividad y tecnología.</p>
+<p className={styles.description}>
+  <strong>Páginas web que impactan, redes que conectan y fotos que venden</strong>. Todo lo que tu negocio necesita para crecer online, con calidad profesional y al mejor precio del mercado.
+</p>
+
+
             </div>
           </div>
           

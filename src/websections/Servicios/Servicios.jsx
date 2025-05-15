@@ -206,7 +206,7 @@ Transformamos <CoolTitle>tu presencia digital</CoolTitle>
     <ServicioCard
       svg={<Svg route={lottieWorld} />}
       titulo="Creación de páginas web que venden"
-      descripcion="Diseñamos sitios modernos desde cero, optimizados para destacar en Google y convertir visitas en clientes."
+      descripcion="Diseñamos sitios modernos desde cero, optimizados para destacar en Google y convertir visitas en clientes. Todo al mejor precio del mercado"
       playInitialAnimation={animateFirstCard} // Pass the new prop
       modalData={{
         title: <h1>Estar en Google es vender.</h1>,
