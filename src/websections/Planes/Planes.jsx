@@ -6,6 +6,9 @@ import Lottie from "lottie-react"; // Import Lottie
 import accelerometerAnimationData from "../../assets/images/accelerometer.json"; // Import Lottie JSON
 // Import ADICIONALES_DATA from the updated AdicionalesCard.jsx
 import { ADICIONALES_DATA } from "../../components/AdicionalesCard/AdicionalesCard";
+// Import framer-motion
+import { motion, AnimatePresence } from "framer-motion";
+
 // Import the new AdicionalesIconList component
 const AdicionalesIconList = lazy(() => import("../../components/AdicionalesIconList/AdicionalesIconList"));
 
@@ -92,6 +95,12 @@ export default function Planes() {
 
   const selectedAdicional = ADICIONALES_DATA.find(ad => ad.id === selectedAdicionalId);
 
+  const contentVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeInOut" } },
+    exit: { opacity: 0, y: -20, transition: { duration: 0.3, ease: "easeInOut" } }
+  };
+
   return (
     <section className={styles.planesSection} id="planes">
       <div className={styles.radialFadeTop} />
@@ -154,25 +163,43 @@ export default function Planes() {
 
           {/* Right Pane: Content Display */}
           <div className={styles.adicionalesContentPane}>
-            {selectedAdicional ? (
-              <>
-                <h4 className={styles.selectedAdicionalTitle}>{selectedAdicional.name}</h4>
-                <p className={styles.selectedAdicionalDescription}>{selectedAdicional.description}</p>
-                {selectedAdicional.imageSrc ? (
-                  <img 
-                    src={selectedAdicional.imageSrc} 
-                    alt={selectedAdicional.name} 
-                    className={styles.selectedAdicionalImage} 
-                  />
-                ) : (
-                  <div className={styles.selectedAdicionalImagePlaceholder}>
-                    Visualización del adicional
-                  </div>
-                )}
-              </>
-            ) : (
-              <p className={styles.noAdicionalSelectedText}>Selecciona un adicional de la lista.</p>
-            )}
+            <AnimatePresence mode="wait">
+              {selectedAdicional ? (
+                <motion.div
+                  key={selectedAdicional.id}
+                  variants={contentVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  style={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }} // Ensure motion.div fills the space
+                >
+                  <h4 className={styles.selectedAdicionalTitle}>{selectedAdicional.name}</h4>
+                  <p className={styles.selectedAdicionalDescription}>{selectedAdicional.description}</p>
+                  {selectedAdicional.imageSrc ? (
+                    <img 
+                      src={selectedAdicional.imageSrc} 
+                      alt={selectedAdicional.name} 
+                      className={styles.selectedAdicionalImage} 
+                    />
+                  ) : (
+                    <div className={styles.selectedAdicionalImagePlaceholder}>
+                      Visualización del adicional
+                    </div>
+                  )}
+                </motion.div>
+              ) : (
+                <motion.p
+                  key="no-selection"
+                  variants={contentVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  className={styles.noAdicionalSelectedText}
+                >
+                  Selecciona un adicional de la lista.
+                </motion.p>
+              )}
+            </AnimatePresence>
           </div>
         </div>
       </div>

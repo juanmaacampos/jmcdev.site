@@ -384,7 +384,7 @@ export default function Contacto() {
       <div className={styles.container}>
         <CoolTitle className={styles.titulo}>Hablemos de tu Proyecto</CoolTitle>
         <p className={styles.subtitulo}>
-          Completa el formulario o contáctame directamente. ¡Estoy listo para ayudarte a convertir tu idea en realidad!
+          Completá el formulario interactivo para entender a fondo lo que queres. ¡Estoy listo para ayudarte a convertir tu idea en realidad!
         </p>
         <div className={styles.contenidoGrid}>
           <div className={styles.formularioWrapper}>
@@ -402,7 +402,7 @@ export default function Contacto() {
               </div>
             ) : (
               <>
-                <h3 className={styles.formTitle}>Envíame un mensaje</h3>
+                <h3 className={styles.formTitle}>Formulario para crear tu idea</h3>
                 <form 
                   className={styles.formulario} 
                   autoComplete="off" 
@@ -684,11 +684,11 @@ export default function Contacto() {
                   {formErrors.submit && <p className={styles.errorMessage}>{formErrors.submit}</p>}
                   <Button 
                     label="Enviar Mensaje por WhatsApp" 
-                    icon={FaWhatsapp} 
+                    icon={<FaWhatsapp color="black" />} /* Apply WhatsApp green color directly to the icon */
                     effect="primary" 
                     size="medium" 
                     type="submit" 
-                    color="black"
+                    color="#a842fb81"
                     className={styles.submitButton} 
                   />
                 </form>
