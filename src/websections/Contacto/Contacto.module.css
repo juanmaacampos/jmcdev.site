@@ -112,6 +112,19 @@
   font-weight: 600;
 }
 
+/* Style for the icons in form labels */
+.labelIcon {
+  margin-right: 10px; /* Increased from 8px, or adjust as needed */
+  vertical-align: middle; /* Keeps the icon aligned with the text */
+}
+
+.internalLinkIcon {
+  margin-left: 5px; /* Space between link text and link icon */
+  font-size: 0.8em; /* Make it slightly smaller than label text */
+  vertical-align: middle;
+  color: #55d3c4; /* Changed to site's green/teal */
+}
+
 .input,
 .select,
 .textarea {
@@ -345,12 +358,19 @@ form[data-netlify="true"] input[name="form-name"] {
 
 /* In Contacto.module.css */
 .planLink {
-  color: #55d3c4; /* Or your site's link color */
-  text-decoration: underline;
+  color: #55d3c4; /* Changed to site's green/teal */
+  text-decoration: none; /* Remove default underline if you prefer custom hover */
+  font-weight: 600; /* Make it a bit bolder */
+  transition: color 0.3s ease, background-color 0.3s ease; /* Smooth transition */
+  padding: 2px 4px; /* Optional: add some padding for background hover effect */
+  border-radius: 4px; /* Optional: if using background hover */
 }
 
-.planLink:hover {
-  text-decoration: none;
+.planLink:hover,
+.planLink:focus {
+  color: #7fffd4; /* Lighter green/teal (aquamarine) on hover */
+  /* text-decoration: underline; */ /* You can keep or remove this */
+  background-color: rgba(85, 211, 196, 0.15); /* Subtle background on hover using the site's green/teal */
 }
 
 /* Add this for global smooth scrolling */

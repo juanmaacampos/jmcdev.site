@@ -3,7 +3,7 @@ import styles from "./Contacto.module.css";
 import CoolTitle from "../../components/CoolTitle/CoolTitle";
 import Button from "../../components/Button/Button";
 import IconLink from "../../components/IconLink/IconLink";
-import { FaWhatsapp, FaInstagram } from 'react-icons/fa';
+import { FaWhatsapp, FaInstagram, FaUser, FaQuestionCircle, FaShareAlt, FaTools, FaStore, FaListAlt, FaPlusCircle, FaCommentDots, FaSearch, FaBuilding, FaTag, FaLink } from 'react-icons/fa'; // Added FaLink
 import { MdEmail } from 'react-icons/md'; // Corrected import path
 // Import ADICIONALES_DATA
 import { ADICIONALES_DATA } from "../../components/AdicionalesCard/AdicionalesCard";
@@ -425,7 +425,7 @@ export default function Contacto() {
                   </p>
 
                   <div className={styles.formGroup}>
-                    <label htmlFor="nombreCompleto" className={styles.label}>Nombre completo *</label>
+                    <label htmlFor="nombreCompleto" className={styles.label}><FaUser className={styles.labelIcon} /> Nombre completo *</label>
                     <input
                       type="text"
                       id="nombreCompleto"
@@ -440,7 +440,7 @@ export default function Contacto() {
                     {formErrors.nombreCompleto && <p className={styles.errorMessage}>{formErrors.nombreCompleto}</p>}
                   </div>
                   <div className={styles.formGroup}>
-                    <label htmlFor="email" className={styles.label}>Correo electrónico *</label>
+                    <label htmlFor="email" className={styles.label}><MdEmail className={styles.labelIcon} /> Correo electrónico *</label>
                     <input
                       type="email"
                       id="email"
@@ -455,7 +455,7 @@ export default function Contacto() {
                     {formErrors.email && <p className={styles.errorMessage}>{formErrors.email}</p>}
                   </div>
                   <div className={styles.formGroup}>
-                    <label htmlFor="tipoConsulta" className={styles.label}>Tipo de consulta *</label>
+                    <label htmlFor="tipoConsulta" className={styles.label}><FaQuestionCircle className={styles.labelIcon} /> Tipo de consulta *</label>
                     <select
                       id="tipoConsulta"
                       name="tipoConsulta"
@@ -476,7 +476,7 @@ export default function Contacto() {
                   </div>
                   {formData.tipoConsulta === "redesSociales" && (
                     <div className={styles.formGroup}>
-                      <label htmlFor="redSocialEspecifica" className={styles.label}>¿Qué red social? *</label>
+                      <label htmlFor="redSocialEspecifica" className={styles.label}><FaShareAlt className={styles.labelIcon} /> ¿Qué red social? *</label>
                       <select
                         id="redSocialEspecifica"
                         name="redSocialEspecifica"
@@ -495,7 +495,7 @@ export default function Contacto() {
                   )}
                   {formData.tipoConsulta === "soporteTecnico" && (
                     <div className={styles.formGroup}>
-                      <label htmlFor="servicioContratado" className={styles.label}>Servicio contratado (para soporte) *</label>
+                      <label htmlFor="servicioContratado" className={styles.label}><FaTools className={styles.labelIcon} /> Servicio contratado (para soporte) *</label>
                       <select
                         id="servicioContratado"
                         name="servicioContratado"
@@ -513,7 +513,7 @@ export default function Contacto() {
                   )}
                   {formData.tipoConsulta === "paginaWeb" && (
                     <div className={styles.formGroup}> {/* Ensure this div wraps the following elements */}
-                      <label htmlFor="tipoWeb" className={styles.label}>¿A qué rubro va orientada? *</label>
+                      <label htmlFor="tipoWeb" className={styles.label}><FaStore className={styles.labelIcon} /> ¿A qué rubro va orientada? *</label>
                       <select
                         id="tipoWeb"
                         name="tipoWeb"
@@ -536,6 +536,7 @@ export default function Contacto() {
                   {formData.tipoConsulta === "paginaWeb" && (formData.tipoWeb === "restaurantes" || formData.tipoWeb === "marcas") && (
                     <div className={styles.formGroup}>
                       <label htmlFor="nombreNegocio" className={styles.label}>
+                        {formData.tipoWeb === "restaurantes" ? <FaBuilding className={styles.labelIcon} /> : <FaTag className={styles.labelIcon} />}
                         Nombre {formData.tipoWeb === "restaurantes" ? "del Restaurante" : "de la Marca"} *
                       </label>
                       <input
@@ -553,7 +554,7 @@ export default function Contacto() {
                   {formData.tipoConsulta === "paginaWeb" && ( 
                     <div className={styles.formGroup}>
                       <label htmlFor="tipoPlan" className={styles.label}>
-                        <a href="#planes" className={styles.planLink}>Tipo de Plan (para referencia) *</a>
+                        <FaListAlt className={styles.labelIcon} /> <a href="#planes" className={styles.planLink}>Tipo de Plan (para referencia) *<FaLink className={styles.internalLinkIcon} /></a>
                       </label>
                       <select
                         id="tipoPlan"
@@ -573,7 +574,7 @@ export default function Contacto() {
                   {formData.tipoConsulta === "paginaWeb" && (
                     <div className={styles.formGroup}>
                       <label className={styles.label}>
-                        <a href="#adicionales" className={styles.planLink}>Adicionales (opcional)</a>
+                        <FaPlusCircle className={styles.labelIcon} /> <a href="#adicionales" className={styles.planLink}>Adicionales (opcional) <FaLink className={styles.internalLinkIcon} /></a>
                       </label>
                       <div className={styles.adicionalesPickerContainer}>
                         <button
@@ -648,7 +649,7 @@ export default function Contacto() {
 
                     return (
                       <div className={styles.formGroup}>
-                        <label htmlFor="mensaje" className={styles.label}>{mensajeLabel}</label>
+                        <label htmlFor="mensaje" className={styles.label}><FaCommentDots className={styles.labelIcon} /> {mensajeLabel}</label>
                         <textarea
                           id="mensaje"
                           name="mensaje"
@@ -664,7 +665,7 @@ export default function Contacto() {
                     );
                   })()}
                   <div className={styles.formGroup}>
-                    <label htmlFor="comoConociste" className={styles.label}>¿Cómo nos conociste? *</label>
+                    <label htmlFor="comoConociste" className={styles.label}><FaSearch className={styles.labelIcon} /> ¿Cómo nos conociste? *</label>
                     <select
                       id="comoConociste"
                       name="comoConociste"
