@@ -6,6 +6,7 @@ import MachineTypeTitle from "../../components/MachineTypeTitle/MachineTypeTitle
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import PortafolioBackground from "./PortafolioBackground";
+import ReactGA from 'react-ga'; // Import ReactGA
 
 // Register the ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -49,6 +50,16 @@ const projects = [
   },
 
 ];
+
+// Function to track project clicks in Google Analytics using react-ga
+const trackProjectClick = (projectName) => {
+  ReactGA.event({
+    category: 'Portafolio Project', // Category of the event
+    action: 'Click',               // Action that took place
+    label: projectName             // Specific label for the event (e.g., project name)
+  });
+  console.log(`ReactGA Event: Clicked on ${projectName}`); // For debugging
+};
 
 const Portafolio = () => {
   const sectionRef = useRef(null);
@@ -123,7 +134,7 @@ const Portafolio = () => {
           className={`${styles.galleryWrapper} ${styles.visibleContent}`}
           style={{ opacity: 1 }}
         >
-          <VideoGallery projects={projects} />
+          <VideoGallery projects={projects} onProjectClick={trackProjectClick} />
         </div>
       </div>
       <div className={styles.bottomGradient}></div>

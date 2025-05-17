@@ -19,7 +19,7 @@ const TAP_THRESHOLD = 10; // px para diferenciar entre tap y swipe
 const TAP_MOVE_THRESHOLD = 10; // Max pixels to move for it to be considered a tap
 
 
-const VideoGallery = ({ projects, title, description }) => {
+const VideoGallery = ({ projects, title, description, onProjectClick }) => {
   const isMobile = useIsMobile();
 
   // Hooks for Mobile version
@@ -87,12 +87,15 @@ const VideoGallery = ({ projects, title, description }) => {
   }, [isMobile, controls, projects.length]);
 
 
-  const handleMobileCardTap = (projectId, projectUrl) => {
-    if (activeMobileCardId === projectId) {
-      window.open(projectUrl, "_blank", "noopener,noreferrer");
+  const handleMobileCardTap = (project) => { // Changed to accept the whole project object
+    if (activeMobileCardId === project.id) {
+      if (onProjectClick) {
+        onProjectClick(project.name); // Track click before opening URL
+      }
+      window.open(project.url, "_blank", "noopener,noreferrer");
       setActiveMobileCardId(null);
     } else {
-      setActiveMobileCardId(projectId);
+      setActiveMobileCardId(project.id);
     }
   };
 
@@ -169,7 +172,7 @@ const VideoGallery = ({ projects, title, description }) => {
                   const dt = Date.now() - startTime;
 
                   if (dx < TAP_MOVE_THRESHOLD && dy < TAP_MOVE_THRESHOLD && dt < 300) { // It's a tap
-                    handleMobileCardTap(project.id, project.url);
+                    handleMobileCardTap(project); // Pass the whole project object
                     e.preventDefault(); // Prevent onClick if tap is handled by touch
                   }
                   // Reset for the next interaction
@@ -178,7 +181,7 @@ const VideoGallery = ({ projects, title, description }) => {
                 onClick={(e) => {
                   // This will primarily handle mouse clicks or taps not prevented by onTouchEnd.
                   // The tap differentiation (1st vs 2nd) is handled within handleMobileCardTap.
-                  handleMobileCardTap(project.id, project.url);
+                  handleMobileCardTap(project); // Pass the whole project object
                 }}
               >
                 <img
@@ -236,8 +239,19 @@ const VideoGallery = ({ projects, title, description }) => {
               key={project.id || index}
               project={project}
               index={index}
+              onProjectClick={onProjectClick} // Pass the onProjectClick prop
             />
+            /*
+              NOTE: You'll need to modify your VideoProjectCard component.
+              Inside VideoProjectCard.jsx, when the card/project is clicked to open project.url,
+              you should call the onProjectClick prop like this:
+              if (props.onProjectClick) {
+                props.onProjectClick(props.project.name);
+              }
+              // ... then open the project.url ...
+            */
           ))}
+
         </motion.div>
 
         <AnimatePresence>

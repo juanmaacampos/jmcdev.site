@@ -2,18 +2,13 @@ import React, { useState, useRef, useEffect } from "react";
 import { motion, useMotionValue, AnimatePresence } from "framer-motion";
 import styles from "./VideoGallery.module.css";
 
-const VideoProjectCard = ({ project }) => {
+const VideoProjectCard = ({ project, onProjectClick }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [videoReady, setVideoReady] = useState(false);
   const videoRef = useRef(null);
   
   // Efecto parallax para cada tarjeta al hacer hover
   const y = useMotionValue(0);
-  
-  // Elimina el handler de navegación, ya que el <a> padre se encarga
-  // const handleNavigation = () => {
-  //   window.location.href = project.url;
-  // };
 
   // Manejar la reproducción del video cuando el mouse está sobre la tarjeta
   useEffect(() => {
@@ -32,6 +27,18 @@ const VideoProjectCard = ({ project }) => {
     setVideoReady(true);
   };
 
+  const handleCardClick = () => {
+    // Call the tracking function before opening the URL
+    if (onProjectClick && project) {
+      onProjectClick(project.name); // Pass the project name for tracking
+    }
+    
+    // Then, open the project URL
+    if (project && project.url) {
+      window.open(project.url, "_blank", "noopener,noreferrer");
+    }
+  };
+
   return (
     <motion.div
       className={styles.projectCard}
@@ -39,6 +46,7 @@ const VideoProjectCard = ({ project }) => {
       onHoverEnd={() => setIsHovered(false)}
       whileHover={{ y: -10 }}
       style={{ y }}
+      onClick={handleCardClick}
     >
       <a
         href={project.url}
