@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense, lazy, useEffect } from 'react';
 import Button from '../../components/Button/Button';
 import MachineTypeTitle from '../../components/MachineTypeTitle/MachineTypeTitle';
 import styles from './Header.module.css';
@@ -13,6 +13,12 @@ const ParticleBackground = lazy(() => import('../../components/ParticleBackgroun
 const ParticleFallback = () => <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: -1 }} />;
 
 function Header() {
+  // Effect to start loading the header image early
+  useEffect(() => {
+    const img = new Image();
+    img.src = headerImage;
+  }, []);
+
   return (
     <header className={styles.header}>
       <Suspense fallback={<ParticleFallback />}>
