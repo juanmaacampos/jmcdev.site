@@ -300,15 +300,15 @@ export default function Contacto() {
 
         // Construct WhatsApp message from the user's perspective
         let message = "¡Hola! 👋 Te escribo desde tu formulario web con los siguientes datos:\n\n";
-        message += `👤 *Mi Nombre:* ${formData.nombreCompleto}\n`;
-        message += `📧 *Mi Email:* ${formData.email}\n`;
-        message += `🤔 *Tipo de Consulta:* ${formData.tipoConsulta}\n`;
+        message += `👤 *Mi Nombre:* ${formData.nombreCompleto}\n\n`; // Added \n
+        message += `📧 *Mi Email:* ${formData.email}\n\n`; // Added \n
+        message += `🤔 *Tipo de Consulta:* ${formData.tipoConsulta}\n\n`; // Added \n
 
         if (formData.tipoConsulta === "paginaWeb") {
           if (formData.tipoWeb) {
-            message += `🌐 *El rubro de la web que me interesa es:* ${formData.tipoWeb}\n`;
+            message += `🌐 *El rubro de la web que me interesa es:* ${formData.tipoWeb}\n\n`; // Added \n
             if ((formData.tipoWeb === "restaurantes" || formData.tipoWeb === "marcas") && formData.nombreNegocio) {
-              message += `🏢 *Nombre del Negocio:* ${formData.nombreNegocio}\n`;
+              message += `🏢 *Nombre del Negocio:* ${formData.nombreNegocio}\n\n`; // Added \n
             }
           }
           if (selectedPlan) {
@@ -316,26 +316,26 @@ export default function Contacto() {
             if (selectedPlan === "basica") planFullName = "Web Básica / Landing Page";
             else if (selectedPlan === "estandar") planFullName = "Web Estándar / Multi-página";
             else if (selectedPlan === "premium") planFullName = "Web Premium / Avanzada";
-            message += `📄 *Tomo como referencia el plan:* ${planFullName || selectedPlan}\n`;
+            message += `📄 *Tomo como referencia el plan:* ${planFullName || selectedPlan}\n\n`; // Added \n
           }
           if (formData.selectedAdicionales.length > 0) {
-            message += `✨ *Adicionales que me interesan:* ${formData.selectedAdicionales.join(', ')}\n`;
+            message += `✨ *Adicionales que me interesan:* ${formData.selectedAdicionales.join(', ')}\n\n`; // Added \n
           }
         } else if (formData.tipoConsulta === "redesSociales") {
           if (formData.redSocialEspecifica) {
-            message += `📱 *Red Social de Interés:* ${formData.redSocialEspecifica}\n`;
+            message += `📱 *Red Social de Interés:* ${formData.redSocialEspecifica}\n\n`; // Added \n
           }
         } else if (formData.tipoConsulta === "soporteTecnico") {
           if (formData.servicioContratado) {
-            message += `🛠️ *Soporte para el Servicio:* ${formData.servicioContratado}\n`;
+            message += `🛠️ *Soporte para el Servicio:* ${formData.servicioContratado}\n\n`; // Added \n
           }
         }
-        message += `\n📝 *Sobre mi proyecto:*\n${formData.mensaje}\n\n`;
+        message += `📝 *Sobre mi proyecto:*\n${formData.mensaje}\n\n`;
         message += `💡 *Te conocí por:* ${formData.comoConociste}\n\n`;
         message += "¡Aguardo tu respuesta!";
 
 
-        const whatsappNumber = "5491123867041";
+        const whatsappNumber = "5491173677628";
         const encodedMessage = encodeURIComponent(message);
         const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodedMessage}`;
         
@@ -720,7 +720,7 @@ export default function Contacto() {
             <div className={styles.infoItem}>
               <IconLink 
                 icon={FaWhatsapp}
-                to="https://wa.me/5491123867041" 
+                to="https://wa.me/5491173677628" 
                 label="WhatsApp"
                 effect="scale"
                 color="#25D366"
@@ -731,8 +731,8 @@ export default function Contacto() {
               />
               <div>
                 <strong>WhatsApp:</strong>
-                <a href="https://wa.me/5491123867041" target="_blank" rel="noopener noreferrer" className={styles.infoLink}>
-                  +54 9 11 2386-7041
+                <a href="https://wa.me/5491173677628" target="_blank" rel="noopener noreferrer" className={styles.infoLink}>
+                +54 9 11 7367-7628
                 </a>
               </div>
             </div>
