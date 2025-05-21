@@ -18,11 +18,13 @@ import jmcdevwebVideo from "../../assets/videos/jmcdevweb_project.webm";
 import saboresThumb from "../../assets/projects_img/sabores_project.webp";
 import portfolioThumb from "../../assets/projects_img/portfolio_project.webp";
 import jmcdevwebThumb from "../../assets/projects_img/jmcdevweb_project.webp";
+import bianSushiThumb from "../../assets/projects_img/bian_project.webp";
+
 // Datos de ejemplo de proyectos - ahora todos los videos usan el mismo archivo importado
 const projects = [
   {
     id: 1,
-    name: "Web Portafolio Digital Estandar",
+    name: "Web Portafolio Estandar",
     type: "video",
     media: portfolioVideo, // Usamos la referencia importada
     thumbnail: portfolioThumb,
@@ -39,10 +41,18 @@ const projects = [
     url: "https://juanmaacampos.github.io/project_rest/",
     description: "Sitio web para restaurante premium con diseño elegante Y llamativo.",
   },
-    {
+        {
     id: 3,
-    name: "Web de marca premium",
+    name: "Web demo Bian Sushi",
     type: "video",
+    thumbnail: bianSushiThumb,
+    url: "https://jmcdev.site/bian_demo",
+    description: "Demostración de mejora de web mobile para Bian Sushi Campana (NO ES EL RESULTADO FINAL).",
+  },
+    {
+    id: 4,
+    name: "Web de marca premium",
+    type: "video", // Usamos la referencia importada
     media: jmcdevwebVideo, // Usamos la referencia importada
     thumbnail: jmcdevwebThumb,
     url: "https://jmcdev.site/",
