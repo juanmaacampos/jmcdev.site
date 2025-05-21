@@ -1,0 +1,274 @@
+/* Header Hero Container */
+.header-hero-container {
+  position: relative;
+}
+
+/* Header Styles - Make completely transparent */
+.main-header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  padding: 1rem 0;
+  transition: all 0.3s ease;
+  background-color: transparent !important; /* Force transparency */
+  pointer-events: none; /* Make it non-interactive */
+  opacity: 0; /* Make it invisible */
+}
+
+.main-header.scrolled {
+  background-color: transparent !important; /* Ensure it stays transparent when scrolled */
+  box-shadow: none; /* Remove shadow */
+}
+
+.main-header .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* New class for centered header layout */
+.header-centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  text-align: center;
+}
+
+.logo img {
+  max-height: 60px;
+  transition: all 0.3s ease;
+}
+
+.scrolled .logo img {
+  max-height: 50px; /* Slightly smaller when scrolled */
+}
+
+.desktop-nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.desktop-nav ul li {
+  margin: 0 1rem;
+}
+
+.desktop-nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  padding: 0.5rem;
+}
+
+.desktop-nav ul li a:hover {
+  color: #e94c2a;
+}
+
+.header-contact .phone-link {
+  background-color: #e94c2a;
+  color: white;
+  padding: 0.5rem 1.2rem;
+  border-radius: 50px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.header-contact .phone-link:hover {
+  background-color: #c73e20;
+}
+
+/* Hero Section Styles */
+.hero-section {
+  height: 100vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), 
+                    url('https://images.unsplash.com/photo-1553621042-f6e147245754?q=80&w=1200&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+}
+
+.hero-logo {
+  margin-bottom: 2rem;
+}
+
+.hero-logo img {
+  max-width: 250px; /* Makes the logo larger */
+  height: auto;
+}
+
+.hero-content {
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-content h2 {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.hero-content p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.btn-primary {
+  display: inline-block;
+  background-color: #e94c2a;
+  color: white;
+  padding: 0.8rem 2rem;
+  font-size: 1.2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #c73e20;
+  transform: translateY(-3px);
+}
+
+/* Updated styles for new layout */
+.header {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #121212;
+  overflow: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Logo container at the top */
+.logoContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 0;
+  padding-top: 40px;
+}
+
+.logo {
+  max-width: 150px;
+  height: auto;
+}
+
+/* Bowl image below logo */
+.bowlImageContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.bowlImage {
+  width: 200px;
+  height: auto;
+  margin-bottom: -10px; /* Negative margin to push content up */
+}
+
+/* Title group with reduced spacing */
+.titleGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.coolTitle {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.content {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -10px; /* Negative margin to reduce space between image and titles */
+}
+
+.textContent {
+  flex: 1;
+  max-width: 600px;
+  text-align: center;
+}
+
+.textBlockWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.description {
+  margin-top: 15px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.buttons {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+}
+
+.primaryButton {
+  display: inline-block;
+  background-color: #E94C2A;
+  color: white;
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.primaryButton:hover {
+  background-color: #D43B1A;
+  transform: translateY(-3px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .logo {
+    max-width: 120px;
+  }
+  
+  .bowlImage {
+    width: 150px;
+    margin-bottom: -5px;
+  }
+  
+  .description {
+    font-size: 1rem;
+  }
+}

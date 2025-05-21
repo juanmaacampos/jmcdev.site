@@ -1,0 +1,239 @@
+.header {
+  background-color: #121212;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.logoContainer {
+  text-align: center;
+  margin: 1.5rem 0 1rem; /* Adjusted bottom margin slightly */
+}
+
+.logo {
+  width: 220px; /* Increased from 180px */
+  height: auto;
+  margin-bottom: 0.5rem; /* Adjusted bottom margin */
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 900px;
+}
+
+.bowlImageContainer {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 2rem;
+}
+
+.bowlImage {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+}
+
+.textSection {
+  text-align: center;
+  color: white;
+  margin-top: 1rem;
+}
+
+.titleGroup {
+  margin-bottom: 1.5rem; /* Keep some space before description */
+}
+
+.coolTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0; /* Remove bottom margin */
+  padding-bottom: 0; /* Remove bottom padding */
+  line-height: 1; /* Tighten line height */
+  color: white;
+}
+
+.paintTitleWrapper {
+  margin-top: -0.2em; /* Use negative margin to pull PaintTitle up slightly */
+  padding-top: 0; /* Remove top padding */
+  min-height: auto; /* Allow natural height */
+}
+
+.description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  max-width: 600px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.buttonContainer {
+  margin-top: 1.5rem;
+}
+
+.primaryButton {
+  display: inline-block;
+  background-color: #E94C2A;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 0.8rem 2.5rem;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(233, 76, 42, 0.3);
+  transition: all 0.3s ease;
+}
+
+.primaryButton:hover {
+  background-color: #d03e20;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(233, 76, 42, 0.4);
+}
+
+/* Add a subtle background effect */
+.header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, rgba(30, 30, 30, 0.8) 0%, rgba(10, 10, 10, 0.95) 70%);
+  z-index: 0;
+}
+
+@media (min-width: 768px) {
+  .heroContent {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .bowlImageContainer {
+    flex: 0 0 45%;
+    max-width: 45%;
+    margin-bottom: 0;
+    margin-right: 5%;
+  }
+  
+  .textSection {
+    flex: 0 0 50%;
+    max-width: 50%;
+    text-align: left;
+  }
+  
+  .buttonContainer {
+    text-align: left;
+  }
+}
+
+@media (max-width: 767px) {
+  .header {
+    padding: 0.5rem;
+    min-height: 100vh;
+    height: 100vh; /* Force the header to be exactly viewport height */
+    overflow: hidden; /* Prevent scrolling within the header */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  
+  .container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0.5rem;
+  }
+  
+  .logoContainer {
+    margin: 1rem 0 0.5rem; /* Adjusted for mobile */
+  }
+  
+  .logo {
+    width: 160px; /* Increased from 130px for mobile */
+  }
+  
+  .heroContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  .bowlImageContainer {
+    max-width: 280px; /* Smaller image size */
+    margin-bottom: 1rem;
+  }
+  
+  .textSection {
+    padding: 0;
+  }
+  
+  .coolTitle {
+    font-size: 1.8rem;
+    margin-bottom: 0;
+    line-height: 1; /* Tighten line height for mobile */
+  }
+
+  .paintTitleWrapper {
+    margin-top: -0.1em; /* Adjust negative margin for mobile */
+    padding-top: 0;
+    /* min-height might not be needed or can be auto */
+  }
+  
+  .description {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+    padding: 0 0.5rem;
+  }
+  
+  .buttonContainer {
+    margin-top: 1rem;
+  }
+  
+  .primaryButton {
+    padding: 0.7rem 2rem;
+    font-size: 1rem;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 375px) {
+  .logo {
+    width: 140px; /* Adjusted for extra small devices */
+  }
+  
+  .bowlImageContainer {
+    max-width: 240px;
+  }
+  
+  .coolTitle {
+    font-size: 1.6rem;
+    line-height: 1; /* Consistent tight line height */
+  }
+  
+  .description {
+    font-size: 0.9rem;
+  }
+}

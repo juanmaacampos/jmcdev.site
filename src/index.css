@@ -11,6 +11,10 @@
   box-sizing: border-box;
 }
 
+html, body {
+  background-color: #171717;
+}
+
 body {
   font-family: var(--font-primary);
 }

@@ -6,7 +6,7 @@
   height: 100vh;
   pointer-events: none;
   z-index: 9999;
-  background-color: #0a0a0a;
+  background-color: #171717;
   animation: fadeOut 0.3s ease-out 1.8s forwards;
 }
 

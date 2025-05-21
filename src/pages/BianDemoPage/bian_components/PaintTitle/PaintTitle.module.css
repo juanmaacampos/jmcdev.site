@@ -1,0 +1,44 @@
+.paintTitleContainer { /* Renamed from .container to avoid conflicts if .container is global */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50px; /* Adjust as needed based on font size */
+  padding: 5px 0; /* Minimal vertical padding */
+  overflow: hidden; /* Important for mask effect */
+  margin: 0; /* Reset margin if any */
+}
+
+.paintText { /* Renamed from .text to avoid conflicts */
+  font-size: 2.2rem; /* Adjust size as needed */
+  font-weight: bold;
+  white-space: nowrap;
+  position: relative;
+  display: inline-block;
+  color: var(--paint-title-color); /* Color passed from JS */
+
+  /* CSS Mask for left-to-right reveal */
+  -webkit-mask-image: linear-gradient(to right, black 50%, transparent 50%);
+  mask-image: linear-gradient(to right, black 50%, transparent 50%);
+  -webkit-mask-size: 200% 100%; /* Double width to allow sliding */
+  mask-size: 200% 100%;
+  -webkit-mask-position: 100% 0; /* Initially, the black part of mask is to the right (text hidden) */
+  mask-position: 100% 0; /* Initially, the black part of mask is to the right (text hidden) */
+  
+  /* Transition for the mask position */
+  transition-property: -webkit-mask-position, mask-position;
+  transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
+  transition-duration: var(--animation-speed); /* Controlled by JS */
+  line-height: 1.1;
+}
+
+.paintTextActive {
+  -webkit-mask-position: 0% 0; /* Slides mask to the left, revealing text */
+  mask-position: 0% 0; /* Slides mask to the left, revealing text */
+}
+
+@media (max-width: 768px) {
+  .paintText {
+    font-size: 1.8rem; /* Adjust for mobile */
+    line-height: 1.1;
+  }
+}

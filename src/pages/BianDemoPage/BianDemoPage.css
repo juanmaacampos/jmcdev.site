@@ -1,0 +1,536 @@
+/* Import base styles */
+@import './websections/base.css';
+
+/* App container styles */
+.sushi-app {
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 70px; /* Space for mobile nav */
+  color: #333;
+  background-color: #fff;
+  font-family: 'Poppins', sans-serif;
+  width: 100%;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: 1024px) {
+  .sushi-app {
+    padding-bottom: 0; /* Remove padding for mobile nav */
+  }
+}
+
+/* Reset body/html styles within this page */
+.sushi-app {
+  /* This creates a new stacking context and positioning context */
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Mobile Navigation */
+.mobile-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--secondary-color);
+  display: flex;
+  justify-content: space-around;
+  padding: 0.8rem 0;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #ccc;
+  font-size: 0.7rem;
+  padding: 0.3rem;
+  transition: color 0.3s;
+}
+
+.nav-item:hover,
+.nav-item:focus {
+  color: var(--primary-color);
+}
+
+.nav-item svg {
+  font-size: 1.2rem;
+  margin-bottom: 4px;
+}
+
+/* Hero Section */
+.hero-section {
+  background-image: url('https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?q=80&w=1000&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  color: var(--light-text);
+  padding: 4rem 1rem;
+  text-align: center;
+  position: relative;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-title {
+  font-size: 1.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.hero-subtitle {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+.cta-button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  background-color: #d63c2e;
+}
+
+/* Section Styling */
+section {
+  padding: 3rem 1rem;
+}
+
+.section-title-container {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.section-title {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: var(--secondary-color);
+  position: relative;
+  display: inline-block;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background-color: var(--primary-color);
+}
+
+.section-subtitle {
+  color: #666;
+  font-size: 1rem;
+}
+
+/* Menu Section */
+.menu-section {
+  background-color: var(--background);
+}
+
+.category-filters {
+  display: flex;
+  overflow-x: auto;
+  gap: 0.8rem;
+  padding: 0 0.5rem 1rem;
+  margin-bottom: 2rem;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.category-filters::-webkit-scrollbar {
+  display: none;
+}
+
+.category-filter {
+  flex: 0 0 auto;
+  background: transparent;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  padding: 0.5rem 1.2rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+
+.category-filter.active {
+  background-color: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.menu-item {
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s;
+}
+
+.menu-item:hover {
+  transform: translateY(-5px);
+}
+
+.menu-item-image-container {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+}
+
+.menu-item-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+
+.menu-item:hover .menu-item-image {
+  transform: scale(1.05);
+}
+
+.menu-item-info {
+  padding: 1.2rem;
+}
+
+.menu-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.8rem;
+}
+
+.menu-item-name {
+  font-size: 1.2rem;
+  margin-right: 1rem;
+}
+
+.menu-item-price {
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.menu-item-description {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* About Section */
+.about-section {
+  background-color: #f1f1f1;
+}
+
+.about-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.about-content p {
+  margin-bottom: 1.5rem;
+}
+
+/* Location Section */
+.location-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.location-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.info-icon {
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+.info-item h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.3rem;
+}
+
+.map-container {
+  width: 100%;
+  height: 300px;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+/* Footer */
+.sushi-footer {
+  background-color: var(--secondary-color);
+  color: var(--light-text);
+  padding: 2.5rem 1.5rem;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+}
+
+.footer-branding {
+  margin-bottom: 1rem;
+}
+
+.footer-title {
+  font-size: 2rem;
+  color: var(--primary-color);
+}
+
+.footer-tagline {
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.footer-links a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: var(--primary-color);
+}
+
+.footer-social {
+  margin: 1rem 0;
+}
+
+.footer-social a {
+  color: #ccc;
+  font-size: 1.5rem;
+  transition: color 0.3s;
+}
+
+.footer-social a:hover {
+  color: var(--primary-color);
+}
+
+.copyright {
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+/* Responsive Media Queries */
+
+/* Tablet */
+@media (min-width: 768px) {
+  section {
+    padding: 4rem 2rem;
+  }
+
+  .hero-section {
+    padding: 5rem 2rem;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .menu-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .location-content {
+    flex-direction: row;
+  }
+
+  .location-info,
+  .map-container {
+    flex: 1;
+  }
+
+  .footer-content {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .sushi-app {
+    padding-bottom: 0; /* Remove padding for mobile nav */
+  }
+
+  .mobile-nav {
+    display: none; /* Hide mobile nav on desktop */
+  }
+
+  .menu-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .hero-section {
+    padding: 6rem 2rem;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.4rem;
+  }
+
+  .section-title {
+    font-size: 2.2rem;
+  }
+
+  .menu-item-image-container {
+    height: 200px;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+section {
+  animation: fadeIn 0.8s ease;
+}
+
+.menu-item {
+  animation: fadeIn 0.8s ease;
+  animation-fill-mode: backwards;
+}
+
+/* Stagger the menu item animations */
+.menu-item:nth-child(2) { animation-delay: 0.1s; }
+.menu-item:nth-child(3) { animation-delay: 0.2s; }
+.menu-item:nth-child(4) { animation-delay: 0.3s; }
+.menu-item:nth-child(5) { animation-delay: 0.4s; }
+.menu-item:nth-child(6) { animation-delay: 0.5s; }
+
+/* Reset styles for BianDemoPage only */
+.sushi-app {
+  /* Override any inherited styles from the main app */
+  color: #333;
+  background-color: #fff;
+  font-family: 'Poppins', sans-serif;
+  width: 100%;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* Override global scrollbar styles just for this page */
+.sushi-app .custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.sushi-app .custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.sushi-app .custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+}
+
+.sushi-app .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+/* Main content area */
+.sushi-app main {
+  flex: 1;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+/* Add your specific sushi page styling below */
+.sushi-app .category-filters {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+  padding: 10px;
+  background-color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.sushi-app .category-button {
+  padding: 8px 16px;
+  border: 1px solid #ddd;
+  background-color: white;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.sushi-app .category-button.active {
+  background-color: #ff4500;
+  color: white;
+  border-color: #ff4500;
+}
+
+/* Add more specific styles for your sushi landing page components */

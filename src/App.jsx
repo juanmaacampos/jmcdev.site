@@ -1,6 +1,5 @@
-import { useRef } from "react"; // useEffect, useState removed
-// LoaderDiagonal import removed
-import { Routes, Route } from "react-router-dom"; // Import Routes and Route
+import { useRef } from "react"; 
+import { Routes, Route, useLocation } from "react-router-dom"; // Added useLocation import
 import Header from "./websections/Header/Header";
 import Navbar from "./websections/Navbar/Navbar";
 import Footer from "./websections/footer/Footer";
@@ -15,6 +14,7 @@ import Testimonios from "./websections/Testimonios/Testimonios";
 import Contacto from "./websections/Contacto/Contacto";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage"; // Import NotFoundPage
 import TopButton from "./components/TopButton/TopButton"; // Import TopButton component
+import BianDemoPage from "./pages/BianDemoPage/BianDemoPage"; // Import the new BianDemoPage component
 
 // gsap, ScrollTrigger, Lenis imports removed
 import VideoMaskEffect from "./components/VideoMaskEffect/VideoMaskEffect";
@@ -52,13 +52,19 @@ const MainLayout = ({ contentIsVisible, videoSectionRef, videoOverlayRef }) => (
 );
 
 function App() {
-  // loading, contentVisible state removed
   const videoSectionRef = useRef(null);
   const videoOverlayRef = useRef(null);
+  const location = useLocation(); // Get current location
+  
+  // Check if we're on the BianDemoPage route
+  const isBianDemoRoute = location.pathname === '/bian_demo';
 
-  // useEffect for loader removed
-  // useEffect for Lenis removed
+  // If it's the BianDemoPage route, render it directly without PageWrapper
+  if (isBianDemoRoute) {
+    return <BianDemoPage />;
+  }
 
+  // Otherwise, use the PageWrapper for other routes
   return (
     <PageWrapper>
       {(contentIsVisible) => (
@@ -73,7 +79,7 @@ function App() {
               />
             } 
           />
-          <Route path="*" element={<NotFoundPage />} /> {/* Catch-all route */}
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       )}
     </PageWrapper>

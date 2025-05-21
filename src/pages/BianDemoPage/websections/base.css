@@ -1,0 +1,47 @@
+/* Base styles with mobile-first approach */
+:root {
+  --primary-color: #e74c3c;
+  --secondary-color: #222;
+  --text-color: #333;
+  --light-text: #fff;
+  --background: #f9f9f9;
+  --card-bg: #fff;
+  --accent-color: #e74c3c;
+  --border-radius: 8px;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--background);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+section {
+  animation: fadeIn 0.8s ease;
+  padding: 3rem 1rem;
+}
+
+/* Responsive Media Queries */
+@media (min-width: 768px) {
+  section {
+    padding: 4rem 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  /* Desktop styles */
+}
