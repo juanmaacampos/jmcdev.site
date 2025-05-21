@@ -1,5 +1,5 @@
 .title {
-  font-size: 3.5rem; /* Reduced from 5rem */
+  font-size: 5rem; /* Increased from 3.5rem back to original size */
   line-height: 1.1;
   margin-bottom: 0.1rem;
   background: linear-gradient(
@@ -20,19 +20,19 @@
 
 @media (max-width: 1024px) {
   .title {
-    font-size: 3rem; /* Reduced from 4rem */
+    font-size: 4.5rem; /* Increased from 3rem */
   }
 }
 
 @media (max-width: 768px) {
   .title {
-    font-size: 2.2rem; /* Reduced from 2.8rem */
+    font-size: 3.5rem; /* Increased from 2.2rem */
   }
 }
 
 @media (max-width: 480px) {
   .title {
-    font-size: 1.8rem; /* Reduced from 2.2rem */
+    font-size: 2.5rem; /* Increased from 1.8rem */
   }
 }
 
