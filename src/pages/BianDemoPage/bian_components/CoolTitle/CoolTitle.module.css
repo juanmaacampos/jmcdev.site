@@ -1,7 +1,8 @@
 .coolTitle {
-  font-size: 2.5rem;
+  font-family: var(--japanese-font); /* Added Japanese font */
+  font-size: 2.0rem;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--primary-color); /* Cambiado a color primario */
   margin-bottom: 0; /* Ensure no bottom margin */
   line-height: 1; /* Tighten line height */
   transition: color var(--font-transition, 0.3s) ease;

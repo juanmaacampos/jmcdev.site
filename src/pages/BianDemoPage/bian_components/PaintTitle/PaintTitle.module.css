@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'JAPAN RAMEN';
+  src: url('../../bian_assets/fonts/JAPAN RAMEN.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 .paintTitleContainer { /* Renamed from .container to avoid conflicts if .container is global */
   display: flex;
   justify-content: center;
@@ -9,12 +16,20 @@
 }
 
 .paintText { /* Renamed from .text to avoid conflicts */
+  font-family: 'JAPAN RAMEN', sans-serif; /* Apply the custom font */
   font-size: 2.2rem; /* Adjust size as needed */
   font-weight: bold;
   white-space: nowrap;
   position: relative;
   display: inline-block;
-  color: var(--paint-title-color); /* Color passed from JS */
+  color: transparent; /* Initially transparent */
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-image: linear-gradient(to right, var(--paint-title-color), var(--paint-title-color));
+  background-size: 0% 100%; /* Initially no background visible */
+  background-repeat: no-repeat;
+  background-position: left;
+  transition: background-size var(--animation-speed) ease-in-out, background-position 0s;
 
   /* CSS Mask for left-to-right reveal */
   -webkit-mask-image: linear-gradient(to right, black 50%, transparent 50%);
@@ -25,15 +40,24 @@
   mask-position: 100% 0; /* Initially, the black part of mask is to the right (text hidden) */
   
   /* Transition for the mask position */
-  transition-property: -webkit-mask-position, mask-position;
+  transition-property: -webkit-mask-position, mask-position, background-size, background-position;
   transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
   transition-duration: var(--animation-speed); /* Controlled by JS */
   line-height: 1.1;
 }
 
 .paintTextActive {
+  background-size: 100% 100%; /* Reveal text */
+  background-position: left;
   -webkit-mask-position: 0% 0; /* Slides mask to the left, revealing text */
   mask-position: 0% 0; /* Slides mask to the left, revealing text */
+}
+
+.paintTextExit {
+  background-size: 0% 100%; /* Hide text */
+  background-position: right;
+  -webkit-mask-position: 100% 0; /* Slides mask to the right, hiding text */
+  mask-position: 100% 0; /* Slides mask to the right, hiding text */
 }
 
 @media (max-width: 768px) {

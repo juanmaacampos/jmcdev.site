@@ -1,26 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import styles from './PaintTitle.module.css';
 
-const PaintTitle = ({ words, color = "#E94C2A", speed = 1200, pauseDuration = 3000 }) => {
+const PaintTitle = ({ words, color = "#d9201c", speed = 1200, pauseDuration = 3000 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isTextActive, setIsTextActive] = useState(false); // Controls visibility and reveal/hide trigger
+  const [animationState, setAnimationState] = useState('enter'); // 'enter' | 'exit'
 
   useEffect(() => {
     if (!words || words.length === 0) return;
 
-    // Start by revealing the current word
-    setIsTextActive(true);
+    setAnimationState('enter');
 
-    // Timer to hide the word after it has been revealed and paused
     const hideTimer = setTimeout(() => {
-      setIsTextActive(false); // Trigger hide animation
-    }, speed + pauseDuration); // Reveal duration + pause duration
+      setAnimationState('exit');
+    }, speed + pauseDuration);
 
-    // Timer to change to the next word after hide animation is complete
     const nextWordTimer = setTimeout(() => {
       setCurrentIndex(prevIndex => (prevIndex + 1) % words.length);
-      // setIsTextActive(true) will be triggered by the next effect run due to currentIndex change
-    }, speed + pauseDuration + speed); // Reveal + pause + hide duration
+    }, speed + pauseDuration + speed);
 
     return () => {
       clearTimeout(hideTimer);
@@ -33,10 +29,17 @@ const PaintTitle = ({ words, color = "#E94C2A", speed = 1200, pauseDuration = 30
   return (
     <div className={styles.paintTitleContainer}>
       <span
-        className={`${styles.paintText} ${isTextActive ? styles.paintTextActive : ''}`}
+        className={
+          `${styles.paintText} ` +
+          (animationState === 'enter'
+            ? styles.paintTextActive
+            : animationState === 'exit'
+            ? styles.paintTextExit
+            : '')
+        }
         style={{
-          '--paint-title-color': color, // Use CSS variable for color
-          '--animation-speed': `${speed}ms` // Pass speed as CSS variable for transition
+          '--paint-title-color': color,
+          '--animation-speed': `${speed}ms`
         }}
       >
         {words[currentIndex]}

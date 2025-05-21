@@ -6,8 +6,8 @@
   position: relative;
   min-height: 100vh;
   padding-bottom: 70px; /* Space for mobile nav */
-  color: #333;
-  background-color: #fff;
+  color: var(--text-color);
+  background-color: var(--background);
   font-family: 'Poppins', sans-serif;
   width: 100%;
   overflow-x: hidden;
@@ -104,7 +104,7 @@
 
 .cta-button {
   background-color: var(--primary-color);
-  color: white;
+  color: var(--light-text);
   border: none;
   padding: 0.8rem 2rem;
   font-size: 1rem;
@@ -115,8 +115,7 @@
 }
 
 .cta-button:hover {
-  transform: translateY(-2px);
-  background-color: #d63c2e;
+  background-color: #a31513;
 }
 
 /* Section Styling */
@@ -132,7 +131,7 @@ section {
 .section-title {
   font-size: 1.8rem;
   margin-bottom: 0.5rem;
-  color: var(--secondary-color);
+  color: var(--primary-color);
   position: relative;
   display: inline-block;
 }
@@ -175,7 +174,7 @@ section {
 .category-filter {
   flex: 0 0 auto;
   background: transparent;
-  border: 1px solid #ddd;
+  border: 1px solid #333;
   border-radius: 20px;
   padding: 0.5rem 1.2rem;
   font-size: 0.9rem;
@@ -186,7 +185,7 @@ section {
 
 .category-filter.active {
   background-color: var(--primary-color);
-  color: white;
+  color: var(--light-text);
   border-color: var(--primary-color);
 }
 
@@ -242,7 +241,6 @@ section {
 }
 
 .menu-item-price {
-  font-weight: 700;
   color: var(--primary-color);
 }
 
@@ -253,7 +251,7 @@ section {
 
 /* About Section */
 .about-section {
-  background-color: #f1f1f1;
+  background-color: #232323;
 }
 
 .about-content {
@@ -470,8 +468,8 @@ section {
 /* Reset styles for BianDemoPage only */
 .sushi-app {
   /* Override any inherited styles from the main app */
-  color: #333;
-  background-color: #fff;
+  color: var(--text-color);
+  background-color: var(--background);
   font-family: 'Poppins', sans-serif;
   width: 100%;
   overflow-x: hidden;

@@ -1,14 +1,15 @@
 /* Base styles with mobile-first approach */
 :root {
-  --primary-color: #e74c3c;
-  --secondary-color: #222;
-  --text-color: #333;
-  --light-text: #fff;
-  --background: #f9f9f9;
-  --card-bg: #fff;
-  --accent-color: #e74c3c;
+  --primary-color: #d9201c;
+  --secondary-color: #1c1c1c;
+  --text-color: #f2f3f5;
+  --light-text: #f2f3f5;
+  --background: #1c1c1c;
+  --card-bg: #232323;
+  --accent-color: #d9201c;
   --border-radius: 8px;
   --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --japanese-font: "Noto Sans JP", "Hiragino Sans", "Meiryo", sans-serif; /* Added Japanese font */
 }
 
 * {

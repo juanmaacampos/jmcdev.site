@@ -1,5 +1,13 @@
+@font-face {
+  font-family: 'YourNewJapaneseFontName'; /* Choose a name for your font */
+  src: url('../../bian_assets/fonts/JAPAN\ RAMEN.otf') format('opentype');
+  /* Adjust the path if your font file is located elsewhere */
+  font-weight: normal;
+  font-style: normal;
+}
+
 .header {
-  background-color: #121212;
+  /* background-color: var(--background); */ /* Elimina o comenta esta línea */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -49,26 +57,38 @@
 .bowlImage {
   width: 100%;
   height: auto;
-  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+  /* Quita el filtro de sombra para que no opaque el glow del slider */
+  /* filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5)); */
+  background: transparent !important;
+  box-shadow: none !important;
 }
 
 .textSection {
   text-align: center;
-  color: white;
+  color: var(--text-color);
   margin-top: 1rem;
+}
+
+.textSectionWithJapaneseFont {
+  font-family: 'YourNewJapaneseFontName', sans-serif; /* Apply the font to the section */
+}
+
+/* You might want to apply it more specifically if needed */
+.textSectionWithJapaneseFont .coolTitle,
+.textSectionWithJapaneseFont .paintTitleWrapper,
+.textSectionWithJapaneseFont .description {
+  font-family: 'YourNewJapaneseFontName', sans-serif;
+}
+
+.coolTitle {
+  color: var(--primary-color);
+  font-size: 1rem; /* This rule is likely overridden by the more specific one below. */
+  font-weight: 700;  
+  /* Add other styles for CoolTitle if necessary, like margin, color, etc. */
 }
 
 .titleGroup {
   margin-bottom: 1.5rem; /* Keep some space before description */
-}
-
-.coolTitle {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 0; /* Remove bottom margin */
-  padding-bottom: 0; /* Remove bottom padding */
-  line-height: 1; /* Tighten line height */
-  color: white;
 }
 
 .paintTitleWrapper {
@@ -78,6 +98,7 @@
 }
 
 .description {
+  color: var(--text-color);
   font-size: 1.1rem;
   line-height: 1.6;
   margin-bottom: 2rem;
@@ -91,8 +112,8 @@
 
 .primaryButton {
   display: inline-block;
-  background-color: #E94C2A;
-  color: white;
+  background-color: var(--primary-color);
+  color: var(--light-text);
   font-size: 1.1rem;
   font-weight: 500;
   padding: 0.8rem 2.5rem;
@@ -103,9 +124,31 @@
 }
 
 .primaryButton:hover {
-  background-color: #d03e20;
+  background-color: #a31513;
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(233, 76, 42, 0.4);
+}
+
+/* Specific styles for components within .textSectionWithJapaneseFont */
+.textSectionWithJapaneseFont .coolTitle {
+  font-family: 'YourNewJapaneseFontName', sans-serif; /* Ensure font is applied */
+  font-size: 5.5rem; /* MODIFIED HERE: Increased from 5.0rem */
+  font-weight: 700;  /* Thickness */
+  margin-bottom: 0; 
+  padding-bottom: 0; 
+  line-height: 1; 
+  color: white;
+}
+
+.textSectionWithJapaneseFont .paintTitleWrapper {
+  font-family: 'YourNewJapaneseFontName', sans-serif; /* Ensure font is applied */
+  /* Add any other specific styles for paintTitleWrapper here if needed */
+}
+
+.textSectionWithJapaneseFont .description {
+  font-family: 'YourNewJapaneseFontName', sans-serif; /* Ensure font is applied */
+  color: var(--text-color);
+  /* Add any other specific styles for description here if needed */
 }
 
 /* Add a subtle background effect */
@@ -161,60 +204,25 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 0.5rem;
+    padding: 0.5rem 0.5rem 1.5rem; /* Increased bottom padding to avoid cutting */
   }
   
   .logoContainer {
-    margin: 1rem 0 0.5rem; /* Adjusted for mobile */
-  }
-  
-  .logo {
-    width: 160px; /* Increased from 130px for mobile */
-  }
-  
-  .heroContent {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    overflow: hidden;
+    margin: 0.75rem 0 0.25rem; /* Reduced margins */
   }
   
   .bowlImageContainer {
-    max-width: 280px; /* Smaller image size */
-    margin-bottom: 1rem;
-  }
-  
-  .textSection {
-    padding: 0;
-  }
-  
-  .coolTitle {
-    font-size: 1.8rem;
-    margin-bottom: 0;
-    line-height: 1; /* Tighten line height for mobile */
-  }
-
-  .paintTitleWrapper {
-    margin-top: -0.1em; /* Adjust negative margin for mobile */
-    padding-top: 0;
-    /* min-height might not be needed or can be auto */
-  }
-  
-  .description {
-    font-size: 0.95rem;
-    line-height: 1.4;
-    margin-bottom: 1rem;
-    padding: 0 0.5rem;
+    max-width: 260px; /* Smaller image size */
+    margin-bottom: 0.5rem; /* Reduced margin */
   }
   
   .buttonContainer {
-    margin-top: 1rem;
+    margin-top: 0.5rem; /* Reduced margin */
   }
   
   .primaryButton {
-    padding: 0.7rem 2rem;
-    font-size: 1rem;
+    padding: 0.6rem 1.8rem; /* Smaller button */
+    font-size: 0.95rem; /* Smaller font */
   }
 }
 
@@ -228,12 +236,13 @@
     max-width: 240px;
   }
   
-  .coolTitle {
-    font-size: 1.6rem;
-    line-height: 1; /* Consistent tight line height */
+  /* Apply responsive styles with higher specificity */
+  .textSectionWithJapaneseFont .coolTitle {
+    font-size: 3.2rem; /* MODIFIED HERE: Increased from 2.9rem */
+    line-height: 1; 
   }
   
-  .description {
+  .textSectionWithJapaneseFont .description {
     font-size: 0.9rem;
   }
 }

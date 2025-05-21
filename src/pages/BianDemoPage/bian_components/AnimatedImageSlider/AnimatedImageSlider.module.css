@@ -1,0 +1,133 @@
+.sliderContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: visible;
+}
+
+.imageWrapper {
+  /* Styles for the parallax target wrapper if needed, e.g., display properties */
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+}
+
+.sliderImage {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  opacity: 1; /* Siempre visible por defecto */
+  transform: scale(1); /* Estado base */
+  will-change: transform, opacity;
+  pointer-events: auto;
+  filter: drop-shadow(0px 0px 15px rgba(233, 76, 42, 0.6));
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+/* .active class y animaciones de entrada quedan igual */
+.active {
+  /* No cambia nada aquí, solo sirve para activar la animación */
+}
+
+/* Animación: Pulse (Entrada) */
+.pulse.active {
+  animation: pulseIn 0.7s ease-out forwards;
+}
+@keyframes pulseIn {
+  0% { transform: scale(0.8); opacity: 0; }
+  50% { transform: scale(1.08); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Animación: Bounce (Entrada) */
+.bounce.active {
+  animation: bounceIn 0.7s ease-out forwards;
+}
+@keyframes bounceIn {
+  0% { transform: scale(0.7); opacity: 0; }
+  60% { transform: scale(1.08); opacity: 1; }
+  80% { transform: scale(0.95); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Animación: Rotate (Entrada) */
+.rotate.active {
+  animation: rotateIn 0.7s ease-out forwards;
+}
+@keyframes rotateIn {
+  0% { transform: rotate(-20deg) scale(0.8); opacity: 0; }
+  60% { transform: rotate(10deg) scale(1.05); opacity: 1; }
+  100% { transform: rotate(0deg) scale(1); opacity: 1; }
+}
+
+/* Animación: Parallax (solo marker, JS maneja el movimiento) */
+.parallax {}
+
+/* Animaciones estáticas (elige el nombre en la prop staticAnimationType) */
+
+/* Flotar suavemente arriba y abajo */
+.float {
+  animation: floatAnimation 6s ease-in-out infinite;
+}
+@keyframes floatAnimation {
+  0%, 100% { transform: translateY(0px) scale(1);}
+  50% { transform: translateY(-10px) scale(1);}
+}
+
+/* Pulso sutil (crece y vuelve) */
+.subtlePulse {
+  animation: subtlePulseAnimation 3s ease-in-out infinite;
+}
+@keyframes subtlePulseAnimation {
+  0%, 100% { transform: scale(1);}
+  50% { transform: scale(1.04);}
+}
+
+/* Rotar suavemente de lado a lado */
+.rotateStatic {
+  animation: rotateStaticAnimation 6s ease-in-out infinite;
+}
+@keyframes rotateStaticAnimation {
+  0%, 100% { transform: rotate(-2deg);}
+  50% { transform: rotate(2deg);}
+}
+
+/* Wiggle (temblor rápido de lado a lado) */
+.wiggle {
+  animation: wiggleAnimation 1.2s ease-in-out infinite;
+}
+@keyframes wiggleAnimation {
+  0%, 100% { transform: rotate(0deg);}
+  20% { transform: rotate(-5deg);}
+  40% { transform: rotate(5deg);}
+  60% { transform: rotate(-5deg);}
+  80% { transform: rotate(5deg);}
+}
+
+/* Bounce (rebote suave arriba y abajo) */
+.bounceStatic {
+  animation: bounceStaticAnimation 2s cubic-bezier(.68,-0.55,.27,1.55) infinite;
+}
+@keyframes bounceStaticAnimation {
+  0%, 100% { transform: translateY(0);}
+  50% { transform: translateY(-18px);}
+}
+
+/* Girar 360° lento */
+.spin {
+  animation: spinAnimation 8s linear infinite;
+}
+@keyframes spinAnimation {
+  0% { transform: rotate(0deg);}
+  100% { transform: rotate(360deg);}
+}
+
+/* Zoom in/out lento */
+.zoom {
+  animation: zoomAnimation 5s ease-in-out infinite;
+}
+@keyframes zoomAnimation {
+  0%, 100% { transform: scale(1);}
+  50% { transform: scale(1.08);}
+}

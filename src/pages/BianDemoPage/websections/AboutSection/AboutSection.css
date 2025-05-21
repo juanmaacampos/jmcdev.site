@@ -1,6 +1,6 @@
 /* About Section */
 .about-section {
-  background-color: #f1f1f1;
+  background-color: #232323;
 }
 
 .section-title-container {
@@ -11,7 +11,7 @@
 .section-title {
   font-size: 1.8rem;
   margin-bottom: 0.5rem;
-  color: var(--secondary-color);
+  color: var(--primary-color);
   position: relative;
   display: inline-block;
 }
