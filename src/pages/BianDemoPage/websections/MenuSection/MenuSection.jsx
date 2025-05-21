@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import './MenuSection.css';
 import BianCard from '../../bian_components/BianCard/BianCard';
 import menuData from '../../data/menuData.json';
+import prototipoImage from '../../bian_assets/images/Prototipo.png'; // Import the local image
 
 // Category icons mapping
 const categoryIcons = {
@@ -15,6 +16,25 @@ const categoryIcons = {
   'combinados': '🍱', // Bento box for combinations
   'bebidas': '🥤', // Drink icon
   'all': '🍽️' // All food icon
+};
+
+// Map of menu item IDs to use the local image
+const localImageMap = {
+  'chef3': true,   // Furay cheese
+  'e2': true,  // Locura
+  'e3' : true,  // Locura II
+  'e4': true,  // Salmón x 9 u.
+  'e7': true,
+  'sr5': true,
+  'sr12': true,
+    'sr14': true,
+  'sr15': true,
+    'maki2': true,
+      'nig1': true,
+        'sash2': true,
+          'wok4': true,
+            'comb4': true,
+              'beb1': true,
 };
 
 const MenuSection = ({ menuRef }) => {
@@ -161,7 +181,7 @@ const MenuSection = ({ menuRef }) => {
         {visibleItems.map(item => (
           <BianCard
             key={item.id}
-            image={item.image}
+            image={localImageMap[item.id] ? prototipoImage : item.image}
             title={item.name}
             description={item.description}
             price={item.price}
