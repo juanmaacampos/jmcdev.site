@@ -29,8 +29,7 @@ const LocationSection = () => {
             <span className="info-icon"><FaClock /></span>
             <div>
               <h3>Horarios de Atención</h3>
-              <p>Martes a viernes: 10 a 13hs<br />
-                Martes a domingos: 18 a 23hs</p>
+              <p>18:00hs a 23:00hs</p>
             </div>
           </div>
 

@@ -864,7 +864,8 @@
   gap: 20px;
   padding: 20px;
   width: 100%;
-  will-change: transform; /* Optimize for animation performance */
+  will-change: transform;
+  /* No height restriction here: let content grow for scrolling */
 }
 
 /* Mobile: Regular scrollable container */
@@ -977,11 +978,10 @@
 /* Responsive adjustments */
 @media (max-width: 992px) {
   .iconListContainer {
-    height: auto; /* Auto height on mobile */
-    max-height: 400px; /* Limit max height on mobile */
-    overflow: visible; /* Let mobile container handle overflow */
+    height: auto;
+    max-height: 400px;
+    overflow: visible;
   }
-  
   .iconCard {
     padding: 12px;
   }

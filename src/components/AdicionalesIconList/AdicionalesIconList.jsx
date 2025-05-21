@@ -107,22 +107,17 @@ const AdicionalesIconList = ({ adicionales, selectedAdicionalId, onAdicionalSele
     if (isMobile || !containerRef.current || !iconsContainerRef.current) return;
     
     const calculateHeights = () => {
-      const currentContainerHeight = containerRef.current.clientHeight;
-      const currentContentHeight = iconsContainerRef.current.scrollHeight;
-      
+      // Usa getBoundingClientRect para mayor precisión con transform
+      const currentContainerHeight = containerRef.current.getBoundingClientRect().height;
+      const currentContentHeight = iconsContainerRef.current.getBoundingClientRect().height;
       setContainerHeight(currentContainerHeight);
       setContentHeight(currentContentHeight);
     };
-    
-    // Debounce or use a ResizeObserver for better performance if needed,
-    // but for now, direct calculation on mount and resize.
-    calculateHeights(); 
-    
-    // Recalculate on window resize
+    calculateHeights();
     window.addEventListener('resize', calculateHeights);
-    // Also recalculate if the number of adicionales changes, as this affects contentHeight
+    // Recalcula si cambia el número de adicionales
     return () => window.removeEventListener('resize', calculateHeights);
-  }, [isMobile, adicionales, adicionales.length]); // Added 'adicionales' to dependencies
+  }, [isMobile, adicionales.length]);
 
   // Ensure the content starts at the top when first rendered or when switching to desktop
   useEffect(() => {
@@ -144,7 +139,6 @@ const AdicionalesIconList = ({ adicionales, selectedAdicionalId, onAdicionalSele
     }
     const { clientY } = e;
     const { top, height: currentContainerHeight } = containerRef.current.getBoundingClientRect();
-    // Usa todo el alto real del contenedor, sin padding virtual
     let normalizedY = (clientY - top) / currentContainerHeight;
     normalizedY = Math.max(0, Math.min(1, normalizedY));
     const maxScroll = contentHeight - currentContainerHeight;
@@ -154,15 +148,10 @@ const AdicionalesIconList = ({ adicionales, selectedAdicionalId, onAdicionalSele
       transition: { type: "tween", ease: "linear", duration: 0.1 },
     });
   };
-  
+
   const handleMouseLeaveContainer = () => {
-    // Optional: Reset to a specific position or stop animation when mouse leaves.
-    // For now, it will just stop updating. If content fits, it's already at y:0.
-    // If content is scrollable, it will remain at its last position.
-    // To reset to top:
-    // if (!isMobile && contentHeight > containerHeight) {
-    //   controls.start({ y: 0, transition: { type: "spring", stiffness: 100, damping: 20 } });
-    // }
+    // Opcional: puedes dejar el scroll donde está, o volver al inicio
+    // controls.start({ y: 0, transition: { duration: 0.2 } });
   };
 
   if (!adicionales || adicionales.length === 0) {

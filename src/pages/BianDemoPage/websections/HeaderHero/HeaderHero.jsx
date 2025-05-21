@@ -28,25 +28,13 @@ const HeaderHero = ({ sliderImages = defaultSliderImages }) => {
   }, [sliderImages]);
 
   return (
-    <header className={styles.header}>
-      {/* Overlay de la imagen decorativa, menos difuminada */}
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          width: '100%',
-          height: '100%',
-          pointerEvents: 'none',
-          backgroundImage: `url(${sushiBackground})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-          zIndex: 1,
-          opacity: 0.65, // más visible
-          filter: 'blur(0.5px)', // menos blur
-        }}
+    <header className={styles.header} id="top">
+      {/* Overlay de la imagen decorativa */}
+      <div 
+        className={styles.backgroundOverlay}
+        style={{ backgroundImage: `url(${sushiBackground})` }}
       />
-      <div className={styles.container} style={{ position: 'relative', zIndex: 2 }}>
+      <div className={styles.container}>
         {/* Logo at the top */}
         <div className={styles.logoContainer}>
           <img src={logoRed} alt="Bian Sushi Logo" className={styles.logo} />
@@ -54,12 +42,12 @@ const HeaderHero = ({ sliderImages = defaultSliderImages }) => {
         
         <div className={styles.heroContent}>
           {/* Imagen animada con slider */}
-          <div className={styles.bowlImageContainer} style={{ marginBottom: '0.5rem' }}>
+          <div className={styles.bowlImageContainer}>
             <AnimatedImageSlider
               images={sliderImages}
               interval={2600}
-              animationType="pulse" // Transition between images
-              staticAnimationType="wiggle" // Animation while image is displayed
+              animationType="pulse"
+              staticAnimationType="wiggle"
               width="100%"
               height="auto"
               className={styles.bowlImage}
@@ -69,10 +57,10 @@ const HeaderHero = ({ sliderImages = defaultSliderImages }) => {
           
           <div className={`${styles.textSection} ${styles.textSectionWithJapaneseFont}`}>
             {/* Title section with better spacing */}
-            <div className={styles.titleGroup} style={{ marginBottom: '0.5rem' }}>
+            <div className={styles.titleGroup}>
               <CoolTitle 
                 className={styles.coolTitle}
-                fontSize="2.2rem" // Reducido de 2.4rem
+                fontSize="clamp(1.5rem, 5vw, 2.2rem)" // Responsive font size
               >
                 La Experiencia del Sushi
               </CoolTitle>
@@ -84,15 +72,11 @@ const HeaderHero = ({ sliderImages = defaultSliderImages }) => {
               </div>
             </div>
             
-            <p className={styles.description} style={{ 
-              marginBottom: '0.8rem', 
-              fontSize: '0.95rem', 
-              lineHeight: '1.3' 
-            }}>
+            <p className={styles.description}>
              <strong>Desde 2012</strong> trabajamos y preparamos cada plato a la vista, para que disfrutes no solo del sabor, sino también del proceso
             </p>
 
-            <div className={styles.buttonContainer} style={{ marginTop: '1.8rem' }}>
+            <div className={styles.buttonContainer}>
               {/* Replace original button with new BianButton */}
               <BianButton href="#menu">Ver Menu</BianButton>
             </div>
