@@ -22,7 +22,7 @@ const Footer = () => {
           </div>
           <p className="footer-address">Estrada 824, Campana, Buenos Aires</p>
           <p className="footer-phone">(03489) 43 6924 - 42 2329</p>
-          <p className="copyright">© {new Date().getFullYear()} Bian Sushi. Todos los derechos reservados.</p>
+          <p className="copyright">© {new Date().getFullYear()} JMCDEV. DEMO TECNICA PAGINA WEB.</p>
         </div>
       </div>
     </footer>

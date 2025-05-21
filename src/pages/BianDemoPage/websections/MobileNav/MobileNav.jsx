@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './MobileNav.css';
 // Assuming you're using a library like react-icons
-import { FaHome, FaUtensils, FaInfoCircle, FaMapMarkerAlt, FaPhone } from 'react-icons/fa';
+import { FaHome, FaUtensils, FaMapMarkerAlt, FaPhone } from 'react-icons/fa';
 
 const MobileNav = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -10,7 +10,14 @@ const MobileNav = () => {
     const handleScroll = () => {
       // Show nav when scrolled past the hero section (using viewport height)
       const scrollThreshold = window.innerHeight * 0.7; // 70% of viewport height
-      if (window.scrollY > scrollThreshold) {
+      
+      // Check if user has scrolled to the footer
+      const footer = document.querySelector('footer');
+      const isAtFooter = footer && 
+        window.scrollY + window.innerHeight >= footer.offsetTop;
+      
+      // Show nav only if scrolled past threshold AND not at the footer
+      if (window.scrollY > scrollThreshold && !isAtFooter) {
         setIsVisible(true);
       } else {
         setIsVisible(false);
@@ -29,7 +36,7 @@ const MobileNav = () => {
 
   return (
     <nav className={`mobile-nav ${isVisible ? 'visible' : 'hidden'}`}>
-      <a href="#home" className="nav-item">
+      <a href="#" className="nav-item">
         <FaHome />
         <span>Inicio</span>
       </a>

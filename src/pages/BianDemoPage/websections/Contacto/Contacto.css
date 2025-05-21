@@ -1,0 +1,310 @@
+.contacto-section {
+  padding: 4rem 1.5rem;
+  background-color: #1c1c1c;
+  position: relative;
+  overflow: hidden;
+}
+
+.contacto-background-design {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.contacto-pattern-left,
+.contacto-pattern-right {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d9201c' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.contacto-pattern-left {
+  left: -50px;
+  top: 20%;
+  opacity: 0.2;
+  transform: rotate(-15deg);
+}
+
+.contacto-pattern-right {
+  right: -50px;
+  bottom: 10%;
+  opacity: 0.2;
+  transform: rotate(15deg);
+}
+
+.contacto-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.contacto-form-container {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
+}
+
+.contacto-form-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+  background-color: #d9201c;
+}
+
+.contacto-form {
+  padding: 2rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .form-row {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .contacto-content {
+    flex-direction: row;
+  }
+  
+  .contacto-form-container {
+    flex: 3;
+  }
+  
+  .contacto-info {
+    flex: 2;
+  }
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.form-icon {
+  color: #d9201c;
+  font-size: 1.1rem;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #d9201c;
+  box-shadow: 0 0 0 3px rgba(217, 32, 28, 0.1);
+}
+
+.form-input.error {
+  border-color: #d9201c;
+}
+
+.error-message {
+  color: #d9201c;
+  font-size: 0.85rem;
+  margin-top: 0.3rem;
+}
+
+.tipo-consulta-selector {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.tipo-option {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: #f5f5f5;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tipo-option.selected {
+  border-color: #d9201c;
+  background-color: rgba(217, 32, 28, 0.05);
+}
+
+.tipo-option input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.tipo-option span {
+  font-weight: 500;
+}
+
+.submit-button {
+  width: 100%;
+  background-color: #25D366; /* WhatsApp green */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.submit-button:hover {
+  background-color: #128C7E; /* Darker WhatsApp green */
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+}
+
+.whatsapp-icon {
+  font-size: 1.4rem;
+}
+
+.success-message {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #d4edda;
+  color: #155724;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.contacto-info {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
+}
+
+.contacto-info::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 6px;
+  height: 100%;
+  background-color: #d9201c;
+}
+
+.contacto-info-inner {
+  padding: 2rem;
+}
+
+.contacto-info-title {
+  font-size: 1.6rem;
+  color: #d9201c;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 2px dashed rgba(217, 32, 28, 0.2);
+}
+
+.contacto-info-text {
+  font-size: 1rem;
+  color: #444;
+}
+
+.contacto-direct-methods {
+  margin: 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contacto-direct-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: #f9f9f9;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.contacto-direct-icon {
+  font-size: 1.6rem;
+  color: #d9201c;
+}
+
+.contacto-direct-icon.whatsapp {
+  color: #25D366;
+}
+
+.contacto-direct-item strong {
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.contacto-direct-item p {
+  margin: 0;
+  color: #555;
+}
+
+.reservation-note {
+  margin-top: 2rem;
+  padding: 1.2rem;
+  background-color: #fff7f7;
+  border-left: 4px solid #d9201c;
+  border-radius: 0 6px 6px 0;
+}
+
+.reservation-note h4 {
+  margin-top: 0;
+  margin-bottom: 0.7rem;
+  color: #d9201c;
+}
+
+.reservation-note ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.reservation-note li {
+  margin-bottom: 0.5rem;
+  color: #444;
+  line-height: 1.5;
+}
+
+.reservation-note li:last-child {
+  margin-bottom: 0;
+}

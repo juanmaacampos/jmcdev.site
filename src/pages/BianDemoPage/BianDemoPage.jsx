@@ -5,8 +5,8 @@ import './BianDemoPage.css';
 import HeaderHero from './websections/HeaderHero/HeaderHero';
 import MobileNav from './websections/MobileNav/MobileNav';
 import MenuSection from './websections/MenuSection/MenuSection';
-import AboutSection from './websections/AboutSection/AboutSection';
 import LocationSection from './websections/LocationSection/LocationSection';
+import Contacto from './websections/Contacto/Contacto';
 import Footer from './websections/Footer/Footer';
 
 const BianDemoPage = () => {
@@ -18,7 +18,7 @@ const BianDemoPage = () => {
         <main>
           <MenuSection menuRef={menuRef} />
           <LocationSection />
-                <AboutSection />
+          <Contacto />
         </main>
         <Footer />
         <MobileNav />

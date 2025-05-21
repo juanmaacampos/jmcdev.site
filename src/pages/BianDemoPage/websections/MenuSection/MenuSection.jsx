@@ -42,7 +42,7 @@ const MenuSection = ({ menuRef }) => {
     <section className="menu-section" id="menu" ref={menuRef}>
       <div className="menu-title-wrapper">
         <h2 className="menu-title">Nuestro Menú</h2>
-        <p className="menu-description">El sabor de la cocina japonesa en tu mesa</p>
+        <p className="menu-description">El sabor de la cocina japonesa en tu mesa 👉 </p>
       </div>
 
       <div className="category-filters">
