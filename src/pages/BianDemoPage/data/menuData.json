@@ -1,0 +1,367 @@
+{
+  "menuItems": [
+    {
+      "id": "e1",
+      "name": "Harumakis",
+      "price": "$ 8000",
+      "description": "Arrolladitos primavera fritos. 5u.",
+      "image": "https://images.unsplash.com/photo-1630698467933-60129917a2c2?q=80&w=500&auto=format&fit=crop",
+      "category": "entradas"
+    },
+    {
+      "id": "e2",
+      "name": "Gyosas",
+      "price": "$ 9000",
+      "description": "Empanaditas al vapor. 6u.",
+      "image": "https://images.unsplash.com/photo-1625938145744-e380310ee3a0?q=80&w=500&auto=format&fit=crop",
+      "category": "entradas"
+    },
+    {
+      "id": "e3",
+      "name": "Cubos",
+      "price": "$ 8000",
+      "description": "Dados de salmón apanados y fritos. aprox. 250 grs.",
+      "image": "https://images.unsplash.com/photo-1615478264633-9c14e86224d6?q=80&w=500&auto=format&fit=crop",
+      "category": "entradas"
+    },
+    {
+      "id": "e4",
+      "name": "Samurai",
+      "price": "$ 12500",
+      "description": "Langostinos en masa crocante rellenos con queso y verdeo. 6u.",
+      "image": "https://images.unsplash.com/photo-1628430043210-1f3b179f343b?q=80&w=500&auto=format&fit=crop",
+      "category": "entradas"
+    },
+    {
+      "id": "e5",
+      "name": "Ebi furay",
+      "price": "$ 12500",
+      "description": "Langostinos apanados y fritos. 6/8u.",
+      "image": "https://images.unsplash.com/photo-1623341214825-9f4f963727da?q=80&w=500&auto=format&fit=crop",
+      "category": "entradas"
+    },
+    {
+      "id": "e6",
+      "name": "Empanaditas",
+      "price": "$ 8000",
+      "description": "Empanaditas. 6u.",
+      "image": "https://images.unsplash.com/photo-1604908177453-7462950a6a3b?q=80&w=500&auto=format&fit=crop",
+      "category": "entradas"
+    },
+    {
+      "id": "e7",
+      "name": "Popurri 4x2",
+      "price": "$ 12500",
+      "description": "Variedad de entradas. 8u.",
+      "image": "https://images.unsplash.com/photo-1536856688439-294e63eb47ae?q=80&w=500&auto=format&fit=crop",
+      "category": "entradas"
+    },
+    {
+      "id": "sr1",
+      "name": "New York",
+      "price": "$ 10500",
+      "description": "Salmón fresco y palta. 9u.",
+      "image": "https://images.unsplash.com/photo-1559410545-0bdcd187e0a6?q=80&w=500&auto=format&fit=crop",
+      "category": "sushi-rolls"
+    },
+    {
+      "id": "sr2",
+      "name": "Philadelphia",
+      "price": "$ 10500",
+      "description": "Salmón fresco y queso philadelphia. 9u.",
+      "image": "https://images.unsplash.com/photo-1583623025817-d180a2221d0a?q=80&w=500&auto=format&fit=crop",
+      "category": "sushi-rolls"
+    },
+    {
+      "id": "sr3",
+      "name": "California",
+      "price": "$ 9900",
+      "description": "Kanikama, queso philadelphia, palta. 9u.",
+      "image": "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?q=80&w=500&auto=format&fit=crop",
+      "category": "sushi-rolls"
+    },
+    {
+      "id": "sr4",
+      "name": "Mediterráneo",
+      "price": "$ 10500",
+      "description": "Salmón fresco, queso philadelphia y ciruela seca. 9u.",
+      "image": "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?q=80&w=500&auto=format&fit=crop",
+      "category": "sushi-rolls"
+    },
+    {
+      "id": "sr5",
+      "name": "Rojo pasión",
+      "price": "$ 10500",
+      "description": "Salmón fresco, morrón rojo y queso philadelphia. 9u.",
+      "image": "https://images.unsplash.com/photo-1620166951783-1d5a226d26c0?q=80&w=500&auto=format&fit=crop",
+      "category": "sushi-rolls"
+    },
+    {
+      "id": "sr6",
+      "name": "Bián",
+      "price": "$ 9900",
+      "description": "Salmón fresco, langostino y queso philadelphia. 9u.",
+      "image": "https://images.unsplash.com/photo-1553621042-f6e147245754?q=80&w=500&auto=format&fit=crop",
+      "category": "sushi-rolls"
+    },
+    {
+      "id": "sr7",
+      "name": "Tuna",
+      "price": "$ 9900",
+      "description": "Atún al natural, salteado con verdeo y queso philadelphia. 9u.",
+      "image": "https://images.unsplash.com/photo-1617196035154-1e7e6e28b0db?q=80&w=500&auto=format&fit=crop",
+      "category": "sushi-rolls"
+    },
+    {
+      "id": "sr8",
+      "name": "Furay",
+      "price": "$ 9900",
+      "description": "Langostinos apanados, queso philadelphia c/s palta. 9u.",
+      "image": "https://images.unsplash.com/photo-1584583570840-0a3d88497593?q=80&w=500&auto=format&fit=crop",
+      "category": "sushi-rolls"
+    },
+    {
+      "id": "sr9",
+      "name": "Furay cheese",
+      "price": "$ 11900",
+      "description": "Furay con queso cheedar fundido.",
+      "image": "https://images.unsplash.com/photo-1633478062482-790e3b5dd810?q=80&w=500&auto=format&fit=crop",
+      "category": "sushi-rolls"
+    },
+    {
+      "id": "sr10",
+      "name": "Locura",
+      "price": "$ 10500",
+      "description": "Langostinos apanados, queso philadelphia, en salmón fresco. 9u.",
+      "image": "https://images.unsplash.com/photo-1611143669185-af224c5e3252?q=80&w=500&auto=format&fit=crop",
+      "category": "sushi-rolls"
+    },
+    {
+      "id": "sr11",
+      "name": "Locura II",
+      "price": "$ 10500",
+      "description": "Langostinos cocidos, queso philadelphia, envueltos en salmón.",
+      "image": "https://images.unsplash.com/photo-1562802378-063ec186a863?q=80&w=500&auto=format&fit=crop",
+      "category": "sushi-rolls"
+    },
+    {
+      "id": "sr12",
+      "name": "California crocante",
+      "price": "$ 12000",
+      "description": "California apanado y frito pieza por pieza.",
+      "image": "https://images.unsplash.com/photo-1635028538158-48f9634156e6?q=80&w=500&auto=format&fit=crop",
+      "category": "sushi-rolls"
+    },
+    {
+      "id": "sr13",
+      "name": "HIRO",
+      "price": "$ 12000",
+      "description": "Langostinos con philadelphia en tempura, ceviche y langostinos grillé. 9u.",
+      "image": "https://images.unsplash.com/photo-1615361200141-f45040f367be?q=80&w=500&auto=format&fit=crop",
+      "category": "sushi-rolls"
+    },
+    {
+      "id": "sr14",
+      "name": "TAMAGO",
+      "price": "$ 15000",
+      "description": "Langostinos, philadelphia y palmitos con tamago, envueltos en salmón. 9u.",
+      "image": "https://images.unsplash.com/photo-1648146298859-ce3fb9ee31ba?q=80&w=500&auto=format&fit=crop",
+      "category": "sushi-rolls"
+    },
+    {
+      "id": "sr15",
+      "name": "TRES TIGRES",
+      "price": "$ 12000",
+      "description": "Salmón en tempura, langostinos apanados y fritos, salmón crudo. 9u.",
+      "image": "https://images.unsplash.com/photo-1565999113218-92242ee7dd64?q=80&w=500&auto=format&fit=crop",
+      "category": "sushi-rolls"
+    },
+    {
+      "id": "sash1",
+      "name": "Sake sashimi (8u)",
+      "price": "$ 15000",
+      "description": "Delicadas lonjas de salmón fresco. 8u.",
+      "image": "https://images.unsplash.com/photo-1534256958597-7fe685cbd745?q=80&w=500&auto=format&fit=crop",
+      "category": "sashimi"
+    },
+    {
+      "id": "sash2",
+      "name": "Sake sashimi (16u)",
+      "price": "$ 30000",
+      "description": "Delicadas lonjas de salmón fresco. 16u.",
+      "image": "https://images.unsplash.com/photo-1625864667534-aa5208d45a15?q=80&w=500&auto=format&fit=crop",
+      "category": "sashimi"
+    },
+    {
+      "id": "wok1",
+      "name": "Yaki Meshi de pollo",
+      "price": "$ 10000",
+      "description": "Salteado de arroz con huevo y vegetales al wok con pollo.",
+      "image": "https://images.unsplash.com/photo-1603133872878-684f208fb84b?q=80&w=500&auto=format&fit=crop",
+      "category": "wok"
+    },
+    {
+      "id": "wok2",
+      "name": "Yaki Meshi de cerdo",
+      "price": "$ 10000",
+      "description": "Salteado de arroz con huevo y vegetales al wok con cerdo.",
+      "image": "https://images.unsplash.com/photo-1512058564366-18510be2db19?q=80&w=500&auto=format&fit=crop",
+      "category": "wok"
+    },
+    {
+      "id": "wok3",
+      "name": "Yaki Meshi de salmón",
+      "price": "$ 10000",
+      "description": "Salteado de arroz con huevo y vegetales al wok con salmón.",
+      "image": "https://images.unsplash.com/photo-1551326844-4df70f78d0e9?q=80&w=500&auto=format&fit=crop",
+      "category": "wok"
+    },
+    {
+      "id": "wok4",
+      "name": "Yaki Meshi mix de mar",
+      "price": "$ 12500",
+      "description": "Salteado de arroz con huevo y vegetales al wok con mix de mar.",
+      "image": "https://images.unsplash.com/photo-1626255031616-9a1879b7e63b?q=80&w=500&auto=format&fit=crop",
+      "category": "wok"
+    },
+    {
+      "id": "wok5",
+      "name": "Ravioles neri",
+      "price": "$ 12500",
+      "description": "De salmón con salsa de azafrán y mejillones.",
+      "image": "https://images.unsplash.com/photo-1595295333158-4742f28fbd85?q=80&w=500&auto=format&fit=crop",
+      "category": "wok"
+    },
+    {
+      "id": "chef1",
+      "name": "Teriyaki",
+      "price": "$ 18000",
+      "description": "Lomo de salmón rosado grillado con salsa teriyaki.",
+      "image": "https://images.unsplash.com/photo-1580822184713-fc5400e7fe10?q=80&w=500&auto=format&fit=crop",
+      "category": "chef"
+    },
+    {
+      "id": "chef2",
+      "name": "Verdeo",
+      "price": "$ 18000",
+      "description": "Lomo de salmón rosado grillado con salsa de verdeo.",
+      "image": "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?q=80&w=500&auto=format&fit=crop",
+      "category": "chef"
+    },
+    {
+      "id": "chef3",
+      "name": "Cazuela de mariscos",
+      "price": "$ 12500",
+      "description": "Clásica cazuela de mariscos del chef.",
+      "image": "https://images.unsplash.com/photo-1611599538311-360e523c1db6?q=80&w=500&auto=format&fit=crop",
+      "category": "chef"
+    },
+    {
+      "id": "chef4",
+      "name": "Ajillo",
+      "price": "$ 18000",
+      "description": "Lomo de salmón rosado al ajillo.",
+      "image": "https://images.unsplash.com/photo-1485704686097-ed47f7263ca4?q=80&w=500&auto=format&fit=crop",
+      "category": "chef"
+    },
+    {
+      "id": "maki1",
+      "name": "Sake Maki",
+      "price": "$ 10500",
+      "description": "Salmón fresco. 9u.",
+      "image": "https://images.unsplash.com/photo-1617196034438-777d6c54e068?q=80&w=500&auto=format&fit=crop",
+      "category": "maki"
+    },
+    {
+      "id": "maki2",
+      "name": "Phila Maki",
+      "price": "$ 10500",
+      "description": "Salmón fresco y queso philadelphia. 9u.",
+      "image": "https://images.unsplash.com/photo-1617196033443-e258f076220c?q=80&w=500&auto=format&fit=crop",
+      "category": "maki"
+    },
+    {
+      "id": "nig1",
+      "name": "Sake niguiri",
+      "price": "$ 12000",
+      "description": "Canastita de salmón sobre bocaditos de arroz. 8u.",
+      "image": "https://images.unsplash.com/photo-1618121630717-88cd3d2f406e?q=80&w=500&auto=format&fit=crop",
+      "category": "niguiri"
+    },
+    {
+      "id": "nig2",
+      "name": "Geyshas",
+      "price": "$ 12000",
+      "description": "Arollado de salmón con relleno de langostinos y palta. 8u.",
+      "image": "https://images.unsplash.com/photo-1607301406259-dfb186e15de8?q=80&w=500&auto=format&fit=crop",
+      "category": "niguiri"
+    },
+    {
+      "id": "comb1",
+      "name": "Salmón x 9 u.",
+      "price": "$ 9900",
+      "description": "9 rolls",
+      "image": "https://images.unsplash.com/photo-1553621042-f6e147245754?q=80&w=500&auto=format&fit=crop",
+      "category": "combinados"
+    },
+    {
+      "id": "comb2",
+      "name": "Salmón x 12 u.",
+      "price": "$ 13200",
+      "description": "12 rolls",
+      "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=500&auto=format&fit=crop",
+      "category": "combinados"
+    },
+    {
+      "id": "comb3",
+      "name": "Salmón x 18 u.",
+      "price": "$ 19800",
+      "description": "15 rolls, 3 niguiris",
+      "image": "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?q=80&w=500&auto=format&fit=crop",
+      "category": "combinados"
+    },
+    {
+      "id": "comb4",
+      "name": "Combinado veggie",
+      "price": "$ 9900",
+      "description": "9 unidades vegetarianas",
+      "image": "https://images.unsplash.com/photo-1607301405966-54c25eb8c980?q=80&w=500&auto=format&fit=crop",
+      "category": "combinados"
+    },
+    {
+      "id": "beb1",
+      "name": "Agua sin gas 500ml",
+      "price": "$ 3000",
+      "description": "Agua mineral sin gas 500ml",
+      "image": "https://images.unsplash.com/photo-1605163289500-2591715d014c?q=80&w=500&auto=format&fit=crop",
+      "category": "bebidas"
+    },
+    {
+      "id": "beb2",
+      "name": "Cerveza Premium",
+      "price": "$ 3000",
+      "description": "Cerveza premium",
+      "image": "https://images.unsplash.com/photo-1608270586620-248524c67de9?q=80&w=500&auto=format&fit=crop",
+      "category": "bebidas"
+    },
+    {
+      "id": "beb3",
+      "name": "Vino Trapiche",
+      "price": "$ 5000",
+      "description": "Vino tinto Trapiche",
+      "image": "https://images.unsplash.com/photo-1586370434639-0fe43b2d32e6?q=80&w=500&auto=format&fit=crop",
+      "category": "bebidas"
+    }
+  ],
+  "categories": [
+    { "id": "chef", "name": "Elegidos del Chef" },
+    { "id": "entradas", "name": "Entradas" },
+    { "id": "sushi-rolls", "name": "Sushi Rolls" },
+    { "id": "maki", "name": "Maki Rolls" },
+    { "id": "niguiri", "name": "Niguiris" },
+    { "id": "sashimi", "name": "Sashimi" },
+    { "id": "wok", "name": "Al Wok" },
+    { "id": "combinados", "name": "Combinados" },
+    { "id": "bebidas", "name": "Bebidas" }
+  ]
+}

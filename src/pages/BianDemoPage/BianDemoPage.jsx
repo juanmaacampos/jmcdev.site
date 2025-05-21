@@ -17,8 +17,8 @@ const BianDemoPage = () => {
         <HeaderHero />
         <main>
           <MenuSection menuRef={menuRef} />
-          <AboutSection />
           <LocationSection />
+                <AboutSection />
         </main>
         <Footer />
         <MobileNav />

@@ -6,8 +6,8 @@ const LocationSection = () => {
   return (
     <section className="location-section" id="location">
       <div className="section-title-container">
-        <h2 className="section-title">Find Us</h2>
-        <p className="section-subtitle">Visit our restaurant</p>
+        <h2 className="section-title">Ubicación</h2>
+        <p className="section-subtitle">Visitanos en nuestro local</p>
       </div>
 
       <div className="location-content">
@@ -15,42 +15,40 @@ const LocationSection = () => {
           <div className="info-item">
             <span className="info-icon"><FaMapMarkerAlt /></span>
             <div>
-              <h3>Address</h3>
-              <p>123 Sushi Street, Foodie District<br />New York, NY 10001</p>
+              <h3>Dirección</h3>
+              <p>Estrada 824, Campana<br />Buenos Aires, Argentina</p>
             </div>
           </div>
 
           <div className="info-item">
             <span className="info-icon"><FaClock /></span>
             <div>
-              <h3>Opening Hours</h3>
-              <p>Monday - Thursday: 11:30 AM - 10:00 PM<br />
-                Friday - Saturday: 11:30 AM - 11:00 PM<br />
-                Sunday: 12:00 PM - 9:00 PM</p>
+              <h3>Horarios de Atención</h3>
+              <p>Martes a viernes: 10 a 13hs<br />
+                Martes a domingos: 18 a 23hs</p>
             </div>
           </div>
 
           <div className="info-item">
             <span className="info-icon"><FaPhone /></span>
             <div>
-              <h3>Contact</h3>
-              <p>Phone: (555) 123-4567<br />
-                Email: info@sushifusion.com</p>
+              <h3>Contacto</h3>
+              <p>Teléfono: (03489) 43 6924 - 42 2329<br />
+                Nextel: 723*1153</p>
             </div>
           </div>
         </div>
 
         <div className="map-container">
-          {/* This would typically contain a map integration like Google Maps */}
           <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387193.305935303!2d-74.25986548248684!3d40.69714941932609!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2suk!4v1596441237806!5m2!1sen!2suk" 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3304.3037591529166!2d-58.96415032345796!3d-34.09129694542951!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bb0b7097b49649%3A0x236597a9ca7932db!2sEstrada%20824%2C%20Campana%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1sen!2sar!4v1687896541234!5m2!1sen!2sar" 
             width="100%" 
             height="100%" 
             frameBorder="0" 
             allowFullScreen="" 
             aria-hidden="false" 
             tabIndex="0"
-            title="Restaurant Location"
+            title="Bian Sushi Location"
           ></iframe>
         </div>
       </div>

@@ -1,0 +1,139 @@
+.contact-section {
+  background-color: #0e0607;
+  padding: 4rem 1rem;
+}
+
+.section-title-container {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-title {
+  color: #fff;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.section-subtitle {
+  color: #d9201c;
+  font-size: 1.1rem;
+}
+
+.contact-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.contact-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.contact-card {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 2rem;
+  text-align: center;
+  flex: 1;
+  min-width: 250px;
+  max-width: 300px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.contact-icon {
+  font-size: 2rem;
+  color: #d9201c;
+  margin-bottom: 1rem;
+}
+
+.contact-card h3 {
+  color: #fff;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.contact-card p {
+  color: #ccc;
+  font-size: 1rem;
+  margin: 0.5rem 0;
+}
+
+.delivery-badge {
+  background-color: #d9201c;
+  color: white;
+  border-radius: 50px;
+  padding: 0.5rem 1.5rem;
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 1rem;
+  transform: rotate(-5deg);
+}
+
+.delivery-text {
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+}
+
+.social-promo {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.social-promo h3 {
+  color: #fff;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.social-btn {
+  display: flex;
+  align-items: center;
+  background-color: rgba(217, 32, 28, 0.1);
+  border: 1px solid #d9201c;
+  color: #fff;
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.social-btn:hover {
+  background-color: #d9201c;
+}
+
+.social-icon {
+  margin-right: 0.5rem;
+  font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+  .contact-info {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .contact-card {
+    width: 100%;
+    max-width: 100%;
+  }
+}

@@ -89,7 +89,7 @@ const HeaderHero = ({ sliderImages = defaultSliderImages }) => {
               fontSize: '0.95rem', 
               lineHeight: '1.3' 
             }}>
-              La mejor experiencia gastronómica japonesa con ingredientes frescos y técnicas tradicionales que te transportarán al corazón de Japón.
+             <strong>Desde 2012</strong> trabajamos y preparamos cada plato a la vista, para que disfrutes no solo del sabor, sino también del proceso
             </p>
 
             <div className={styles.buttonContainer} style={{ marginTop: '1.8rem' }}>

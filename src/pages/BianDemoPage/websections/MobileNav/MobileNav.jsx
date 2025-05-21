@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './MobileNav.css';
 // Assuming you're using a library like react-icons
-import { FaHome, FaUtensils, FaInfoCircle, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaHome, FaUtensils, FaInfoCircle, FaMapMarkerAlt, FaPhone } from 'react-icons/fa';
 
 const MobileNav = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -31,19 +31,19 @@ const MobileNav = () => {
     <nav className={`mobile-nav ${isVisible ? 'visible' : 'hidden'}`}>
       <a href="#home" className="nav-item">
         <FaHome />
-        <span>Home</span>
+        <span>Inicio</span>
       </a>
       <a href="#menu" className="nav-item">
         <FaUtensils />
-        <span>Menu</span>
-      </a>
-      <a href="#about" className="nav-item">
-        <FaInfoCircle />
-        <span>About</span>
+        <span>Menú</span>
       </a>
       <a href="#location" className="nav-item">
         <FaMapMarkerAlt />
-        <span>Location</span>
+        <span>Ubicación</span>
+      </a>
+      <a href="#contacto" className="nav-item">
+        <FaPhone />
+        <span>Contacto</span>
       </a>
     </nav>
   );
