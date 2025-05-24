@@ -30,7 +30,7 @@ const localImageMap = {
     'sr14': true,
   'sr15': true,
     'maki2': true,
-      'nig1': true,
+    'nig1': true,
         'sash2': true,
           'wok4': true,
             'comb4': true,

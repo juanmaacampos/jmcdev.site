@@ -15,10 +15,13 @@ gsap.registerPlugin(ScrollTrigger);
 import saboresVideo from "../../assets/videos/sabores_project.webm";
 import portfolioVideo from "../../assets/videos/portfolio_project.webm";
 import jmcdevwebVideo from "../../assets/videos/jmcdevweb_project.webm";
+import abcVideo from "../../assets/videos/ABC_project.webm";
+
 import saboresThumb from "../../assets/projects_img/sabores_project.webp";
 import portfolioThumb from "../../assets/projects_img/portfolio_project.webp";
 import jmcdevwebThumb from "../../assets/projects_img/jmcdevweb_project.webp";
 import bianSushiThumb from "../../assets/projects_img/bian_project.webp";
+import abcThumb from "../../assets/projects_img/ABC_project.webp";
 
 // Datos de ejemplo de proyectos - ahora todos los videos usan el mismo archivo importado
 const projects = [
@@ -43,11 +46,20 @@ const projects = [
   },
         {
     id: 3,
-    name: "Web demo Bian Sushi",
+    name: "Web DEMO Bian Sushi",
     type: "video",
     thumbnail: bianSushiThumb,
     url: "https://jmcdev.site/bian_demo",
     description: "Demostración de mejora de web mobile para Bian Sushi Campana (NO ES EL RESULTADO FINAL).",
+  },
+        {
+    id: 5,
+    name: "Web Business DEMO",
+    type: "video", // Usamos la referencia importada
+    media: abcVideo, // Usamos la referencia importada
+    thumbnail: abcThumb,
+    url: "https://juanmaacampos.github.io/ABC_project/",
+    description: "Web para Asnagui Business Consulting elegante y efectiva (NO ES EL RESULTADO FINAL).",
   },
     {
     id: 4,
