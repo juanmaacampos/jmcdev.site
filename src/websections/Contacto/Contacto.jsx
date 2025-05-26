@@ -6,7 +6,8 @@ import IconLink from "../../components/IconLink/IconLink";
 import { FaWhatsapp, FaInstagram, FaUser, FaQuestionCircle, FaShareAlt, FaTools, FaStore, FaListAlt, FaPlusCircle, FaCommentDots, FaSearch, FaBuilding, FaTag, FaLink } from 'react-icons/fa'; // Added FaLink
 import { MdEmail } from 'react-icons/md'; // Corrected import path
 // Import ADICIONALES_DATA
-import { ADICIONALES_DATA } from "../../components/AdicionalesCard/AdicionalesCard";
+import { ADICIONALES_DATA } from "../../components/AdicionalesCard/AdicionalesCard"; // Import ADICIONALES_DATA
+import { useLanguageTranslation } from "../../utils/languageUtils"; // Added
 
 const initialFormData = {
   nombreCompleto: "",
@@ -19,10 +20,11 @@ const initialFormData = {
   mensaje: "",
   comoConociste: "",
   honeypot: "", // Honeypot field
-  selectedAdicionales: [], // New field for selected adicionales
+  selectedAdicionales: [], // Will store adicional IDs
 };
 
 export default function Contacto() {
+  const { t } = useLanguageTranslation(); // Added
   const [formData, setFormData] = useState(initialFormData);
   const [formErrors, setFormErrors] = useState({});
   const [formSuccess, setFormSuccess] = useState(false);
@@ -52,7 +54,7 @@ export default function Contacto() {
       [name]: value,
       tipoWeb: value !== "paginaWeb" ? "" : prevData.tipoWeb,
       nombreNegocio: value !== "paginaWeb" ? "" : prevData.nombreNegocio, // Reset nombreNegocio
-      selectedAdicionales: value !== "paginaWeb" ? [] : prevData.selectedAdicionales,
+      selectedAdicionales: value !== "paginaWeb" ? [] : prevData.selectedAdicionales, // Stays as [] or current IDs
       redSocialEspecifica: value !== "redesSociales" ? "" : prevData.redSocialEspecifica, // Reset if not redesSociales
       servicioContratado: value !== "soporteTecnico" ? "" : prevData.servicioContratado, // Reset if not soporteTecnico
     }));
@@ -82,11 +84,11 @@ export default function Contacto() {
     }));
   };
 
-  const handleAdicionalToggle = (adicionalName) => {
+  const handleAdicionalToggle = (adicionalId) => {
     setFormData((prevData) => {
-      const newSelectedAdicionales = prevData.selectedAdicionales.includes(adicionalName)
-        ? prevData.selectedAdicionales.filter(name => name !== adicionalName)
-        : [...prevData.selectedAdicionales, adicionalName];
+      const newSelectedAdicionales = prevData.selectedAdicionales.includes(adicionalId)
+        ? prevData.selectedAdicionales.filter(id => id !== adicionalId)
+        : [...prevData.selectedAdicionales, adicionalId];
       return { ...prevData, selectedAdicionales: newSelectedAdicionales };
     });
   };
@@ -169,43 +171,43 @@ export default function Contacto() {
   const validateForm = () => {
     const errors = {};
     if (!formData.nombreCompleto.trim() || formData.nombreCompleto.trim().length < 2) {
-      errors.nombreCompleto = "El nombre debe tener al menos 2 caracteres.";
+      errors.nombreCompleto = t('contacto.form.errors.nombreCompletoMin');
     }
     if (!formData.email.trim()) {
-      errors.email = "El correo electrónico es obligatorio.";
+      errors.email = t('contacto.form.errors.emailRequired');
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      errors.email = "El formato del correo electrónico no es válido.";
+      errors.email = t('contacto.form.errors.emailInvalid');
     }
     if (!formData.tipoConsulta) {
-      errors.tipoConsulta = "Selecciona un tipo de consulta.";
+      errors.tipoConsulta = t('contacto.form.errors.tipoConsultaRequired');
     }
     if (formData.tipoConsulta === "paginaWeb" && !formData.tipoWeb) {
-      errors.tipoWeb = "Selecciona el rubro de la web.";
+      errors.tipoWeb = t('contacto.form.errors.tipoWebRequired');
     }
     if (
       formData.tipoConsulta === "paginaWeb" &&
       (formData.tipoWeb === "restaurantes" || formData.tipoWeb === "marcas") &&
       !formData.nombreNegocio.trim()
     ) {
-      errors.nombreNegocio = "El nombre del negocio es obligatorio para este rubro.";
+      errors.nombreNegocio = t('contacto.form.errors.nombreNegocioRequired');
     }
     if (formData.tipoConsulta === "redesSociales" && !formData.redSocialEspecifica) {
-      errors.redSocialEspecifica = "Selecciona una red social.";
+      errors.redSocialEspecifica = t('contacto.form.errors.redSocialEspecificaRequired');
     }
     if (formData.tipoConsulta === "soporteTecnico" && !formData.servicioContratado) {
-      errors.servicioContratado = "Selecciona el servicio para el cual necesitas soporte.";
+      errors.servicioContratado = t('contacto.form.errors.servicioContratadoRequired');
     }
     if (!formData.mensaje.trim()) {
-      // Dynamic error message based on context could be added here if needed,
-      // but "Debes contarnos sobre tu proyecto." is general enough.
-      // For example:
       if (formData.tipoConsulta === "soporteTecnico") {
-        errors.mensaje = "Debes describir el problema técnico.";
+        errors.mensaje = t('contacto.form.errors.mensajeSoporteRequired');
       } else if (formData.tipoConsulta === "otro") {
-        errors.mensaje = "Debes redactar tu mensaje.";
+        errors.mensaje = t('contacto.form.errors.mensajeOtroRequired');
       } else {
-        errors.mensaje = "Debes contarnos sobre tu proyecto.";
+        errors.mensaje = t('contacto.form.errors.mensajeProyectoRequired');
       }
+    }
+    if (!formData.comoConociste) {
+        errors.comoConociste = t('contacto.form.errors.comoConocisteRequired');
     }
     // Return the errors object directly
     return errors;
@@ -299,40 +301,52 @@ export default function Contacto() {
         setFormSuccess(true); // Actual success (or assumed success for now)
 
         // Construct WhatsApp message from the user's perspective
-        let message = "¡Hola! 👋 Te escribo desde tu formulario web con los siguientes datos:\n\n";
-        message += `👤 *Mi Nombre:* ${formData.nombreCompleto}\n\n`; // Added \n
-        message += `📧 *Mi Email:* ${formData.email}\n\n`; // Added \n
-        message += `🤔 *Tipo de Consulta:* ${formData.tipoConsulta}\n\n`; // Added \n
+        let message = t('contacto.whatsapp.greeting') + "\n\n";
+        message += `👤 *${t('contacto.whatsapp.myNameLabel')}:* ${formData.nombreCompleto}\n\n`; 
+        message += `📧 *${t('contacto.whatsapp.myEmailLabel')}:* ${formData.email}\n\n`; 
+        message += `🤔 *${t('contacto.whatsapp.consultationTypeLabel')}:* ${t(`contacto.form.options.consultationTypes.${formData.tipoConsulta === 'paginaWeb' ? 'webPage' : formData.tipoConsulta === 'soporteTecnico' ? 'techSupport' : formData.tipoConsulta === 'redesSociales' ? 'socialMedia' : 'other'}`)}\n\n`;
 
         if (formData.tipoConsulta === "paginaWeb") {
           if (formData.tipoWeb) {
-            message += `🌐 *El rubro de la web que me interesa es:* ${formData.tipoWeb}\n\n`; // Added \n
+            message += `🌐 *${t('contacto.whatsapp.webTypeLabel')}:* ${t(`contacto.form.options.webTypes.${formData.tipoWeb === 'restaurantes' ? 'restaurants' : formData.tipoWeb === 'marcas' ? 'brands' : formData.tipoWeb === 'paginaPersonal' ? 'personal' : 'otherWeb'}`)}\n\n`;
             if ((formData.tipoWeb === "restaurantes" || formData.tipoWeb === "marcas") && formData.nombreNegocio) {
-              message += `🏢 *Nombre del Negocio:* ${formData.nombreNegocio}\n\n`; // Added \n
+              message += `🏢 *${formData.tipoWeb === "restaurantes" ? t('contacto.whatsapp.restaurantNameLabel') : t('contacto.whatsapp.brandNameLabel')}:* ${formData.nombreNegocio}\n\n`;
             }
           }
           if (selectedPlan) {
             let planFullName = "";
-            if (selectedPlan === "basica") planFullName = "Web Básica / Landing Page";
-            else if (selectedPlan === "estandar") planFullName = "Web Estándar / Multi-página";
-            else if (selectedPlan === "premium") planFullName = "Web Premium / Avanzada";
-            message += `📄 *Tomo como referencia el plan:* ${planFullName || selectedPlan}\n\n`; // Added \n
+            if (selectedPlan === "basica") planFullName = t('contacto.form.options.plans.basic');
+            else if (selectedPlan === "estandar") planFullName = t('contacto.form.options.plans.standard');
+            else if (selectedPlan === "premium") planFullName = t('contacto.form.options.plans.premium');
+            message += `📄 *${t('contacto.whatsapp.planReferenceLabel')}:* ${planFullName || selectedPlan}\n\n`; 
           }
           if (formData.selectedAdicionales.length > 0) {
-            message += `✨ *Adicionales que me interesan:* ${formData.selectedAdicionales.join(', ')}\n\n`; // Added \n
+            const translatedAdicionales = formData.selectedAdicionales.map(adicionalId => {
+                const adicionalDataItem = ADICIONALES_DATA.find(item => item.id === adicionalId);
+                return adicionalDataItem && adicionalDataItem.tKey ? t(adicionalDataItem.tKey) : adicionalId;
+            }).join(', ');
+            message += `✨ *${t('contacto.whatsapp.additionalServicesLabel')}:* ${translatedAdicionales}\n\n`; 
           }
         } else if (formData.tipoConsulta === "redesSociales") {
           if (formData.redSocialEspecifica) {
-            message += `📱 *Red Social de Interés:* ${formData.redSocialEspecifica}\n\n`; // Added \n
+            // Ensure the key matches, e.g., 'instagram', 'facebook', 'other'
+            const socialKey = formData.redSocialEspecifica.toLowerCase() === 'otra' ? 'other' : formData.redSocialEspecifica.toLowerCase();
+            message += `📱 *${t('contacto.whatsapp.socialNetworkInterestLabel')}:* ${t(`contacto.form.options.socialNetworks.${socialKey}`)}\n\n`;
           }
         } else if (formData.tipoConsulta === "soporteTecnico") {
           if (formData.servicioContratado) {
-            message += `🛠️ *Soporte para el Servicio:* ${formData.servicioContratado}\n\n`; // Added \n
+            // Ensure the key matches, e.g., 'webPage', 'socialMedia'
+            const serviceKey = formData.servicioContratado === 'Página web' ? 'webPage' : formData.servicioContratado === 'Redes sociales' ? 'socialMedia' : 'other';
+            message += `🛠️ *${t('contacto.whatsapp.supportForServiceLabel')}:* ${t(`contacto.form.options.services.${serviceKey}`)}\n\n`;
           }
         }
-        message += `📝 *Sobre mi proyecto:*\n${formData.mensaje}\n\n`;
-        message += `💡 *Te conocí por:* ${formData.comoConociste}\n\n`;
-        message += "¡Aguardo tu respuesta!";
+        message += `📝 *${t('contacto.whatsapp.aboutMyProjectLabel')}:*\n${formData.mensaje}\n\n`;
+        // Ensure the key matches, e.g., 'search', 'socialMedia', 'recommendation', 'other'
+        const hearAboutKey = formData.comoConociste === 'busqueda' ? 'search' : 
+                             formData.comoConociste === 'redesSociales' ? 'socialMedia' :
+                             formData.comoConociste === 'recomendacion' ? 'recommendation' : 'other';
+        message += `💡 *${t('contacto.whatsapp.howYouKnewMeLabel')}:* ${t(`contacto.form.options.hearAbout.${hearAboutKey}`)}\n\n`;
+        message += t('contacto.whatsapp.waitingForReply');
 
 
         const whatsappNumber = "5491173677628";
@@ -360,12 +374,12 @@ export default function Contacto() {
       } catch (error) {
         console.error("Error submitting form to Netlify:", error);
         // Preserve existing field errors and add/update the submit error
-        setFormErrors(prevErrors => ({ ...prevErrors, submit: "Hubo un error al enviar el mensaje. Intenta de nuevo." }));
+        setFormErrors(prevErrors => ({ ...prevErrors, submit: t('contacto.form.errors.submitError') }));
         setFormSuccess(false); // Set to false on error
       }
     } else {
       setFormSuccess(false);
-      const fieldOrder = ['nombreCompleto', 'email', 'tipoConsulta', 'redSocialEspecifica', 'servicioContratado', 'tipoWeb', 'nombreNegocio', 'mensaje']; // Added servicioContratado
+      const fieldOrder = ['nombreCompleto', 'email', 'tipoConsulta', 'redSocialEspecifica', 'servicioContratado', 'tipoWeb', 'nombreNegocio', 'mensaje', 'comoConociste']; // Added comoConociste
       let firstErrorFieldId = null;
       for (const fieldName of fieldOrder) {
         if (currentErrors[fieldName]) {
@@ -382,18 +396,18 @@ export default function Contacto() {
   return (
     <section className={styles.contactoNuevaSection} id="contacto">
       <div className={styles.container}>
-        <CoolTitle className={styles.titulo}>Hablemos de tu Proyecto</CoolTitle>
+        <CoolTitle className={styles.titulo}>{t('contacto.title')}</CoolTitle>
         <p className={styles.subtitulo}>
-          Completá el formulario interactivo para entender a fondo lo que queres. ¡Estoy listo para ayudarte a convertir tu idea en realidad!
+          {t('contacto.subtitle')}
         </p>
         <div className={styles.contenidoGrid}>
           <div className={styles.formularioWrapper}>
             {formSuccess ? (
               <div className={styles.successMessage}>
-                <h3>¡Mensaje Enviado!</h3>
-                <p>Gracias por contactarnos. Te responderé a la brevedad.</p>
+                <h3>{t('contacto.form.success.title')}</h3>
+                <p>{t('contacto.form.success.message')}</p>
                 <Button 
-                  label="Enviar otro mensaje" 
+                  label={t('contacto.form.buttons.sendAnother')}
                   onClick={handleSendAnotherMessage} 
                   effect="neon" 
                   size="small" 
@@ -402,7 +416,7 @@ export default function Contacto() {
               </div>
             ) : (
               <>
-                <h3 className={styles.formTitle}>Formulario para crear tu idea</h3>
+                <h3 className={styles.formTitle}>{t('contacto.form.title')}</h3>
                 <form 
                   className={styles.formulario} 
                   autoComplete="off" 
@@ -425,7 +439,7 @@ export default function Contacto() {
                   </p>
 
                   <div className={styles.formGroup}>
-                    <label htmlFor="nombreCompleto" className={styles.label}><FaUser className={styles.labelIcon} /> Nombre completo *</label>
+                    <label htmlFor="nombreCompleto" className={styles.label}><FaUser className={styles.labelIcon} /> {t('contacto.form.fields.name')}</label>
                     <input
                       type="text"
                       id="nombreCompleto"
@@ -440,7 +454,7 @@ export default function Contacto() {
                     {formErrors.nombreCompleto && <p className={styles.errorMessage}>{formErrors.nombreCompleto}</p>}
                   </div>
                   <div className={styles.formGroup}>
-                    <label htmlFor="email" className={styles.label}><MdEmail className={styles.labelIcon} /> Correo electrónico *</label>
+                    <label htmlFor="email" className={styles.label}><MdEmail className={styles.labelIcon} /> {t('contacto.form.fields.email')}</label>
                     <input
                       type="email"
                       id="email"
@@ -455,7 +469,7 @@ export default function Contacto() {
                     {formErrors.email && <p className={styles.errorMessage}>{formErrors.email}</p>}
                   </div>
                   <div className={styles.formGroup}>
-                    <label htmlFor="tipoConsulta" className={styles.label}><FaQuestionCircle className={styles.labelIcon} /> Tipo de consulta *</label>
+                    <label htmlFor="tipoConsulta" className={styles.label}><FaQuestionCircle className={styles.labelIcon} /> {t('contacto.form.fields.consultationType')}</label>
                     <select
                       id="tipoConsulta"
                       name="tipoConsulta"
@@ -465,18 +479,18 @@ export default function Contacto() {
                       onChange={handleTipoConsultaChange} // Use specific handler
                       required
                     >
-                      <option value="" disabled>Selecciona una opción</option>
-                      <option value="paginaWeb">Página web</option>
-                      <option value="soporteTecnico">Soporte técnico</option> {/* Updated text */}
-                      <option value="redesSociales">Redes sociales</option>
-                      <option value="otro">Otro</option>
+                      <option value="" disabled>{t('contacto.form.options.selectOption')}</option>
+                      <option value="paginaWeb">{t('contacto.form.options.consultationTypes.webPage')}</option>
+                      <option value="soporteTecnico">{t('contacto.form.options.consultationTypes.techSupport')}</option> {/* Updated text */}
+                      <option value="redesSociales">{t('contacto.form.options.consultationTypes.socialMedia')}</option>
+                      <option value="otro">{t('contacto.form.options.consultationTypes.other')}</option>
                     </select>
                     {/* This line displays the error message if formErrors.tipoConsulta exists */}
                     {formErrors.tipoConsulta && <p className={styles.errorMessage}>{formErrors.tipoConsulta}</p>}
                   </div>
                   {formData.tipoConsulta === "redesSociales" && (
                     <div className={styles.formGroup}>
-                      <label htmlFor="redSocialEspecifica" className={styles.label}><FaShareAlt className={styles.labelIcon} /> ¿Qué red social? *</label>
+                      <label htmlFor="redSocialEspecifica" className={styles.label}><FaShareAlt className={styles.labelIcon} /> {t('contacto.form.fields.socialNetwork')}</label>
                       <select
                         id="redSocialEspecifica"
                         name="redSocialEspecifica"
@@ -485,17 +499,17 @@ export default function Contacto() {
                         onChange={handleChange}
                         required={formData.tipoConsulta === "redesSociales"}
                       >
-                        <option value="" disabled>Selecciona una red social</option>
-                        <option value="Instagram">Instagram</option>
-                        <option value="Facebook">Facebook</option>
-                        <option value="Otra">Otra (especificar en mensaje)</option>
+                        <option value="" disabled>{t('contacto.form.options.selectSocialNetwork')}</option>
+                        <option value="Instagram">{t('contacto.form.options.socialNetworks.instagram')}</option>
+                        <option value="Facebook">{t('contacto.form.options.socialNetworks.facebook')}</option>
+                        <option value="Otra">{t('contacto.form.options.socialNetworks.other')}</option>
                       </select>
                       {formErrors.redSocialEspecifica && <p className={styles.errorMessage}>{formErrors.redSocialEspecifica}</p>}
                     </div>
                   )}
                   {formData.tipoConsulta === "soporteTecnico" && (
                     <div className={styles.formGroup}>
-                      <label htmlFor="servicioContratado" className={styles.label}><FaTools className={styles.labelIcon} /> Servicio contratado (para soporte) *</label>
+                      <label htmlFor="servicioContratado" className={styles.label}><FaTools className={styles.labelIcon} /> {t('contacto.form.fields.service')}</label>
                       <select
                         id="servicioContratado"
                         name="servicioContratado"
@@ -504,16 +518,16 @@ export default function Contacto() {
                         onChange={handleChange}
                         required={formData.tipoConsulta === "soporteTecnico"}
                       >
-                        <option value="" disabled>Selecciona un servicio</option>
-                        <option value="Página web">Página web</option>
-                        <option value="Redes sociales">Redes sociales</option>
+                        <option value="" disabled>{t('contacto.form.options.selectService')}</option>
+                        <option value="Página web">{t('contacto.form.options.services.webPage')}</option>
+                        <option value="Redes sociales">{t('contacto.form.options.services.socialMedia')}</option>
                       </select>
                       {formErrors.servicioContratado && <p className={styles.errorMessage}>{formErrors.servicioContratado}</p>}
                     </div>
                   )}
                   {formData.tipoConsulta === "paginaWeb" && (
                     <div className={styles.formGroup}> {/* Ensure this div wraps the following elements */}
-                      <label htmlFor="tipoWeb" className={styles.label}><FaStore className={styles.labelIcon} /> ¿A qué rubro va orientada? *</label>
+                      <label htmlFor="tipoWeb" className={styles.label}><FaStore className={styles.labelIcon} /> {t('contacto.form.fields.webType')}</label>
                       <select
                         id="tipoWeb"
                         name="tipoWeb"
@@ -523,11 +537,11 @@ export default function Contacto() {
                         onChange={handleChange}
                         required={formData.tipoConsulta === "paginaWeb"}
                       >
-                        <option value="" disabled>Selecciona el rubro</option>
-                        <option value="restaurantes">Restaurantes</option>
-                        <option value="marcas">Marcas</option>
-                        <option value="paginaPersonal">Página personal</option>
-                        <option value="otroWeb">Otros (especificar luego)</option> {/* Corrected line */}
+                        <option value="" disabled>{t('contacto.form.options.selectWebType')}</option>
+                        <option value="restaurantes">{t('contacto.form.options.webTypes.restaurants')}</option>
+                        <option value="marcas">{t('contacto.form.options.webTypes.brands')}</option>
+                        <option value="paginaPersonal">{t('contacto.form.options.webTypes.personal')}</option>
+                        <option value="otroWeb">{t('contacto.form.options.webTypes.otherWeb')}</option> {/* Corrected line */}
                       </select>
                       {/* This line displays the error message if formErrors.tipoWeb exists */}
                       {formErrors.tipoWeb && <p className={styles.errorMessage}>{formErrors.tipoWeb}</p>}
@@ -537,7 +551,7 @@ export default function Contacto() {
                     <div className={styles.formGroup}>
                       <label htmlFor="nombreNegocio" className={styles.label}>
                         {formData.tipoWeb === "restaurantes" ? <FaBuilding className={styles.labelIcon} /> : <FaTag className={styles.labelIcon} />}
-                        Nombre {formData.tipoWeb === "restaurantes" ? "del Restaurante" : "de la Marca"} *
+                        {formData.tipoWeb === "restaurantes" ? t('contacto.form.fields.businessName') : t('contacto.form.fields.brandName')}
                       </label>
                       <input
                         type="text"
@@ -554,7 +568,7 @@ export default function Contacto() {
                   {formData.tipoConsulta === "paginaWeb" && ( 
                     <div className={styles.formGroup}>
                       <label htmlFor="tipoPlan" className={styles.label}>
-                        <FaListAlt className={styles.labelIcon} /> <a href="#planes" className={styles.planLink}>Tipo de Plan (para referencia) *<FaLink className={styles.internalLinkIcon} /></a>
+                        <FaListAlt className={styles.labelIcon} /> <a href="#planes" className={styles.planLink}>{t('contacto.form.fields.plan')} <FaLink className={styles.internalLinkIcon} /></a>
                       </label>
                       <select
                         id="tipoPlan"
@@ -563,10 +577,10 @@ export default function Contacto() {
                         value={selectedPlan} // Value from its own state
                         onChange={(e) => setSelectedPlan(e.target.value)} 
                       >
-                        <option value="" disabled>Selecciona un plan</option>
-                        <option value="basica">Web Básica / Landing Page</option>
-                        <option value="estandar">Web Estandar/ Multi-pagina</option>
-                        <option value="premium">Web Premium/ Avanzada</option>
+                        <option value="" disabled>{t('contacto.form.options.selectPlan')}</option>
+                        <option value="basica">{t('contacto.form.options.plans.basic')}</option>
+                        <option value="estandar">{t('contacto.form.options.plans.standard')}</option>
+                        <option value="premium">{t('contacto.form.options.plans.premium')}</option>
                       </select>
                       {/* No specific error for tipoPlan as it's for reference */}
                     </div>
@@ -574,7 +588,7 @@ export default function Contacto() {
                   {formData.tipoConsulta === "paginaWeb" && (
                     <div className={styles.formGroup}>
                       <label className={styles.label}>
-                        <FaPlusCircle className={styles.labelIcon} /> <a href="#adicionales" className={styles.planLink}>Adicionales (opcional) <FaLink className={styles.internalLinkIcon} /></a>
+                        <FaPlusCircle className={styles.labelIcon} /> <a href="#adicionales" className={styles.planLink}>{t('contacto.form.fields.adicionales')} <FaLink className={styles.internalLinkIcon} /></a>
                       </label>
                       <div className={styles.adicionalesPickerContainer}>
                         <button
@@ -583,7 +597,7 @@ export default function Contacto() {
                           onClick={() => setShowAdicionalesPicker(!showAdicionalesPicker)}
                           ref={adicionalesButtonRef} // Assign ref to the button
                         >
-                          {showAdicionalesPicker ? "Cerrar Selección" : "Seleccionar Adicionales..."}
+                          {showAdicionalesPicker ? t('contacto.form.buttons.closeSelection') : t('contacto.form.buttons.selectAdditionals')}
                         </button>
                         {showAdicionalesPicker && (
                           <div 
@@ -591,32 +605,32 @@ export default function Contacto() {
                             ref={adicionalesPickerRef} 
                             onWheel={handleDropdownWheelScroll} // Add wheel event handler
                           >
-                            {ADICIONALES_DATA.filter(adicional => !adicional.disabled).map(adicional => (
+                            {ADICIONALES_DATA.filter(adicional => !adicional.disabled && adicional.id).map(adicional => (
                               <div
                                 key={adicional.id}
-                                className={`${styles.adicionalDropdownItem} ${formData.selectedAdicionales.includes(adicional.name) ? styles.adicionalDropdownItemSelected : ''}`}
-                                onClick={() => handleAdicionalToggle(adicional.name)}
+                                className={`${styles.adicionalDropdownItem} ${formData.selectedAdicionales.includes(adicional.id) ? styles.adicionalDropdownItemSelected : ''}`}
+                                onClick={() => handleAdicionalToggle(adicional.id)}
                               >
                                 <input
                                   type="checkbox"
                                   readOnly
-                                  checked={formData.selectedAdicionales.includes(adicional.name)}
+                                  checked={formData.selectedAdicionales.includes(adicional.id)}
                                   className={styles.adicionalCheckbox}
                                 />
-                                {adicional.name}
+                                {t(`planesSection.adicionalesDetails.${adicional.id}.name`)}
                               </div>
                             ))}
                           </div>
                         )}
                         {formData.selectedAdicionales.length > 0 && (
                           <div className={styles.adicionalesPillsContainer}>
-                            {formData.selectedAdicionales.map(adicionalName => (
-                              <div key={adicionalName} className={styles.adicionalPill}>
-                                {adicionalName}
+                            {formData.selectedAdicionales.map(adicionalId => (
+                              <div key={adicionalId} className={styles.adicionalPill}>
+                                {t(`planesSection.adicionalesDetails.${adicionalId}.name`)}
                                 <button
                                   type="button"
                                   className={styles.removePillButton}
-                                  onClick={() => handleAdicionalToggle(adicionalName)}
+                                  onClick={() => handleAdicionalToggle(adicionalId)}
                                 >
                                   &times;
                                 </button>
@@ -626,30 +640,31 @@ export default function Contacto() {
                         )}
                       </div>
                       {/* Hidden inputs for Netlify submission for selectedAdicionales */}
-                      {formData.selectedAdicionales.map(adicionalName => (
-                        <input type="hidden" name="selectedAdicionales" value={adicionalName} key={`hidden-${adicionalName}`} />
+                      {formData.selectedAdicionales.map(adicionalId => (
+                        <input type="hidden" name="selectedAdicionales" value={t(`planesSection.adicionalesDetails.${adicionalId}.name`)} key={`hidden-${adicionalId}`} />
                       ))}
                     </div>
                   )}
                   {(() => {
-                    let mensajeLabel = "Hablanos más sobre tu proyecto *";
-                    let mensajePlaceholder = "Contame los detalles de tu idea, objetivos, o qué necesitas...";
+                    let mensajeLabelKey = 'contacto.form.fields.message';
+                    let mensajePlaceholderKey = 'contacto.form.placeholders.default';
 
                     if (formData.tipoConsulta === "soporteTecnico") {
-                      mensajeLabel = "Hablanos sobre tu problema técnico *";
-                      mensajePlaceholder = "Describe el problema técnico que estás experimentando detalladamente...";
+                      mensajeLabelKey = 'contacto.form.fields.messageSupport';
+                      mensajePlaceholderKey = 'contacto.form.placeholders.support';
                     } else if (formData.tipoConsulta === "otro") {
-                      mensajeLabel = "Redacta tu mensaje *";
-                      mensajePlaceholder = "Escribe aquí tu consulta o el motivo de tu contacto...";
+                      mensajeLabelKey = 'contacto.form.fields.messageOther';
+                      mensajePlaceholderKey = 'contacto.form.placeholders.other';
                     } else if (formData.tipoConsulta === "redesSociales") {
-                      mensajeLabel = "Detalla tu consulta sobre redes sociales *";
-                      mensajePlaceholder = "Contame los detalles de tu idea, objetivos, o qué necesitas...";
+                      mensajeLabelKey = 'contacto.form.fields.messageSocial';
+                      // Placeholder can remain default or be specific if a key 'contacto.form.placeholders.social' is added
+                      // mensajePlaceholderKey = 'contacto.form.placeholders.social'; 
                     }
                     // For "paginaWeb", the default "Hablanos más sobre tu proyecto *" is appropriate.
 
                     return (
                       <div className={styles.formGroup}>
-                        <label htmlFor="mensaje" className={styles.label}><FaCommentDots className={styles.labelIcon} /> {mensajeLabel}</label>
+                        <label htmlFor="mensaje" className={styles.label}><FaCommentDots className={styles.labelIcon} /> {t(mensajeLabelKey)}</label>
                         <textarea
                           id="mensaje"
                           name="mensaje"
@@ -657,7 +672,7 @@ export default function Contacto() {
                           className={`${styles.textarea} ${formErrors.mensaje ? styles.inputError : ''}`}
                           value={formData.mensaje}
                           onChange={handleChange}
-                          placeholder={mensajePlaceholder}
+                          placeholder={t(mensajePlaceholderKey)}
                           required
                         />
                         {formErrors.mensaje && <p className={styles.errorMessage}>{formErrors.mensaje}</p>}
@@ -665,25 +680,26 @@ export default function Contacto() {
                     );
                   })()}
                   <div className={styles.formGroup}>
-                    <label htmlFor="comoConociste" className={styles.label}><FaSearch className={styles.labelIcon} /> ¿Cómo nos conociste? *</label>
+                    <label htmlFor="comoConociste" className={styles.label}><FaSearch className={styles.labelIcon} /> {t('contacto.form.fields.howDidYouHear')}</label>
                     <select
                       id="comoConociste"
                       name="comoConociste"
-                      className={styles.select}
+                      className={`${styles.select} ${formErrors.comoConociste ? styles.inputError : ''}`}
                       value={formData.comoConociste}
                       onChange={handleChange}
                       required
                     >
-                      <option value="" disabled>Selecciona una opción</option>
-                      <option value="busqueda">Búsqueda en internet</option>
-                      <option value="redesSociales">Redes sociales</option>
-                      <option value="recomendacion">Recomendación</option>
-                      <option value="otro">Otro</option>
+                      <option value="" disabled>{t('contacto.form.options.selectOption')}</option>
+                      <option value="busqueda">{t('contacto.form.options.hearAbout.search')}</option>
+                      <option value="redesSociales">{t('contacto.form.options.hearAbout.socialMedia')}</option>
+                      <option value="recomendacion">{t('contacto.form.options.hearAbout.recommendation')}</option>
+                      <option value="otro">{t('contacto.form.options.hearAbout.other')}</option>
                     </select>
+                    {formErrors.comoConociste && <p className={styles.errorMessage}>{formErrors.comoConociste}</p>}
                   </div>
                   {formErrors.submit && <p className={styles.errorMessage}>{formErrors.submit}</p>}
                   <Button 
-                    label="Enviar Mensaje por WhatsApp" 
+                    label={t('contacto.form.buttons.submit')}
                     icon={<FaWhatsapp color="black" />} /* Apply WhatsApp green color directly to the icon */
                     effect="primary" 
                     size="medium" 
@@ -696,15 +712,15 @@ export default function Contacto() {
             )}
           </div>
           <div className={styles.infoDirectaWrapper}>
-            <h3 className={styles.infoTitle}>Información de Contacto</h3>
+            <h3 className={styles.infoTitle}>{t('contacto.info.title')}</h3>
             <p className={styles.infoText}>
-              Si tenes una consulta rápida, no dudes en utilizar estos canales:
+              {t('contacto.info.description')}
             </p>
             <div className={styles.infoItem}>
               <IconLink 
                 icon={MdEmail}
                 to="jmcdevdigital@gmail.com" 
-                label="Email"
+                label="Email" // This label is for accessibility, might not need translation if not visible
                 effect="scale"
                 color="#55d3c4"
                 className={styles.infoIcon}
@@ -713,7 +729,7 @@ export default function Contacto() {
                 showColorAlways={true}
               />
               <div>
-                <strong>Email:</strong>
+                <strong>{t('contacto.info.email')}</strong>
                 <a href="mailto:jmcdevdigital@gmail.com" className={styles.infoLink}>jmcdevdigital@gmail.com</a>
               </div>
             </div>
@@ -721,7 +737,7 @@ export default function Contacto() {
               <IconLink 
                 icon={FaWhatsapp}
                 to="https://wa.me/5491173677628" 
-                label="WhatsApp"
+                label="WhatsApp" // Accessibility label
                 effect="scale"
                 color="#25D366"
                 className={styles.infoIcon}
@@ -730,7 +746,7 @@ export default function Contacto() {
                 showColorAlways={true}
               />
               <div>
-                <strong>WhatsApp:</strong>
+                <strong>{t('contacto.info.whatsapp')}</strong>
                 <a href="https://wa.me/5491173677628" target="_blank" rel="noopener noreferrer" className={styles.infoLink}>
                 +54 9 11 7367-7628
                 </a>
@@ -740,7 +756,7 @@ export default function Contacto() {
               <IconLink 
                 icon={FaInstagram}
                 to="https://instagram.com/jmcdev_" 
-                label="Instagram"
+                label="Instagram" // Accessibility label
                 effect="scale"
                 color="#E4405F"
                 className={styles.infoIcon}
@@ -749,14 +765,14 @@ export default function Contacto() {
                 showColorAlways={true}
               />
               <div>
-                <strong>Instagram:</strong>
+                <strong>{t('contacto.info.instagram')}</strong>
                 <a href="https://instagram.com/jmcdev_" target="_blank" rel="noopener noreferrer" className={styles.infoLink}>
                   @jmcdev_
                 </a>
               </div>
             </div>
             <p className={styles.availabilityInfo}>
-              Disponible todos los días, no dudes en consultar!
+              {t('contacto.info.availability')}
             </p>
           </div>
         </div>

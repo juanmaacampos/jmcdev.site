@@ -96,7 +96,6 @@
 
 /* Título más ancho */
 .coolTitle {
-  /* Si usas CoolTitle.module.css, pon esto ahí. Si el h1 está aquí, ajusta aquí: */
   display: block;
   width: 100%;
   max-width: none;
@@ -105,7 +104,15 @@
   text-align: center;
   margin-left: auto;
   margin-right: auto;
-  /* Si el CoolTitle está en otro archivo, mueve esto allá */
+  /* Añadimos estilo para mejorar el control del espaciado */
+  overflow-wrap: normal;
+  white-space: normal;
+  word-spacing: normal;
+}
+
+/* Clase específica para el título */
+.headerTitle {
+  display: inline;
 }
 
 .description {

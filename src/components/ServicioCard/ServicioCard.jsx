@@ -191,7 +191,10 @@ export default function ServicioCard({ icon, svg, titulo, descripcion, modalData
           )}
           <button
             className={styles.cardBackClose}
-            onClick={e => { e.stopPropagation(); setFlipped(false); }}
+            onClick={e => { 
+              e.stopPropagation(); // Evita que el evento burbujee al article
+              setFlipped(false); 
+            }}
           >
             Volver
           </button>

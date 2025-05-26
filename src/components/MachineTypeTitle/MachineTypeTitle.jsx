@@ -18,6 +18,13 @@ function MachineTypeTitle({
   const [isDeleting, setIsDeleting] = useState(false);
   const [fontIndex, setFontIndex] = useState(0); // Nuevo estado para la fuente
 
+  // Reset state when words array changes (language change)
+  useEffect(() => {
+    setCurrentWord(0);
+    setDisplayed('');
+    setIsDeleting(false);
+  }, [words]); // This dependency will trigger when language changes
+
   useEffect(() => {
     let timeout;
     const fullWord = words[currentWord];

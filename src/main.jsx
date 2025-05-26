@@ -6,10 +6,10 @@ import App from "./App";
 import './index.css';
 import ReactGA from 'react-ga';
 
-// Initialize Google Analytics
-const TRACKING_ID = "G-489685083";
-ReactGA.initialize(TRACKING_ID);
-ReactGA.pageview(window.location.pathname + window.location.search); // Track initial page view
+// Initialize Google Analytics (only in production)
+if (import.meta.env.PROD) {
+  ReactGA.initialize('G-BWJPDWDD3R'); // Replace with your actual Google Analytics ID
+}
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

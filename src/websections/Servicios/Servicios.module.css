@@ -8,16 +8,29 @@
 }
 
 .titulo {
-  margin-bottom: 2.5rem;
+  margin-bottom: 0rem; /* Reduced from 0.2rem to 0rem to bring titles closer together */
   transition: all 0.5s ease;
   opacity: 0.7;
   text-shadow: none;
+  /* Font size will come from CoolTitle.module.css (defaults to 4.8rem) */
 }
 
 .tituloMaskActive {
   text-shadow: 0 0 15px rgba(163, 86, 255, 0.7);
   transition: all 0.5s ease;
   opacity: 1;
+}
+
+/* New style for the second part of the title */
+.staticSubtitle {
+  font-size: 3.2rem; /* Smaller font size than the first part */
+  line-height: 1.15;
+  margin-top: -0.5rem; /* Changed from 0 to -0.5rem to pull it up closer to the first title */
+  margin-bottom: 2.5rem; /* Original margin-bottom from .titulo, to space out instruction text */
+  opacity: 0.7;
+  text-shadow: none;
+  /* font-family is set via inline style in the component for 'Geologica' */
+  /* It will also use .tituloMaskActive for effects when mask is active */
 }
 
 .cardInstructionText {
@@ -107,10 +120,30 @@
   transition: opacity 0.2s;
 }
 
+.titleSeparator {
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(149, 225, 211, 0.7), rgba(149, 225, 211, 0.7), transparent);
+  margin: 0.5rem auto;
+  border-radius: 2px;
+  opacity: 0; /* Changed from 0.7 to 0 to make the separator invisible */
+  transition: all 0.5s ease;
+}
+
+/* Make the separator style consistent with the title glow effect when mask is active */
+.tituloMaskActive + .titleSeparator,
+.titleSeparator:has(+ .tituloMaskActive) {
+  opacity: 0; /* Changed from 1 to 0 to keep it invisible even when mask is active */
+  box-shadow: 0 0 10px rgba(149, 225, 211, 0.5);
+}
+
 @media (min-width: 769px) { /* Apply only to desktop-like screens */
   .serviciosSection {
     z-index: 10; /* Attempt to ensure this section is above other page elements for event handling */
     overflow: visible; /* Explicitly allow overflow, overriding the general rule if it was there */
+  }
+  .titulo {
+    margin-bottom: 0rem; /* Changed from 1rem to 0rem to keep titles close together on desktop */
   }
 }
 
@@ -142,10 +175,60 @@
     max-height: none;
     opacity: 0.18; /* Asegura la opacidad deseada */
   }
+  
+  /* Adjust subtitle size for tablets and smaller devices */
+  .staticSubtitle {
+    font-size: 2.8rem; /* Reduced from 3.2rem */
+    margin-top: -0.7rem; /* Adjust spacing to keep close to title */
+  }
 }
 
 @media (max-width: 700px) {
   .serviciosGrid {
     grid-template-columns: 1fr;
+  }
+  
+  /* Further reduce subtitle size for mobile phones */
+  .staticSubtitle {
+    font-size: 2.2rem;
+    margin-top: -0.4rem;
+  }
+  
+  /* Make the main title significantly smaller on mobile */
+  .titulo {
+    font-size: 2.8rem; /* Reduced from 3rem for better mobile display */
+  }
+}
+
+/* Add a very small screen breakpoint for extra small devices */
+@media (max-width: 480px) {
+  .staticSubtitle {
+    font-size: 1.8rem;
+  }
+  
+  .titulo {
+    font-size: 2.2rem; /* Reduced from 2.5rem for very small screens */
+  }
+}
+
+/* Add an extra breakpoint for extremely small devices */
+@media (max-width: 360px) {
+  .titulo {
+    font-size: 1.9rem; /* Reduced from 2.2rem for extremely small screens */
+  }
+  
+  .staticSubtitle {
+    font-size: 1.5rem; /* Also adjusted for proportion */
+  }
+}
+
+/* Add an extra breakpoint for the smallest devices */
+@media (max-width: 320px) {
+  .titulo {
+    font-size: 1.7rem; /* Even smaller for the smallest screens */
+  }
+  
+  .staticSubtitle {
+    font-size: 1.3rem; /* Adjusted for proportion */
   }
 }

@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import styles from './3dCard.module.css';
 import Button from '../Button/Button'; // Adjusted path relative to current file
+import { useLanguageTranslation } from '../../utils/languageUtils'; // Import the hook
 
 const Card3D = ({ plan, destacado, motionActive }) => { // Added motionActive prop
   const cardRef = useRef(null);
@@ -9,6 +10,7 @@ const Card3D = ({ plan, destacado, motionActive }) => { // Added motionActive pr
   const [translateZ, setTranslateZ] = useState(0); // New state for depth
   const [glow, setGlow] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const { t } = useLanguageTranslation(); // Initialize the translation function
 
   useEffect(() => {
     const mobileCheck = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
@@ -126,7 +128,7 @@ const Card3D = ({ plan, destacado, motionActive }) => { // Added motionActive pr
           ))}
         </ul>
         <Button 
-          label="Me interesa" 
+          label={t('common.meInteresa')} // Use translated label
           effect="neon" 
           size="medium" 
           scrollTarget="contacto" 

@@ -1,100 +1,147 @@
 import React, { useState, useEffect } from 'react';
 import Logo from '../../components/Logo/Logo';
 import Button from '../../components/Button/Button';
-import { FaBriefcase, FaClipboardList, FaUser, FaEnvelope, FaHome } from 'react-icons/fa';
+import LanguageSelector from '../../components/LanguageSelector/LanguageSelector';
+import { useLanguageTranslation } from '../../utils/languageUtils'; // Replace previous import
+import { FaBriefcase, FaClipboardList, FaUser, FaEnvelope } from 'react-icons/fa';
 import './Navbar.css';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrollDirection, setScrollDirection] = useState(null);
   const [prevOffset, setPrevOffset] = useState(0);
-  const menuRef = React.useRef(null); // Create a ref for the menu
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const menuRef = React.useRef(null);
+  const hamburgerRef = React.useRef(null); // Add ref for the hamburger button
+
+  const { currentLanguage, t } = useLanguageTranslation(); // Destructure t from useLanguageTranslation
 
   useEffect(() => {
     const handleScroll = () => {
       const currentOffset = window.pageYOffset;
+      const isScrollingDown = currentOffset > prevOffset;
+      const scrollThreshold = 100; // Minimum scroll amount before hiding
 
-      if (prevOffset > currentOffset) {
-        setScrollDirection('up');
-      } else if (prevOffset < currentOffset) {
-        setScrollDirection('down');
+      // Only change visibility after scrolling more than the threshold
+      if (Math.abs(currentOffset - prevOffset) > 5) {
+        setScrollDirection(isScrollingDown ? 'down' : 'up');
+      }
+
+      // Hide navbar when scrolling down past the threshold
+      if (currentOffset > scrollThreshold) {
+        setIsVisible(!isScrollingDown || isMenuOpen);
+      } else {
+        setIsVisible(true);
       }
 
       setPrevOffset(currentOffset);
+      setLastScrollY(window.scrollY);
     };
 
     window.addEventListener('scroll', handleScroll);
-
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [prevOffset]);
+  }, [prevOffset, isMenuOpen]);
 
   useEffect(() => {
+    // Close menu when clicking outside
     const handleClickOutside = (event) => {
+      // If the click is on the hamburger button, let toggleMenu handle it
+      if (hamburgerRef.current && hamburgerRef.current.contains(event.target)) {
+        return;
+      }
       if (menuRef.current && !menuRef.current.contains(event.target)) {
-        // Clicked outside the menu
-        if (isMenuOpen) {
-          // Check if the click was on the menu button itself
-          const menuButton = document.querySelector('.menu-button');
-          if (menuButton && !menuButton.contains(event.target)) {
-            setIsMenuOpen(false);
-          }
-        }
+        setIsMenuOpen(false);
       }
     };
 
-    if (isMenuOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
-    } else {
-      document.removeEventListener('mousedown', handleClickOutside);
-    }
-
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [isMenuOpen]);
+  }, []); // Dependencies are empty, which is fine here as refs and setIsMenuOpen are stable
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    setTimeout(() => {
-      setIsMenuOpen(false); // Close the mobile menu after a delay
-    }, 100); // Adjust the delay (in milliseconds) as needed
+  const closeMenu = () => {
+    setIsMenuOpen(false);
   };
 
-  const navbarClass = `navbar ${scrollDirection === 'down' ? 'hidden' : ''}`;
+  // Return only the BianDemoPage navbar when on that route
+  const isBianRoute = typeof window !== 'undefined' && window.location.pathname === '/bian_demo';
+  if (isBianRoute) return null;
 
   return (
-    <nav className={navbarClass}>
+    <nav className={`navbar ${isVisible ? '' : 'hidden'}`}>
       <div className="navbar-container">
-        <Logo onClick={scrollToTop} />
-
-        {/* Regular navbar links - visible on desktop */}
-        <div className="nav-links">
-          <Button label="Servicios" effect="neon" size="small" icon={<FaUser />} scrollTarget="servicios" />
-          <Button label="Planes" effect="neon" size="small" icon={<FaClipboardList />} scrollTarget="planes" />
-          <Button label="Proyectos" effect="neon" size="small" icon={<FaBriefcase />} scrollTarget="portafolio" />
-          <Button label="Contacto" effect="primary" size="small" icon={<FaEnvelope />} color='#663399' scrollTarget="contacto" />
+        <Logo onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} />
+        
+        <div className={`navbar-menu ${isMenuOpen ? 'open' : ''}`} ref={menuRef}>
+          <ul className="navbar-links">
+            <li className="navbar-item">
+              <Button 
+                label={t('navbar.services')}
+                scrollTarget="servicios"
+                effect="neon"
+                size="small"
+                className="nav-button"
+                icon={<FaUser className="nav-icon" />}
+                onClick={closeMenu}
+              />
+            </li>
+            <li className="navbar-item">
+              <Button 
+                label={t('navbar.plans')}
+                scrollTarget="planes"
+                effect="neon"
+                size="small"
+                className="nav-button"
+                icon={<FaClipboardList className="nav-icon" />}
+                onClick={closeMenu}
+              />
+            </li>
+            <li className="navbar-item">
+              <Button 
+                label={t('navbar.projects')}
+                scrollTarget="portafolio"
+                effect="neon"
+                size="small"
+                className="nav-button"
+                icon={<FaBriefcase className="nav-icon" />}
+                onClick={closeMenu}
+              />
+            </li>
+            <li className="navbar-item">
+              <Button 
+                label={t('navbar.contact')}
+                scrollTarget="contacto"
+                effect="primary"
+                size="small"
+                className="nav-button contact-button"
+                icon={<FaEnvelope className="nav-icon" />}
+                onClick={closeMenu}
+              />
+            </li>
+          </ul>
         </div>
+        
+        {/* LanguageSelector moved here, after navbar-menu */}
+        <LanguageSelector className="nav-language-selector" />
 
-        {/* Mobile menu button */}
-        <button className={`menu-button ${isMenuOpen ? 'active' : ''}`} onClick={toggleMenu}>
+        <button
+          ref={hamburgerRef}
+          className={`hamburger ${isMenuOpen ? 'open' : ''}`}
+          onClick={toggleMenu}
+          aria-label="Toggle menu"
+        >
+          <span></span>
+          <span></span>
           <span></span>
         </button>
-      </div>
-
-      {/* Mobile dropdown menu */}
-      <div ref={menuRef} className={`mobile-dropdown ${isMenuOpen ? 'active' : ''}`}>
-        <div className="mobile-menu-items">
-          <Button label="Servicios" effect="neon" size="small" icon={<FaUser />} scrollTarget="servicios" onClick={() => setIsMenuOpen(false)} />
-          <Button label="Planes" effect="neon" size="small" icon={<FaClipboardList />} scrollTarget="planes" onClick={() => setIsMenuOpen(false)} />
-          <Button label="Proyectos" effect="neon" size="small" icon={<FaBriefcase />} scrollTarget="portafolio" onClick={() => setIsMenuOpen(false)} />
-          <Button label="Contacto" effect="primary" size="small" icon={<FaEnvelope />} color='#663399' scrollTarget="contacto" onClick={() => setIsMenuOpen(false)} />
-        </div>
       </div>
     </nav>
   );

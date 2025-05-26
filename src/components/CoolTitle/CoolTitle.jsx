@@ -5,19 +5,18 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Add contentVisible to props, default to true for standalone use
-function CoolTitle({ children, className, animation = 'none', hoverFonts = [], fontTransition = "0.5s", maskActive, scrollAnimate = false, animateScroll = false, contentVisible = true }) {
+function CoolTitle({ children, className, animation = 'none', hoverFonts = [], fontTransition = "0.5s", maskActive, scrollAnimate = false, animateScroll = false, contentVisible = true, as = "h1" }) {
   const [fontIndex, setFontIndex] = useState(0);
   const [transitioning, setTransitioning] = useState(false);
-  const isMobile = typeof window !== "undefined" && window.innerWidth <= 900;
   const lastScroll = useRef(0);
   const titleRef = useRef(null);
 
   useEffect(() => {
-    if (!isMobile || hoverFonts.length === 0) return;
+    // Only activate scroll effect if hoverFonts contains multiple fonts
+    if (hoverFonts.length <= 1) return;
 
     const handleScroll = () => {
-      // Cambia de fuente solo si se scrollea más de 40px desde el último cambio
+      // Change font only if scrolled more than 40px from last change
       const scrollY = window.scrollY;
       if (Math.abs(scrollY - lastScroll.current) > 40) {
         setTransitioning(true);
@@ -29,7 +28,7 @@ function CoolTitle({ children, className, animation = 'none', hoverFonts = [], f
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [isMobile, hoverFonts.length, fontTransition]);
+  }, [hoverFonts.length, fontTransition]);
 
   useEffect(() => {
     let st; // To store ScrollTrigger instance
@@ -47,7 +46,7 @@ function CoolTitle({ children, className, animation = 'none', hoverFonts = [], f
           trigger: titleRef.current,
           start: "top 85%", 
           end: "bottom 15%", 
-          markers: process.env.NODE_ENV === 'development', 
+          markers: false, // Always hide ScrollTrigger markers, regardless of environment
           onEnter: () => gsap.to(titleRef.current, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out", overwrite: "auto" }),
           onLeave: () => gsap.to(titleRef.current, { opacity: 0, y: -80, duration: 0.4, ease: "power2.in", overwrite: "auto" }),
           onEnterBack: () => gsap.to(titleRef.current, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out", overwrite: "auto" }),
@@ -73,7 +72,7 @@ function CoolTitle({ children, className, animation = 'none', hoverFonts = [], f
   }, [animateScroll, contentVisible, children, scrollAnimate]); 
 
   const handleMouseEnter = () => {
-    if (!isMobile && hoverFonts.length > 0) {
+    if (hoverFonts.length > 0) {
       setTransitioning(true);
       setTimeout(() => setTransitioning(false), parseFloat(fontTransition) * 1000);
       setFontIndex((prev) => (prev + 1) % hoverFonts.length);
@@ -81,21 +80,23 @@ function CoolTitle({ children, className, animation = 'none', hoverFonts = [], f
   };
 
   const fontFamily = hoverFonts.length > 0 ? { fontFamily: hoverFonts[fontIndex] } : {};
+  
+  // Use the dynamic tag from the 'as' prop
+  const Tag = as;
 
   return (
-    <h1
+    <Tag
       ref={titleRef}
       className={`${styles.title} ${styles[animation]} ${className || ''} ${transitioning ? styles.fontTransitioning : ''} ${maskActive ? styles.maskActive : ''}`}
       data-text={children}
       style={{
         ...fontFamily,
         transition: `font-family ${fontTransition} cubic-bezier(0.4,0,0.2,1), color 0.2s, background 0.2s`,
-        color: maskActive ? 'green' : 'inherit'
       }}
       onMouseEnter={handleMouseEnter}
     >
       {children}
-    </h1>
+    </Tag>
   );
 }
 

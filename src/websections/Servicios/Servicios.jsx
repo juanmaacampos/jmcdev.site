@@ -6,6 +6,7 @@ import CoolTitle from "../../components/CoolTitle/CoolTitle";
 import { FaShare } from "react-icons/fa";
 import Svg from "../../components/Svg/Svg";
 import MachineTypeTitle from "../../components/MachineTypeTitle/MachineTypeTitle";
+import { useLanguageTranslation } from "../../utils/languageUtils"; 
 
 // --- IMPORTA LOS ASSETS ---
 import lottieWorld from "../../assets/images/modals_assets/world.json";
@@ -27,9 +28,11 @@ import parallaxPoster from "../../assets/images/parallax_service.png";
 
 const ServicioCard = lazy(() => import("../../components/ServicioCard/ServicioCard"));
 
-const CardFallback = () => <div style={{ minHeight: '300px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', background: 'rgba(255,255,255,0.05)', borderRadius: '10px', margin: '10px' }}>Cargando servicio...</div>;
+const CardFallback = ({ t }) => <div style={{ minHeight: '300px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', background: 'rgba(255,255,255,0.05)', borderRadius: '10px', margin: '10px' }}>{t('common.loading')}</div>;
 
 export default function Servicios() {
+  const { currentLanguage, t } = useLanguageTranslation(); // Get both currentLanguage and t directly from useLanguageTranslation
+
   const [cursor, setCursor] = useState({ x: 0, y: 0, visible: false });
   const [maskActive, setMaskActive] = useState(false); // Nuevo estado
   const sectionRef = useRef(null);
@@ -134,6 +137,9 @@ export default function Servicios() {
     };
   }, [initialHintPlayed]);
 
+  const animatedTitleText = t('services.title.animated');
+  const staticTitleText = t('services.title.static');
+
   return (
     <section
       className={styles.serviciosSection}
@@ -179,6 +185,7 @@ export default function Servicios() {
       {/* Titulo con efectos ---------------------------------------------------------------------------*/}
 
       <CoolTitle
+        as="h1"
         className={`${styles.titulo} ${maskActive ? styles.tituloMaskActive : ""}`}
         hoverFonts={[
           "'Geologica','Orbitron', sans-serif",
@@ -187,12 +194,26 @@ export default function Servicios() {
           "'Share Tech Mono', 'Montserrat', monospace"
         ]}
         fontTransition="0.5s"
-        maskActive={maskActive} 
+        maskActive={maskActive}
+        animateScroll={true}
       >
-Transformamos <CoolTitle>tu presencia digital</CoolTitle> 
-</CoolTitle>
+        {animatedTitleText}
+      </CoolTitle>
+      
+      {/* Separador decorativo entre titulo y subtitulo */}
+      <div className={styles.titleSeparator}></div>
+      
+      <CoolTitle
+        as="h2"
+        className={`${styles.staticSubtitle} ${maskActive ? styles.tituloMaskActive : ""}`}
+        maskActive={maskActive}
+        style={{ fontFamily: "'Geologica', sans-serif" }} // Apply Geologica font directly
+                                                          // No hoverFonts, no animation prop (defaults to 'none'), no animateScroll
+      >
+        {staticTitleText}
+      </CoolTitle>
       <p className={styles.cardInstructionText}>
-        (Haz clic en las tarjetas y desliza para ver más detalles)
+        {t('services.instruction')}
       </p>
 
       {/* Cards y sus Modals ----------------------------------------------------------------------------*/}
@@ -202,15 +223,15 @@ Transformamos <CoolTitle>tu presencia digital</CoolTitle>
     {/*  -----------------------DESARROLLO WEB CARD------------------------------------*/}
 
 <div data-aos="fade-up" data-aos-delay="100" className={styles.cardWrapper} ref={firstCardRef}>
-  <Suspense fallback={<CardFallback />}>
+  <Suspense fallback={<CardFallback t={t} />}>
     <ServicioCard
       svg={<Svg route={lottieWorld} />}
-      titulo="Creación de páginas web que venden"
-      descripcion="Diseñamos sitios modernos desde cero, optimizados para destacar en Google y convertir visitas en clientes. Todo al mejor precio del mercado"
+      titulo={t('services.cards.webDevelopment.title')}
+      descripcion={t('services.cards.webDevelopment.description')}
       playInitialAnimation={animateFirstCard} // Pass the new prop
       modalData={{
-        title: <h1>Estar en Google es vender.</h1>,
-        description: "Tenés una marca, querés crecer. Necesitás una web que aparezca entre los primeros resultados cuando te buscan.",
+        title: <h1>{t('services.cards.webDevelopment.modal.title')}</h1>,
+        description: t('services.cards.webDevelopment.modal.description'),
         image: { src: imgDesarrolloWeb, alt: "Desarrollo Web" },
         tabs: [
           {
@@ -218,11 +239,10 @@ Transformamos <CoolTitle>tu presencia digital</CoolTitle>
             icon: <FaShare />,
             content: (
               <ul>
-                <li><h3>Posicionate entre los primeros resultados</h3></li>
-                <p>Diseñamos cada línea de código pensando en el buscador de Google, para que tu negocio no solo esté online… esté visible.</p>
-                <li><h4>¿Por qué importa esto?</h4></li>
-                <p>Porque cuando alguien busca un restaurante, peluquería o cualquier servicio, no entra a redes. Lo busca en Google.  
-                Si no estás ahí arriba, no existís.</p>
+                <li><h3>{t('services.cards.webDevelopment.modal.content.subtitle1')}</h3></li>
+                <p>{t('services.cards.webDevelopment.modal.content.text1')}</p>
+                <li><h4>{t('services.cards.webDevelopment.modal.content.subtitle2')}</h4></li>
+                <p>{t('services.cards.webDevelopment.modal.content.text2')}</p>
               </ul>
             ),
           }
@@ -235,14 +255,14 @@ Transformamos <CoolTitle>tu presencia digital</CoolTitle>
 {/*  -----------------------REDES SOCIALES CARD------------------------------------*/}
 
 <div data-aos="fade-up" data-aos-delay="500" className={styles.cardWrapper}>
-  <Suspense fallback={<CardFallback />}>
+  <Suspense fallback={<CardFallback t={t} />}>
     <ServicioCard
       svg={<Svg route={lottieSocial} />}
-      titulo="Potenciación de Redes Sociales"
-      descripcion="Impulsamos tu negocio en redes con contenido atractivo, diseño de publicaciones y estrategias para llegar a más público."
+      titulo={t('services.cards.socialMedia.title')}
+      descripcion={t('services.cards.socialMedia.description')}
       modalData={{
-        title: "Conectá tu negocio con más gente",
-        description: "Haz que tu marca brille en redes sociales con contenido profesional y estrategias que aumentan tu alcance.",
+        title: t('services.cards.socialMedia.modal.title'),
+        description: t('services.cards.socialMedia.modal.description'),
         image: { src: imgRedes, alt: "Redes Sociales" },
         tabs: [
           {
@@ -250,10 +270,10 @@ Transformamos <CoolTitle>tu presencia digital</CoolTitle>
             icon: <FaShare />,
             content: (
               <ul>
-                <li><h3>Contenido que conecta</h3></li>
-                <p>Creamos publicaciones que no solo destacan, sino que generan interacción. Contenido que engancha y convierte.</p>
-                <li><h4>¿Por qué es tan importante?</h4></li>
-                <p>Las redes sociales son el escenario perfecto para mostrar tu negocio al mundo. Pero <strong>necesitás estrategias bien pensadas </strong> para que tu marca llegue a más personas y se convierta en una referencia.</p>
+                <li><h3>{t('services.cards.socialMedia.modal.content.subtitle1')}</h3></li>
+                <p>{t('services.cards.socialMedia.modal.content.text1')}</p>
+                <li><h4>{t('services.cards.socialMedia.modal.content.subtitle2')}</h4></li>
+                <p>{t('services.cards.socialMedia.modal.content.text2')}</p>
               </ul>
             ),
           }
@@ -266,14 +286,14 @@ Transformamos <CoolTitle>tu presencia digital</CoolTitle>
 {/*  -----------------------FOTOGRAFÍA CARD------------------------------------*/}
 
 <div data-aos="fade-up" data-aos-delay="200" className={styles.cardWrapper}>
-  <Suspense fallback={<CardFallback />}>
+  <Suspense fallback={<CardFallback t={t} />}>
     <ServicioCard
       svg={<Svg route={lottieCamera} />}
-      titulo="Servicio de Fotografía Profesional"
-      descripcion="Capturamos imágenes impresionantes con cámara réflex para que tu negocio tenga fotos visualmente impactantes en tu web y redes sociales."
+      titulo={t('services.cards.photography.title')}
+      descripcion={t('services.cards.photography.description')}
       modalData={{
-        title: "Imágenes que hablan por tu marca",
-        description: "Fotos de alta calidad que reflejan la esencia de tu negocio, ideales para tu página web y redes sociales.",
+        title: t('services.cards.photography.modal.title'),
+        description: t('services.cards.photography.modal.description'),
         image: { src: imgCamera, alt: "Fotografía Profesional" },
         tabs: [
           {
@@ -281,10 +301,10 @@ Transformamos <CoolTitle>tu presencia digital</CoolTitle>
             icon: <FaShare />,
             content: (
               <ul>
-                <li><h3>Imágenes que impactan</h3></li>
-                <p>Tomamos fotos profesionales con cámara réflex para que tu negocio tenga un impacto visual inmediato. Imágenes que captan atención y dejan huella.</p>
-                <li><h4>¿Por qué es importante?</h4></li>
-                <p>Las imágenes son la primera impresión de tu marca. <strong>No subestimes el poder de una buena foto</strong>. Una imagen vale más que mil palabras, y en tu negocio, <strong>puede ser la diferencia entre llamar la atención o pasar desapercibido</strong>.</p>
+                <li><h3>{t('services.cards.photography.modal.content.subtitle1')}</h3></li>
+                <p>{t('services.cards.photography.modal.content.text1')}</p>
+                <li><h4>{t('services.cards.photography.modal.content.subtitle2')}</h4></li>
+                <p>{t('services.cards.photography.modal.content.text2')}</p>
               </ul>
             ),
           }
@@ -298,14 +318,14 @@ Transformamos <CoolTitle>tu presencia digital</CoolTitle>
 {/* -------------------------DISEÑO CARD----------------------------------*/}
 
 <div data-aos="fade-up" data-aos-delay="600" className={styles.cardWrapper}>
-  <Suspense fallback={<CardFallback />}>
+  <Suspense fallback={<CardFallback t={t} />}>
     <ServicioCard
       svg={<Svg route={lottieDesign} />}
-      titulo="Diseños Personalizados desde Cero"
-      descripcion="Creamos interfaces únicas, adaptadas a tus necesidades. Nada de plantillas, todo hecho a medida y para que se vea bien en cualquier dispositivo."
+      titulo={t('services.cards.design.title')}
+      descripcion={t('services.cards.design.description')}
       modalData={{
-        title: "Diseño que conecta con tu público",
-        description: "Diseñamos interfaces atractivas y fáciles de usar, pensadas para que tus usuarios disfruten de una experiencia simple y agradable.",
+        title: t('services.cards.design.modal.title'),
+        description: t('services.cards.design.modal.description'),
         image: { src: imgDiseno, alt: "Diseño Personalizado" },
         tabs: [
           {
@@ -313,10 +333,10 @@ Transformamos <CoolTitle>tu presencia digital</CoolTitle>
             icon: <FaShare />,
             content: (
               <ul>
-                <li><h3>Diseños únicos y adaptados a tu marca</h3></li>
-                <p>Olvidate de usar plantillas. Creamos cada web desde cero, ajustado a lo que tu negocio necesita.</p>
-                <li><h4>¿Por qué elegirnos?</h4></li>
-                <p>Un diseño atractivo y fácil de usar hace que tus usuarios disfruten más tu página. Nos aseguramos de que todo se vea perfecto, tanto en computadoras como en teléfonos.</p>
+                <li><h3>{t('services.cards.design.modal.content.subtitle1')}</h3></li>
+                <p>{t('services.cards.design.modal.content.text1')}</p>
+                <li><h4>{t('services.cards.design.modal.content.subtitle2')}</h4></li>
+                <p>{t('services.cards.design.modal.content.text2')}</p>
               </ul>
             ),
           }
@@ -330,14 +350,14 @@ Transformamos <CoolTitle>tu presencia digital</CoolTitle>
 {/* -----------------------------HOSTING CARD-----------------------------*/}
 
 <div data-aos="fade-up" data-aos-delay="400" className={styles.cardWrapper}>
-  <Suspense fallback={<CardFallback />}>
+  <Suspense fallback={<CardFallback t={t} />}>
     <ServicioCard
       svg={<Svg route={lottieHosting} />}
-      titulo="Hosting y Dominio"
-      descripcion="Nos encargamos del alojamiento web y el registro de tu dominio personalizado de manera fácil y sin complicaciones."
+      titulo={t('services.cards.hosting.title')}
+      descripcion={t('services.cards.hosting.description')}
       modalData={{
-        title: "Tu página siempre online.",
-        description: "Te ayudamos con todo el proceso de alojamiento y registro de dominio para que tu página esté siempre disponible y fácil de encontrar.",
+        title: t('services.cards.hosting.modal.title'),
+        description: t('services.cards.hosting.modal.description'),
         image: { src: imgHosting, alt: "Hosting y Dominio" },
         tabs: [
           {
@@ -345,10 +365,10 @@ Transformamos <CoolTitle>tu presencia digital</CoolTitle>
             icon: <FaShare />,
             content: (
               <ul>
-                <li><h3>Todo en un solo lugar</h3></li>
-                <p>Nos encargamos de todo el proceso: desde el alojamiento de tu página web hasta el registro de tu dominio, sin complicaciones.</p>
-                <li><h4>¿Por qué elegirnos?</h4></li>
-                <p>Con nuestro servicio, tu página estará siempre online, accesible para todos y con un nombre de dominio fácil de recordar.</p>
+                <li><h3>{t('services.cards.hosting.modal.content.subtitle1')}</h3></li>
+                <p>{t('services.cards.hosting.modal.content.text1')}</p>
+                <li><h4>{t('services.cards.hosting.modal.content.subtitle2')}</h4></li>
+                <p>{t('services.cards.hosting.modal.content.text2')}</p>
               </ul>
             ),
           }
@@ -361,14 +381,14 @@ Transformamos <CoolTitle>tu presencia digital</CoolTitle>
 
 {/* ----------------------------SOPORTE CARD------------------------------------*/}
 <div data-aos="fade-up" data-aos-delay="300" className={styles.cardWrapper}>
-  <Suspense fallback={<CardFallback />}>
+  <Suspense fallback={<CardFallback t={t} />}>
     <ServicioCard
       svg={<Svg route={lottieSupport} />}
-      titulo="Mantenimiento y Soporte Técnico"
-      descripcion="Te ofrecemos actualizaciones regulares, corrección de errores y soporte continuo para que tu página siempre esté al día."
+      titulo={t('services.cards.support.title')}
+      descripcion={t('services.cards.support.description')}
       modalData={{
-        title: "Tu página siempre a punto.",
-        description: "Nos encargamos de mantener tu sitio actualizado, corregir cualquier error y brindarte soporte cuando lo necesites.",
+        title: t('services.cards.support.modal.title'),
+        description: t('services.cards.support.modal.description'),
         image: { src: imgMantenimiento, alt: "Soporte Técnico" },
         tabs: [
           {
@@ -376,10 +396,10 @@ Transformamos <CoolTitle>tu presencia digital</CoolTitle>
             icon: <FaShare />,
             content: (
               <ul>
-                <li><h3>Todo en orden, siempre</h3></li>
-                <p>Nos aseguramos de que tu página esté siempre actualizada, con las últimas funciones y libre de errores.</p>
-                <li><h4>¿Por qué es importante?</h4></li>
-                <p>Un sitio web sin mantenimiento puede volverse lento o tener errores que afecten la experiencia del usuario. Nosotros nos encargamos de todo para que no tengas que preocuparte.</p>
+                <li><h3>{t('services.cards.support.modal.content.subtitle1')}</h3></li>
+                <p>{t('services.cards.support.modal.content.text1')}</p>
+                <li><h4>{t('services.cards.support.modal.content.subtitle2')}</h4></li>
+                <p>{t('services.cards.support.modal.content.text2')}</p>
               </ul>
             ),
           }

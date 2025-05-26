@@ -63,17 +63,17 @@
 }
 
 .texto {
+  position: relative;
+  font-style: italic;
+  padding: 0 15px;
+  margin-bottom: 1.5rem;
   font-size: 1.05rem;
   color: #D1D5DB; /* Light gray text for readability on dark background */
   line-height: 1.7;
-  margin-bottom: 25px; /* Increased margin */
-  font-style: italic;
-  position: relative;
-  padding: 0 10px; /* Add some padding so quotes don't touch text edges */
 }
 
 .texto::before {
-  content: '“';
+  content: '"';
   font-size: 3rem; /* Larger quote marks */
   color: #594A6F; /* Muted purple for quote marks */
   position: absolute;
@@ -84,7 +84,7 @@
 }
 
 .texto::after {
-  content: '”';
+  content: '"';
   font-size: 3rem; /* Larger quote marks */
   color: #594A6F; /* Muted purple for quote marks */
   position: absolute;
@@ -135,11 +135,11 @@
   }
 
   .nombre {
-    font-size: 1.15rem;
+    font-size: 1.1rem;
   }
-
+  
   .puesto {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
   }
 }
 

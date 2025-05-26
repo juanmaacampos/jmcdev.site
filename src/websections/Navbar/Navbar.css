@@ -11,14 +11,15 @@
 }
 
 .navbar.hidden {
-  top: -80px; /* Adjust this value to hide the navbar completely */
+  top: -80px;
 }
 
+/* Updated navbar container */
 .navbar-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.2rem 4rem;
+  padding: 1.2rem 4rem; /* Increased from 0.8rem to 1.2rem for more height */
   max-width: 1400px;
   margin: 0 auto;
 }
@@ -27,10 +28,11 @@
   cursor: pointer;
   text-transform: uppercase;
   letter-spacing: 1px;
-  height: 40px;
+  height: 45px; /* Increased from 40px to 45px */
   display: flex;
   align-items: center;
-  transition: transform 0.3s ease;  /* Movemos la transición aquí */
+  transition: transform 0.3s ease;
+  margin-right: 1rem;
 }
 
 .logo img {
@@ -42,80 +44,226 @@
   transform: scale(1.1);
 }
 
-.nav-links {
+/* Updated navbar menu */
+.navbar-menu {
   display: flex;
-  gap: 3rem;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1; /* This allows the menu to take available space between logo and language selector */
+}
+
+.navbar-links {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
   align-items: center;
 }
 
-.nav-link {
+.navbar-item {
+  margin: 0 1rem; /* Increased from 0.5rem to 1rem for more spacing between buttons */
+}
+
+.navbar-link {
+  display: inline-block;
   color: white;
   text-decoration: none;
-  font-size: 1.1rem;
+  font-size: 1rem; /* Increased from 0.9rem to 1rem */
   font-weight: 500;
-  transition: all 0.3s ease;
-  padding: 0.5rem 1rem;
+  padding: 0.7rem 1.4rem; /* Increased from 0.5rem 1.2rem to 0.7rem 1.4rem */
   border-radius: 4px;
+  transition: all 0.3s ease;
+  background-color: transparent;
+  border: 1px solid transparent;
 }
 
-.nav-link:hover {
-  background-color: rgba(40, 40, 40, 0.697);
+.navbar-link:hover, 
+.navbar-link:focus {
+  background-color: rgba(85, 211, 196, 0.1);
+  border-color: #55d3c4;
 }
 
-.cta-button {
-  display: none;
+.navbar-link.contact-link {
+  background-color: #55d3c4;
+  color: #181818;
 }
 
-.menu-button {
+.navbar-link.contact-link:hover {
+  background-color: #3dc0b0;
+}
+
+/* Language selector styling - remove absolute positioning */
+.nav-language-selector {
+  margin: 0 0 0 1rem; /* Add margin to the left only */
+  position: static; /* Remove absolute positioning */
+}
+
+/* Hamburger menu */
+.hamburger {
   display: none;
   background: none;
   border: none;
-  color: white;
-  width: 30px;
-  height: 30px;
-  position: relative;
   cursor: pointer;
-  padding: 0;
+  padding: 0.5rem;
+  z-index: 100;
 }
 
-.menu-button::before,
-.menu-button::after,
-.menu-button span {
-  content: '';
+.hamburger span {
   display: block;
-  width: 100%;
+  width: 25px;
   height: 2px;
-  background: white;
-  position: absolute;
-  left: 0;
+  background-color: white;
+  margin: 5px 0;
   transition: all 0.3s ease;
 }
 
-.menu-button::before {
-  top: 5px;
+/* Media queries for responsive design */
+@media (max-width: 992px) {
+  .navbar-container {
+    padding: 1.2rem 2rem;
+  }
+  
+  .navbar-menu {
+    /* margin-left: 1rem; Removed */
+  }
+  
+  .navbar-link {
+    padding: 0.6rem 1rem; /* Increased from 0.5rem 0.8rem */
+    font-size: 0.9rem; /* Increased from 0.85rem */
+  }
+  
+  .navbar-item {
+    margin: 0 0.75rem; /* Added spacing for medium screens */
+  }
+  
+  .nav-language-selector {
+    margin: 0 0.5rem; /* Adjusted margin for mobile view */
+    position: static;
+  }
 }
 
-.menu-button span {
-  top: 14px;
+@media (max-width: 768px) {
+  .navbar-container {
+    padding: 1rem 1.5rem;
+  }
+  
+  .hamburger {
+    display: block;
+  }
+  
+  .navbar-menu {
+    position: fixed;
+    top: 78px; /* Adjusted from 70px to match calculated navbar height (16+45+16+1) */
+    left: 0;
+    right: 0;
+    /* bottom: 0; Removed to allow content below */
+    /* background-color: rgba(23, 23, 23, 0.95); Removed for transparent background */
+    /* backdrop-filter: blur(10px); Removed for transparent background */
+    flex-direction: column;
+    justify-content: flex-start; /* Align items to the top */
+    margin: 0;
+    padding: 0; 
+    transform: translateX(100%);
+    transition: transform 0.3s ease, visibility 0.3s ease; /* Added visibility transition */
+    visibility: hidden;
+    z-index: 999; /* Lowered z-index slightly, ensure hamburger is above if needed */
+    height: auto; /* Changed from calc(100vh - 70px) to auto */
+  }
+  
+  .navbar-menu.open {
+    transform: translateX(0);
+    visibility: visible;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align items to the top */
+    align-items: center;
+    padding: 10px 0; /* Reduced top/bottom padding to bring buttons closer to navbar */
+  }
+  
+  .navbar-menu.open .navbar-links {
+    flex-direction: row !important; /* Ensure it's a row */
+    flex-wrap: wrap !important; /* Allow wrapping if buttons don't fit */
+    justify-content: center; /* Center the buttons */
+    align-items: center;
+    gap: 1rem; /* Increased gap for better spacing */
+    /* width: 100%; Removed */
+    max-width: calc(280px + 5rem); /* Adjusted to fit 4 items (70px each) with 1rem gap and 1rem padding */
+    padding: 1rem; /* Add padding around the links container */
+    margin: 0 auto; /* Added: Ensure the ul itself is centered if parent doesn't use flex align-items:center or if max-width is hit */
+    order: 1; /* Keep this if it's part of a specific layout strategy */
+  }
+  
+  .navbar-menu.open .navbar-item {
+    margin: 0; /* Changed from 0.5rem to 0 to rely on gap for spacing */
+    width: auto;
+  }
+
+  /* Custom styles for nav-buttons inside the open mobile menu */
+  .navbar-menu.open .nav-button {
+    padding: 0.6em 0.4em; /* Adjusted padding */
+    width: 70px;     /* Slightly increased width */
+    height: 70px;    /* Slightly increased height */
+    font-size: 0.6rem;   /* Adjusted font size */
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+    min-width: auto; /* Changed from 0 */
+    min-height: auto; /* Changed from 0 */
+    max-width: none;
+    max-height: none;
+    border-radius: 10px; /* Slightly adjusted border-radius */
+    text-align: center;
+    gap: 0.3em; /* Increased gap */
+    background-color: rgb(20, 22, 28); /* Added opaque background for buttons */
+  }
+
+  .navbar-menu.open .nav-button .nav-icon {
+    font-size: 1.5rem;  /* Increased icon size */
+    margin-bottom: 0.2em; /* Adjusted space */
+    display: block;
+  }
+
+  .navbar-menu.open .nav-button span {
+    display: block;
+    font-size: 0.6rem; /* Adjusted font size */
+    margin: 0;
+    padding: 0;
+    line-height: 1.2; /* Adjusted line-height */
+    text-align: center;
+  }
+  
+  .navbar-link { /* This style might be for desktop, ensure it doesn't conflict or override mobile button styles */
+    display: block; /* If this is for mobile, it might conflict with button layout */
+    text-align: center;
+    width: 100%;
+    padding: 1rem;
+  }
+  
+  /* navbar-actions styles for mobile are removed */
+  /* .navbar-actions { ... } */
+  
+  .nav-language-selector {
+    /* margin: 0.5rem 0 0 0; Original margin for mobile when inside navbar-actions */
+    margin: 0 0.5rem; /* Adjusted margin for mobile view */
+    position: static; /* Ensure it's not absolute in mobile view */
+  }
+  
+  /* Hamburger animation */
+  .hamburger.open span:first-child {
+    transform: translateY(7px) rotate(45deg);
+  }
+  
+  .hamburger.open span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .hamburger.open span:last-child {
+    transform: translateY(-7px) rotate(-45deg);
+  }
 }
 
-.menu-button::after {
-  bottom: 5px;
-}
-
-/* Animación del ícono cuando está activo */
-.menu-button.active::before {
-  transform: translateY(9px) rotate(45deg);
-}
-
-.menu-button.active span {
-  opacity: 0;
-}
-
-.menu-button.active::after {
-  transform: translateY(-9px) rotate(-45deg);
-}
-
+/* Keep existing responsive styles for mobile-nav, etc. */
 .mobile-nav {
   display: none;
 }
@@ -135,7 +283,7 @@
   }
 
   .nav-links {
-    display: none;
+    display: none; /* This should remain none if .navbar-menu is used for mobile */
     position: absolute;
     top: -300px;
     left: 0;
@@ -152,7 +300,7 @@
   }
 
   .nav-links.active {
-    top: 100%;
+    top: 78px; /* Match calculated navbar height, if this style is still in use */
     opacity: 1;
   }
 
@@ -210,7 +358,7 @@
   }
 
   .mobile-menu {
-    display: flex;
+    display: none; /* Ensure this is none if .navbar-menu is the primary mobile menu */
     flex-direction: column;
     position: absolute;
     top: -200px;
@@ -225,38 +373,15 @@
   }
 
   .mobile-menu.active {
-    top: 100%;
+    top: 78px; /* Match calculated navbar height, if this style is still in use */
     opacity: 1;
     visibility: visible;
   }
 
-  .menu-item {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  .menu-item svg {
-    font-size: 1.2rem;
-    color: #55d3c4;
-  }
-
-  .menu-item a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.1rem;
-  }
-
-  .menu-item:hover {
-    background: rgba(255, 255, 255, 0.05);
-  }
-
   .mobile-dropdown {
-    display: block;
+    display: none; /* Ensure this is none if .navbar-menu is the primary mobile menu */
     position: absolute;
-    top: 100%;
+    top: 78px; /* Match calculated navbar height, if this style is still in use */
     left: 0;
     right: 0;
     background: rgba(23, 23, 23, 0.98);

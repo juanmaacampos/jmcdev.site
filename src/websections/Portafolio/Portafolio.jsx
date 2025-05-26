@@ -7,6 +7,8 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import PortafolioBackground from "./PortafolioBackground";
 import ReactGA from 'react-ga'; // Import ReactGA
+import { useLanguage } from "../../context/LanguageContext"; // Import useLanguage
+import { useTranslation } from "../../translations"; // Import useTranslation
 
 // Register the ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -23,70 +25,83 @@ import jmcdevwebThumb from "../../assets/projects_img/jmcdevweb_project.webp";
 import bianSushiThumb from "../../assets/projects_img/bian_project.webp";
 import abcThumb from "../../assets/projects_img/ABC_project.webp";
 
-// Datos de ejemplo de proyectos - ahora todos los videos usan el mismo archivo importado
-const projects = [
+// Base data for projects (non-translatable parts)
+const projectsData = [
   {
     id: 1,
-    name: "Web Portafolio Estandar",
+    key: "portfolio", // Key for translations
     type: "video",
-    media: portfolioVideo, // Usamos la referencia importada
+    media: portfolioVideo,
     thumbnail: portfolioThumb,
     url: "https://juanmaacampos.github.io/juanmacampos-portfolio/",
-    description: "Portafolio digital personal para mostrar tus habilidades y proyectos facilmente.",
   },
-
   {
     id: 2,
-    name: "Web Restaurante Premium",
+    key: "restaurant", // Key for translations
     type: "video",
-    media: saboresVideo, // Usamos la referencia importada
+    media: saboresVideo,
     thumbnail: saboresThumb,
     url: "https://juanmaacampos.github.io/project_rest/",
-    description: "Sitio web para restaurante premium con diseño elegante Y llamativo.",
   },
-        {
+  {
     id: 3,
-    name: "Web DEMO Bian Sushi",
+    key: "demoBianSushi", // Key for translations
     type: "video",
     thumbnail: bianSushiThumb,
     url: "https://jmcdev.site/bian_demo",
-    description: "Demostración de mejora de web mobile para Bian Sushi Campana (NO ES EL RESULTADO FINAL).",
   },
-        {
+  {
     id: 5,
-    name: "Web Business DEMO",
-    type: "video", // Usamos la referencia importada
-    media: abcVideo, // Usamos la referencia importada
+    key: "businessDemo", // Key for translations
+    type: "video",
+    media: abcVideo,
     thumbnail: abcThumb,
     url: "https://juanmaacampos.github.io/ABC_project/",
-    description: "Web para Asnagui Business Consulting elegante y efectiva (NO ES EL RESULTADO FINAL).",
   },
-    {
+  {
     id: 4,
-    name: "Web de marca premium",
-    type: "video", // Usamos la referencia importada
-    media: jmcdevwebVideo, // Usamos la referencia importada
+    key: "brandPremium", // Key for translations
+    type: "video",
+    media: jmcdevwebVideo,
     thumbnail: jmcdevwebThumb,
     url: "https://jmcdev.site/",
-    description: "Pagina web para nuestra marca, enfocada en branding y experiencia visual impactante.",
   },
-
 ];
 
 // Function to track project clicks in Google Analytics using react-ga
-const trackProjectClick = (projectName) => {
+// Updated to handle navigation as well
+const trackProjectClick = (projectName, projectUrl, event) => {
+  // Prevent default behavior if event is provided
+  if (event && event.preventDefault) {
+    event.preventDefault();
+  }
+  
   ReactGA.event({
-    category: 'Portafolio Project', // Category of the event
-    action: 'Click',               // Action that took place
-    label: projectName             // Specific label for the event (e.g., project name)
+    category: 'Portafolio Project',
+    action: 'Click',
+    label: projectName
   });
-  console.log(`ReactGA Event: Clicked on ${projectName}`); // For debugging
+  console.log(`ReactGA Event: Clicked on ${projectName}`);
+  
+  // Handle the navigation in a controlled way
+  if (projectUrl) {
+    window.open(projectUrl, '_blank');
+  }
 };
 
 const Portafolio = () => {
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
   const galleryRef = useRef(null);
+  const { currentLanguage } = useLanguage(); // Get current language
+  const { t } = useTranslation(currentLanguage); // Get translation function
+
+  // Construct projects with translated names and descriptions
+  const projects = projectsData.map(project => ({
+    ...project,
+    name: t(`portafolio.projects.${project.key}.name`),
+    description: t(`portafolio.projects.${project.key}.description`),
+  }));
 
   // Animation for content
   useEffect(() => {
@@ -140,8 +155,9 @@ const Portafolio = () => {
           ref={titleRef}
           style={{ opacity: 1 }}
         >
-          <CoolTitle className={styles.coolTitlePart}>Nuestros <MachineTypeTitle 
-            words={["Proyectos", "Trabajos", "Diseños", "Desarrollos"]} 
+          <CoolTitle className={styles.coolTitlePart}>
+            {t('portafolio.coolTitlePart1')} <MachineTypeTitle 
+            words={t('portafolio.animatedWords').split(',').map(word => word.trim())} 
             typingSpeed={80}
             deletingSpeed={50}
             pause={2000}
@@ -156,7 +172,10 @@ const Portafolio = () => {
           className={`${styles.galleryWrapper} ${styles.visibleContent}`}
           style={{ opacity: 1 }}
         >
-          <VideoGallery projects={projects} onProjectClick={trackProjectClick} />
+          <VideoGallery 
+            projects={projects} 
+            onProjectClick={(name, url, event) => trackProjectClick(name, url, event)} 
+          />
         </div>
       </div>
       <div className={styles.bottomGradient}></div>

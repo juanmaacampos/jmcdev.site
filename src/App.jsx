@@ -1,5 +1,6 @@
 import { useRef } from "react"; 
-import { Routes, Route, useLocation } from "react-router-dom"; // Added useLocation import
+import { Routes, Route, useLocation } from "react-router-dom";
+import { LanguageProvider } from "./context/LanguageContext"; // Add this import
 import Header from "./websections/Header/Header";
 import Navbar from "./websections/Navbar/Navbar";
 import Footer from "./websections/footer/Footer";
@@ -66,23 +67,25 @@ function App() {
 
   // Otherwise, use the PageWrapper for other routes
   return (
-    <PageWrapper>
-      {(contentIsVisible) => (
-        <Routes>
-          <Route 
-            path="/" 
-            element={
-              <MainLayout 
-                contentIsVisible={contentIsVisible} 
-                videoSectionRef={videoSectionRef} 
-                videoOverlayRef={videoOverlayRef} 
-              />
-            } 
-          />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      )}
-    </PageWrapper>
+    <LanguageProvider> {/* Wrap everything in LanguageProvider */}
+      <PageWrapper>
+        {(contentIsVisible) => (
+          <Routes>
+            <Route 
+              path="/" 
+              element={
+                <MainLayout 
+                  contentIsVisible={contentIsVisible} 
+                  videoSectionRef={videoSectionRef} 
+                  videoOverlayRef={videoOverlayRef} 
+                />
+              } 
+            />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        )}
+      </PageWrapper>
+    </LanguageProvider>
   );
 }
 

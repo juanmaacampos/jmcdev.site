@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useState, useEffect } from "react";
+import React, { lazy, Suspense, useState, useEffect, useMemo } from "react";
 import styles from "./Planes.module.css";
 import CoolTitle from "../../components/CoolTitle/CoolTitle";
 import Button from "../../components/Button/Button"; // Import custom Button
@@ -8,6 +8,8 @@ import accelerometerAnimationData from "../../assets/images/accelerometer.json";
 import { ADICIONALES_DATA } from "../../components/AdicionalesCard/AdicionalesCard";
 // Import framer-motion
 import { motion, AnimatePresence } from "framer-motion";
+// Import useLanguageTranslation
+import { useLanguageTranslation } from "../../utils/languageUtils";
 
 // Import the new AdicionalesIconList component
 const AdicionalesIconList = lazy(() => import("../../components/AdicionalesIconList/AdicionalesIconList"));
@@ -15,54 +17,35 @@ const AdicionalesIconList = lazy(() => import("../../components/AdicionalesIconL
 const ParticleBackground = lazy(() => import("../../components/ParticleBackground/ParticleBackground"));
 const Card3D = lazy(() => import("../../components/PlanesCard3d/3dCard"));
 
-const ParticleFallback = () => <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: -1, backgroundColor: 'transparent' }} />;
-const Card3DFallback = () => <div style={{ minHeight: '350px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', background: 'rgba(255,255,255,0.05)', borderRadius: '15px', margin: '10px', padding: '20px', border: '1px solid rgba(255,255,255,0.1)' }}>Cargando plan...</div>;
-// Fallback for AdicionalesIconList
-const AdicionalesIconListFallback = () => <div style={{ minHeight: '100px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', background: 'rgba(10,10,15,0.5)', borderRadius: '8px', margin: '15px 0', padding: '20px' }}>Cargando iconos...</div>;
-
-const planes = [
+// Define plan structure with keys for translation
+const planDefinitions = [
   {
-    nombre: "Web Básica / Landing Page",
-    precio: "$200.000*",
-    descripcion: "Presencia online esencial, portfolios simples o landing pages efectivas.",
-    beneficios: [
-      "Diseño moderno y responsivo",
-      "Formulario de contacto",
-      "Enlaces a redes sociales",
-      "Entrega: 1-2 semanas aprox."
-    ],
+    id: "basic",
     destacado: false,
   },
   {
-    nombre: "Web Estándar / Multi-página",
-    precio: "$350.000*",
-    descripcion: "Sitio web completo con múltiples secciones para pequeñas empresas o servicios.",
-    beneficios: [
-      "Hasta 5 páginas (Ej: Inicio, Servicios, Nosotros, Galería, Contacto)",
-      "Diseño personalizado y adaptado a tu identidad",
-      "Integración básica (Google Maps, etc.)",
-      "Entrega: 2-4 semanas aprox."
-    ],
-    destacado: false, // Puedes cambiar esto a true si quieres destacar este plan
+    id: "standard",
+    destacado: false, 
   },
   {
-    nombre: "Web Premium / Avanzada",
-    precio: "$450.000*",
-    descripcion: "Soluciones web de alto impacto con funcionalidades avanzadas y diseño exclusivo.",
-    beneficios: [
-      "Diseño único y efectos visuales avanzados",
-      "Funcionalidades personalizadas (sliders, galerías interactivas, animaciones)",
-      "Estructura flexible y escalable (múltiples páginas complejas)",
-      "Entrega: desde 4 semanas"
-    ],
+    id: "premium",
     destacado: true,
   },
 ];
 
 export default function Planes() {
+  const { t } = useLanguageTranslation();
+
+  const ParticleFallback = () => <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: -1, backgroundColor: 'transparent' }} />;
+  const Card3DFallback = () => <div style={{ minHeight: '350px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', background: 'rgba(255,255,255,0.05)', borderRadius: '15px', margin: '10px', padding: '20px', border: '1px solid rgba(255,255,255,0.1)' }}>{t('planesSection.loadingPlan')}</div>;
+  const AdicionalesIconListFallback = () => <div style={{ minHeight: '100px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', background: 'rgba(10,10,15,0.5)', borderRadius: '8px', margin: '15px 0', padding: '20px' }}>{t('planesSection.loadingIcons')}</div>;
+
+
   const [iosGlobalPermissionState, setIosGlobalPermissionState] = useState('prompt'); // 'prompt', 'granted', 'denied'
   const [isIOSForPermission, setIsIOSForPermission] = useState(false);
-  const [selectedAdicionalId, setSelectedAdicionalId] = useState(ADICIONALES_DATA[0]?.id || null);
+  
+  const firstEnabledAdicional = useMemo(() => ADICIONALES_DATA.find(ad => ad.id && !ad.disabled), []);
+  const [selectedAdicionalId, setSelectedAdicionalId] = useState(firstEnabledAdicional?.id || null);
 
   useEffect(() => {
     const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
@@ -93,7 +76,35 @@ export default function Planes() {
     />
   );
 
-  const selectedAdicional = ADICIONALES_DATA.find(ad => ad.id === selectedAdicionalId);
+  const planes = useMemo(() => planDefinitions.map(pDef => ({
+    id: pDef.id,
+    nombre: t(`planesSection.planDetails.${pDef.id}.name`),
+    precio: t(`planesSection.planDetails.${pDef.id}.price`),
+    descripcion: t(`planesSection.planDetails.${pDef.id}.description`),
+    beneficios: t(`planesSection.planDetails.${pDef.id}.benefits`), // t() returns the array of translated strings
+    destacado: pDef.destacado,
+  })), [t]);
+
+  const translatedAdicionalesForList = useMemo(() => ADICIONALES_DATA.map(ad => {
+    if (ad.disabled || !ad.id) return ad; // Keep disabled/invalid items as they are
+    return {
+      ...ad,
+      name: t(`planesSection.adicionalesDetails.${ad.id}.name`),
+      // Description is not needed for the icon list itself, but full object is passed
+    };
+  }), [t]);
+
+  const selectedAdicional = useMemo(() => {
+    if (!selectedAdicionalId) return null;
+    const adData = ADICIONALES_DATA.find(ad => ad.id === selectedAdicionalId);
+    if (!adData || adData.disabled || !adData.id) return null;
+    return {
+      ...adData,
+      name: t(`planesSection.adicionalesDetails.${adData.id}.name`),
+      description: t(`planesSection.adicionalesDetails.${adData.id}.description`),
+    };
+  }, [selectedAdicionalId, t]);
+
 
   const contentVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -107,12 +118,12 @@ export default function Planes() {
       <Suspense fallback={<ParticleFallback />}>
         <ParticleBackground />
       </Suspense>
-      <CoolTitle className={styles.titulo}>Planes web que se adaptan a vos</CoolTitle>
+      <CoolTitle className={styles.titulo}>{t('planesSection.mainTitle')}</CoolTitle>
       
       {isIOSForPermission && (iosGlobalPermissionState === 'prompt' || iosGlobalPermissionState === 'granted') && (
         <div className={styles.permissionButtonContainer} style={{ color: '#A3FFE5' }}>
           <Button
-            label={iosGlobalPermissionState === 'granted' ? "¡Move el celu!" : "¡Activar Tarjetas 3D Interactivas!"}
+            label={iosGlobalPermissionState === 'granted' ? t('planesSection.iosButtonGranted') : t('planesSection.iosButtonPrompt')}
             onClick={requestGlobalDeviceOrientationPermission}
             icon={iosGlobalPermissionState === 'prompt' ? <AccelerometerIcon /> : null}
             effect="neon"
@@ -129,7 +140,7 @@ export default function Planes() {
 
       <div className={styles.grid}>
         {planes.map((plan, i) => (
-          <Suspense fallback={<Card3DFallback />} key={i}>
+          <Suspense fallback={<Card3DFallback />} key={plan.id || i}>
             <Card3D
               plan={plan}
               destacado={plan.destacado}
@@ -143,8 +154,8 @@ export default function Planes() {
       <div className={styles.adicionalesSectionWrapper} id="adicionales">
         <div className={styles.adicionalesMainTitleContainer}>
           <h3 className={styles.adicionalesMainTitle}>
-            Personaliza tu plan con adicionales
-            <span className={styles.consultarTextMain}> (consultar precio)</span>
+            {t('planesSection.adicionalesSection.title')}
+            <span className={styles.consultarTextMain}> {t('planesSection.adicionalesSection.consultarPrecio')}</span>
           </h3>
         </div>
 
@@ -153,7 +164,7 @@ export default function Planes() {
           <div className={styles.adicionalesIconPane}>
             <Suspense fallback={<AdicionalesIconListFallback />}>
               <AdicionalesIconList
-                adicionales={ADICIONALES_DATA}
+                adicionales={translatedAdicionalesForList}
                 selectedAdicionalId={selectedAdicionalId}
                 onAdicionalSelect={setSelectedAdicionalId}
                 motionActive={motionActiveForCards} // Pass motion permission state
@@ -183,7 +194,7 @@ export default function Planes() {
                     />
                   ) : (
                     <div className={styles.selectedAdicionalImagePlaceholder}>
-                      Visualización del adicional
+                      {t('planesSection.adicionalVisualizacionPlaceholder')}
                     </div>
                   )}
                 </motion.div>
@@ -196,7 +207,7 @@ export default function Planes() {
                   exit="exit"
                   className={styles.noAdicionalSelectedText}
                 >
-                  Selecciona un adicional de la lista.
+                  {t('planesSection.adicionalSelectPrompt')}
                 </motion.p>
               )}
             </AnimatePresence>
@@ -206,8 +217,11 @@ export default function Planes() {
       {/* End of New Adicionales Section Layout */}
 
       <div className={styles.footerNotes}>
-        <p className={styles.footerNote}>Todos los planes son compatibles con celular y PC.</p>
-        <p className={styles.footerNote}><strong>*Precios referenciales. El costo y tiempo final dependen del proyecto del cliente.</strong></p>
+        <p className={styles.footerNote}>{t('planesSection.footerNote1')}</p>
+        <p 
+          className={styles.footerNote} 
+          dangerouslySetInnerHTML={{ __html: t('planesSection.footerNote2Html') }} 
+        />
       </div>
     </section>
   );

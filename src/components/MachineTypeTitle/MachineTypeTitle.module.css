@@ -12,10 +12,17 @@
   font-size: 5rem;
   line-height: 1.1;
   font-weight: 700;
+  /* Primary approach: direct purple gradient */
   background: linear-gradient(
     45deg,
     #fff 30%,
-    var(--machine-title-gradient, #55d3c4) 100%
+    #a278e3 100%
+  );
+  /* Fallback for when the variable isn't used */
+  background: linear-gradient(
+    45deg,
+    #fff 30%,
+    var(--machine-title-gradient, #a278e3) 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
@@ -34,7 +41,7 @@
   width: 0.3ch;
   height: 1em;
   margin-left: 2px;
-  background: var(--machine-title-gradient, #55d3c4);
+  background: #a278e3; /* Fixed purple color for cursor */
   border-radius: 2px;
   vertical-align: bottom;
   animation: blink 1s steps(1) infinite;

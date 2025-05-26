@@ -27,15 +27,16 @@ const VideoProjectCard = ({ project, onProjectClick }) => {
     setVideoReady(true);
   };
 
-  const handleCardClick = () => {
-    // Call the tracking function before opening the URL
-    if (onProjectClick && project) {
-      onProjectClick(project.name); // Pass the project name for tracking
+  const handleCardClick = (e) => {
+    // If there's an event, prevent default behavior
+    if (e && e.preventDefault) {
+      e.preventDefault();
     }
     
-    // Then, open the project URL
-    if (project && project.url) {
-      window.open(project.url, "_blank", "noopener,noreferrer");
+    // Use the callback function for tracking and navigation
+    if (onProjectClick && project) {
+      // Pass the project name, URL, and event for controlled navigation
+      onProjectClick(project.name, project.url, e);
     }
   };
 
@@ -48,12 +49,14 @@ const VideoProjectCard = ({ project, onProjectClick }) => {
       style={{ y }}
       onClick={handleCardClick}
     >
-      <a
-        href={project.url}
-        target={project.url?.startsWith('http') ? '_blank' : undefined}
-        rel={project.url?.startsWith('http') ? 'noopener noreferrer' : undefined}
-        style={{ display: "block", width: "100%", height: "100%" }}
-        tabIndex={-1}
+      {/* Convert to div to completely avoid anchor tag default behavior */}
+      <div
+        style={{ 
+          display: "block", 
+          width: "100%", 
+          height: "100%",
+          cursor: "pointer"
+        }}
       >
         <motion.div 
           className={styles.imageContainer}
@@ -130,7 +133,7 @@ const VideoProjectCard = ({ project, onProjectClick }) => {
             </motion.div>
           )}
         </AnimatePresence>
-      </a>
+      </div>
     </motion.div>
   );
 };

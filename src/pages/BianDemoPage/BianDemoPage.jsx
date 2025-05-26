@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import './BianDemoPage.css';
+import { LanguageProvider } from "../../context/LanguageContext";
 
 // Import all section components
 import HeaderHero from './websections/HeaderHero/HeaderHero';
@@ -13,6 +14,7 @@ const BianDemoPage = () => {
   const menuRef = useRef(null);
   
   return (
+    <LanguageProvider defaultLanguage="es" disableChanging={true}>
       <div className="sushi-app custom-scrollbar">
         <HeaderHero />
         <main>
@@ -23,6 +25,7 @@ const BianDemoPage = () => {
         <Footer />
         <MobileNav />
       </div>
+    </LanguageProvider>
   );
 };
 

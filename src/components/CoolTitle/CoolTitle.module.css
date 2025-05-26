@@ -1,5 +1,5 @@
 .title {
-  font-size: 5rem; /* Increased from 3.5rem back to original size */
+  font-size: 4.8rem; /* Reduced from 5rem for desktop to help text fit */
   line-height: 1.1;
   margin-bottom: 0.1rem;
   background: linear-gradient(
@@ -11,6 +11,17 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
   font-family: var(--font-headings);
+  overflow-wrap: normal; /* Changed from break-word to prevent "that" from splitting */
+  word-wrap: normal; /* Changed from break-word */
+  white-space: normal; /* Ensure text wraps correctly */
+  display: inline-block; /* Changed from block to inline-block for better text control */
+  box-sizing: border-box; /* Include padding in width calculation */
+}
+
+/* Añadimos clase específica para prevenir ruptura */
+.noWrap {
+  white-space: nowrap;
+  display: inline;
 }
 
 .title span {
@@ -20,19 +31,19 @@
 
 @media (max-width: 1024px) {
   .title {
-    font-size: 4.5rem; /* Increased from 3rem */
+    font-size: 4.5rem; /* Kept original size for this breakpoint */
   }
 }
 
 @media (max-width: 768px) {
   .title {
-    font-size: 3.5rem; /* Increased from 2.2rem */
+    font-size: 3.5rem; /* Kept original size for this breakpoint */
   }
 }
 
 @media (max-width: 480px) {
   .title {
-    font-size: 2.5rem; /* Increased from 1.8rem */
+    font-size: 2.5rem; /* Kept original size for this breakpoint */
   }
 }
 
