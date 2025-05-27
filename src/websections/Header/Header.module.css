@@ -84,7 +84,7 @@
 }
 
 .headerImage:hover {
-  content: url('/src/assets/images/header_img_2.png'); /* Cambia la imagen */
+  content: url('/src/assets/images/header_img_2.webp'); /* Cambia la imagen */
   transform: scale(1.05);
   filter: drop-shadow(0 0 30px rgba(85, 211, 196, 0.4));
 }

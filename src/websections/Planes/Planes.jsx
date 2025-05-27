@@ -140,7 +140,7 @@ export default function Planes() {
 
       <div className={styles.grid}>
         {planes.map((plan, i) => (
-          <Suspense fallback={<Card3DFallback />} key={plan.id || i}>
+          <Suspense fallback={<Card3DFallback />} key={`plan-${plan.id || i}`}>
             <Card3D
               plan={plan}
               destacado={plan.destacado}

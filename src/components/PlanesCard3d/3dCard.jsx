@@ -124,7 +124,7 @@ const Card3D = ({ plan, destacado, motionActive }) => { // Added motionActive pr
         <p className={styles.descripcion}>{plan.descripcion}</p>
         <ul>
           {plan.beneficios.map((b, j) => (
-            <li key={j}>{b}</li>
+            <li key={`benefit-${j}-${b.substring(0, 10)}`}>{b}</li>
           ))}
         </ul>
         <Button 

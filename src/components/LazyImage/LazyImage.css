@@ -1,0 +1,36 @@
+.lazy-image {
+  transition: opacity 0.3s ease;
+}
+
+.lazy-image.loading {
+  opacity: 0.7;
+  background: linear-gradient(90deg, #f0f0f0 25%, transparent 37%, #f0f0f0 63%);
+  background-size: 400% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+.lazy-image.loaded {
+  opacity: 1;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Responsive optimizations */
+@media (max-width: 768px) {
+  .lazy-image {
+    image-rendering: optimizeSpeed;
+  }
+}
+
+@media (min-width: 769px) {
+  .lazy-image {
+    image-rendering: optimizeQuality;
+  }
+}

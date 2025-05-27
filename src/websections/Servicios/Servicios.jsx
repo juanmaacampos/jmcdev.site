@@ -16,15 +16,17 @@ import lottieDesign from "../../assets/images/modals_assets/design.json";
 import lottieHosting from "../../assets/images/modals_assets/hosting.json";
 import lottieSupport from "../../assets/images/modals_assets/support.json";
 
-import imgDesarrolloWeb from "../../assets/images/modals_assets/desarrollo_web.png";
+import imgDesarrolloWeb from "../../assets/images/modals_assets/desarrollo_web.webp";
 import imgRedes from "../../assets/images/modals_assets/redes.webp";
-import imgCamera from "../../assets/images/modals_assets/camera.png";
-import imgDiseno from "../../assets/images/modals_assets/diseño.jpg";
+import imgCamera from "../../assets/images/modals_assets/camera.webp";
+import imgDiseno from "../../assets/images/modals_assets/diseño.webp";
 import imgHosting from "../../assets/images/modals_assets/hosting.webp";
-import imgMantenimiento from "../../assets/images/modals_assets/mantenimiento.png";
+import imgMantenimiento from "../../assets/images/modals_assets/mantenimiento.webp";
 
-import parallaxVideo from "../../assets/videos/parallax_servicio.mp4";
-import parallaxPoster from "../../assets/images/parallax_service.png";
+import parallaxVideoWebm from "../../assets/videos/parallax_servicio.webm";
+import parallaxVideoMp4 from "../../assets/videos/parallax_servicio.mp4";
+import parallaxPoster from "../../assets/images/parallax_service.webp";
+import { getVideoFormat } from "../../utils/browserDetection";
 
 const ServicioCard = lazy(() => import("../../components/ServicioCard/ServicioCard"));
 
@@ -32,6 +34,10 @@ const CardFallback = ({ t }) => <div style={{ minHeight: '300px', display: 'flex
 
 export default function Servicios() {
   const { currentLanguage, t } = useLanguageTranslation(); // Get both currentLanguage and t directly from useLanguageTranslation
+
+  // Get the appropriate video format based on browser
+  const parallaxVideo = getVideoFormat(parallaxVideoWebm, parallaxVideoMp4);
+  const videoType = parallaxVideo.includes('.mp4') ? 'video/mp4' : 'video/webm';
 
   const [cursor, setCursor] = useState({ x: 0, y: 0, visible: false });
   const [maskActive, setMaskActive] = useState(false); // Nuevo estado
@@ -168,6 +174,7 @@ export default function Servicios() {
           <video
             className={styles.parallaxVideo}
             src={parallaxVideo}
+            type={videoType}
             autoPlay
             loop
             muted
@@ -230,7 +237,7 @@ export default function Servicios() {
       descripcion={t('services.cards.webDevelopment.description')}
       playInitialAnimation={animateFirstCard} // Pass the new prop
       modalData={{
-        title: <h1>{t('services.cards.webDevelopment.modal.title')}</h1>,
+        title: t('services.cards.webDevelopment.modal.title'), // Remove the wrapping <h1> element
         description: t('services.cards.webDevelopment.modal.description'),
         image: { src: imgDesarrolloWeb, alt: "Desarrollo Web" },
         tabs: [

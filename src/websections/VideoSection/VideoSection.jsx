@@ -1,10 +1,17 @@
 import React, { forwardRef } from 'react';
 import styles from './VideoSection.module.css';
-// IMPORTANT: Ensure your video is at 'src/assets/videos/parallax_servicio.mp4'
-import videoBgPath from '../../assets/videos/parallax_servicio.mp4'; 
+import { getVideoFormat } from '../../utils/browserDetection';
+
+// Import both video formats
+import videoBgPathWebm from '../../assets/videos/parallax_servicio.webm';
+import videoBgPathMp4 from '../../assets/videos/parallax_servicio.mp4';
 
 // Modified to accept an overlayRef prop
 const VideoSection = forwardRef(({ overlayRef }, sectionRef) => {
+  // Get the appropriate video format based on browser
+  const videoSrc = getVideoFormat(videoBgPathWebm, videoBgPathMp4);
+  const videoType = videoSrc.includes('.mp4') ? 'video/mp4' : 'video/webm';
+
   return (
     <section ref={sectionRef} className={styles.videoSectionContainer} id="video-section">
       <video
@@ -13,8 +20,8 @@ const VideoSection = forwardRef(({ overlayRef }, sectionRef) => {
         loop
         muted
         playsInline
-        src={videoBgPath}
-        type="video/mp4"
+        src={videoSrc}
+        type={videoType}
       />
       {/* Attach the passed overlayRef here */}
       <div

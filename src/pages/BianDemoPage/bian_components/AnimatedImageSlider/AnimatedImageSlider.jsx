@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useIsMobile } from '../../../../hooks/useMediaQuery';
+import LazyImage from '../../../../components/LazyImage/LazyImage';
 import styles from './AnimatedImageSlider.module.css';
 
 const AnimatedImageSlider = ({
@@ -15,8 +17,8 @@ const AnimatedImageSlider = ({
   const [animating, setAnimating] = useState(false);
   const timeoutRef = useRef();
   const containerRef = useRef(null);
-  const imgRef = useRef();
   const imageWrapperRef = useRef(null);
+  const isMobile = useIsMobile();
 
   const entranceAnimationDuration = 700;
 
@@ -38,7 +40,10 @@ const AnimatedImageSlider = ({
     };
   }, [current, interval, images.length, entranceAnimationDuration]);
 
+  // Solo activar parallax en desktop
   useEffect(() => {
+    if (isMobile) return;
+    
     const parallaxTargetNode = imageWrapperRef.current;
     const eventListenerNode = containerRef.current;
 
@@ -63,7 +68,7 @@ const AnimatedImageSlider = ({
       }
     };
 
-    eventListenerNode.addEventListener('mousemove', handleMove);
+    eventListenerNode.addEventListener('mousemove', handleMove, { passive: true });
     eventListenerNode.addEventListener('mouseleave', reset);
 
     return () => {
@@ -73,7 +78,7 @@ const AnimatedImageSlider = ({
         parallaxTargetNode.style.transform = '';
       }
     };
-  }, [animationType, current]);
+  }, [animationType, current, isMobile]);
 
   if (!images.length) return null;
 
@@ -133,13 +138,14 @@ const AnimatedImageSlider = ({
         className={styles.imageWrapper}
         style={imageWrapperStyle}
       >
-        <img
-          ref={imgRef}
+        <LazyImage
           src={currentImage.src}
           alt={currentImage.alt || ''}
           className={`${styles.sliderImage} ${entranceAnimClass} ${staticAnimClass}`}
           style={imageStyle}
-          draggable={false}
+          loading="eager"
+          // Precargar solo la primera imagen
+          {...(current === 0 ? { fetchPriority: "high" } : {})}
         />
       </div>
     </div>

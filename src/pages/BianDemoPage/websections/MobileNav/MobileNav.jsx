@@ -1,57 +1,82 @@
 import React, { useState, useEffect } from 'react';
+import { useIsMobile } from '../../../../hooks/useMediaQuery';
 import './MobileNav.css';
-// Assuming you're using a library like react-icons
-import { FaHome, FaUtensils, FaMapMarkerAlt, FaPhone } from 'react-icons/fa';
+import { 
+  FaHome, 
+  FaUtensils, 
+  FaMapMarkerAlt, 
+  FaPhone 
+} from 'react-icons/fa';
 
 const MobileNav = () => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const isMobile = useIsMobile();
+
+  // Solo renderizar en mobile
+  if (!isMobile) return null;
 
   useEffect(() => {
     const handleScroll = () => {
-      // Show nav when scrolled past the hero section (using viewport height)
-      const scrollThreshold = window.innerHeight * 0.7; // 70% of viewport height
+      const currentScrollY = window.scrollY;
       
-      // Check if user has scrolled to the footer
-      const footer = document.querySelector('footer');
-      const isAtFooter = footer && 
-        window.scrollY + window.innerHeight >= footer.offsetTop;
-      
-      // Show nav only if scrolled past threshold AND not at the footer
-      if (window.scrollY > scrollThreshold && !isAtFooter) {
-        setIsVisible(true);
-      } else {
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
         setIsVisible(false);
+      } else {
+        setIsVisible(true);
       }
+      
+      setLastScrollY(currentScrollY);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    
-    // Initial check on mount
-    handleScroll();
-    
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
+
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <nav className={`mobile-nav ${isVisible ? 'visible' : 'hidden'}`}>
-      <a href="#" className="nav-item">
+      <button 
+        className="nav-item" 
+        onClick={() => scrollToSection('top')}
+        aria-label="Inicio"
+      >
         <FaHome />
         <span>Inicio</span>
-      </a>
-      <a href="#menu" className="nav-item">
+      </button>
+      
+      <button 
+        className="nav-item" 
+        onClick={() => scrollToSection('menu')}
+        aria-label="Menú"
+      >
         <FaUtensils />
         <span>Menú</span>
-      </a>
-      <a href="#location" className="nav-item">
+      </button>
+      
+      <button 
+        className="nav-item" 
+        onClick={() => scrollToSection('location')}
+        aria-label="Ubicación"
+      >
         <FaMapMarkerAlt />
         <span>Ubicación</span>
-      </a>
-      <a href="#contacto" className="nav-item">
+      </button>
+      
+      <button 
+        className="nav-item" 
+        onClick={() => scrollToSection('contact')}
+        aria-label="Contacto"
+      >
         <FaPhone />
         <span>Contacto</span>
-      </a>
+      </button>
     </nav>
   );
 };

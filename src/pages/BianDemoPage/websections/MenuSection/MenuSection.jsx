@@ -162,7 +162,7 @@ const MenuSection = ({ menuRef }) => {
         >
           {menuData.categories.map(category => (
             <button 
-              key={category.id} 
+              key={`category-${category.id}`} 
               className={`category-filter ${activeCategory === category.id ? 'active' : ''}`}
               onClick={() => handleCategoryChange(category.id)}
             >

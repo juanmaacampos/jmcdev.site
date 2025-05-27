@@ -69,7 +69,7 @@ export default function CardModal({
           >
             {tabs.map((tab, idx) => (
               <Button
-                key={tab.label}
+                key={`tab-${idx}-${tab.label || ''}`}
                 label={tab.label}
                 icon={tab.icon}
                 effect="neon"

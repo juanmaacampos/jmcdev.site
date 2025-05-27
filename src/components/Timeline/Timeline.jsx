@@ -44,7 +44,7 @@ export default function Timeline({ items }) {
       className={`${styles.pasosGrid} ${isTimelineActive ? styles.timelineActive : ''}`}
     >
       {items.map((item, index) => (
-        <div className={styles.pasoItemContainer} key={index}>
+        <div className={styles.pasoItemContainer} key={`step-${item.titulo}-${index}`}>
           <div
             className={styles.pasoCard}
             data-aos={index % 2 === 0 ? "fade-right" : "fade-left"}

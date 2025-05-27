@@ -17,6 +17,32 @@ export default function ServicioCard({ icon, svg, titulo, descripcion, modalData
     }
   });
 
+  // Add schema data to document head instead of inline in component
+  useEffect(() => {
+    // Create unique ID for this schema element to avoid duplicates
+    const schemaId = `schema-${titulo.toLowerCase().replace(/\s+/g, '-')}`;
+    
+    // Check if schema already exists
+    let scriptElement = document.getElementById(schemaId);
+    
+    if (!scriptElement) {
+      // Create and append the script element if it doesn't exist
+      scriptElement = document.createElement('script');
+      scriptElement.id = schemaId;
+      scriptElement.type = 'application/ld+json';
+      scriptElement.textContent = serviceSchema;
+      document.head.appendChild(scriptElement);
+    }
+    
+    // Clean up when component unmounts
+    return () => {
+      const scriptToRemove = document.getElementById(schemaId);
+      if (scriptToRemove) {
+        document.head.removeChild(scriptToRemove);
+      }
+    };
+  }, [titulo, descripcion, serviceSchema]);
+
   useEffect(() => {
     const cardBackEl = cardBackRef.current;
     if (!cardBackEl || !flipped) {
@@ -146,7 +172,6 @@ export default function ServicioCard({ icon, svg, titulo, descripcion, modalData
       itemScope 
       itemType="https://schema.org/Service"
     >
-      <script type="application/ld+json">{serviceSchema}</script>
       <div className={styles.cardInner}>
         {/* Frente */}
         <div className={styles.cardFront}>
@@ -181,7 +206,7 @@ export default function ServicioCard({ icon, svg, titulo, descripcion, modalData
           {modalData?.tabs && modalData.tabs.length > 0 && (
             <div className={styles.cardBackTabs}>
               {modalData.tabs.map((tab, i) => (
-                <div key={i} className={styles.cardBackTab}>
+                <div key={`tab-${i}`} className={styles.cardBackTab}>
                   {tab.icon && <span className={styles.cardBackTabIcon}>{tab.icon}</span>}
                   <span className={styles.cardBackTabLabel}>{tab.label}</span>
                   <div className={styles.cardBackTabContent}>{tab.content}</div>

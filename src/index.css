@@ -22,3 +22,17 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-headings);
 }
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: attr(width) / attr(height);
+}
+
+.logo-container {
+  position: relative;
+  width: 200px;
+  height: 80px;
+  overflow: hidden;
+}

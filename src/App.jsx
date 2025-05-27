@@ -1,4 +1,4 @@
-import { useRef } from "react"; 
+import { useRef, useState, useEffect } from "react"; 
 import { Routes, Route, useLocation } from "react-router-dom";
 import { LanguageProvider } from "./context/LanguageContext"; // Add this import
 import Header from "./websections/Header/Header";
@@ -21,7 +21,7 @@ import BianDemoPage from "./pages/BianDemoPage/BianDemoPage"; // Import the new 
 import VideoMaskEffect from "./components/VideoMaskEffect/VideoMaskEffect";
 import PageWrapper from "./components/PageWrapper/PageWrapper"; // Import the new component
 import AnimatedBackgroundSvg from "./components/AnimatedBackgroundSvg/AnimatedBackgroundSvg"; // Import the new component
-import logoAnimatedSvg from './assets/images/logoanimated.svg'; // Import the SVG
+import logoImage from './assets/images/logoanimated.svg'; // Updated logo path
 
 // gsap.registerPlugin(ScrollTrigger); // Moved to PageWrapper
 
@@ -44,7 +44,7 @@ const MainLayout = ({ contentIsVisible, videoSectionRef, videoOverlayRef }) => (
     <Footer />
     <TopButton /> {/* Add TopButton component here */}
     <AnimatedBackgroundSvg
-      svgPaths={[logoAnimatedSvg, logoAnimatedSvg, logoAnimatedSvg]} // Pass an array of SVGs
+      svgPaths={[logoImage, logoImage, logoImage]} // Updated logo references
       startTriggerId="planes"
       endTriggerId="contacto"
       contentIsVisible={contentIsVisible}
@@ -56,7 +56,9 @@ function App() {
   const videoSectionRef = useRef(null);
   const videoOverlayRef = useRef(null);
   const location = useLocation(); // Get current location
-  
+  const [logoLoaded, setLogoLoaded] = useState(false);
+  const [logoSrc, setLogoSrc] = useState(logoImage);
+
   // Check if we're on the BianDemoPage route
   const isBianDemoRoute = location.pathname === '/bian_demo';
 
@@ -66,6 +68,37 @@ function App() {
   }
 
   // Otherwise, use the PageWrapper for other routes
+  useEffect(() => {
+    // Crear una nueva imagen y cargarla en segundo plano
+    const img = new Image();
+    const newLogoSrc = './assets/images/logo.svg';
+    
+    img.onload = () => {
+      setLogoSrc(newLogoSrc);
+      setLogoLoaded(true);
+    };
+    
+    img.src = newLogoSrc;
+    
+    // Opcional: Usar Intersection Observer para cargar solo cuando sea visible
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          img.src = newLogoSrc;
+        }
+      });
+    }, {rootMargin: "200px"});
+    
+    const headerElement = document.getElementById('site-header');
+    if (headerElement) {
+      observer.observe(headerElement);
+    }
+    
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
     <LanguageProvider> {/* Wrap everything in LanguageProvider */}
       <PageWrapper>

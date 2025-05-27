@@ -4,16 +4,18 @@ import IconLink from '../../components/IconLink/IconLink';
 import { FaWhatsapp, FaInstagram, FaLinkedinIn, FaGithub } from 'react-icons/fa';
 import { BsBriefcase } from 'react-icons/bs';
 import styles from './Footer.module.css';
+import { useLanguageTranslation } from '../../utils/languageUtils'; // Import the translation hook
 
 
 const Footer = () => {
+    const { t } = useLanguageTranslation(); // Get the translation function
     const currentYear = new Date().getFullYear();
 
     return (
         <footer className={styles.footer}>
             <div className={styles.footerSection}>
                 <p className={styles.copyright}>
-                    <span>{currentYear}</span> JMCdev | © Todos los derechos reservados
+                    <span>{currentYear}</span> | © JMCdev {t('footer.copyright')}
                 </p>
             </div>
             

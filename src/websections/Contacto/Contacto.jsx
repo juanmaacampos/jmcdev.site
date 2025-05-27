@@ -607,7 +607,7 @@ export default function Contacto() {
                           >
                             {ADICIONALES_DATA.filter(adicional => !adicional.disabled && adicional.id).map(adicional => (
                               <div
-                                key={adicional.id}
+                                key={`adicional-${adicional.id}`}
                                 className={`${styles.adicionalDropdownItem} ${formData.selectedAdicionales.includes(adicional.id) ? styles.adicionalDropdownItemSelected : ''}`}
                                 onClick={() => handleAdicionalToggle(adicional.id)}
                               >

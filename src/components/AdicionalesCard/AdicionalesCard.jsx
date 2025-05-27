@@ -1,31 +1,36 @@
-import fotosImg from '../../assets/images/adicionales_img/fotos.jpeg';
-import feedImg from '../../assets/images/adicionales_img/feed.png';
-import soporteImg from '../../assets/images/adicionales_img/soporte.jpg';
+import fotosImg from '../../assets/images/adicionales_img/fotos.webp';
+import feedImg from '../../assets/images/adicionales_img/feed.webp';
+import soporteImg from '../../assets/images/adicionales_img/soporte.webp';
 import idiomasImg from '../../assets/images/adicionales_img/idiomas.webp';
-import analiticasImg from '../../assets/images/adicionales_img/analiticas.jpg';
-import galeriaImg from '../../assets/images/adicionales_img/galeria.png';
+import analiticasImg from '../../assets/images/adicionales_img/analiticas.webp';
+import galeriaImg from '../../assets/images/adicionales_img/galeria.webp';
 import mapsImg from '../../assets/images/adicionales_img/maps.webp';
-import modosImg from '../../assets/images/adicionales_img/modos.png';
+import modosImg from '../../assets/images/adicionales_img/modos.webp';
 
 export const ADICIONALES_DATA = [
   {
-    disabled: true
+    disabled: true,
+    id: "placeholder-1"  // Added unique ID
   },
   {
-    disabled: true
+    disabled: true,
+    id: "placeholder-2"  // Added unique ID
   },
   {
-    disabled: true
+    disabled: true,
+    id: "placeholder-3"  // Added unique ID
   },
   {
-    disabled: true
+    disabled: true,
+    id: "placeholder-4"  // Added unique ID
   },
   {
     id: "fotos",
     name: "Fotografías profesionales", // Shorter name for list
     description: "*Precio a definir con el cliente* | Renueva las fotos de tu local de una manera moderna. Ofrecemos fotos en full HD tomadas con cámara réflex, totalmente adaptables a tu página web y redes sociales con un impacto visual inmediato.",
     imageSrc: fotosImg, // Using imported image
-    icon: "FaCamera" // Replaced emoji
+    icon: "FaCamera", // Replaced emoji
+    tKey: "planesSection.adicionalesDetails.fotos.name" // Added translation key
   },
   {
     id: "feed",
@@ -81,7 +86,7 @@ export const ADICIONALES_DATA = [
 // Ejemplo de renderizado de cards (ajusta según tu implementación real)
 {ADICIONALES_DATA.map((item, idx) => (
   <div
-    key={idx}
+    key={`adicional-card-${item.id || idx}`}
     style={item.disabled ? { visibility: "hidden" } : {}}
     onClick={e => {
       if (item.disabled) {

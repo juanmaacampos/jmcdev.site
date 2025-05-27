@@ -46,7 +46,7 @@ const LanguageSelector = () => {
         <div className={styles.dropdown}>
           {availableLanguages.map((language) => (
             <button
-              key={language.code}
+              key={`lang-${language.code}`}
               className={`${styles.languageOption} ${
                 currentLanguage === language.code ? styles.active : ''
               }`}

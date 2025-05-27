@@ -9,7 +9,7 @@ import { useLanguage } from '../../context/LanguageContext';
 import { useLanguageTranslation } from '../../utils/languageUtils'; // Replace previous import
 
 // Import header image
-import headerImage from '../../assets/images/header_img.png';
+import headerImage from '../../assets/images/header_img.webp';
 
 const ParticleBackground = lazy(() => import('../../components/ParticleBackground/ParticleBackground'));
 

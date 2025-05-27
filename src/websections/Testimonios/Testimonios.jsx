@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Testimonios.module.css";
 import CoolTitle from "../../components/CoolTitle/CoolTitle";
 import { useLanguageTranslation } from "../../utils/languageUtils";
-import userPlaceholder from "../../assets/images/user_placeholder.png"; // Import the new placeholder
+import userPlaceholder from "../../assets/images/user_placeholder.webp";
 
 export default function Testimonios() {
   const { t } = useLanguageTranslation();
@@ -19,7 +19,7 @@ export default function Testimonios() {
         <CoolTitle className={styles.titulo}>{t('testimonios.title')}</CoolTitle>
         <div className={styles.grid}>
           {testimoniosList.map((testimonio, i) => (
-            <div className={styles.testimonioCard} key={i}>
+            <div className={styles.testimonioCard} key={`testimonio-${i}-${testimonio.name}`}>
               <img
                 src={testimonio.imagenUrl || userPlaceholder}
                 alt={`Foto de ${testimonio.name}`}

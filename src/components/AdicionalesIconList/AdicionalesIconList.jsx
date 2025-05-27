@@ -1,13 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react';
-import styles from './AdicionalesIconList.module.css';
-import { useAnimation, motion } from 'framer-motion'; // Import motion from framer-motion
+import { useAnimation, motion } from 'framer-motion';
 import { AnimatePresence, motion as motionDiv } from 'framer-motion';
+import { useIsMobile } from '../../hooks/useMediaQuery';
+import { MobileOnly, DesktopOnly } from '../ConditionalRender/ConditionalRender';
+import styles from './AdicionalesIconList.module.css';
 import {
   FaCamera, FaInstagram, FaTools, FaGlobeAmericas,
-  FaChartBar, FaImages, FaMapMarkedAlt, FaAdjust, FaEllipsisH, FaChevronRight
+  FaChartBar, FaImages, FaMapMarkedAlt, FaAdjust, FaChevronRight
 } from 'react-icons/fa';
 
-// Mapa de iconos para renderizar el correcto según el string en ADICIONALES_DATA
 const iconMap = {
   "FaCamera": FaCamera,
   "FaInstagram": FaInstagram,
@@ -19,40 +20,39 @@ const iconMap = {
   "FaAdjust": FaAdjust
 };
 
-const AdicionalIcon = ({ adicional, isSelected, onSelect, motionActive, isMobile }) => {
+const AdicionalIcon = ({ adicional, isSelected, onSelect, motionActive }) => {
   const cardRef = useRef(null);
-  
-  // Solo activar efecto 3D en desktop
-  const isPCView = window.matchMedia('(min-width: 993px)').matches;
+  const isMobile = useIsMobile();
   
   const handleMouseMove = (e) => {
-    if (!isPCView || !motionActive || !cardRef.current) return;
+    // Solo aplicar efectos 3D en desktop
+    if (isMobile || !motionActive || !cardRef.current) return;
     
     const card = cardRef.current;
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
     
-    // Calcular rotación basada en la posición del mouse
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
     const rotateX = (y - centerY) / 10 * -1;
     const rotateY = (x - centerX) / 10;
     
-    card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+    requestAnimationFrame(() => {
+      card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+    });
   };
   
   const handleMouseLeave = () => {
-    if (!isPCView || !motionActive || !cardRef.current) return;
-    cardRef.current.style.transform = 'perspective(800px) rotateX(0) rotateY(0) scale(1)';
+    if (isMobile || !motionActive || !cardRef.current) return;
+    requestAnimationFrame(() => {
+      cardRef.current.style.transform = 'perspective(800px) rotateX(0) rotateY(0) scale(1)';
+    });
   };
   
-  // Obtener el componente de icono adecuado
   const IconComponent = iconMap[adicional.icon];
-
   const isDisabled = adicional.disabled;
 
-  // En móviles, no renderizar si está disabled
   if (isMobile && isDisabled) return null;
 
   return (
@@ -82,76 +82,62 @@ const AdicionalesIconList = ({ adicionales, selectedAdicionalId, onAdicionalSele
   const controls = useAnimation();
   const [containerHeight, setContainerHeight] = useState(0);
   const [contentHeight, setContentHeight] = useState(0);
+  const isMobile = useIsMobile();
   
-  // Verificar si estamos en vista móvil
-  const isMobile = window.matchMedia('(max-width: 992px)').matches;
-  
-  // Filtra los adicionales no deshabilitados para contar cuántos se muestran en móvil
   const enabledAdicionales = adicionales.filter(a => !a.disabled);
-
-  // Estado para mostrar/ocultar el hint
   const [showSwipeHint, setShowSwipeHint] = useState(enabledAdicionales.length > 4);
 
-  // Oculta el hint al hacer scroll horizontal en móvil
   const handleMobileScroll = () => {
     if (showSwipeHint) setShowSwipeHint(false);
   };
 
-  // Si el número de adicionales cambia, vuelve a mostrar el hint si corresponde
   useEffect(() => {
     setShowSwipeHint(enabledAdicionales.length > 4);
   }, [enabledAdicionales.length]);
 
-  // Effect for calculating container and content heights
+  // Desktop scroll effects
   useEffect(() => {
     if (isMobile || !containerRef.current || !iconsContainerRef.current) return;
     
     const calculateHeights = () => {
-      // Usa getBoundingClientRect para mayor precisión con transform
       const currentContainerHeight = containerRef.current.getBoundingClientRect().height;
       const currentContentHeight = iconsContainerRef.current.getBoundingClientRect().height;
       setContainerHeight(currentContainerHeight);
       setContentHeight(currentContentHeight);
     };
+    
     calculateHeights();
-    window.addEventListener('resize', calculateHeights);
-    // Recalcula si cambia el número de adicionales
+    window.addEventListener('resize', calculateHeights, { passive: true });
     return () => window.removeEventListener('resize', calculateHeights);
   }, [isMobile, adicionales.length]);
 
-  // Ensure the content starts at the top when first rendered or when switching to desktop
   useEffect(() => {
     if (!isMobile) {
       controls.start({ y: 0 });
-      // Scroll to top visually as well (in case of manual scroll)
       if (iconsContainerRef.current) {
         iconsContainerRef.current.scrollTop = 0;
       }
     }
   }, [controls, isMobile, adicionales.length]);
   
-  // Handle mouse movement for vertical scrolling (only on desktop)
   const handleMouseMove = (e) => {
     if (isMobile || !containerRef.current || !iconsContainerRef.current) return;
     if (contentHeight <= containerHeight) {
       controls.start({ y: 0, transition: { duration: 0.1 } });
       return;
     }
+    
     const { clientY } = e;
     const { top, height: currentContainerHeight } = containerRef.current.getBoundingClientRect();
     let normalizedY = (clientY - top) / currentContainerHeight;
     normalizedY = Math.max(0, Math.min(1, normalizedY));
     const maxScroll = contentHeight - currentContainerHeight;
     const targetY = -normalizedY * maxScroll;
+    
     controls.start({
       y: targetY,
       transition: { type: "tween", ease: "linear", duration: 0.1 },
     });
-  };
-
-  const handleMouseLeaveContainer = () => {
-    // Opcional: puedes dejar el scroll donde está, o volver al inicio
-    // controls.start({ y: 0, transition: { duration: 0.2 } });
   };
 
   if (!adicionales || adicionales.length === 0) {
@@ -163,83 +149,77 @@ const AdicionalesIconList = ({ adicionales, selectedAdicionalId, onAdicionalSele
       ref={containerRef}
       className={styles.iconListContainer}
       onMouseMove={!isMobile ? handleMouseMove : undefined}
-      onMouseLeave={!isMobile ? handleMouseLeaveContainer : undefined} // Added mouse leave handler
     >
-      {isMobile ? (
-        <>
-          <div
-            className={styles.mobileIconsContainer}
-            onScroll={handleMobileScroll}
-            style={{ position: "relative" }}
-          >
-            {adicionales.map(adicional => (
-              <AdicionalIcon
-                key={adicional.id}
-                adicional={adicional}
-                isSelected={selectedAdicionalId === adicional.id}
-                onSelect={onAdicionalSelect}
-                motionActive={false} // No 3D effects on mobile
-                isMobile={true}
-              />
-            ))}
-            {enabledAdicionales.length > 4 && (
-              <AnimatePresence>
-                {showSwipeHint && (
-                  <motionDiv.div
-                    className={styles.swipeHintOverlay}
-                    initial={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: 60 }}
-                    transition={{ duration: 0.4, ease: "easeInOut" }}
-                    style={{
-                      right: 0,
-                      left: "auto",
-                      top: "50%",
-                      transform: "translateY(-50%)",
-                      position: "absolute",
-                      display: "flex",
-                      alignItems: "center",
-                      background: "var(--color-bg-secondary, #55D3C4",
-                      color: "var(--color-text, #222)",
-                      padding: "0.4em 1.1em 0.4em 1.2em",
-                      borderRadius: "1.2em 0 0 1.2em",
-                      boxShadow: "0 2px 12px 0 rgba(0,0,0,0.10)",
-                      fontWeight: 500,
-                      fontSize: "1em",
-                      letterSpacing: "0.01em",
-                      border: "1px solid var(--color-border,rgb(255, 255, 255))",
-                      zIndex: 2,
-                      pointerEvents: "none", // para que no tape el scroll
-                      userSelect: "none"
-                    }}
-                  >
-                    <span style={{ marginRight: 10, fontSize: "0.97em" }}>Desliza para ver más</span>
-                    <FaChevronRight className={styles.swipeArrow} style={{ fontSize: "1.2em" }} />
-                  </motionDiv.div>
-                )}
-              </AnimatePresence>
-            )}
-          </div>
-        </>
-      ) : (
-        // Desktop: Mouse-controlled vertical scroll with animated motion
+      <MobileOnly>
+        <div
+          className={styles.mobileIconsContainer}
+          onScroll={handleMobileScroll}
+          style={{ position: "relative" }}
+        >
+          {adicionales.map((adicional, index) => (
+            <AdicionalIcon
+              key={`adicional-icon-${adicional.id || `placeholder-${index}`}`}
+              adicional={adicional}
+              isSelected={selectedAdicionalId === adicional.id}
+              onSelect={onAdicionalSelect}
+              motionActive={false}
+            />
+          ))}
+          {enabledAdicionales.length > 4 && (
+            <AnimatePresence>
+              {showSwipeHint && (
+                <motionDiv.div
+                  className={styles.swipeHintOverlay}
+                  initial={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 60 }}
+                  transition={{ duration: 0.4, ease: "easeInOut" }}
+                  style={{
+                    right: 0,
+                    left: "auto",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    position: "absolute",
+                    display: "flex",
+                    alignItems: "center",
+                    background: "#55D3C4",
+                    color: "#222",
+                    padding: "0.4em 1.1em 0.4em 1.2em",
+                    borderRadius: "1.2em 0 0 1.2em",
+                    boxShadow: "0 2px 12px 0 rgba(0,0,0,0.10)",
+                    fontWeight: 500,
+                    fontSize: "1em",
+                    zIndex: 2,
+                    pointerEvents: "none",
+                    userSelect: "none"
+                  }}
+                >
+                  <span style={{ marginRight: 10, fontSize: "0.97em" }}>Desliza para ver más</span>
+                  <FaChevronRight className={styles.swipeArrow} style={{ fontSize: "1.2em" }} />
+                </motionDiv.div>
+              )}
+            </AnimatePresence>
+          )}
+        </div>
+      </MobileOnly>
+
+      <DesktopOnly>
         <motion.div
           ref={iconsContainerRef}
           className={styles.desktopIconsContainer}
           animate={controls}
-          initial={{ y: 0 }} // Ensure it starts at y:0
+          initial={{ y: 0 }}
         >
-          {adicionales.map(adicional => (
+          {adicionales.map((adicional, index) => (
             <AdicionalIcon
-              key={adicional.id}
+              key={`adicional-${adicional.id || `placeholder-${index}`}`}
               adicional={adicional}
               isSelected={selectedAdicionalId === adicional.id}
               onSelect={onAdicionalSelect}
               motionActive={motionActive}
-              isMobile={false}
             />
           ))}
         </motion.div>
-      )}
+      </DesktopOnly>
     </div>
   );
 };

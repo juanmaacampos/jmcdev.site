@@ -391,13 +391,7 @@ export const translations = {
     
     // Footer
     footer: {
-      description: "Transformamos ideas en experiencias digitales exitosas",
-      quickLinks: "Enlaces Rápidos",
-      services: "Servicios",
-      contact: "Contacto",
-      social: "Síguenos",
-      copyright: "© 2024 JMCdev. Todos los derechos reservados.",
-      madeWith: "Hecho con ❤️ en Argentina"
+      copyright: "Todos los derechos reservados."
     },
     
     // Common
@@ -889,13 +883,7 @@ export const translations = {
     
     // Footer
     footer: {
-      description: "We transform ideas into successful digital experiences",
-      quickLinks: "Quick Links",
-      services: "Services",
-      contact: "Contact",
-      social: "Follow Us",
-      copyright: "© 2024 JMCdev. All rights reserved.",
-      madeWith: "Made with ❤️ in Argentina"
+      copyright: "All rights reserved."
     },
     
     // Common
@@ -1387,13 +1375,7 @@ export const translations = {
     
     // Footer
     footer: {
-      description: "We transformeren ideeën in succesvolle digitale ervaringen",
-      quickLinks: "Snelle Links",
-      services: "Diensten",
-      contact: "Contact",
-      social: "Volg ons",
-      copyright: "© 2024 JMCdev. Alle rechten voorbehouden.",
-      madeWith: "Gemaakt met ❤️ in Argentinië"
+      copyright: "Alle rechten voorbehouden."
     },
     
     // Common
@@ -1415,7 +1397,7 @@ export const translations = {
       planDetails: {
         basic: {
           name: "Basis Web / Landingspagina",
-          price: "$200.000*", // Adjusted for NL if needed
+          price: "$200.000*",
           description: "Essentiële online aanwezigheid, eenvoudige portfolio's of effectieve landingspagina's.",
           benefits: [
             "Modern en responsief ontwerp",
@@ -1493,520 +1475,39 @@ export const translations = {
       footerNote2Html: "<strong>*Prijzen in $ARS (Argentijnse valuta). De kosten en de uiteindelijke doorlooptijd zijn afhankelijk van het project van de klant.</strong>"
     }
   },
-  
-  nl: {
-    // Navbar
-    navbar: {
-      services: "Diensten",
-      plans: "Plannen",
-      projects: "Projecten", 
-      contact: "Contact"
-    },
-    
-    // Header
-    header: {
-      title: "Wij Creëren Digitale Ervaringen Die",
-      animatedWords: ['Verbinden', 'Verbazen', 'Verkopen', 'Positioneren', 'Overstijgen', 'Opvallen', 'Aantrekken'],
-      description: "Impactvolle websites, verbindende sociale media en foto's die verkopen. Alles wat uw bedrijf nodig heeft om online te groeien, met professionele kwaliteit tegen de beste marktprijs.",
-      buttons: {
-        projects: "Bekijk Projecten",
-        contact: "Contact"
-      }
-    },
-    
-    // Services
-    services: {
-      title: {
-        animated: "Wij transformeren",
-        static: "uw digitale aanwezigheid"
-      },
-      instruction: "(Klik op de kaarten en veeg om meer details te zien)",
-      cards: {
-        webDevelopment: {
-          title: "Websites creëren die verkopen",
-          description: "We ontwerpen moderne sites vanaf nul, geoptimaliseerd om op te vallen in Google en bezoekers om te zetten in klanten. Alles tegen de beste marktprijs",
-          modal: {
-            title: "Op Google staan betekent verkopen.",
-            description: "U heeft een merk, u wilt groeien. U heeft een website nodig die tussen de eerste resultaten verschijnt wanneer mensen naar u zoeken.",
-            content: {
-              subtitle1: "Positioneer uzelf tussen de eerste resultaten",
-              text1: "We ontwerpen elke regel code met Google's zoekmachine in gedachten, zodat uw bedrijf niet alleen online is... het is zichtbaar.",
-              subtitle2: "Waarom is dit belangrijk?",
-              text2: "Want wanneer iemand op zoek is naar een restaurant, kapsalon of andere dienst, gaan ze niet naar sociale media. Ze zoeken op Google. Als u daar niet bovenaan staat, bestaat u niet."
-            }
-          }
-        },
-        socialMedia: {
-          title: "Social Media Versterking",
-          description: "We boosten uw bedrijf op sociale media met aantrekkelijke content, post-ontwerp en strategieën om meer publiek te bereiken.",
-          modal: {
-            title: "Verbind uw bedrijf met meer mensen",
-            description: "Laat uw merk schitteren op sociale media met professionele content en strategieën die uw bereik vergroten.",
-            content: {
-              subtitle1: "Content die verbindt",
-              text1: "We creëren posts die niet alleen opvallen, maar ook interactie genereren. Content die boeit en converteert.",
-              subtitle2: "Waarom is dit zo belangrijk?",
-              text2: "Sociale media is het perfecte podium om uw bedrijf aan de wereld te tonen. Maar u heeft goed doordachte strategieën nodig opdat uw merk meer mensen bereikt en een referentie wordt."
-            }
-          }
-        },
-        photography: {
-          title: "Professionele Fotografie Service",
-          description: "We maken prachtige beelden met spiegelreflexcamera's zodat uw bedrijf visueel impactvolle foto's heeft voor uw website en sociale media.",
-          modal: {
-            title: "Beelden die spreken voor uw merk",
-            description: "Hoogwaardige foto's die de essentie van uw bedrijf weerspiegelen, ideaal voor uw website en sociale media.",
-            content: {
-              subtitle1: "Beelden die impact maken",
-              text1: "We maken professionele foto's met spiegelreflexcamera's zodat uw bedrijf onmiddellijke visuele impact heeft. Beelden die aandacht trekken en indruk maken.",
-              subtitle2: "Waarom is dit belangrijk?",
-              text2: "Beelden zijn de eerste indruk van uw merk. Onderschat de kracht van een goede foto niet. Een beeld zegt meer dan duizend woorden, en in uw bedrijf kan het het verschil maken tussen aandacht trekken of onopgemerkt blijven."
-            }
-          }
-        },
-        design: {
-          title: "Op Maat Gemaakte Ontwerpen vanaf Nul",
-          description: "We creëren unieke interfaces, aangepast aan uw behoeften. Geen sjablonen, alles op maat gemaakt en om er goed uit te zien op elk apparaat.",
-          modal: {
-            title: "Ontwerp dat verbindt met uw publiek",
-            description: "We ontwerpen aantrekkelijke en gebruiksvriendelijke interfaces, ontworpen zodat uw gebruikers genieten van een eenvoudige en aangename ervaring.",
-            content: {
-              subtitle1: "Unieke ontwerpen aangepast aan uw merk",
-              text1: "Vergeet sjablonen gebruiken. We creëren elke website vanaf nul, aangepast aan wat uw bedrijf nodig heeft.",
-              subtitle2: "Waarom voor ons kiezen?",
-              text2: "Een aantrekkelijk en gebruiksvriendelijk ontwerp zorgt ervoor dat uw gebruikers meer van uw pagina genieten. We zorgen ervoor dat alles er perfect uitziet, zowel op computers als op telefoons."
-            }
-          }
-        },
-        hosting: {
-          title: "Hosting en Domein",
-          description: "We zorgen voor webhosting en registratie van uw gepersonaliseerde domein op een eenvoudige en ongecompliceerde manier.",
-          modal: {
-            title: "Uw pagina altijd online.",
-            description: "We helpen u met het hele hosting- en domeinregistratieproces zodat uw pagina altijd beschikbaar en gemakkelijk te vinden is.",
-            content: {
-              subtitle1: "Alles op één plek",
-              text1: "We zorgen voor het hele proces: van het hosten van uw website tot het registreren van uw domein, zonder complicaties.",
-              subtitle2: "Waarom voor ons kiezen?",
-              text2: "Met onze service zal uw pagina altijd online zijn, toegankelijk voor iedereen en met een gemakkelijk te onthouden domeinnaam."
-            }
-          }
-        },
-        support: {
-          title: "Onderhoud en Technische Ondersteuning",
-          description: "We bieden regelmatige updates, bugfixes en continue ondersteuning zodat uw pagina altijd up-to-date is.",
-          modal: {
-            title: "Uw pagina altijd klaar.",
-            description: "We zorgen ervoor dat uw site up-to-date blijft, eventuele fouten oplossen en ondersteuning bieden wanneer u het nodig heeft.",
-            content: {
-              subtitle1: "Alles op orde, altijd",
-              text1: "We zorgen ervoor dat uw pagina altijd up-to-date is, met de nieuwste functies en foutloos.",
-              subtitle2: "Waarom is dit belangrijk?",
-              text2: "Een website zonder onderhoud kan traag worden of fouten hebben die de gebruikerservaring beïnvloeden. Wij zorgen voor alles zodat u zich geen zorgen hoeft te maken."
-            }
-          }
-        }
-      }
-    },
-    
-    // Proceso
-    proceso: {
-      title: "Hoe we werken",
-      steps: {
-        step1: {
-          title: "1. Consultatie",
-          description: "We bespreken uw idee, doelstellingen en wat u verwacht van uw website."
-        },
-        step2: {
-          title: "2. Voorstel",
-          description: "Ik ontwerp een gepersonaliseerd voorstel met een mockup aangepast aan uw stijl."
-        },
-        step3: {
-          title: "3. Goedkeuring",
-          description: "Zodra u tevreden bent met het voorstel, bevestigt u de ontwikkeling met het budget en de geschatte tijdlijn."
-        },
-        step4: {
-          title: "4. Ontwikkeling",
-          description: "De ontwikkeling van uw pagina begint met wekelijkse updates zodat u het hele proces kunt volgen."
-        },
-        step5: {
-          title: "5. Lancering",
-          description: "Wanneer de pagina klaar is en u bevestigt dat deze aan al uw behoeften voldoet, publiceren we deze online."
-        },
-        step6: {
-          title: "6. Ondersteuning",
-          description: "Tijdens de eerste week monitor ik actief om eventuele technische details te corrigeren."
-        },
-        step7: {
-          title: "7. Onderhoud (optioneel)",
-          description: "Als u wilt, kunt u een maandelijks plan afnemen om uw pagina bijgewerkt, veilig en perfect werkend te houden."
-        }
-      }
-    },
-    
-    // Portafolio
-    portafolio: {
-      title: "Uitstekende Projecten", // Unused by Portafolio.jsx
-      subtitle: "Enkele van onze meest recente werken", // Unused by Portafolio.jsx
-      coolTitlePart1: "Onze",
-      animatedWords: "Projecten, Werken, Ontwerpen, Ontwikkelingen",
-      projects: {
-        portfolio: {
-          name: "Standaard Portfolio Website",
-          description: "Persoonlijk digitaal portfolio om uw vaardigheden en projecten gemakkelijk te tonen."
-        },
-        restaurant: {
-          name: "Premium Restaurant Website",
-          description: "Website voor premium restaurant met elegant en opvallend ontwerp."
-        },
-        demoBianSushi: { // New key
-          name: "Bian Sushi DEMO Website",
-          description: "Mobiele website verbetering demonstratie voor Bian Sushi Campana (NIET HET EINDRESULTAAT)."
-        },
-        businessDemo: { // New key
-          name: "Business DEMO Website",
-          description: "Website voor Asnagui Business Consulting, elegant en effectief (NIET HET EINDRESULTAAT)."
-        },
-        brandPremium: { // New key
-          name: "Premium merk website",
-          description: "Website voor ons merk, gericht op branding en impactvolle visuele ervaring."
-        }
-      },
-      buttons: {
-        visit: "Bezoek Site",
-        viewMore: "Bekijk meer projecten"
-      }
-    },
-    
-    // Planes
-    planes: {
-      title: "Planes que se Adaptan a Ti", // This is for navbar/general, keep it
-      subtitle: "Elige el plan perfecto para tu proyecto", // Keep it
-      plans: {
-        basic: {
-          name: "Web Básica / Landing Page",
-          price: "$200.000*", // Adjusted for NL if needed
-          description: "Essentiële online aanwezigheid, eenvoudige portfolio's of effectieve landingspagina's.",
-          benefits: [
-            "Modern en responsief ontwerp",
-            "Contactformulier",
-            "Social media links",
-            "Levering: ca. 1-2 weken"
-          ]
-        },
-        standard: {
-          name: "Standaard Web / Multi-pagina",
-          price: "$350.000*",
-          description: "Complete website met meerdere secties voor kleine bedrijven of diensten.",
-          benefits: [
-            "Tot 5 pagina's (bijv. Home, Diensten, Over Ons, Galerij, Contact)",
-            "Aangepast ontwerp aangepast aan uw identiteit",
-            "Basisintegratie (Google Maps, enz.)",
-            "Levering: ca. 2-4 weken"
-          ]
-        },
-        premium: {
-          name: "Premium Web / Geavanceerd",
-          price: "$450.000*",
-          description: "Hoogwaardige weboplossingen met geavanceerde functionaliteiten en exclusief ontwerp.",
-          benefits: [
-            "Uniek ontwerp en geavanceerde visuele effecten",
-            "Aangepaste functionaliteiten (sliders, interactieve galerijen, animaties)",
-            "Flexibele en schaalbare structuur (meerdere complexe pagina's)",
-            "Levering: vanaf 4 weken"
-          ]
-        }
-      },
-      adicionales: {
-        title: "Aanvullende Diensten",
-        subtitle: "Raadpleeg prijzen",
-        items: {
-          photos: "Professionele foto's",
-          feed: "Instagram Feed",
-          support: "Maandelijkse Ondersteuning",
-          languages: "Automatisch Meertalig",
-          analytics: "Google Analytics",
-          gallery: "Interactieve Galerij",
-          maps: "Google Maps Integratie", 
-          themes: "Donkere/Lichte Modus"
-        }
-      },
-      buttons: {
-        selectPlan: "Kies Plan",
-        contact: "Raadplegen"
-      }
-    },
-    
-    // Testimonios
-    testimonios: {
-      title: "Wat onze klanten zeggen",
-      items: [
-        {
-          name: "Martin Dominguez",
-          position: "CEO, ABC Bedrijf",
-          text: "Uitstekende service. De website werkt perfect en werd sneller geleverd dan verwacht.",
-          imagenUrl: null
-        },
-        {
-          name: "Camila C.",
-          position: "Export Control Officer",
-          text: "Geweldig werk! Mijn webportfolio is geweldig geworden en trekt meer de aandacht van interviewers. Het ontwerp is modern en functioneel.",
-          imagenUrl: "https://media-eze1-1.cdn.whatsapp.net/v/t61.24694-24/469481038_1113125820214248_8066473694455431940_n.jpg?ccb=11-4&oh=01_Q5Aa1gEzGRLCKr5MUHxF9NaSoaL8W5AOYFKBx2wg42qtMZa8lQ&oe=683A270F&_nc_sid=5e03e0&_nc_cat=110"
-        },
-        {
-          name: "Carlos Rodríguez",
-          position: "Marketingdirecteur, XYZ",
-          text: "Professionals, snel en zeer aandachtig voor details. Sterk aanbevolen.",
-          imagenUrl: null
-        }
-      ]
-    },
-    
-    // Contacto
-    contacto: {
-      title: "Laten we over uw project praten",
-      subtitle: "Vul het interactieve formulier in om volledig te begrijpen wat u wilt. Ik ben klaar om u te helpen uw idee werkelijkheid te maken!",
-      form: {
-        title: "Formulier om uw idee te creëren",
-        fields: {
-          name: "Volledige naam *",
-          email: "E-mailadres *",
-          consultationType: "Type consultatie *",
-          socialNetwork: "Welk sociaal netwerk? *",
-          service: "Gecontracteerde dienst (voor ondersteuning) *",
-          webType: "Naar welke sector is het gericht? *",
-          businessName: "Restaurant Naam *",
-          brandName: "Merk Naam *",
-          plan: "Plan Type (ter referentie) *",
-          adicionales: "Aanvullende diensten (optioneel)",
-          message: "Vertel ons meer over uw project *",
-          messageSupport: "Vertel ons over uw technisch probleem *",
-          messageOther: "Schrijf uw bericht *",
-          messageSocial: "Geef details over uw sociale media consultatie *",
-          howDidYouHear: "Hoe heeft u van ons gehoord? *"
-        },
-        options: {
-          selectOption: "Selecteer een optie",
-          selectSocialNetwork: "Selecteer een sociaal netwerk",
-          selectService: "Selecteer een dienst",
-          selectWebType: "Selecteer de branche",
-          selectPlan: "Selecteer een plan",
-          consultationTypes: {
-            webPage: "Website",
-            techSupport: "Technische ondersteuning",
-            socialMedia: "Sociale media",
-            other: "Ander"
-          },
-          socialNetworks: {
-            instagram: "Instagram",
-            facebook: "Facebook",
-            other: "Ander (specificeer in bericht)"
-          },
-          services: {
-            webPage: "Website",
-            socialMedia: "Sociale media",
-            other: "Ander" // Added
-          },
-          webTypes: {
-            restaurants: "Restaurants",
-            brands: "Merken",
-            personal: "Persoonlijke pagina",
-            otherWeb: "Anders (later specificeren)"
-          },
-          plans: {
-            basic: "Basis Website / Landing Page",
-            standard: "Standaard Website / Multi-pagina",
-            premium: "Premium Website / Geavanceerd"
-          },
-          hearAbout: {
-            search: "Internet zoeken",
-            socialMedia: "Sociale media",
-            recommendation: "Aanbeveling",
-            other: "Ander"
-          }
-        },
-        placeholders: {
-          default: "Vertel me over uw idee details, doelstellingen, of wat u nodig heeft...",
-          support: "Beschrijf het technische probleem dat u ervaart in detail...",
-          other: "Schrijf hier uw vraag of reden voor contact...",
-          social: "Vertel me over uw idee details, doelstellingen, of wat u nodig heeft..." // Added
-        },
-        buttons: {
-          submit: "Stuur Bericht via WhatsApp",
-          sendAnother: "Stuur nog een bericht",
-          selectAdditionals: "Selecteer Aanvullende Diensten...",
-          closeSelection: "Sluit Selectie"
-        },
-        success: {
-          title: "Bericht Verzonden!",
-          message: "Bedankt voor uw contact. Ik zal binnenkort reageren."
-        },
-        errors: {
-          nombreCompletoMin: "Naam moet minimaal 2 tekens lang zijn.",
-          emailRequired: "E-mail is verplicht.",
-          emailInvalid: "E-mailformaat is ongeldig.",
-          tipoConsultaRequired: "Selecteer een type consultatie.",
-          tipoWebRequired: "Selecteer de webbranche.",
-          nombreNegocioRequired: "Bedrijfsnaam is verplicht voor deze branche.",
-          redSocialEspecificaRequired: "Selecteer een sociaal netwerk.",
-          servicioContratadoRequired: "Selecteer de dienst waarvoor u ondersteuning nodig heeft.",
-          mensajeSoporteRequired: "U moet het technische probleem beschrijven.",
-          mensajeOtroRequired: "U moet uw bericht schrijven.",
-          mensajeProyectoRequired: "U moet ons over uw project vertellen.",
-          comoConocisteRequired: "Selecteer hoe u van ons heeft gehoord.",
-          submitError: "Er is een fout opgetreden bij het verzenden van het bericht. Probeer het opnieuw."
-        }
-      },
-      info: {
-        title: "Contactinformatie",
-        description: "Als u een snelle vraag heeft, aarzel dan niet om deze kanalen te gebruiken:",
-        email: "E-mail:",
-        whatsapp: "WhatsApp:",
-        instagram: "Instagram:",
-        availability: "Elke dag beschikbaar, aarzel niet om te vragen!"
-      },
-      whatsapp: {
-        greeting: "Hallo! 👋 Ik schrijf u vanaf uw webformulier met de volgende gegevens:",
-        myNameLabel: "Mijn Naam",
-        myEmailLabel: "Mijn E-mail",
-        consultationTypeLabel: "Type Consultatie",
-        webTypeLabel: "De webbranche waarin ik geïnteresseerd ben is",
-        restaurantNameLabel: "Restaurant Naam",
-        brandNameLabel: "Merk Naam",
-        planReferenceLabel: "Ik gebruik het plan als referentie",
-        additionalServicesLabel: "Aanvullende diensten waarin ik geïnteresseerd ben",
-        socialNetworkInterestLabel: "Sociaal Netwerk van Interesse",
-        supportForServiceLabel: "Ondersteuning voor Dienst",
-        aboutMyProjectLabel: "Over mijn project",
-        howYouKnewMeLabel: "Ik kende u van",
-        waitingForReply: "Ik wacht op uw antwoord!"
-      }
-    },
-    
-    // Footer
-    footer: {
-      description: "We transformeren ideeën in succesvolle digitale ervaringen",
-      quickLinks: "Snelle Links",
-      services: "Diensten",
-      contact: "Contact",
-      social: "Volg ons",
-      copyright: "© 2024 JMCdev. Alle rechten voorbehouden.",
-      madeWith: "Gemaakt met ❤️ in Argentinië"
-    },
-    
-    // Common
-    common: {
-      back: "Terug",
-      close: "Sluiten",
-      loading: "Laden...",
-      viewMore: "Meer bekijken",
-      contactUs: "Neem contact op",
-      learnMore: "Meer weten",
-      meInteresa: "Ik ben geïnteresseerd" // Added for Card3D button
-    },
-
-    // Planes Section (New specific section for Planes.jsx)
-    planesSection: {
-      mainTitle: "Webplannen die zich aan u aanpassen",
-      iosButtonGranted: "Beweeg je telefoon!",
-      iosButtonPrompt: "Activeer Interactieve 3D Kaarten!",
-      planDetails: {
-        basic: {
-          name: "Basis Web / Landingspagina",
-          price: "$200.000*", // Adjusted for NL if needed
-          description: "Essentiële online aanwezigheid, eenvoudige portfolio's of effectieve landingspagina's.",
-          benefits: [
-            "Modern en responsief ontwerp",
-            "Contactformulier",
-            "Social media links",
-            "Levering: ca. 1-2 weken"
-          ]
-        },
-        standard: {
-          name: "Standaard Web / Multi-pagina",
-          price: "$350.000*",
-          description: "Complete website met meerdere secties voor kleine bedrijven of diensten.",
-          benefits: [
-            "Tot 5 pagina's (bijv. Home, Diensten, Over Ons, Galerij, Contact)",
-            "Aangepast ontwerp aangepast aan uw identiteit",
-            "Basisintegratie (Google Maps, enz.)",
-            "Levering: ca. 2-4 weken"
-          ]
-        },
-        premium: {
-          name: "Premium Web / Geavanceerd",
-          price: "$450.000*",
-          description: "Hoogwaardige weboplossingen met geavanceerde functionaliteiten en exclusief ontwerp.",
-          benefits: [
-            "Uniek ontwerp en geavanceerde visuele effecten",
-            "Aangepaste functionaliteiten (sliders, interactieve galerijen, animaties)",
-            "Flexibele en schaalbare structuur (meerdere complexe pagina's)",
-            "Levering: vanaf 4 weken"
-          ]
-        }
-      },
-      adicionalesSection: {
-        title: "Personaliseer uw plan met add-ons",
-        consultarPrecio: "(prijs op aanvraag)"
-      },
-      adicionalesDetails: {
-        fotos: {
-          name: "Professionele Foto's",
-          description: "*Prijs te bepalen met de klant* | Vernieuw de foto's van uw zaak op een moderne manier. Wij bieden full HD foto's gemaakt met een spiegelreflexcamera, volledig aanpasbaar aan uw website en sociale media met onmiddellijke visuele impact."
-        },
-        feed: {
-          name: "Instagram Feed",
-          description: "Integreer uw Instagram-account zodat uw laatste berichten direct op uw website worden weergegeven en automatisch worden bijgewerkt."
-        },
-        soporte: {
-          name: "Maandelijkse Ondersteuning",
-          description: "*Maandelijkse betaling: $50.000* | Actieve ondersteuning voor u! Content updates, bugfixes, nieuwe basisfuncties en specifieke pagina-optimalisaties."
-        },
-        idiomas: {
-          name: "Automatisch Meertalig",
-          description: "De site detecteert de browsertaal van de bezoeker (bijv. Spaans of Engels) en geeft automatisch de inhoud in die taal weer indien beschikbaar. Dit stelt buitenlandse toeristen in staat de website te zien en te begrijpen!"
-        },
-        analiticas: {
-          name: "Google Analytics",
-          description: "Koppel uw site aan Google Analytics om gedetailleerde statistieken te krijgen over hoeveel mensen u bezoeken, waar ze vandaan komen en welke secties ze het meest bekijken."
-        },
-        galeria: {
-          name: "Interactieve Galerij",
-          description: "Creëer een sectie om uw foto's of producten weer te geven met visuele effecten bij mouse-over, wat zorgt voor een moderne en aantrekkelijke navigatie."
-        },
-        maps: {
-          name: "Google Maps Integratie",
-          description: "Toon uw locatie op een geïntegreerde interactieve kaart, ideaal voor fysieke bedrijven of locaties met publieke aandacht."
-        },
-        modos: {
-          name: "Donker/Licht Modus",
-          description: "Sta uw bezoekers toe te kiezen tussen een licht of donker thema voor een betere visuele ervaring, met een eenvoudige knop op het scherm."
-        }
-      },
-      adicionalVisualizacionPlaceholder: "Visualisatie van add-on",
-      adicionalSelectPrompt: "Selecteer een add-on uit de lijst.",
-      loadingPlan: "Plan laden...",
-      loadingIcons: "Iconen laden...",
-      footerNote1: "Alle plannen zijn compatibel met mobiel en pc.",
-      footerNote2Html: "<strong>*Prijzen in $ARS (Argentijnse valuta). De kosten en de uiteindelijke doorlooptijd zijn afhankelijk van het project van de klant.</strong>"
-    }
-  }
 };
 
-export const useTranslation = (currentLanguage) => {
+/**
+ * Translation hook for getting translated strings
+ * @param {String} language - The currently selected language 
+ * @returns {Object} Object with translation helper function
+ */
+export const useTranslation = (language) => {
   const t = (key) => {
+    // Split nested keys (e.g., "navbar.home")
     const keys = key.split('.');
-    let value = translations[currentLanguage];
     
-    for (const k of keys) {
-      if (value && typeof value === 'object') {
-        value = value[k];
-      } else {
-        return key; // Return key if translation not found
-      }
+    // Get the translation object for the current language
+    let translation = translations[language];
+    
+    // If translation doesn't exist for this language, fall back to English
+    if (!translation) {
+      translation = translations.en;
     }
     
-    return value || key;
+    // Navigate through nested objects to find the translation
+    try {
+      for (const k of keys) {
+        translation = translation[k];
+        if (!translation) break;
+      }
+    } catch (error) {
+      console.warn(`Translation key not found: ${key}`);
+      return key; // Return the key itself as fallback
+    }
+    
+    // If translation is found, return it; otherwise return the key itself
+    return translation || key;
   };
   
   return { t };

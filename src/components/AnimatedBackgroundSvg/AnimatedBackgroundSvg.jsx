@@ -99,7 +99,7 @@ const AnimatedBackgroundSvg = ({ svgPaths = [], startTriggerId, endTriggerId, co
   return (
     <>
       {svgPaths.map((svgPath, index) => (
-        <div key={index} className={styles.container} ref={svgRefs.current[index]} style={{ zIndex: -1 }}> {/* Ensure all SVGs are in the background */}
+        <div key={`svg-container-${index}`} className={styles.container} ref={svgRefs.current[index]} style={{ zIndex: -1 }}> {/* Ensure all SVGs are in the background */}
           <img src={svgPath} alt={`Animated Background Logo ${index + 1}`} className={styles.svgImage} />
         </div>
       ))}

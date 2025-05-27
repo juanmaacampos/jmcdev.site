@@ -1,10 +1,16 @@
 import React, { useRef, useEffect } from 'react';
+import { useIsMobile } from '../../hooks/useMediaQuery';
+import LazyImage from '../LazyImage/LazyImage';
 import styles from './ParallaxMouseImage.module.css';
 
-function ParallaxMouseImage({ src, alt, className, draggable }) {
+function ParallaxMouseImage({ src, alt, className, draggable, mobileSrc }) {
   const imageWrapperRef = useRef(null);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
+    // Solo activar parallax en desktop
+    if (isMobile) return;
+
     const handleMouseMove = (event) => {
       if (imageWrapperRef.current) {
         const rect = imageWrapperRef.current.getBoundingClientRect();
@@ -12,7 +18,7 @@ function ParallaxMouseImage({ src, alt, className, draggable }) {
         const y = event.clientY - rect.top;
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
-        const offsetX = (x - centerX) / 20; // Adjust divisor for intensity
+        const offsetX = (x - centerX) / 20;
         const offsetY = (y - centerY) / 20;
 
         imageWrapperRef.current.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
@@ -26,7 +32,7 @@ function ParallaxMouseImage({ src, alt, className, draggable }) {
     };
 
     if (imageWrapperRef.current) {
-      imageWrapperRef.current.addEventListener('mousemove', handleMouseMove);
+      imageWrapperRef.current.addEventListener('mousemove', handleMouseMove, { passive: true });
       imageWrapperRef.current.addEventListener('mouseleave', resetTransform);
     }
 
@@ -36,18 +42,20 @@ function ParallaxMouseImage({ src, alt, className, draggable }) {
         imageWrapperRef.current.removeEventListener('mouseleave', resetTransform);
       }
     };
-  }, []);
+  }, [isMobile]);
 
   return (
     <div 
       ref={imageWrapperRef} 
       className={styles.parallaxContainer}
     >
-      <img 
+      <LazyImage 
         src={src} 
+        mobileSrc={mobileSrc}
         alt={alt} 
         className={className}
         draggable={draggable}
+        loading="lazy"
       />
     </div>
   );
