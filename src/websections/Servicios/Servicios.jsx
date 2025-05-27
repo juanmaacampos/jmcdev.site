@@ -91,6 +91,14 @@ export default function Servicios() {
         return; 
       }
 
+      // Check if the card containing this scrollable content is actually flipped
+      const cardElement = scrollableElement.closest('.servicioCard, [class*="servicioCard"]');
+      const isCardFlipped = cardElement && cardElement.classList.contains('flipped');
+      
+      if (!isCardFlipped) {
+        return; // Allow normal page scroll if card is not flipped
+      }
+
       const { scrollHeight, clientHeight } = scrollableElement;
 
       // If the element is scrollable (its content is taller than its visible area),
@@ -103,13 +111,75 @@ export default function Servicios() {
       // so we don't stop propagation, allowing normal page scroll if desired.
     };
 
+    // Touch handling for mobile devices
+    let touchStartY = 0;
+    let isTouchingScrollableCard = false;
+
+    const handleTouchStart = (event) => {
+      const scrollableElement = event.target.closest('.card-scrollable-content');
+      
+      if (scrollableElement) {
+        // Check if the card containing this scrollable content is actually flipped
+        const cardElement = scrollableElement.closest('.servicioCard, [class*="servicioCard"]');
+        const isCardFlipped = cardElement && cardElement.classList.contains('flipped');
+        
+        if (isCardFlipped) {
+          isTouchingScrollableCard = true;
+          touchStartY = event.touches[0].clientY;
+        } else {
+          isTouchingScrollableCard = false;
+        }
+      } else {
+        isTouchingScrollableCard = false;
+      }
+    };
+
+    const handleTouchMove = (event) => {
+      if (!isTouchingScrollableCard) {
+        return; // Let normal page scroll happen
+      }
+
+      const scrollableElement = event.target.closest('.card-scrollable-content');
+      
+      if (!scrollableElement) {
+        return;
+      }
+
+      const { scrollHeight, clientHeight, scrollTop } = scrollableElement;
+      
+      // If content doesn't need scrolling, allow page scroll
+      if (scrollHeight <= clientHeight) {
+        return;
+      }
+
+      const touchCurrentY = event.touches[0].clientY;
+      const touchDelta = touchStartY - touchCurrentY;
+      const isScrollingDown = touchDelta > 0;
+      const isScrollingUp = touchDelta < 0;
+
+      // Check if we're at scroll boundaries
+      const atTop = scrollTop <= 0;
+      const atBottom = scrollTop + clientHeight >= scrollHeight;
+
+      // Only prevent default if we're scrolling within the scrollable area
+      if ((isScrollingUp && !atTop) || (isScrollingDown && !atBottom)) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+      // If at boundaries, allow the touch event to bubble up for page scroll
+    };
+
     if (gridElement) {
       gridElement.addEventListener('wheel', handleGridScroll, { passive: false });
+      gridElement.addEventListener('touchstart', handleTouchStart, { passive: true });
+      gridElement.addEventListener('touchmove', handleTouchMove, { passive: false });
     }
 
     return () => {
       if (gridElement) {
         gridElement.removeEventListener('wheel', handleGridScroll);
+        gridElement.removeEventListener('touchstart', handleTouchStart);
+        gridElement.removeEventListener('touchmove', handleTouchMove);
       }
     };
   }, []); // Empty dependency array means this effect runs once after mount and cleans up on unmount.

@@ -50,6 +50,7 @@
 .cardFront {
   z-index: 2;
   background: #222;
+  touch-action: manipulation; /* Allow native touch behaviors for better scroll performance */
 }
 
 .cardBack {
@@ -62,6 +63,8 @@
   justify-content: flex-start;
   min-height: 260px;
   max-height: 100%;
+  touch-action: pan-y; /* Allow vertical scrolling, prevent horizontal gestures */
+  -webkit-overflow-scrolling: touch; /* Smooth momentum scrolling on iOS */
 }
 
 .cardBackTabs {

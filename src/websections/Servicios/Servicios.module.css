@@ -51,6 +51,7 @@
   padding-left: 3rem;
   padding-right: 3rem;
   justify-items: stretch; /* Las tarjetas ocupan todo el ancho de la celda */
+  touch-action: auto; /* Allow touch events to propagate naturally */
 }
 
 .cardWrapper {
@@ -58,6 +59,7 @@
   width: 100%;
   height: 100%;
   pointer-events: none; /* Importante: pasa los eventos al hijo */
+  touch-action: auto; /* Allow all touch gestures to pass through to children */
 }
 
 .cardWrapper > * {
