@@ -4,19 +4,19 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JMCdev: Experiencias digitales</title>
+    <title>JMC dev | JMCdev: Experiencias digitales</title>
 
-    <!-- SEO Meta -->
-    <meta name="description" content="Páginas web que impactan, redes que conectan y fotos que venden. Todo lo que tu negocio necesita para crecer online, con calidad profesional y al mejor precio del mercado." />
-    <meta name="keywords" content="desarrollo web, diseño web, SEO, páginas web, sitios web, Argentina" />
-    <meta name="author" content="JMCdev" />
+    <!-- Critical SEO Meta -->
+    <meta name="description" content="JMC dev (JMCdev): Páginas web que impactan, redes que conectan y fotos que venden. Todo lo que tu negocio necesita para crecer online, con calidad profesional y al mejor precio del mercado." />
+    <meta name="keywords" content="desarrollo web, diseño web, SEO, páginas web, sitios web, Argentina, jmc dev, jmcdev, experiencias digitales, diseño interfaces" />
+    <meta name="author" content="JMC dev - JMCdev" />
     <meta name="robots" content="index, follow" />
 
     <!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
     <meta property="og:url" content="https://www.jmcdev.site/" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="JMCdev: Experiencias digitales que venden." />
-    <meta property="og:description" content="Páginas web que impactan, redes que conectan y fotos que venden. Todo lo que tu negocio necesita para crecer online, con calidad profesional y al mejor precio del mercado." />
+    <meta property="og:title" content="JMC dev | JMCdev: Experiencias digitales que venden." />
+    <meta property="og:description" content="JMC dev (JMCdev): Páginas web que impactan, redes que conectan y fotos que venden. Todo lo que tu negocio necesita para crecer online, con calidad profesional y al mejor precio del mercado." />
     <meta property="og:image" content="https://www.jmcdev.site/loguito.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -24,11 +24,93 @@
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="JMCdev: Experiencias digitales que venden." />
-    <meta name="twitter:description" content="Páginas web que impactan, redes que conectan y fotos que venden. Todo lo que tu negocio necesita para crecer online, con calidad profesional y al mejor precio del mercado." />
+    <meta name="twitter:title" content="JMC dev | JMCdev: Experiencias digitales que venden." />
+    <meta name="twitter:description" content="JMC dev (JMCdev): Páginas web que impactan, redes que conectan y fotos que venden. Todo lo que tu negocio necesita para crecer online, con calidad profesional y al mejor precio del mercado." />
     <meta name="twitter:image" content="https://www.jmcdev.site/loguito.png" />
-    <meta name="twitter:image:alt" content="JMCdev Desarrollo Web" />
+    <meta name="twitter:image:alt" content="JMC dev - JMCdev Desarrollo Web" />
 
+    <!-- Preconnect to critical domains only -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Optimized Google Analytics - non-blocking -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-BWJPDWDD3R', {
+        'send_page_view': false,
+        'transport_type': 'beacon',
+        'anonymize_ip': true
+      });
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BWJPDWDD3R" importance="low"></script>
+
+    <!-- Preload critical resources with conditional loading -->
+    <link rel="preload" href="/loguito.png" as="image" fetchpriority="high" />
+    
+    <!-- Conditional preloading based on screen size -->
+    <script>
+      // Detect device type early and preload accordingly
+      const isMobile = window.matchMedia('(max-width: 768px)').matches;
+      const isDesktop = window.matchMedia('(min-width: 1024px)').matches;
+      
+      if (isDesktop) {
+        // Preload desktop-specific resources
+        const link1 = document.createElement('link');
+        link1.rel = 'preload';
+        link1.href = '/src/assets/images/logoanimated.svg';
+        link1.as = 'image';
+        document.head.appendChild(link1);
+      }
+      
+      // Performance optimization: reduce reflows
+      document.documentElement.style.fontSize = isMobile ? '14px' : '16px';
+    </script>
+    
+    <!-- Critical CSS inlined -->
+    <style>
+      /* Critical above-the-fold styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        line-height: 1.6;
+        color: #f2f3f5;
+        background-color: #1c1c1c;
+        overflow-x: hidden;
+      }
+      
+      #root {
+        min-height: 100vh;
+      }
+      
+      /* Loading placeholder styles */
+      .loading-placeholder {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: #171717;
+        z-index: 9999;
+      }
+      
+      @media (max-width: 768px) {
+        body {
+          font-size: 14px;
+        }
+      }
+    </style>
+    
     <!-- Schema.org -->
     <script type="application/ld+json">
     {
@@ -40,30 +122,32 @@
       "image": "https://www.jmcdev.site/loguito.png"
     }
     </script>
-    
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BWJPDWDD3R"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-BWJPDWDD3R');
-    </script>
-
-    <!-- Preload important assets -->
-    <link rel="preload" href="/loguito.png" as="image" />
-    <script type="module" crossorigin src="/assets/index-34b86032.js"></script>
-    <link rel="stylesheet" href="/assets/index-e96f29cc.css">
+    <script type="module" crossorigin src="/assets/index-5d6a50c6.js"></script>
+    <link rel="stylesheet" href="/assets/index-c94726b0.css">
   </head>
   <body>
-    <!-- 
-      Add a visually hidden img tag to "use" the preloaded logo early.
-      This helps satisfy the browser's preload checker if the actual 
-      display by React components is slightly delayed.
-    -->
+    <!-- Preload hint for critical images -->
     <img src="/loguito.png" alt="" style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0;" aria-hidden="true" />
+    
     <main id="root"></main>
     
+    <!-- Module script with preload -->
+    <link rel="modulepreload" href="/assets/main-97931aa8.jsx">
+    
+    
+    <!-- Deferred analytics pageview -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        if (window.requestIdleCallback) {
+          requestIdleCallback(() => {
+            gtag('event', 'page_view');
+          }, { timeout: 5000 });
+        } else {
+          setTimeout(() => {
+            gtag('event', 'page_view');
+          }, 3000);
+        }
+      });
+    </script>
   </body>
 </html>
