@@ -356,3 +356,4 @@ test: pruebas
 
 Este proyecto es privado y pertenece a JMCdev. Todos los derechos reservados.
 
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/juanmaacampos/jmcdev.site)
