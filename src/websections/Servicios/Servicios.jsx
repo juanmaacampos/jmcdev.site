@@ -99,16 +99,28 @@ export default function Servicios() {
         return; // Allow normal page scroll if card is not flipped
       }
 
-      const { scrollHeight, clientHeight } = scrollableElement;
+      const { scrollHeight, clientHeight, scrollTop } = scrollableElement;
 
-      // If the element is scrollable (its content is taller than its visible area),
-      // then always stop the event from bubbling up to the page.
-      // The browser will handle the internal scroll of the card element itself.
-      if (scrollHeight > clientHeight) {
+      // If the element is not scrollable, allow page scroll
+      if (scrollHeight <= clientHeight) {
+        return;
+      }
+
+      // Determine scroll direction
+      const isScrollingDown = event.deltaY > 0;
+      const isScrollingUp = event.deltaY < 0;
+
+      // Check if we're at scroll boundaries
+      const atTop = scrollTop <= 0;
+      // Adjusted tolerance for atBottom check
+      const atBottom = scrollTop + clientHeight >= scrollHeight - 0.5; // Changed from -1 to -0.5
+
+      // Only prevent page scroll if we can scroll within the card
+      if ((isScrollingUp && !atTop) || (isScrollingDown && !atBottom)) {
+        event.preventDefault();
         event.stopPropagation();
       }
-      // If scrollHeight <= clientHeight, the element isn't scrollable,
-      // so we don't stop propagation, allowing normal page scroll if desired.
+      // If at boundaries and trying to scroll beyond, allow page scroll
     };
 
     // Touch handling for mobile devices

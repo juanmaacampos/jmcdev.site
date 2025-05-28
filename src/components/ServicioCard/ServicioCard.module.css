@@ -65,6 +65,7 @@
   max-height: 100%;
   touch-action: pan-y; /* Allow vertical scrolling, prevent horizontal gestures */
   -webkit-overflow-scrolling: touch; /* Smooth momentum scrolling on iOS */
+  cursor: default; /* Show default cursor instead of pointer when hovering over scrollable content */
 }
 
 .cardBackTabs {

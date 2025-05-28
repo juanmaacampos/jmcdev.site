@@ -112,12 +112,40 @@ export default function ServicioCard({ icon, svg, titulo, descripcion, modalData
       }
     };
 
+    // 4. Setup wheel event listener to prevent page scroll when scrolling inside card
+    const handleWheelScroll = (event) => {
+      const { deltaY } = event;
+      const { scrollTop, scrollHeight, clientHeight } = cardBackEl;
+
+      // If the element is not scrollable, let the page handle it
+      if (scrollHeight <= clientHeight) {
+        return;
+      }
+
+      const isScrollingUp = deltaY < 0;
+      const isScrollingDown = deltaY > 0;
+      const atTop = scrollTop === 0;
+      const atBottom = scrollTop + clientHeight >= scrollHeight;
+
+      // Only prevent default if we're scrolling within the bounds of the element
+      if ((isScrollingUp && !atTop) || (isScrollingDown && !atBottom)) {
+        event.preventDefault();
+        event.stopPropagation();
+        
+        // Manually scroll the element
+        cardBackEl.scrollTop += deltaY * 0.5; // Adjust scroll speed if needed
+      }
+      // If at top and scrolling up, or at bottom and scrolling down, allow page scroll
+    };
+
     cardBackEl.addEventListener('scroll', handleScroll);
+    cardBackEl.addEventListener('wheel', handleWheelScroll, { passive: false });
     handleScroll(); // Initial check for scroll position
 
     // Cleanup function for this effect
     return () => {
       cardBackEl.removeEventListener('scroll', handleScroll);
+      cardBackEl.removeEventListener('wheel', handleWheelScroll);
       if (scrollAnimationTimer) {
         clearTimeout(scrollAnimationTimer);
       }
