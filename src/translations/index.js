@@ -183,45 +183,10 @@ export const translations = {
       }
     },
     
-    // Planes
+    // Planes (simplified - only navbar/general info)
     planes: {
-      title: "Planes que se Adaptan a Ti", // This is for navbar/general, keep it
-      subtitle: "Elige el plan perfecto para tu proyecto", // Keep it
-      plans: {
-        basic: {
-          name: "Web Básica / Landing Page",
-          price: "$200.000*",
-          description: "Presencia online esencial, portfolios simples o landing pages efectivas.",
-          benefits: [
-            "Diseño moderno y responsivo",
-            "Formulario de contacto",
-            "Enlaces a redes sociales",
-            "Entrega: 1-2 semanas aprox."
-          ]
-        },
-        standard: {
-          name: "Web Estándar / Multi-página", // Corrected typo
-          price: "$350.000*",
-          description: "Sitio web completo con múltiples secciones para pequeñas empresas o servicios.",
-          benefits: [
-            "Hasta 5 páginas (Ej: Inicio, Servicios, Nosotros, Galería, Contacto)",
-            "Diseño personalizado y adaptado a tu identidad",
-            "Integración básica (Google Maps, etc.)",
-            "Entrega: 2-4 semanas aprox."
-          ]
-        },
-        premium: {
-          name: "Web Premium / Avanzada",
-          price: "$450.000*",
-          description: "Soluciones web de alto impacto con funcionalidades avanzadas y diseño exclusivo.",
-          benefits: [
-            "Diseño único y efectos visuales avanzados",
-            "Funcionalidades personalizadas (sliders, galerías interactivas, animaciones)",
-            "Estructura flexible y escalable (múltiples páginas complejas)",
-            "Entrega: desde 4 semanas"
-          ]
-        }
-      },
+      title: "Planes que se Adaptan a Ti",
+      subtitle: "Elige el plan perfecto para tu proyecto",
       adicionales: {
         title: "Servicios Adicionales",
         subtitle: "Consultar precios",
@@ -237,7 +202,7 @@ export const translations = {
         }
       },
       buttons: {
-        selectPlan: "Elegir Plan", // This seems to be for a general button, not the one in Card3D
+        selectPlan: "Elegir Plan",
         contact: "Consultar"
       }
     },
@@ -460,7 +425,7 @@ export const translations = {
         },
         soporte: {
           name: "Soporte Mensual",
-          description: "*Pago mensual: $50.000* | ¡Soporte activo para vos! Actualización de contenido, corrección de errores, nuevas funcionalidades básicas y optimizaciones específicas de la página."
+          description: "*Pago mensual* | ¡Soporte activo para vos! Actualización de contenido, corrección de errores, nuevas funcionalidades básicas y optimizaciones específicas de la página."
         },
         idiomas: {
           name: "Multi-idioma Automático",
@@ -488,7 +453,7 @@ export const translations = {
       loadingPlan: "Cargando plan...",
       loadingIcons: "Cargando iconos...",
       footerNote1: "Todos los planes son compatibles con celular y PC.",
-      footerNote2Html: "<strong>*Precios en $ARS (Moneda Argentina). El costo y tiempo final dependen del proyecto del cliente.</strong>"
+      footerNote2Html: "<strong>* ℹ️ Precio base solo para proyectos en Argentina. Para trabajos personalizados o internacionales, el valor va a variar.</strong>"
     }
   },
   
@@ -676,45 +641,10 @@ export const translations = {
       }
     },
     
-    // Planes
+    // Planes (simplified - only navbar/general info)
     planes: {
       title: "Plans that Adapt to You",
       subtitle: "Choose the perfect plan for your project",
-      plans: {
-        basic: {
-          name: "Basic Web / Landing Page",
-          price: "$200.000*",
-          description: "Essential online presence, simple portfolios, or effective landing pages.",
-          benefits: [
-            "Modern and responsive design",
-            "Contact form",
-            "Social media links",
-            "Delivery: approx. 1-2 weeks"
-          ]
-        },
-        standard: {
-          name: "Standard Web / Multi-page",
-          price: "$350.000*",
-          description: "Complete website with multiple sections for small businesses or services.",
-          benefits: [
-            "Up to 5 pages (e.g., Home, Services, About Us, Gallery, Contact)",
-            "Custom design adapted to your identity",
-            "Basic integration (Google Maps, etc.)",
-            "Delivery: approx. 2-4 weeks"
-          ]
-        },
-        premium: {
-          name: "Premium Web / Advanced",
-          price: "$450.000*",
-          description: "High-impact web solutions with advanced features and exclusive design.",
-          benefits: [
-            "Unique design and advanced visual effects",
-            "Custom features (sliders, interactive galleries, animations)",
-            "Flexible and scalable structure (multiple complex pages)",
-            "Delivery: from 4 weeks"
-          ]
-        }
-      },
       adicionales: {
         title: "Additional Services",
         subtitle: "Consult prices",
@@ -952,7 +882,7 @@ export const translations = {
         },
         soporte: {
           name: "Monthly Support",
-          description: "*Monthly payment: $50,000* | Active support for you! Content updates, bug fixes, new basic features, and specific page optimizations."
+          description: "*Monthly payment* | Active support for you! Content updates, bug fixes, new basic features, and specific page optimizations."
         },
         idiomas: {
           name: "Automatic Multi-language",
@@ -980,7 +910,8 @@ export const translations = {
       loadingPlan: "Loading plan...",
       loadingIcons: "Loading icons...",
       footerNote1: "All plans are compatible with mobile and PC.",
-      footerNote2Html: "<strong>*Prices in $ARS (Argentine currency). Cost and delivery time depend on the client's project.</strong>"
+      footerNote2Html: "<strong>* ℹ️ Base price applies only to projects in Argentina. For custom or international work, the final cost may vary.<strong>",
+
     }
   },
   
@@ -1168,45 +1099,10 @@ export const translations = {
       }
     },
     
-    // Planes
+    // Planes (simplified - only navbar/general info)
     planes: {
-      title: "Planes que se Adaptan a Ti", // This is for navbar/general, keep it
-      subtitle: "Elige el plan perfecto para tu proyecto", // Keep it
-      plans: {
-        basic: {
-          name: "Web Básica / Landing Page",
-          price: "$200.000*", // Adjusted for NL if needed
-          description: "Essentiële online aanwezigheid, eenvoudige portfolio's of effectieve landingspagina's.",
-          benefits: [
-            "Modern en responsief ontwerp",
-            "Contactformulier",
-            "Social media links",
-            "Levering: ca. 1-2 weken"
-          ]
-        },
-        standard: {
-          name: "Standaard Web / Multi-pagina",
-          price: "$350.000*",
-          description: "Complete website met meerdere secties voor kleine bedrijven of diensten.",
-          benefits: [
-            "Tot 5 pagina's (bijv. Home, Diensten, Over Ons, Galerij, Contact)",
-            "Aangepast ontwerp aangepast aan uw identiteit",
-            "Basisintegratie (Google Maps, enz.)",
-            "Levering: ca. 2-4 weken"
-          ]
-        },
-        premium: {
-          name: "Premium Web / Geavanceerd",
-          price: "$450.000*",
-          description: "Hoogwaardige weboplossingen met geavanceerde functionaliteiten en exclusief ontwerp.",
-          benefits: [
-            "Uniek ontwerp en geavanceerde visuele effecten",
-            "Aangepaste functionaliteiten (sliders, interactieve galerijen, animaties)",
-            "Flexibele en schaalbare structuur (meerdere complexe pagina's)",
-            "Levering: vanaf 4 weken"
-          ]
-        }
-      },
+      title: "Plannen die zich aan u Aanpassen",
+      subtitle: "Kies het perfecte plan voor uw project",
       adicionales: {
         title: "Aanvullende Diensten",
         subtitle: "Raadpleeg prijzen",
@@ -1444,7 +1340,7 @@ export const translations = {
         },
         soporte: {
           name: "Maandelijkse Ondersteuning",
-          description: "*Maandelijkse betaling: $50.000* | Actieve ondersteuning voor u! Content updates, bugfixes, nieuwe basisfuncties en specifieke pagina-optimalisaties."
+          description: "*Maandelijkse betaling* | Actieve ondersteuning voor u! Content updates, bugfixes, nieuwe basisfuncties en specifieke pagina-optimalisaties."
         },
         idiomas: {
           name: "Automatisch Meertalig",
@@ -1472,7 +1368,7 @@ export const translations = {
       loadingPlan: "Plan laden...",
       loadingIcons: "Iconen laden...",
       footerNote1: "Alle plannen zijn compatibel met mobiel en pc.",
-      footerNote2Html: "<strong>*Prijzen in $ARS (Argentijnse valuta). De kosten en de uiteindelijke doorlooptijd zijn afhankelijk van het project van de klant.</strong>"
+      footerNote2Html: "<strong>* ℹ️ Basisprijs geldt alleen voor projecten in Argentinië. Voor maatwerk of internationale opdrachten kan de prijs variëren.</strong>"
     }
   },
 };
