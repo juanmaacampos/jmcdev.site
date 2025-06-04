@@ -79,7 +79,6 @@ export default function Planes() {
   const planes = useMemo(() => planDefinitions.map(pDef => ({
     id: pDef.id,
     nombre: t(`planesSection.planDetails.${pDef.id}.name`),
-    precio: t(`planesSection.planDetails.${pDef.id}.price`),
     descripcion: t(`planesSection.planDetails.${pDef.id}.description`),
     beneficios: t(`planesSection.planDetails.${pDef.id}.benefits`), // t() returns the array of translated strings
     destacado: pDef.destacado,
