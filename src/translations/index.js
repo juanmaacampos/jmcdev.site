@@ -10,7 +10,7 @@ export const translations = {
     
     // Header
     header: {
-      title: "Creamos Experiencias Digitales que",
+      title: "Creo Experiencias Digitales que",
       animatedWords: ['Conectan', 'Sorprenden', 'Venden', 'Posicionan', 'Trascienden', 'Destacan', 'Atraen'],
       description: "Páginas web que impactan, redes que conectan y fotos que venden. Todo lo que tu negocio necesita para crecer online, con calidad profesional y al mejor precio del mercado.",
       buttons: {
@@ -22,34 +22,34 @@ export const translations = {
     // Services
     services: {
       title: {
-        animated: "Transformamos",
+        animated: "Transformo",
         static: "tu presencia digital"
       },
       instruction: "(Haz clic en las tarjetas y desliza para ver más detalles)",
       cards: {
         webDevelopment: {
-          title: "Creación de páginas web que venden",
-          description: "Diseñamos sitios modernos desde cero, optimizados para destacar en Google y convertir visitas en clientes. Todo al mejor precio del mercado",
+          title: "Creo páginas web que venden",
+          description: "Diseño sitios modernos desde cero, optimizados para destacar en Google y convertir visitas en clientes. Todo al mejor precio del mercado",
           modal: {
             title: "Estar en Google es vender.",
             description: "Tenés una marca, querés crecer. Necesitás una web que aparezca entre los primeros resultados cuando te buscan.",
             content: {
-              subtitle1: "Posicionate entre los primeros resultados",
-              text1: "Diseñamos cada línea de código pensando en el buscador de Google, para que tu negocio no solo esté online… esté visible.",
+              subtitle1: "Te posiciono entre los primeros resultados",
+              text1: "Diseño cada línea de código pensando en el buscador de Google, para que tu negocio no solo esté online… esté visible.",
               subtitle2: "¿Por qué importa esto?",
-              text2: "Porque cuando alguien busca un restaurante, peluquería o cualquier servicio, no entra a redes. Lo busca en Google. Si no estás ahí arriba, no existís."
+              text2: "Porque cuando alguien busca un restaurante o cualquier servicio, no entra a redes. Lo busca en Google. Si no estás ahí arriba, no existís."
             }
           }
         },
         socialMedia: {
-          title: "Potenciación de Redes Sociales",
-          description: "Impulsamos tu negocio en redes con contenido atractivo, diseño de publicaciones y estrategias para llegar a más público.",
+          title: "Potencio tus Redes Sociales",
+          description: "Impulso tu negocio en redes con contenido atractivo, diseño de publicaciones y estrategias para llegar a más público.",
           modal: {
             title: "Conectá tu negocio con más gente",
             description: "Haz que tu marca brille en redes sociales con contenido profesional y estrategias que aumentan tu alcance.",
             content: {
               subtitle1: "Contenido que conecta",
-              text1: "Creamos publicaciones que no solo destacan, sino que generan interacción. Contenido que engancha y convierte.",
+              text1: "Creo publicaciones que no solo destacan, sino que generan interacción. Contenido que engancha y convierte.",
               subtitle2: "¿Por qué es tan importante?",
               text2: "Las redes sociales son el escenario perfecto para mostrar tu negocio al mundo. Pero necesitás estrategias bien pensadas para que tu marca llegue a más personas y se convierta en una referencia."
             }
@@ -57,13 +57,13 @@ export const translations = {
         },
         photography: {
           title: "Servicio de Fotografía Profesional",
-          description: "Capturamos imágenes impresionantes con cámara réflex para que tu negocio tenga fotos visualmente impactantes en tu web y redes sociales.",
+          description: "Capturo imágenes impresionantes con cámara réflex para que tu negocio tenga fotos visualmente impactantes en tu web y redes sociales.",
           modal: {
             title: "Imágenes que hablan por tu marca",
             description: "Fotos de alta calidad que reflejan la esencia de tu negocio, ideales para tu página web y redes sociales.",
             content: {
               subtitle1: "Imágenes que impactan",
-              text1: "Tomamos fotos profesionales con cámara réflex para que tu negocio tenga un impacto visual inmediato. Imágenes que captan atención y dejan huella.",
+              text1: "Tomo fotos profesionales con cámara réflex para que tu negocio tenga un impacto visual inmediato. Imágenes que captan atención y dejan huella.",
               subtitle2: "¿Por qué es importante?",
               text2: "Las imágenes son la primera impresión de tu marca. No subestimes el poder de una buena foto. Una imagen vale más que mil palabras, y en tu negocio, puede ser la diferencia entre llamar la atención o pasar desapercibido."
             }
@@ -71,43 +71,43 @@ export const translations = {
         },
         design: {
           title: "Diseños Personalizados desde Cero",
-          description: "Creamos interfaces únicas, adaptadas a tus necesidades. Nada de plantillas, todo hecho a medida y para que se vea bien en cualquier dispositivo.",
+          description: "Creo interfaces únicas, adaptadas a tus necesidades. Nada de plantillas, todo hecho a medida y para que se vea bien en cualquier dispositivo.",
           modal: {
             title: "Diseño que conecta con tu público",
             description: "Diseñamos interfaces atractivas y fáciles de usar, pensadas para que tus usuarios disfruten de una experiencia simple y agradable.",
             content: {
               subtitle1: "Diseños únicos y adaptados a tu marca",
-              text1: "Olvidate de usar plantillas. Creamos cada web desde cero, ajustado a lo que tu negocio necesita.",
-              subtitle2: "¿Por qué elegirnos?",
-              text2: "Un diseño atractivo y fácil de usar hace que tus usuarios disfruten más tu página. Nos aseguramos de que todo se vea perfecto, tanto en computadoras como en teléfonos."
+              text1: "Olvídate de usar plantillas. Creo cada web desde cero, ajustado a lo que tu negocio necesita.",
+              subtitle2: "¿Por qué elegirme?",
+              text2: "Un diseño atractivo y fácil de usar hace que tus usuarios disfruten más tu página. Me aseguro de que todo se vea perfecto, tanto en computadoras como en teléfonos."
             }
           }
         },
         hosting: {
           title: "Hosting y Dominio",
-          description: "Nos encargamos del alojamiento web y el registro de tu dominio personalizado de manera fácil y sin complicaciones.",
+          description: "Me encargo del alojamiento web y el registro de tu dominio personalizado de manera fácil y sin complicaciones.",
           modal: {
             title: "Tu página siempre online.",
             description: "Te ayudamos con todo el proceso de alojamiento y registro de dominio para que tu página esté siempre disponible y fácil de encontrar.",
             content: {
               subtitle1: "Todo en un solo lugar",
-              text1: "Nos encargamos de todo el proceso: desde el alojamiento de tu página web hasta el registro de tu dominio, sin complicaciones.",
-              subtitle2: "¿Por qué elegirnos?",
-              text2: "Con nuestro servicio, tu página estará siempre online, accesible para todos y con un nombre de dominio fácil de recordar."
+              text1: "Me encargo de todo el proceso: desde el alojamiento de tu página web hasta el registro de tu dominio, sin complicaciones.",
+              subtitle2: "¿Por qué elegirme?",
+              text2: "Con mi servicio, tu página estará siempre online, accesible para todos y con un nombre de dominio fácil de recordar."
             }
           }
         },
         support: {
           title: "Mantenimiento y Soporte Técnico",
-          description: "Te ofrecemos actualizaciones regulares, corrección de errores y soporte continuo para que tu página siempre esté al día.",
+          description: "Te ofrezco actualizaciones regulares, corrección de errores y soporte continuo para que tu página siempre esté al día.",
           modal: {
             title: "Tu página siempre a punto.",
             description: "Nos encargamos de mantener tu sitio actualizado, corregir cualquier error y brindarte soporte cuando lo necesites.",
             content: {
               subtitle1: "Todo en orden, siempre",
-              text1: "Nos aseguramos de que tu página esté siempre actualizada, con las últimas funciones y libre de errores.",
+              text1: "Me aseguro de que tu página esté siempre actualizada, con las últimas funciones y libre de errores.",
               subtitle2: "¿Por qué es importante?",
-              text2: "Un sitio web sin mantenimiento puede volverse lento o tener errores que afecten la experiencia del usuario. Nosotros nos encargamos de todo para que no tengas que preocuparte."
+              text2: "Un sitio web sin mantenimiento puede volverse lento o tener errores que afecten la experiencia del usuario. Yo me encargo de todo para que no tengas que preocuparte."
             }
           }
         }
@@ -116,7 +116,7 @@ export const translations = {
     
     // Proceso
     proceso: {
-      title: "¿Cómo trabajamos?",
+      title: "¿Cómo trabajo?",
       steps: {
         step1: {
           title: "1. Consulta",
@@ -124,15 +124,15 @@ export const translations = {
         },
         step2: {
           title: "2. Propuesta",
-          description: "Diseño una propuesta personalizada con un boceto adaptado a tu estilo."
+          description: "Diseño una propuesta personalizada con un boceto web adaptado a tu estilo."
         },
         step3: {
           title: "3. Aprobación",
-          description: "Una vez que estás conforme con la propuesta, confirmás el desarrollo con el presupuesto y tiempos estimados."
+          description: "Una vez que estás conforme con la propuesta, confirmás el desarrollo con nuestro presupuesto detalladamente creado y tiempos estimados."
         },
         step4: {
           title: "4. Desarrollo",
-          description: "Empieza el desarrollo de tu página con avances semanales para que puedas seguir todo el proceso."
+          description: "Empieza el desarrollo de tu página con avances semanales para que puedas seguir todo el proceso facilmente."
         },
         step5: {
           title: "5. Lanzamiento",
@@ -152,8 +152,8 @@ export const translations = {
     // Portafolio
     portafolio: {
       title: "Proyectos que Destacan", // This key seems unused by Portafolio.jsx, but kept for consistency
-      subtitle: "Algunos de nuestros trabajos más recientes", // Also unused by Portafolio.jsx
-      coolTitlePart1: "Nuestros",
+      subtitle: "Algunos de mis trabajos más recientes", // Also unused by Portafolio.jsx
+      coolTitlePart1: "Mis",
       animatedWords: "Proyectos, Trabajos, Diseños, Desarrollos",
       projects: {
         portfolio: {
@@ -171,6 +171,10 @@ export const translations = {
         businessDemo: { // New key to match Portafolio.jsx
           name: "Web Business DEMO",
           description: "Web para Asnagui Business Consulting elegante y efectiva (NO ES EL RESULTADO FINAL)."
+        },
+        "3dDemo": { // New key for 3D demo
+          name: "Demo 3D Interactivo",
+          description: "Demostración de efectos 3D y animaciones interactivas para páginas web modernas."
         },
         brandPremium: { // New key to match Portafolio.jsx
           name: "Web de marca Premium",
@@ -209,7 +213,7 @@ export const translations = {
 
     // Testimonios
     testimonios: {
-      title: "Lo que dicen nuestros clientes",
+      title: "Lo que dicen mis clientes",
       items: [
         {
           name: "Martin Dominguez",
@@ -236,7 +240,7 @@ export const translations = {
     // Contacto
     contacto: {
       title: "Hablemos de tu Proyecto",
-      subtitle: "Completá el formulario interactivo para entender a fondo lo que queres. ¡Estoy listo para ayudarte a convertir tu idea en realidad!",
+      subtitle: "Completá el formulario interactivo para entender a fondo lo que querés. ¡Estoy listo para ayudarte a convertir tu idea en realidad!",
       form: {
         title: "Formulario para crear tu idea",
         fields: {
@@ -417,11 +421,11 @@ export const translations = {
       adicionalesDetails: {
         fotos: {
           name: "Fotografías profesionales",
-          description: "*Precio a definir con el cliente* | Renueva las fotos de tu local de una manera moderna. Ofrecemos fotos en full HD tomadas con cámara réflex, totalmente adaptables a tu página web y redes sociales con un impacto visual inmediato."
+          description: "*Precio a definir con el cliente* | Renuevo las fotos de tu local de una manera moderna. Ofrezco fotos en full HD tomadas con cámara réflex, totalmente adaptables a tu página web y redes sociales con un impacto visual inmediato."
         },
         feed: {
           name: "Feed de Instagram",
-          description: "Integrá tu cuenta de Instagram para que tus publicaciones más recientes se vean directamente en tu sitio web, actualizándose automáticamente."
+          description: "Integro tu cuenta de Instagram para que tus publicaciones más recientes se vean directamente en tu sitio web, actualizándose automáticamente."
         },
         soporte: {
           name: "Soporte Mensual",
@@ -433,19 +437,19 @@ export const translations = {
         },
         analiticas: {
           name: "Google Analytics",
-          description: "Conectá tu sitio con Google Analytics para obtener estadísticas detalladas sobre cuántas personas te visitan, desde dónde y qué secciones ven más."
+          description: "Conecto tu sitio con Google Analytics para obtener estadísticas detalladas sobre cuántas personas te visitan, desde dónde y qué secciones ven más."
         },
         galeria: {
           name: "Galería Interactiva",
-          description: "Creá una sección para mostrar tus fotos o productos con efectos visuales al pasar el mouse, permitiendo una navegación moderna y atractiva."
+          description: "Creo una sección para mostrar tus fotos o productos con efectos visuales al pasar el mouse, permitiendo una navegación moderna y atractiva."
         },
         maps: {
           name: "Integración Google Maps",
-          description: "Mostrá tu ubicación en un mapa interactivo integrado, ideal para negocios físicos o lugares con atención al público."
+          description: "Muestro tu ubicación en un mapa interactivo integrado, ideal para negocios físicos o lugares con atención al público."
         },
         modos: {
           name: "Modo Oscuro/Claro",
-          description: "Permití a tus visitantes elegir entre un tema claro o uno oscuro para una mejor experiencia visual, con un simple botón en pantalla."
+          description: "Permito a tus visitantes elegir entre un tema claro o uno oscuro para una mejor experiencia visual, con un simple botón en pantalla."
         }
       },
       adicionalVisualizacionPlaceholder: "Visualización del adicional",
@@ -468,7 +472,7 @@ export const translations = {
     
     // Header
     header: {
-      title: "We Create Digital Experiences\u00A0that",
+      title: "I Create Digital Experiences\u00A0that",
       animatedWords: ['Connect', 'Amaze', 'Sell', 'Position', 'Transcend', 'Stand out', 'Attract'],
       description: "Impactful websites, connecting social media, and photos that sell. Everything your business needs to grow online, with professional quality at the best market price.",
       buttons: {
@@ -480,34 +484,34 @@ export const translations = {
     // Services
     services: {
       title: {
-        animated: "We Transform",
+        animated: "I Transform",
         static: "your digital presence"
       },
       instruction: "(Click on the cards and swipe to see more details)",
       cards: {
         webDevelopment: {
-          title: "Creating websites that sell",
-          description: "We design modern sites from scratch, optimized to stand out on Google and convert visits into customers. All at the best market price",
+          title: "I create websites that sell",
+          description: "I design modern sites from scratch, optimized to stand out on Google and convert visits into customers. All at the best market price",
           modal: {
             title: "Being on Google means selling.",
             description: "You have a brand, you want to grow. You need a website that appears among the first results when people search for you.",
             content: {
-              subtitle1: "Position yourself among the first results",
-              text1: "We design every line of code thinking about Google's search engine, so your business is not just online... it's visible.",
+              subtitle1: "I position you among the first results",
+              text1: "I design every line of code thinking about Google's search engine, so your business is not just online... it's visible.",
               subtitle2: "Why does this matter?",
               text2: "Because when someone looks for a restaurant, hair salon, or any service, they don't go to social media. They search on Google. If you're not up there, you don't exist."
             }
           }
         },
         socialMedia: {
-          title: "Social Media Enhancement",
-          description: "We boost your business on social media with attractive content, post design, and strategies to reach more audience.",
+          title: "I enhance your Social Media",
+          description: "I boost your business on social media with attractive content, post design, and strategies to reach more audience.",
           modal: {
             title: "Connect your business with more people",
             description: "Make your brand shine on social media with professional content and strategies that increase your reach.",
             content: {
               subtitle1: "Content that connects",
-              text1: "We create posts that not only stand out, but generate interaction. Content that engages and converts.",
+              text1: "I create posts that not only stand out, but generate interaction. Content that engages and converts.",
               subtitle2: "Why is it so important?",
               text2: "Social media is the perfect stage to show your business to the world. But you need well-thought strategies for your brand to reach more people and become a reference."
             }
@@ -515,13 +519,13 @@ export const translations = {
         },
         photography: {
           title: "Professional Photography Service",
-          description: "We capture stunning images with DSLR cameras so your business has visually impactful photos for your website and social media.",
+          description: "I capture stunning images with DSLR cameras so your business has visually impactful photos for your website and social media.",
           modal: {
             title: "Images that speak for your brand",
             description: "High-quality photos that reflect your business essence, ideal for your website and social media.",
             content: {
               subtitle1: "Images that impact",
-              text1: "We take professional photos with DSLR cameras so your business has immediate visual impact. Images that capture attention and leave a mark.",
+              text1: "I take professional photos with DSLR cameras so your business has immediate visual impact. Images that capture attention and leave a mark.",
               subtitle2: "Why is it important?",
               text2: "Images are your brand's first impression. Don't underestimate the power of a good photo. A picture is worth a thousand words, and in your business, it can be the difference between catching attention or going unnoticed."
             }
@@ -529,43 +533,43 @@ export const translations = {
         },
         design: {
           title: "Custom Designs from Scratch",
-          description: "We create unique interfaces, adapted to your needs. No templates, everything made to measure and to look good on any device.",
+          description: "I create unique interfaces, adapted to your needs. No templates, everything made to measure and to look good on any device.",
           modal: {
             title: "Design that connects with your audience",
             description: "We design attractive and easy-to-use interfaces, designed so your users enjoy a simple and pleasant experience.",
             content: {
               subtitle1: "Unique designs adapted to your brand",
-              text1: "Forget about using templates. We create each website from scratch, adjusted to what your business needs.",
-              subtitle2: "Why choose us?",
-              text2: "An attractive and easy-to-use design makes your users enjoy your page more. We make sure everything looks perfect, both on computers and phones."
+              text1: "Forget about using templates. I create each website from scratch, adjusted to what your business needs.",
+              subtitle2: "Why choose me?",
+              text2: "An attractive and easy-to-use design makes your users enjoy your page more. I make sure everything looks perfect, both on computers and phones."
             }
           }
         },
         hosting: {
           title: "Hosting and Domain",
-          description: "We take care of web hosting and registration of your personalized domain in an easy and uncomplicated way.",
+          description: "I take care of web hosting and registration of your personalized domain in an easy and uncomplicated way.",
           modal: {
             title: "Your page always online.",
             description: "We help you with the entire hosting and domain registration process so your page is always available and easy to find.",
             content: {
               subtitle1: "Everything in one place",
-              text1: "We take care of the entire process: from hosting your website to registering your domain, without complications.",
-              subtitle2: "Why choose us?",
-              text2: "With our service, your page will always be online, accessible to everyone and with an easy-to-remember domain name."
+              text1: "I take care of the entire process: from hosting your website to registering your domain, without complications.",
+              subtitle2: "Why choose me?",
+              text2: "With my service, your page will always be online, accessible to everyone and with an easy-to-remember domain name."
             }
           }
         },
         support: {
           title: "Maintenance and Technical Support",
-          description: "We offer regular updates, bug fixes, and continuous support so your page is always up to date.",
+          description: "I offer regular updates, bug fixes, and continuous support so your page is always up to date.",
           modal: {
             title: "Your page always ready.",
             description: "We take care of keeping your site updated, fixing any errors, and providing support when you need it.",
             content: {
               subtitle1: "Everything in order, always",
-              text1: "We make sure your page is always updated, with the latest features and error-free.",
+              text1: "I make sure your page is always updated, with the latest features and error-free.",
               subtitle2: "Why is it important?",
-              text2: "A website without maintenance can become slow or have errors that affect user experience. We take care of everything so you don't have to worry."
+              text2: "A website without maintenance can become slow or have errors that affect user experience. I take care of everything so you don't have to worry."
             }
           }
         }
@@ -610,8 +614,8 @@ export const translations = {
     // Portafolio
     portafolio: {
       title: "Outstanding Projects", // Unused by Portafolio.jsx
-      subtitle: "Some of our most recent works", // Unused by Portafolio.jsx
-      coolTitlePart1: "Our",
+      subtitle: "Some of my most recent works", // Unused by Portafolio.jsx
+      coolTitlePart1: "My",
       animatedWords: "Projects, Works, Designs, Developments",
       projects: {
         portfolio: {
@@ -629,6 +633,10 @@ export const translations = {
         businessDemo: { // New key
           name: "Business DEMO Website",
           description: "Website for Asnagui Business Consulting, elegant and effective (NOT THE FINAL RESULT)."
+        },
+        "3dDemo": { // New key for 3D demo
+          name: "Interactive 3D Demo",
+          description: "Demonstration of 3D effects and interactive animations for modern websites."
         },
         brandPremium: { // New key
           name: "Premium Brand Website",
@@ -667,7 +675,7 @@ export const translations = {
     
     // Testimonios
     testimonios: {
-      title: "What our clients say",
+      title: "What my clients say",
       items: [
         {
           name: "Martin Dominguez",
@@ -721,7 +729,7 @@ export const translations = {
           selectPlan: "Select a plan",
           consultationTypes: {
             webPage: "Website",
-            techSupport: "Technical support", 
+            techSupport: "Technical support",
             socialMedia: "Social media",
             other: "Other"
           },
@@ -733,11 +741,11 @@ export const translations = {
           services: {
             webPage: "Website",
             socialMedia: "Social media",
-            other: "Other" // Added
+            other: "Other"
           },
           webTypes: {
             restaurants: "Restaurants",
-            brands: "Brands", 
+            brands: "Brands",
             personal: "Personal page",
             otherWeb: "Other (specify later)"
           },
@@ -757,7 +765,7 @@ export const translations = {
           default: "Tell me the details of your idea, objectives, or what you need...",
           support: "Describe the technical problem you are experiencing in detail...",
           other: "Write your query or reason for contact here...",
-          social: "Tell me the details of your idea, objectives, or what you need..." // Added
+          social: "Tell me the details of your idea, objectives, or what you need..."
         },
         buttons: {
           submit: "Send Message via WhatsApp",
@@ -874,11 +882,11 @@ export const translations = {
       adicionalesDetails: {
         fotos: {
           name: "Professional Photography",
-          description: "*Price to be defined with the client* | Renew your business photos in a modern way. We offer full HD photos taken with a DSLR camera, fully adaptable to your website and social media with immediate visual impact."
+          description: "*Price to be defined with the client* | I renew your business photos in a modern way. I offer full HD photos taken with a DSLR camera, fully adaptable to your website and social media with immediate visual impact."
         },
         feed: {
           name: "Instagram Feed",
-          description: "Integrate your Instagram account so your latest posts are displayed directly on your website, updating automatically."
+          description: "I integrate your Instagram account so your latest posts are displayed directly on your website, updating automatically."
         },
         soporte: {
           name: "Monthly Support",
@@ -890,19 +898,19 @@ export const translations = {
         },
         analiticas: {
           name: "Google Analytics",
-          description: "Connect your site with Google Analytics to get detailed statistics on how many people visit, where they come from, and which sections they view most."
+          description: "I connect your site with Google Analytics to get detailed statistics on how many people visit, where they come from, and which sections they view most."
         },
         galeria: {
           name: "Interactive Gallery",
-          description: "Create a section to display your photos or products with visual effects on hover, allowing for modern and attractive navigation."
+          description: "I create a section to display your photos or products with visual effects on hover, allowing for modern and attractive navigation."
         },
         maps: {
           name: "Google Maps Integration",
-          description: "Display your location on an integrated interactive map, ideal for physical businesses or public-facing locations."
+          description: "I display your location on an integrated interactive map, ideal for physical businesses or public-facing locations."
         },
         modos: {
           name: "Dark/Light Mode",
-          description: "Allow your visitors to choose between a light or dark theme for a better visual experience, with a simple on-screen button."
+          description: "I allow your visitors to choose between a light or dark theme for a better visual experience, with a simple on-screen button."
         }
       },
       adicionalVisualizacionPlaceholder: "Add-on visualization",
@@ -910,11 +918,10 @@ export const translations = {
       loadingPlan: "Loading plan...",
       loadingIcons: "Loading icons...",
       footerNote1: "All plans are compatible with mobile and PC.",
-      footerNote2Html: "<strong>* ℹ️ Base price applies only to projects in Argentina. For custom or international work, the final cost may vary.<strong>",
-
+      footerNote2Html: "<strong>* ℹ️ Base price applies only to projects in Argentina. For custom or international work, the price may vary.</strong>"
     }
   },
-  
+
   nl: {
     // Navbar
     navbar: {
@@ -926,7 +933,7 @@ export const translations = {
     
     // Header
     header: {
-      title: "Wij Creëren Digitale Ervaringen Die",
+      title: "Ik Creëer Digitale Ervaringen Die",
       animatedWords: ['Verbinden', 'Verbazen', 'Verkopen', 'Positioneren', 'Overstijgen', 'Opvallen', 'Aantrekken'],
       description: "Impactvolle websites, verbindende sociale media en foto's die verkopen. Alles wat uw bedrijf nodig heeft om online te groeien, met professionele kwaliteit tegen de beste marktprijs.",
       buttons: {
@@ -938,34 +945,34 @@ export const translations = {
     // Services
     services: {
       title: {
-        animated: "Wij transformeren",
+        animated: "Ik transformeer",
         static: "uw digitale aanwezigheid"
       },
       instruction: "(Klik op de kaarten en veeg om meer details te zien)",
       cards: {
         webDevelopment: {
-          title: "Websites creëren die verkopen",
-          description: "We ontwerpen moderne sites vanaf nul, geoptimaliseerd om op te vallen in Google en bezoekers om te zetten in klanten. Alles tegen de beste marktprijs",
+          title: "Ik creëer websites die verkopen",
+          description: "Ik ontwerp moderne sites vanaf nul, geoptimaliseerd om op te vallen in Google en bezoekers om te zetten in klanten. Alles tegen de beste marktprijs",
           modal: {
             title: "Op Google staan betekent verkopen.",
             description: "U heeft een merk, u wilt groeien. U heeft een website nodig die tussen de eerste resultaten verschijnt wanneer mensen naar u zoeken.",
             content: {
-              subtitle1: "Positioneer uzelf tussen de eerste resultaten",
-              text1: "We ontwerpen elke regel code met Google's zoekmachine in gedachten, zodat uw bedrijf niet alleen online is... het is zichtbaar.",
+              subtitle1: "Ik positioneer u tussen de eerste resultaten",
+              text1: "Ik ontwerp elke regel code met Google's zoekmachine in gedachten, zodat uw bedrijf niet alleen online is... het is zichtbaar.",
               subtitle2: "Waarom is dit belangrijk?",
               text2: "Want wanneer iemand op zoek is naar een restaurant, kapsalon of andere dienst, gaan ze niet naar sociale media. Ze zoeken op Google. Als u daar niet bovenaan staat, bestaat u niet."
             }
           }
         },
         socialMedia: {
-          title: "Social Media Versterking",
-          description: "We boosten uw bedrijf op sociale media met aantrekkelijke content, post-ontwerp en strategieën om meer publiek te bereiken.",
+          title: "Ik versterk uw Social Media",
+          description: "Ik boost uw bedrijf op sociale media met aantrekkelijke content, post-ontwerp en strategieën om meer publiek te bereiken.",
           modal: {
             title: "Verbind uw bedrijf met meer mensen",
             description: "Laat uw merk schitteren op sociale media met professionele content en strategieën die uw bereik vergroten.",
             content: {
               subtitle1: "Content die verbindt",
-              text1: "We creëren posts die niet alleen opvallen, maar ook interactie genereren. Content die boeit en converteert.",
+              text1: "Ik creëer posts die niet alleen opvallen, maar ook interactie genereren. Content die boeit en converteert.",
               subtitle2: "Waarom is dit zo belangrijk?",
               text2: "Sociale media is het perfecte podium om uw bedrijf aan de wereld te tonen. Maar u heeft goed doordachte strategieën nodig opdat uw merk meer mensen bereikt en een referentie wordt."
             }
@@ -973,13 +980,13 @@ export const translations = {
         },
         photography: {
           title: "Professionele Fotografie Service",
-          description: "We maken prachtige beelden met spiegelreflexcamera's zodat uw bedrijf visueel impactvolle foto's heeft voor uw website en sociale media.",
+          description: "Ik maak prachtige beelden met spiegelreflexcamera's zodat uw bedrijf visueel impactvolle foto's heeft voor uw website en sociale media.",
           modal: {
             title: "Beelden die spreken voor uw merk",
             description: "Hoogwaardige foto's die de essentie van uw bedrijf weerspiegelen, ideaal voor uw website en sociale media.",
             content: {
               subtitle1: "Beelden die impact maken",
-              text1: "We maken professionele foto's met spiegelreflexcamera's zodat uw bedrijf onmiddellijke visuele impact heeft. Beelden die aandacht trekken en indruk maken.",
+              text1: "Ik maak professionele foto's met spiegelreflexcamera's zodat uw bedrijf onmiddellijke visuele impact heeft. Beelden die aandacht trekken en indruk maken.",
               subtitle2: "Waarom is dit belangrijk?",
               text2: "Beelden zijn de eerste indruk van uw merk. Onderschat de kracht van een goede foto niet. Een beeld zegt meer dan duizend woorden, en in uw bedrijf kan het het verschil maken tussen aandacht trekken of onopgemerkt blijven."
             }
@@ -987,43 +994,43 @@ export const translations = {
         },
         design: {
           title: "Op Maat Gemaakte Ontwerpen vanaf Nul",
-          description: "We creëren unieke interfaces, aangepast aan uw behoeften. Geen sjablonen, alles op maat gemaakt en om er goed uit te zien op elk apparaat.",
+          description: "Ik creëer unieke interfaces, aangepast aan uw behoeften. Geen sjablonen, alles op maat gemaakt en om er goed uit te zien op elk apparaat.",
           modal: {
             title: "Ontwerp dat verbindt met uw publiek",
             description: "We ontwerpen aantrekkelijke en gebruiksvriendelijke interfaces, ontworpen zodat uw gebruikers genieten van een eenvoudige en aangename ervaring.",
             content: {
               subtitle1: "Unieke ontwerpen aangepast aan uw merk",
-              text1: "Vergeet sjablonen gebruiken. We creëren elke website vanaf nul, aangepast aan wat uw bedrijf nodig heeft.",
-              subtitle2: "Waarom voor ons kiezen?",
-              text2: "Een aantrekkelijk en gebruiksvriendelijk ontwerp zorgt ervoor dat uw gebruikers meer van uw pagina genieten. We zorgen ervoor dat alles er perfect uitziet, zowel op computers als op telefoons."
+              text1: "Vergeet sjablonen gebruiken. Ik creëer elke website vanaf nul, aangepast aan wat uw bedrijf nodig heeft.",
+              subtitle2: "Waarom voor mij kiezen?",
+              text2: "Een aantrekkelijk en gebruiksvriendelijk ontwerp zorgt ervoor dat uw gebruikers meer van uw pagina genieten. Ik zorg ervoor dat alles er perfect uitziet, zowel op computers als op telefoons."
             }
           }
         },
         hosting: {
           title: "Hosting en Domein",
-          description: "We zorgen voor webhosting en registratie van uw gepersonaliseerde domein op een eenvoudige en ongecompliceerde manier.",
+          description: "Ik zorg voor webhosting en registratie van uw gepersonaliseerde domein op een eenvoudige en ongecompliceerde manier.",
           modal: {
             title: "Uw pagina altijd online.",
             description: "We helpen u met het hele hosting- en domeinregistratieproces zodat uw pagina altijd beschikbaar en gemakkelijk te vinden is.",
             content: {
               subtitle1: "Alles op één plek",
-              text1: "We zorgen voor het hele proces: van het hosten van uw website tot het registreren van uw domein, zonder complicaties.",
-              subtitle2: "Waarom voor ons kiezen?",
-              text2: "Met onze service zal uw pagina altijd online zijn, toegankelijk voor iedereen en met een gemakkelijk te onthouden domeinnaam."
+              text1: "Ik zorg voor het hele proces: van het hosten van uw website tot het registreren van uw domein, zonder complicaties.",
+              subtitle2: "Waarom voor mij kiezen?",
+              text2: "Met mijn service zal uw pagina altijd online zijn, toegankelijk voor iedereen en met een gemakkelijk te onthouden domeinnaam."
             }
           }
         },
         support: {
           title: "Onderhoud en Technische Ondersteuning",
-          description: "We bieden regelmatige updates, bugfixes en continue ondersteuning zodat uw pagina altijd up-to-date is.",
+          description: "Ik bied regelmatige updates, bugfixes en continue ondersteuning zodat uw pagina altijd up-to-date is.",
           modal: {
             title: "Uw pagina altijd klaar.",
             description: "We zorgen ervoor dat uw site up-to-date blijft, eventuele fouten oplossen en ondersteuning bieden wanneer u het nodig heeft.",
             content: {
               subtitle1: "Alles op orde, altijd",
-              text1: "We zorgen ervoor dat uw pagina altijd up-to-date is, met de nieuwste functies en foutloos.",
+              text1: "Ik zorg ervoor dat uw pagina altijd up-to-date is, met de nieuwste functies en foutloos.",
               subtitle2: "Waarom is dit belangrijk?",
-              text2: "Een website zonder onderhoud kan traag worden of fouten hebben die de gebruikerservaring beïnvloeden. Wij zorgen voor alles zodat u zich geen zorgen hoeft te maken."
+              text2: "Een website zonder onderhoud kan traag worden of fouten hebben die de gebruikerservaring beïnvloeden. Ik zorg voor alles zodat u zich geen zorgen hoeft te maken."
             }
           }
         }
@@ -1068,8 +1075,8 @@ export const translations = {
     // Portafolio
     portafolio: {
       title: "Uitstekende Projecten", // Unused by Portafolio.jsx
-      subtitle: "Enkele van onze meest recente werken", // Unused by Portafolio.jsx
-      coolTitlePart1: "Onze",
+      subtitle: "Enkele van mijn meest recente werken", // Unused by Portafolio.jsx
+      coolTitlePart1: "Mijn",
       animatedWords: "Projecten, Werken, Ontwerpen, Ontwikkelingen",
       projects: {
         portfolio: {
@@ -1087,6 +1094,10 @@ export const translations = {
         businessDemo: { // New key
           name: "Business DEMO Website",
           description: "Website voor Asnagui Business Consulting, elegant en effectief (NIET HET EINDRESULTAAT)."
+        },
+        "3dDemo": { // New key for 3D demo
+          name: "Interactieve 3D Demo",
+          description: "Demonstratie van 3D-effecten en interactieve animaties voor moderne websites."
         },
         brandPremium: { // New key
           name: "Premium merk website",
@@ -1125,7 +1136,7 @@ export const translations = {
     
     // Testimonios
     testimonios: {
-      title: "Wat onze klanten zeggen",
+      title: "Wat mijn klanten zeggen",
       items: [
         {
           name: "Martin Dominguez",
@@ -1191,7 +1202,7 @@ export const translations = {
           services: {
             webPage: "Website",
             socialMedia: "Sociale media",
-            other: "Ander" // Added
+            other: "Ander"
           },
           webTypes: {
             restaurants: "Restaurants",
@@ -1332,11 +1343,11 @@ export const translations = {
       adicionalesDetails: {
         fotos: {
           name: "Professionele Foto's",
-          description: "*Prijs te bepalen met de klant* | Vernieuw de foto's van uw zaak op een moderne manier. Wij bieden full HD foto's gemaakt met een spiegelreflexcamera, volledig aanpasbaar aan uw website en sociale media met onmiddellijke visuele impact."
+          description: "*Prijs te bepalen met de klant* | Ik vernieuw de foto's van uw zaak op een moderne manier. Ik bied full HD foto's gemaakt met een spiegelreflexcamera, volledig aanpasbaar aan uw website en sociale media met onmiddellijke visuele impact."
         },
         feed: {
           name: "Instagram Feed",
-          description: "Integreer uw Instagram-account zodat uw laatste berichten direct op uw website worden weergegeven en automatisch worden bijgewerkt."
+          description: "Ik integreer uw Instagram-account zodat uw laatste berichten direct op uw website worden weergegeven en automatisch worden bijgewerkt."
         },
         soporte: {
           name: "Maandelijkse Ondersteuning",
@@ -1348,23 +1359,21 @@ export const translations = {
         },
         analiticas: {
           name: "Google Analytics",
-          description: "Koppel uw site aan Google Analytics om gedetailleerde statistieken te krijgen over hoeveel mensen u bezoeken, waar ze vandaan komen en welke secties ze het meest bekijken."
+          description: "Ik koppel uw site aan Google Analytics om gedetailleerde statistieken te krijgen over hoeveel mensen u bezoeken, waar ze vandaan komen en welke secties ze het meest bekijken."
         },
         galeria: {
           name: "Interactieve Galerij",
-          description: "Creëer een sectie om uw foto's of producten weer te geven met visuele effecten bij mouse-over, wat zorgt voor een moderne en aantrekkelijke navigatie."
+          description: "Ik creëer een sectie om uw foto's of producten weer te geven met visuele effecten bij mouse-over, wat zorgt voor een moderne en aantrekkelijke navigatie."
         },
         maps: {
           name: "Google Maps Integratie",
-          description: "Toon uw locatie op een geïntegreerde interactieve kaart, ideaal voor fysieke bedrijven of locaties met publieke aandacht."
+          description: "Ik toon uw locatie op een geïntegreerde interactieve kaart, ideaal voor fysieke bedrijven of locaties met publieke aandacht."
         },
         modos: {
           name: "Donker/Licht Modus",
-          description: "Sta uw bezoekers toe te kiezen tussen een licht of donker thema voor een betere visuele ervaring, met een eenvoudige knop op het scherm."
+          description: "Ik sta uw bezoekers toe te kiezen tussen een licht of donker thema voor een betere visuele ervaring, met een eenvoudige knop op het scherm."
         }
       },
-      adicionalVisualizacionPlaceholder: "Visualisatie van add-on",
-      adicionalSelectPrompt: "Selecteer een add-on uit de lijst.",
       loadingPlan: "Plan laden...",
       loadingIcons: "Iconen laden...",
       footerNote1: "Alle plannen zijn compatibel met mobiel en pc.",

@@ -18,22 +18,24 @@ import saboresVideo from "../../assets/videos/sabores_project.webm";
 import portfolioVideo from "../../assets/videos/portfolio_project.webm";
 import jmcdevwebVideo from "../../assets/videos/jmcdevweb_project.webm";
 import abcVideo from "../../assets/videos/ABC_project.webm";
+import threedDemoVideo from "../../assets/videos/threedDemoVideo.webm";
 
 import saboresThumb from "../../assets/projects_img/sabores_project.webp";
 import portfolioThumb from "../../assets/projects_img/portfolio_project.webp";
 import jmcdevwebThumb from "../../assets/projects_img/jmcdevweb_project.webp";
 import bianSushiThumb from "../../assets/projects_img/bian_project.webp";
 import abcThumb from "../../assets/projects_img/ABC_project.webp";
+import threeDThumb from "../../assets/projects_img/threeDThumb.webp";
 
 // Base data for projects (non-translatable parts)
 const projectsData = [
-  {
-    id: 1,
-    key: "portfolio", // Key for translations
+        {
+    id: 6,
+    key: "3dDemo", // Key for translations
     type: "video",
-    media: portfolioVideo,
-    thumbnail: portfolioThumb,
-    url: "https://juanmaacampos.github.io/juanmacampos-portfolio/",
+    media: threedDemoVideo,
+    thumbnail: threeDThumb,
+    url: "https://juanmaacampos.github.io/3d_demo/",
   },
   {
     id: 2,
@@ -57,6 +59,14 @@ const projectsData = [
     media: abcVideo,
     thumbnail: abcThumb,
     url: "https://juanmaacampos.github.io/ABC_project/",
+  },
+    {
+    id: 1,
+    key: "portfolio", // Key for translations
+    type: "video",
+    media: portfolioVideo,
+    thumbnail: portfolioThumb,
+    url: "https://juanmaacampos.github.io/juanmacampos-portfolio/",
   },
   {
     id: 4,
