@@ -578,35 +578,35 @@ export const translations = {
     
     // Proceso
     proceso: {
-      title: "How we work",
+      title: "How do I work?",
       steps: {
         step1: {
           title: "1. Consultation",
-          description: "We discuss your idea, objectives, and what you expect from your website."
+          description: "We talk about your idea, objectives and what you expect from your website."
         },
         step2: {
           title: "2. Proposal",
-          description: "I design a personalized proposal with a mockup adapted to your style."
+          description: "I design a personalized proposal with a web sketch adapted to your style."
         },
         step3: {
           title: "3. Approval",
-          description: "Once you are satisfied with the proposal, you confirm the development with the budget and estimated timeframes."
+          description: "Once you are satisfied with the proposal, you confirm the development with our detailed budget and estimated timeframes."
         },
         step4: {
           title: "4. Development",
-          description: "The development of your page begins with weekly updates so you can follow the entire process."
+          description: "Your page development begins with weekly progress updates so you can easily follow the entire process."
         },
         step5: {
           title: "5. Launch",
-          description: "When the page is ready and you validate that it meets all your needs, we publish it online."
+          description: "When the page is ready and you validate that it meets everything you need, we publish it on the internet."
         },
         step6: {
           title: "6. Support",
-          description: "During the first week, I actively monitor to correct any technical details."
+          description: "During the first week I actively monitor to correct any technical details."
         },
         step7: {
           title: "7. Maintenance (optional)",
-          description: "If you want, you can hire a monthly plan to keep your page updated, secure, and working perfectly."
+          description: "If you want, you can hire a monthly plan to keep your page updated, secure and working perfectly."
         }
       }
     },
@@ -1039,27 +1039,27 @@ export const translations = {
     
     // Proceso
     proceso: {
-      title: "Hoe we werken",
+      title: "Hoe werk ik?",
       steps: {
         step1: {
           title: "1. Consultatie",
-          description: "We bespreken uw idee, doelstellingen en wat u verwacht van uw website."
+          description: "We praten over uw idee, doelstellingen en wat u verwacht van uw website."
         },
         step2: {
           title: "2. Voorstel",
-          description: "Ik ontwerp een gepersonaliseerd voorstel met een mockup aangepast aan uw stijl."
+          description: "Ik ontwerp een gepersonaliseerd voorstel met een webschets aangepast aan uw stijl."
         },
         step3: {
           title: "3. Goedkeuring",
-          description: "Zodra u tevreden bent met het voorstel, bevestigt u de ontwikkeling met het budget en de geschatte tijdlijn."
+          description: "Zodra u tevreden bent met het voorstel, bevestigt u de ontwikkeling met ons gedetailleerde budget en geschatte tijdschema's."
         },
         step4: {
           title: "4. Ontwikkeling",
-          description: "De ontwikkeling van uw pagina begint met wekelijkse updates zodat u het hele proces kunt volgen."
+          description: "De ontwikkeling van uw pagina begint met wekelijkse voortgangsupdates zodat u het hele proces gemakkelijk kunt volgen."
         },
         step5: {
           title: "5. Lancering",
-          description: "Wanneer de pagina klaar is en u bevestigt dat deze aan al uw behoeften voldoet, publiceren we deze online."
+          description: "Wanneer de pagina klaar is en u valideert dat deze voldoet aan alles wat u nodig heeft, publiceren we deze op internet."
         },
         step6: {
           title: "6. Ondersteuning",
@@ -1067,7 +1067,7 @@ export const translations = {
         },
         step7: {
           title: "7. Onderhoud (optioneel)",
-          description: "Als u wilt, kunt u een maandelijks plan afnemen om uw pagina bijgewerkt, veilig en perfect werkend te houden."
+          description: "Als u wilt, kunt u een maandelijks plan inhuren om uw pagina bijgewerkt, veilig en perfect werkend te houden."
         }
       }
     },
@@ -1298,7 +1298,7 @@ export const translations = {
 
     // Planes Section (New specific section for Planes.jsx)
     planesSection: {
-      mainTitle: "Webplannen die zich aan u aanpassen",
+      mainTitle: "Webplannen die zich aan jou aanpassen",
       iosButtonGranted: "Beweeg je telefoon!",
       iosButtonPrompt: "Activeer Interactieve 3D Kaarten!",
       planDetails: {
