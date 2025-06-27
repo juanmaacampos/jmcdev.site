@@ -572,15 +572,16 @@ export default function Contacto() {
                       </label>
                       <select
                         id="tipoPlan"
-                        name="tipoPlan" // This name must match what Netlify expects
+                        name="tipoPlan"
                         className={styles.select}
-                        value={selectedPlan} // Value from its own state
+                        value={selectedPlan}
                         onChange={(e) => setSelectedPlan(e.target.value)} 
                       >
                         <option value="" disabled>{t('contacto.form.options.selectPlan')}</option>
                         <option value="basica">{t('contacto.form.options.plans.basic')}</option>
                         <option value="estandar">{t('contacto.form.options.plans.standard')}</option>
                         <option value="premium">{t('contacto.form.options.plans.premium')}</option>
+                        <option value="ecommerce">E-commerce Webpage</option>
                       </select>
                       {/* No specific error for tipoPlan as it's for reference */}
                     </div>

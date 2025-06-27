@@ -22,6 +22,9 @@ import imgCamera from "../../assets/images/modals_assets/camera.webp";
 import imgDiseno from "../../assets/images/modals_assets/diseño.webp";
 import imgHosting from "../../assets/images/modals_assets/hosting.webp";
 import imgMantenimiento from "../../assets/images/modals_assets/mantenimiento.webp";
+import imgCmsOverview from "../../assets/images/cms_assets/cms_overview.webp";
+
+import Button from "../../components/Button/Button";
 
 import parallaxVideoWebm from "../../assets/videos/parallax_servicio.webm";
 import parallaxVideoMp4 from "../../assets/videos/parallax_servicio.mp4";
@@ -309,7 +312,7 @@ export default function Servicios() {
 
       <div className={styles.serviciosGrid} ref={gridRef}>
 
-    {/*  -----------------------DESARROLLO WEB CARD------------------------------------*/}
+        {/*  -----------------------DESARROLLO WEB CARD------------------------------------*/}
 
 <div data-aos="fade-up" data-aos-delay="100" className={styles.cardWrapper} ref={firstCardRef}>
   <Suspense fallback={<CardFallback t={t} />}>
@@ -332,68 +335,6 @@ export default function Servicios() {
                 <p>{t('services.cards.webDevelopment.modal.content.text1')}</p>
                 <li><h4>{t('services.cards.webDevelopment.modal.content.subtitle2')}</h4></li>
                 <p>{t('services.cards.webDevelopment.modal.content.text2')}</p>
-              </ul>
-            ),
-          }
-        ],
-      }}
-    />
-  </Suspense>
-</div>
-
-{/*  -----------------------REDES SOCIALES CARD------------------------------------*/}
-
-<div data-aos="fade-up" data-aos-delay="500" className={styles.cardWrapper}>
-  <Suspense fallback={<CardFallback t={t} />}>
-    <ServicioCard
-      svg={<Svg route={lottieSocial} />}
-      titulo={t('services.cards.socialMedia.title')}
-      descripcion={t('services.cards.socialMedia.description')}
-      modalData={{
-        title: t('services.cards.socialMedia.modal.title'),
-        description: t('services.cards.socialMedia.modal.description'),
-        image: { src: imgRedes, alt: "Redes Sociales" },
-        tabs: [
-          {
-            label: "",
-            icon: <FaShare />,
-            content: (
-              <ul>
-                <li><h3>{t('services.cards.socialMedia.modal.content.subtitle1')}</h3></li>
-                <p>{t('services.cards.socialMedia.modal.content.text1')}</p>
-                <li><h4>{t('services.cards.socialMedia.modal.content.subtitle2')}</h4></li>
-                <p>{t('services.cards.socialMedia.modal.content.text2')}</p>
-              </ul>
-            ),
-          }
-        ],
-      }}
-    />
-  </Suspense>
-</div>
-
-{/*  -----------------------FOTOGRAFÍA CARD------------------------------------*/}
-
-<div data-aos="fade-up" data-aos-delay="200" className={styles.cardWrapper}>
-  <Suspense fallback={<CardFallback t={t} />}>
-    <ServicioCard
-      svg={<Svg route={lottieCamera} />}
-      titulo={t('services.cards.photography.title')}
-      descripcion={t('services.cards.photography.description')}
-      modalData={{
-        title: t('services.cards.photography.modal.title'),
-        description: t('services.cards.photography.modal.description'),
-        image: { src: imgCamera, alt: "Fotografía Profesional" },
-        tabs: [
-          {
-            label: "",
-            icon: <FaShare />,
-            content: (
-              <ul>
-                <li><h3>{t('services.cards.photography.modal.content.subtitle1')}</h3></li>
-                <p>{t('services.cards.photography.modal.content.text1')}</p>
-                <li><h4>{t('services.cards.photography.modal.content.subtitle2')}</h4></li>
-                <p>{t('services.cards.photography.modal.content.text2')}</p>
               </ul>
             ),
           }
@@ -435,39 +376,6 @@ export default function Servicios() {
   </Suspense>
 </div>
 
-        
-{/* -----------------------------HOSTING CARD-----------------------------*/}
-
-<div data-aos="fade-up" data-aos-delay="400" className={styles.cardWrapper}>
-  <Suspense fallback={<CardFallback t={t} />}>
-    <ServicioCard
-      svg={<Svg route={lottieHosting} />}
-      titulo={t('services.cards.hosting.title')}
-      descripcion={t('services.cards.hosting.description')}
-      modalData={{
-        title: t('services.cards.hosting.modal.title'),
-        description: t('services.cards.hosting.modal.description'),
-        image: { src: imgHosting, alt: "Hosting y Dominio" },
-        tabs: [
-          {
-            label: "",
-            icon: <FaShare />,
-            content: (
-              <ul>
-                <li><h3>{t('services.cards.hosting.modal.content.subtitle1')}</h3></li>
-                <p>{t('services.cards.hosting.modal.content.text1')}</p>
-                <li><h4>{t('services.cards.hosting.modal.content.subtitle2')}</h4></li>
-                <p>{t('services.cards.hosting.modal.content.text2')}</p>
-              </ul>
-            ),
-          }
-        ],
-      }}
-    />
-  </Suspense>
-</div>
-
-
 {/* ----------------------------SOPORTE CARD------------------------------------*/}
 <div data-aos="fade-up" data-aos-delay="300" className={styles.cardWrapper}>
   <Suspense fallback={<CardFallback t={t} />}>
@@ -498,8 +406,30 @@ export default function Servicios() {
   </Suspense>
 </div>
 
-
-
+        {/* ----------- BIG CARD (3x2) -------------- */}
+        <div className={styles.bigCard} data-aos="fade-up" data-aos-delay="0">
+          <div className={styles.bigCardContent}>
+            <div className={styles.bigCardImageWrapper}>
+              <img src={imgCmsOverview} alt="Visión General del CMS" className={styles.bigCardImage} />
+            </div>
+            <div className={styles.bigCardText}>
+              <div className={styles.bigCardTitle}>¿Tenés un Restaurante o Negocio? <br /><span className={styles.bigCardTitleAccent}>Mirá Nuestra Solución E-commerce.</span></div>
+              <div className={styles.bigCardDesc}>
+                Llevá tu negocio al siguiente nivel con una tienda online a medida que incluye un sistema de gestión integral. Vendé tus productos, controlá tu stock en tiempo real, gestioná tus pedidos y cobros de forma automática y sencilla.<br />
+                <span className={styles.bigCardDescAccent}>¡Todo listo para vos!</span>
+              </div>
+              <div className={styles.bigCardButtonRow}>
+                <Button 
+                  label="Conocer más" 
+                  color="#55D3C4" 
+                  effect="neon" 
+                  size="large" 
+                  onClick={() => window.open('https://www.figma.com/proto/AoOlJHnLSmLCGnD3wdKXR9/jmcdev-CMS-landing?node-id=1-12&t=9lXQpiVTi7gJo9Az-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1', '_blank', 'noopener,noreferrer')}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

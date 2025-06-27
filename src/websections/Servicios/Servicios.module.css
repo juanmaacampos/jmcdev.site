@@ -139,6 +139,122 @@
   box-shadow: 0 0 10px rgba(149, 225, 211, 0.5);
 }
 
+.bigCard {
+  grid-column: 1 / span 3; /* Ocupa las 3 columnas completas */
+  grid-row: 2;
+  background: #222222;
+  border-radius: 14px;
+  min-height: 400px;
+  min-width: 0;
+  box-shadow: 0 2px 16px 0 rgba(85,211,196,0.10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+  transition: box-shadow 0.2s;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 2.5rem 2rem;
+  position: relative;
+  z-index: 10; /* Asegura que esté por encima de la máscara */
+  background-clip: padding-box;
+}
+
+/* Evita que la máscara del fondo atraviese la bigCard */
+.videoRevealMask {
+  pointer-events: none;
+  z-index: 2;
+}
+
+.bigCard {
+  z-index: 10;
+  position: relative;
+  background: rgba(24,25,26,0.98); /* Fondo más opaco para bloquear la máscara */
+}
+
+.bigCardContent {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  gap: 2.5rem;
+  min-height: 420px;
+}
+
+.bigCardText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1.2rem;
+  text-align: left;
+  padding-left: 0.5rem;
+  max-width: 540px;
+}
+
+.bigCardTitle {
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: #55d3c4;
+  margin-bottom: 0.5rem;
+  line-height: 1.1;
+  letter-spacing: -1px;
+}
+
+.bigCardTitleAccent {
+  color: #fff;
+  font-weight: 900;
+  display: block;
+  margin-top: 0.15em;
+  font-size: 2.1rem;
+  letter-spacing: -1px;
+}
+
+.bigCardDesc {
+  font-size: 1.22rem;
+  color: #e0e0e0;
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+
+.bigCardDescAccent {
+  color: #55d3c4;
+  font-weight: 700;
+}
+
+.bigCardButtonRow {
+  margin-top: 1.2rem;
+  display: flex;
+  align-items: center;
+}
+
+.bigCardImageWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-width: 0;
+}
+
+.bigCardImage {
+  width: 100%;
+  max-width: 700px;
+  min-width: 350px;
+  aspect-ratio: 16/7;
+  border-radius: 1.7rem;
+  box-shadow: 0 8px 32px rgba(85, 211, 196, 0.18);
+  object-fit: cover;
+  background: #18191a;
+  transition: transform 0.3s;
+}
+
+.bigCardImage:hover {
+  transform: scale(1.04) rotate(-2deg);
+}
+
 @media (min-width: 769px) { /* Apply only to desktop-like screens */
   .serviciosSection {
     z-index: 10; /* Attempt to ensure this section is above other page elements for event handling */
@@ -149,9 +265,28 @@
   }
 }
 
+@media (max-width: 1200px) {
+  .bigCardContent {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    max-width: 98vw;
+  }
+  .bigCardImage {
+    max-width: 420px;
+    min-width: 220px;
+  }
+  .bigCardText {
+    max-width: 400px;
+  }
+}
+
 @media (max-width: 1024px) {
   .serviciosGrid {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .bigCard {
+    grid-column: span 2;
+    grid-row: span 2;
   }
 }
 
@@ -189,16 +324,97 @@
   .serviciosGrid {
     grid-template-columns: 1fr;
   }
-  
-  /* Further reduce subtitle size for mobile phones */
-  .staticSubtitle {
-    font-size: 2.2rem;
-    margin-top: -0.4rem;
+  .bigCard {
+    grid-column: span 1;
+    grid-row: span 1;
+    min-height: 220px;
+    padding: 1.2rem 1rem 1.5rem 1rem;
+    border-radius: 1.1rem;
+    box-shadow: 0 2px 12px 0 rgba(85,211,196,0.10);
+    margin: 0.7rem 0 0.5rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
   }
-  
-  /* Make the main title significantly smaller on mobile */
-  .titulo {
-    font-size: 2.8rem; /* Reduced from 3rem for better mobile display */
+  .bigCardContent {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.1rem;
+    min-height: unset;
+    padding: 0;
+    width: 100%;
+  }
+  .bigCardImageWrapper {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.7rem;
+    margin-top: 0.2rem;
+  }
+  .bigCardImage {
+    max-width: 98vw;
+    min-width: 0;
+    width: 100%;
+    aspect-ratio: 16/10;
+    border-radius: 0.8rem;
+    margin: 0 auto 0.5rem auto;
+    box-shadow: 0 4px 18px rgba(85, 211, 196, 0.13);
+  }
+  .bigCardText {
+    max-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    gap: 0.6rem;
+    align-items: center;
+    text-align: center;
+  }
+  .bigCardTitle {
+    font-size: 1.45rem; /* Aumentado para mobile */
+    margin-bottom: 0.25rem;
+    line-height: 1.22;
+    text-align: center;
+    font-weight: 700;
+  }
+  .bigCardTitleAccent {
+    font-size: 1.25rem; /* Aumentado para mobile */
+    margin-top: 0.13em;
+    text-align: center;
+    font-weight: 600;
+  }
+  .bigCardDesc {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+    line-height: 1.5;
+    text-align: center;
+    color: #ccc;
+  }
+  .bigCardDescAccent {
+    color: #55d3c4;
+    font-weight: 700;
+    display: block;
+    margin-top: 0.2em;
+  }
+}
+
+@media (max-width: 480px) {
+  .bigCard {
+    padding: 0.7rem 0.3rem 1rem 0.3rem;
+    min-height: 110px;
+    border-radius: 0.7rem;
+  }
+  .bigCardImage {
+    border-radius: 0.5rem;
+  }
+  .bigCardTitle {
+    font-size: 1.25rem; /* Aumentado para mobile extra pequeño */
+  }
+  .bigCardTitleAccent {
+    font-size: 1.15rem; /* Aumentado para mobile extra pequeño */
+  }
+  .bigCardDesc {
+    font-size: 0.97rem;
   }
 }
 

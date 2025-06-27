@@ -12,7 +12,7 @@ export const translations = {
     header: {
       title: "Creo Experiencias Digitales que",
       animatedWords: ['Conectan', 'Sorprenden', 'Venden', 'Posicionan', 'Trascienden', 'Destacan', 'Atraen'],
-      description: "Páginas web que impactan, redes que conectan y fotos que venden. Todo lo que tu negocio necesita para crecer online, con calidad profesional y al mejor precio del mercado.",
+      description: "Páginas web que impactan y un sistema para la gestión de tu catalogo y ventas. Todo lo que tu negocio necesita para crecer online sin complicaciones, con calidad profesional y al mejor precio del mercado.",
       buttons: {
         projects: "Ver Proyectos",
         contact: "Contacto"
@@ -99,13 +99,13 @@ export const translations = {
         },
         support: {
           title: "Mantenimiento y Soporte Técnico",
-          description: "Te ofrezco actualizaciones regulares, corrección de errores y soporte continuo para que tu página siempre esté al día.",
+          description: "Te ofrezco corrección de errores, hosting y dominio incluido y soporte continuo para que tu página siempre esté al día.",
           modal: {
             title: "Tu página siempre a punto.",
             description: "Nos encargamos de mantener tu sitio actualizado, corregir cualquier error y brindarte soporte cuando lo necesites.",
             content: {
-              subtitle1: "Todo en orden, siempre",
-              text1: "Me aseguro de que tu página esté siempre actualizada, con las últimas funciones y libre de errores.",
+              subtitle1: "Hosting y dominio, incluido.",
+              text1: "No tenes que preocuparte tecnicismos, del dominio y hosting me encargo yo",
               subtitle2: "¿Por qué es importante?",
               text2: "Un sitio web sin mantenimiento puede volverse lento o tener errores que afecten la experiencia del usuario. Yo me encargo de todo para que no tengas que preocuparte."
             }
@@ -291,7 +291,8 @@ export const translations = {
           plans: {
             basic: "Web Básica / Landing Page",
             standard: "Web Estándar / Multi-página", // Corrected typo
-            premium: "Web Premium / Avanzada"
+            premium: "Web Premium / Avanzada",
+            ecommerce: "Web E-commerce" // Añadido para e-commerce
           },
           hearAbout: {
             search: "Búsqueda en internet",
@@ -752,7 +753,8 @@ export const translations = {
           plans: {
             basic: "Basic Web / Landing Page",
             standard: "Standard Web / Multi-page",
-            premium: "Premium Web / Advanced"
+            premium: "Premium Web / Advanced",
+            ecommerce: "E-commerce Webpage" // Added for e-commerce
           },
           hearAbout: {
             search: "Internet search",
@@ -921,7 +923,7 @@ export const translations = {
       footerNote2Html: "<strong>* ℹ️ Base price applies only to projects in Argentina. For custom or international work, the price may vary.</strong>"
     }
   },
-
+  
   nl: {
     // Navbar
     navbar: {
@@ -1116,7 +1118,7 @@ export const translations = {
       subtitle: "Kies het perfecte plan voor uw project",
       adicionales: {
         title: "Aanvullende Diensten",
-        subtitle: "Raadpleeg prijzen",
+        subtitle: "Raadplegen prijzen",
         items: {
           photos: "Professionele foto's",
           feed: "Instagram Feed",
@@ -1213,7 +1215,8 @@ export const translations = {
           plans: {
             basic: "Basis Website / Landing Page",
             standard: "Standaard Website / Multi-pagina",
-            premium: "Premium Website / Geavanceerd"
+            premium: "Premium Website / Geavanceerd",
+            ecommerce: "E-commerce Website" // Toegevoegd voor e-commerce
           },
           hearAbout: {
             search: "Internet zoeken",
