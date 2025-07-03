@@ -1,0 +1,141 @@
+.cms-page {
+  width: 100%;
+  min-height: 100vh;
+  background: transparent;
+  color: #ffffff;
+  overflow-x: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Asegurar que el contenido se vea correctamente */
+.cms-page * {
+  box-sizing: border-box;
+}
+
+/* Container para el contenido principal */
+.cms-page main {
+  flex: 1;
+  width: 100%;
+  padding-top: 0; /* Eliminar padding para que la navbar se superponga */
+  position: relative;
+  z-index: 1; /* Asegurar que esté debajo de la navbar */
+}
+
+/* Navbar styling - Modern transparent effect with rounded borders */
+.cms-page .navbar {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 40px);
+  max-width: 1200px;
+  background: rgba(23, 23, 23, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.cms-page .navbar:hover {
+  background: rgba(23, 23, 23, 0.8);
+  border-color: rgba(85, 211, 196, 0.3);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+.cms-page .navbar.hidden {
+  top: -100px;
+}
+
+.cms-page .navbar-container {
+  padding: 1rem 2rem;
+  border-radius: 20px;
+}
+
+/* Enhanced glass effect for navbar buttons */
+.cms-page .navbar-link,
+.cms-page .nav-button {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.cms-page .navbar-link:hover,
+.cms-page .nav-button:hover {
+  background: rgba(85, 211, 196, 0.15);
+  border-color: rgba(85, 211, 196, 0.4);
+  box-shadow: 0 4px 16px rgba(85, 211, 196, 0.2);
+  transform: translateY(-2px);
+}
+
+.cms-page .navbar-link.contact-link,
+.cms-page .nav-button.contact-button {
+  background: linear-gradient(135deg, rgba(85, 211, 196, 0.8), rgba(85, 211, 196, 0.6));
+  border-color: rgba(85, 211, 196, 0.6);
+}
+
+.cms-page .navbar-link.contact-link:hover,
+.cms-page .nav-button.contact-button:hover {
+  background: linear-gradient(135deg, rgba(85, 211, 196, 0.9), rgba(85, 211, 196, 0.8));
+  box-shadow: 0 6px 20px rgba(85, 211, 196, 0.4);
+}
+
+/* Language selector styling for CMS page */
+.cms-page .nav-language-selector {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .cms-page .navbar {
+    top: 10px;
+    width: calc(100% - 20px);
+    border-radius: 16px;
+  }
+  
+  .cms-page .navbar-container {
+    padding: 0.8rem 1.5rem;
+  }
+  
+  .cms-page .navbar-menu.open {
+    background: rgba(23, 23, 23, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 16px;
+    margin-top: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .cms-page .navbar-menu.open .nav-button {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+  }
+}
+
+/* Asegurar separación del footer */
+.cms-page footer {
+  margin-top: auto;
+  background: transparent; /* Cambiar a transparente */
+  border-top: none; /* Eliminar borde para evitar líneas */
+  position: relative;
+  z-index: 10;
+}
+
+/* Sobrescribir estilos específicos del footer en la página CMS */
+.cms-page footer::before {
+  display: none; /* Eliminar cualquier pseudo-elemento */
+}
+
+.cms-page footer * {
+  border: none; /* Asegurar que no hay bordes en elementos internos */
+  background: transparent !important; /* Forzar transparencia en todos los elementos del footer */
+}

@@ -120,8 +120,10 @@ const Card3D = ({ plan, destacado, motionActive }) => { // Added motionActive pr
     >
       <div className={styles.cardContent}>
         <h3>{plan.nombre}</h3>
-        <div className={styles.precio}>{plan.precio}</div>
-        <p className={styles.descripcion}>{plan.descripcion}</p>
+        <div className={styles.precioContainer}>
+          <span className={styles.precio}>{plan.precio}</span>
+          <span className={styles.descripcion}>{plan.descripcion}</span>
+        </div>
         <ul>
           {plan.beneficios.map((b, j) => (
             <li key={`benefit-${j}-${b.substring(0, 10)}`}>{b}</li>

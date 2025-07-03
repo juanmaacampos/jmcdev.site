@@ -141,7 +141,7 @@
 
 .bigCard {
   grid-column: 1 / span 3; /* Ocupa las 3 columnas completas */
-  grid-row: 2;
+  grid-row: 1;
   background: #222222;
   border-radius: 14px;
   min-height: 400px;

@@ -312,6 +312,30 @@ export default function Servicios() {
 
       <div className={styles.serviciosGrid} ref={gridRef}>
 
+ {/* ----------- BIG CARD (3x2) -------------- */}
+        <div className={styles.bigCard} data-aos="fade-up" data-aos-delay="0">
+          <div className={styles.bigCardContent}>
+            <div className={styles.bigCardImageWrapper}>
+              <img src={imgCmsOverview} alt="Visión General del CMS" className={styles.bigCardImage} />
+            </div>
+            <div className={styles.bigCardText}>
+              <div className={styles.bigCardTitle}>¿Tenés un Restaurante o Negocio? <br /><span className={styles.bigCardTitleAccent}>Mirá Nuestra Solución E-commerce.</span></div>
+              <div className={styles.bigCardDesc}>
+                Llevá tu negocio al siguiente nivel con una tienda online a medida que incluye un sistema de gestión integral. Vendé tus productos, controlá tu stock en tiempo real, gestioná tus pedidos y cobros de forma automática y sencilla.<br />
+                <span className={styles.bigCardDescAccent}>¡Todo listo para vos!</span>
+              </div>
+              <div className={styles.bigCardButtonRow}>
+                <Button 
+                  label="Conocer más" 
+                  color="#55D3C4" 
+                  effect="neon" 
+                  size="large" 
+                  onClick={() => window.open('/cms', '_blank', 'noopener,noreferrer')}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
         {/*  -----------------------DESARROLLO WEB CARD------------------------------------*/}
 
 <div data-aos="fade-up" data-aos-delay="100" className={styles.cardWrapper} ref={firstCardRef}>
@@ -406,30 +430,7 @@ export default function Servicios() {
   </Suspense>
 </div>
 
-        {/* ----------- BIG CARD (3x2) -------------- */}
-        <div className={styles.bigCard} data-aos="fade-up" data-aos-delay="0">
-          <div className={styles.bigCardContent}>
-            <div className={styles.bigCardImageWrapper}>
-              <img src={imgCmsOverview} alt="Visión General del CMS" className={styles.bigCardImage} />
-            </div>
-            <div className={styles.bigCardText}>
-              <div className={styles.bigCardTitle}>¿Tenés un Restaurante o Negocio? <br /><span className={styles.bigCardTitleAccent}>Mirá Nuestra Solución E-commerce.</span></div>
-              <div className={styles.bigCardDesc}>
-                Llevá tu negocio al siguiente nivel con una tienda online a medida que incluye un sistema de gestión integral. Vendé tus productos, controlá tu stock en tiempo real, gestioná tus pedidos y cobros de forma automática y sencilla.<br />
-                <span className={styles.bigCardDescAccent}>¡Todo listo para vos!</span>
-              </div>
-              <div className={styles.bigCardButtonRow}>
-                <Button 
-                  label="Conocer más" 
-                  color="#55D3C4" 
-                  effect="neon" 
-                  size="large" 
-                  onClick={() => window.open('https://www.figma.com/proto/AoOlJHnLSmLCGnD3wdKXR9/jmcdev-CMS-landing?node-id=1-12&t=9lXQpiVTi7gJo9Az-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1', '_blank', 'noopener,noreferrer')}
-                />
-              </div>
-            </div>
-          </div>
-        </div>
+       
       </div>
     </section>
   );

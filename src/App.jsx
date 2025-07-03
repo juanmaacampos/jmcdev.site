@@ -16,6 +16,7 @@ import Contacto from "./websections/Contacto/Contacto";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage"; // Import NotFoundPage
 import TopButton from "./components/TopButton/TopButton"; // Import TopButton component
 import BianDemoPage from "./pages/BianDemoPage/BianDemoPage"; // Import the new BianDemoPage component
+import CMSPage from "./pages/cmsPage/CMSPage"; // Import CMSPage component
 
 // gsap, ScrollTrigger, Lenis imports removed
 import VideoMaskEffect from "./components/VideoMaskEffect/VideoMaskEffect";
@@ -59,12 +60,22 @@ function App() {
   const [logoLoaded, setLogoLoaded] = useState(false);
   const [logoSrc, setLogoSrc] = useState(logoImage);
 
-  // Check if we're on the BianDemoPage route
+  // Check if we're on the BianDemoPage or CMSPage route
   const isBianDemoRoute = location.pathname === '/bian_demo';
+  const isCMSRoute = location.pathname === '/cms';
 
   // If it's the BianDemoPage route, render it directly without PageWrapper
   if (isBianDemoRoute) {
     return <BianDemoPage />;
+  }
+
+  // If it's the CMS route, render it directly without PageWrapper
+  if (isCMSRoute) {
+    return (
+      <LanguageProvider>
+        <CMSPage />
+      </LanguageProvider>
+    );
   }
 
   // Otherwise, use the PageWrapper for other routes
