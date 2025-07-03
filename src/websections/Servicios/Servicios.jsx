@@ -315,7 +315,11 @@ export default function Servicios() {
  {/* ----------- BIG CARD (3x2) -------------- */}
         <div className={styles.bigCard} data-aos="fade-up" data-aos-delay="0">
           <div className={styles.bigCardContent}>
-            <div className={styles.bigCardImageWrapper}>
+            <div 
+              className={styles.bigCardImageWrapper}
+              onClick={() => window.open('/cms', '_blank', 'noopener,noreferrer')}
+              style={{ cursor: 'pointer' }}
+            >
               <img src={imgCmsOverview} alt="Visión General del CMS" className={styles.bigCardImage} />
             </div>
             <div className={styles.bigCardText}>

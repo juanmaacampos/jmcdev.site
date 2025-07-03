@@ -18,6 +18,7 @@ import soporteImage from '../assets/soporte.png';
 const Landing = () => {
   const isMobile = useIsMobile();
   const [expandedFaq, setExpandedFaq] = useState(null);
+  const [selectedImage, setSelectedImage] = useState(null);
   
   // Effect to start loading the CMS image early
   useEffect(() => {
@@ -64,6 +65,14 @@ const Landing = () => {
   // Toggle FAQ expansion
   const toggleFaq = (index) => {
     setExpandedFaq(expandedFaq === index ? null : index);
+  };
+
+  const openImageModal = (image) => {
+    setSelectedImage(image);
+  };
+
+  const closeImageModal = () => {
+    setSelectedImage(null);
   };
 
   // Define plans data based on the pasted image
@@ -167,7 +176,7 @@ const Landing = () => {
 
         <div className={styles.cardsGrid}>
           {/* Card 1: Web Única y Profesional */}
-          <div className={styles.featureCard}>
+          <div className={styles.featureCard} onClick={() => openImageModal(cmsShowImage)}>
             <div className={styles.cardIcon}>
               <FaGlobe />
             </div>
@@ -178,7 +187,7 @@ const Landing = () => {
           </div>
 
           {/* Card 2: Gestión Sin Estrés */}
-          <div className={styles.featureCard}>
+          <div className={styles.featureCard} onClick={() => openImageModal(cmsShowImage)}>
             <div className={styles.cardIcon}>
               <FaCog />
             </div>
@@ -189,13 +198,13 @@ const Landing = () => {
           </div>
 
           {/* Card 3: Soporte Personalizado */}
-          <div className={styles.featureCard}>
+          <div className={styles.featureCard} onClick={() => openImageModal(cmsShowImage)}>
             <div className={styles.cardIcon}>
               <FaHeadset />
             </div>
             <h3 className={styles.cardTitle}>Soporte Personalizado</h3>
             <p className={styles.cardDescription}>
-              Acompañamiento continuo con nuestro equipo especializado para que nunca estés solo
+              Acompañamiento continuo de mi parte para cualquier necesidad tecnica
             </p>
           </div>
         </div>
@@ -221,7 +230,7 @@ const Landing = () => {
 
         <div className={styles.caracteristicasGrid}>
           {/* Card 1: Control de Stock Automático */}
-          <div className={styles.caracteristicaCard}>
+          <div className={styles.caracteristicaCard} onClick={() => openImageModal(cmsStockImage)}>
             <div className={styles.cardImageContainer}>
               <img 
                 src={cmsStockImage} 
@@ -240,7 +249,7 @@ y te alerta stock en tiempo real.
           </div>
 
           {/* Card 2: Tu Menú/Productos al Instante */}
-          <div className={styles.caracteristicaCard}>
+          <div className={styles.caracteristicaCard} onClick={() => openImageModal(catalogoCmsImage)}>
             <div className={styles.cardImageContainer}>
               <img 
                 src={catalogoCmsImage} 
@@ -259,7 +268,7 @@ panel. ¡Vos tenés el control total y al momento!
           </div>
 
           {/* Card 3: Cobros con Mercado Pago Checkout */}
-          <div className={styles.caracteristicaCard}>
+          <div className={styles.caracteristicaCard} onClick={() => openImageModal(mediosPagoImage)}>
             <div className={styles.cardImageContainer}>
               <img 
                 src={mediosPagoImage} 
@@ -282,7 +291,7 @@ y efectivo con validación manual en el panel.
           {/* Card 4: Tu Web ÚNICA, sin plantillas genéricas */}
           {isMobile ? (
             // Versión móvil: Card normal
-            <div className={styles.caracteristicaCard}>
+            <div className={styles.caracteristicaCard} onClick={() => openImageModal(paginasImage)}>
               <div className={styles.cardImageContainer}>
                 <img 
                   src={paginasImage} 
@@ -301,7 +310,7 @@ y efectivo con validación manual en el panel.
             </div>
           ) : (
             // Versión desktop/tablet: Card doble
-            <div className={styles.caracteristicaCardDoble}>
+            <div className={styles.caracteristicaCardDoble} onClick={() => openImageModal(paginasImage)}>
               <div className={styles.cardImageContainer}>
                 <img 
                   src={paginasImage} 
@@ -321,7 +330,7 @@ a tu gusto! <strong>(¡Olvidate de los diseños repetidos de Tienda Nube!)</stro
           )}
 
           {/* Card 6: Soporte Personal y Seguridad Total */}
-          <div className={styles.caracteristicaCard}>
+          <div className={styles.caracteristicaCard} onClick={() => openImageModal(soporteImage)}>
             <div className={styles.cardImageContainer}>
               <img 
                 src={soporteImage} 
@@ -425,6 +434,15 @@ directamente por Mercado Pago. <strong>Seguridad 100% garantizada.</strong>
           </div>
         </div>
       </div>
+
+      {selectedImage && (
+        <div className={styles.imageModalOverlay} onClick={closeImageModal}>
+          <div className={styles.imageModalContent}>
+            <img src={selectedImage} alt="Vista ampliada" />
+            <button className={styles.closeModalButton} onClick={closeImageModal}>×</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
