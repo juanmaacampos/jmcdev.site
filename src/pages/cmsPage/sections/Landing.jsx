@@ -79,10 +79,8 @@ const Landing = () => {
   const planesData = [
     {
       nombre: "Tu página web a medida, para siempre",
-      precio: "$350.000",
-      descripcion: "precio base",
+      precio: "Precio a medida",
       beneficios: [
-        "Precio Inicial. Desde $300.000 (precio base optimizado)",
         "El precio se ajusta si buscás un diseño 100% a medida con funciones avanzadas y personalizaciones extra",
         "Es tu página para siempre, dueño al 100% del sitio cuando lo pagues en su totalidad",
         "Plan a partir de 3 meses en tres cuotas fijas para ayudarte a empezar"
