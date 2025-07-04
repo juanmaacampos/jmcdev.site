@@ -62,7 +62,7 @@ function App() {
 
   // Check if we're on the BianDemoPage or CMSPage route
   const isBianDemoRoute = location.pathname === '/bian_demo';
-  const isCMSRoute = location.pathname === '/cms';
+  const isCMSRoute = location.pathname === '/e-panel';
 
   // If it's the BianDemoPage route, render it directly without PageWrapper
   if (isBianDemoRoute) {

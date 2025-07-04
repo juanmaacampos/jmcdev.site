@@ -79,7 +79,7 @@ const Landing = () => {
   const planesData = [
     {
       nombre: "Tu página web a medida, para siempre",
-      precio: "$300.000",
+      precio: "$350.000",
       descripcion: "precio base",
       beneficios: [
         "Precio Inicial. Desde $300.000 (precio base optimizado)",
