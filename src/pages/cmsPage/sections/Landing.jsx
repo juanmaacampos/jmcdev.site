@@ -6,6 +6,7 @@ import Card3D from '../../../components/PlanesCard3d/3dCard';
 import styles from './Landing.module.css';
 import { FaChevronDown, FaGlobe, FaCog, FaHeadset, FaPlus, FaMinus } from 'react-icons/fa';
 import { useIsMobile } from '../../../hooks/useMediaQuery';
+import TopButton from '../../../components/TopButton/TopButton';
 
 // Import CMS images
 import cmsShowImage from '../assets/cms_show.png';
@@ -50,7 +51,7 @@ const Landing = () => {
     },
     {
       question: "¿Qué tipo de soporte ofrecen si tengo un problema o una duda?",
-      answer: "Tendrás acceso a mi soporte prioritario y cercano. Soy tu aliado personal y estoy disponible para resolver cualquier duda o ayudarte con lo que necesites, garantizando que tu negocio siempre funcione al 100%. Además, el sistema incluye tutoriales paso a paso para que aprendas a manejar todo a tu ritmo."
+      answer: "Tendrás acceso a mi soporte prioritario y cercano. Estoy disponible para resolver cualquier duda o ayudarte con lo que necesites, garantizando que tu negocio siempre funcione al 100%. Además, el sistema incluye tutoriales paso a paso para que aprendas a manejar todo a tu ritmo."
     },
     {
       question: "¿Qué pasa con la seguridad de mis datos y los de mis clientes?",
@@ -58,7 +59,7 @@ const Landing = () => {
     },
     {
       question: "¿Qué sucede si dejo de pagar la cuota mensual del sistema de gestión?",
-      answer: "Tu página web, una vez construida y entregada, es tuya para siempre. Sin embargo, la cuota mensual cubre el acceso a tu panel de gestión, el mantenimiento y el soporte. Si la cuota mensual no es abonada, el acceso a tu panel de gestión se suspenderá. Esto significa que no podrás gestionar tus productos, pedidos o stock. Además, si el pago no se regulariza pasado un mes desde la fecha de vencimiento, el contenido que hayas cargado en el panel (productos, imágenes, configuraciones) será eliminado de nuestros servidores debido a los costos de almacenamiento y mantenimiento. Una vez regularizada la situación, se restablecerá el acceso al panel, pero deberás cargar nuevamente el contenido si este fue eliminado."
+      answer: "Tu página web, una vez construida y entregada, es tuya para siempre. Sin embargo, la cuota mensual cubre el acceso a tu panel de gestión, el mantenimiento y el soporte. Si la cuota mensual no es abonada, el acceso a tu panel de gestión se suspenderá. Esto significa que no podrás gestionar tus productos, pedidos o stock (PERO TU WEB NO SE VA A ELIMINAR NUNCA, ES TUYA). Si el abono mensual se retrasa mas de un mes, los datos del catalogo seran borrados por temas de mantenimiento y servidores"
     }
   ];
 
@@ -78,12 +79,13 @@ const Landing = () => {
   // Define plans data based on the pasted image
   const planesData = [
     {
-      nombre: "Tu página web a medida, para siempre",
+      nombre: "Tu web, la que van a ver tus clientes",
       precio: "Precio a medida",
       beneficios: [
-        "El precio se ajusta si buscás un diseño 100% a medida con funciones avanzadas y personalizaciones extra",
-        "Es tu página para siempre, dueño al 100% del sitio cuando lo pagues en su totalidad",
-        "Plan a partir de 3 meses en tres cuotas fijas para ayudarte a empezar"
+        "PAGO UNICO, la web es tuya para siempre",
+        "El precio depende de la calidad que quieras para tu web.",
+        "Branding de tu marca y mucho más",
+        "Tu inversión: hasta en 3 cuotas sin interes (solo transferencia)"
       ]
     },
     {
@@ -91,12 +93,12 @@ const Landing = () => {
       precio: "$25.000",
       descripcion: "/por mes",
       beneficios: [
+        "PAGO MENSUAL PARA MANTENER EL SISTEMA DE GESTIÓN:",
+        "Gestión de productos, categorías y precios (SE REFLEJAN EN TU WEB DIRECTAMENTE)",
         "Control de stock inteligente y automático",
-        "Gestión de productos, categorías y precios",
         "Manejo de pedidos y clientes",
         "Integración con Mercado Pago y otras opciones de pago",
-        "Mantenimiento constante y actualizaciones de sistema",
-        "JM soporte prioritario y cercano, tu aliado personal",
+        "Soporte, Mantenimiento constante y actualizaciones de sistema",
         "Primera semana GRATIS! Te damos 7 días para que pruebes el sistema sin compromiso"
       ]
     }
@@ -118,9 +120,9 @@ const Landing = () => {
             <p className={styles.description}>
               <strong>Olvídate del estrés</strong> de los pedidos por WhatsApp, comprobantes de pago y el control manual de stock.
               <br />
-              Te ofrecemos una solución a medida, adaptada a los requerimientos únicos de tu <strong>restaurante o tienda</strong>,
+              Te ofrecemos una solución web a medida, adaptada a los requerimientos únicos de tu <strong>negocio</strong>,
               <br />
-              con tu propia página web y un sistema inteligente para operar con total tranquilidad y eficiencia
+              con <strong>tu propia página web y un sistema inteligente</strong> para operar con total tranquilidad y eficiencia <strong>(¡SIN COMISIONES!)</strong>
             </p>
 
             <div className={styles.ctaSection}>
@@ -164,7 +166,7 @@ const Landing = () => {
           </div>
           <div className={styles.titleRight}>
             <p className={styles.subtitle}>
-              <strong>JMCDEV ECOMMERCE PANEL</strong> es la solución completa para tu presencia 
+              <strong>JMCDEV ECOMMERCE</strong> es la solución completa para tu presencia 
               digital: una página web única y personalizada para tu negocio, y un 
               potente sistema de gestión propio que simplifica el control de tu stock, 
               pedidos y pagos. <strong>¡Tu negocio en internet, bajo tu control y a tu medida!</strong>
@@ -180,7 +182,7 @@ const Landing = () => {
             </div>
             <h3 className={styles.cardTitle}>Web única y profesional</h3>
             <p className={styles.cardDescription}>
-              Diseño exclusivo que refleja la personalidad de tu marca con funcionalidades modernas
+              Diseño exclusivo que refleja la personalidad de tu marca y donde tus clientes compran
             </p>
           </div>
 
@@ -191,7 +193,7 @@ const Landing = () => {
             </div>
             <h3 className={styles.cardTitle}>Gestión sin estres</h3>
             <p className={styles.cardDescription}>
-              Sistema automatizado que maneja pedidos, stock y pagos mientras vos te enfocás en vender
+              Sistema automatizado que maneja pedidos, stock y pagos mientras vos te enfocás en vender. SIN COMISIONES
             </p>
           </div>
 
@@ -202,7 +204,7 @@ const Landing = () => {
             </div>
             <h3 className={styles.cardTitle}>Soporte Personalizado</h3>
             <p className={styles.cardDescription}>
-              Acompañamiento continuo de mi parte para cualquier necesidad tecnica
+              No tenes que hacer nada, nos ocupamos nosotros de crear tu web. Además siempre vamos a estar por cualquier duda que tengas
             </p>
           </div>
         </div>
@@ -354,8 +356,8 @@ directamente por Mercado Pago. <strong>Seguridad 100% garantizada.</strong>
             animation="slide"
             fontTransition="0.4s"
           >
-            Nuestros Planes:<br />
-            <span className={styles.titlePurple}>Inversión Inteligente para tu Negocio</span>
+            Tu web y sistema de gestión<br />
+            <span className={styles.titlePurple}>No necesitas nada más.</span>
           </CoolTitle>
         </div>
 
@@ -441,6 +443,8 @@ directamente por Mercado Pago. <strong>Seguridad 100% garantizada.</strong>
           </div>
         </div>
       )}
+
+      <TopButton />
     </div>
   );
 };
