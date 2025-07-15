@@ -91,9 +91,9 @@ const Landing = () => {
     {
       nombre: "Acceso total al sistema de gestión",
       precio: "$25.000",
-      descripcion: "/por mes",
+      descripcion: "precio base",
       beneficios: [
-        "PAGO MENSUAL PARA MANTENER EL SISTEMA DE GESTIÓN:",
+        "PAGO MENSUAL PARA MANTENER EL SISTEMA DE GESTIÓN. EL PRECIO SE AJUSTA AL VOLUMEN DEL NEGOCIO",
         "Gestión de productos, categorías y precios (SE REFLEJAN EN TU WEB DIRECTAMENTE)",
         "Control de stock inteligente y automático",
         "Manejo de pedidos y clientes",
