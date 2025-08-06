@@ -19,6 +19,7 @@ import portfolioVideo from "../../assets/videos/portfolio_project.webm";
 import jmcdevwebVideo from "../../assets/videos/jmcdevweb_project.webm";
 import abcVideo from "../../assets/videos/ABC_project.webm";
 import threedDemoVideo from "../../assets/videos/threedDemoVideo.webm";
+import shop_template from "../../assets/videos/shop_templae.webm"
 
 import saboresThumb from "../../assets/projects_img/sabores_project.webp";
 import portfolioThumb from "../../assets/projects_img/portfolio_project.webp";
@@ -26,7 +27,7 @@ import jmcdevwebThumb from "../../assets/projects_img/jmcdevweb_project.webp";
 import bianSushiThumb from "../../assets/projects_img/bian_project.webp";
 import abcThumb from "../../assets/projects_img/ABC_project.webp";
 import threeDThumb from "../../assets/projects_img/threeDThumb.webp";
-
+import shop_template_thumb from "../../assets/projects_img/shop_template.webp"
 // Base data for projects (non-translatable parts)
 const projectsData = [
         {
@@ -37,6 +38,15 @@ const projectsData = [
     thumbnail: threeDThumb,
     url: "https://juanmaacampos.github.io/3d_demo/",
   },
+          {
+    id: 7,
+    key: "shopTemplate", // Key for translations
+    type: "video",
+    media: shop_template,
+    thumbnail: shop_template_thumb,
+    url: "https://juanmaacampos.github.io/shop_template/",
+  },
+            
   {
     id: 2,
     key: "restaurant", // Key for translations

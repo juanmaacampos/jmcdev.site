@@ -160,6 +160,10 @@ export const translations = {
           name: "Web Portafolio Estándar",
           description: "Portafolio digital personal para mostrar tus habilidades y proyectos fácilmente."
         },
+        shopTemplate: {
+          name: "Pagina Web Ecommerce ",
+          description: "¡Web para vender online. Con pagos online, pedidos y productos gestionados por nuestro sistema"
+        },
         restaurant: {
           name: "Web Restaurante Premium",
           description: "Sitio web para restaurante premium con diseño elegante y llamativo."
@@ -175,6 +179,7 @@ export const translations = {
         "3dDemo": { // New key for 3D demo
           name: "Demo 3D Interactivo",
           description: "Demostración de efectos 3D y animaciones interactivas para páginas web modernas."
+          
         },
         brandPremium: { // New key to match Portafolio.jsx
           name: "Web de marca Premium",
