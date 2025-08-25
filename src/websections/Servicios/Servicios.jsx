@@ -317,7 +317,7 @@ export default function Servicios() {
           <div className={styles.bigCardContent}>
             <div 
               className={styles.bigCardImageWrapper}
-              onClick={() => window.open('/e-panel')}
+              onClick={() => window.open('/info_panel')}
               style={{ cursor: 'pointer' }}
             >
               <img src={imgCmsOverview} alt="Visión General del CMS" className={styles.bigCardImage} />
@@ -334,6 +334,14 @@ export default function Servicios() {
                   color="#55D3C4" 
                   effect="neon" 
                   size="large" 
+                  onClick={() => (window.location.href = '/info_panel')}
+                />
+                {/* Nuevo botón para acceder al panel */}
+                <Button
+                  label="Accede a tu panel"
+                  color="#55D3C4" /* gris oscuro */
+                  effect="outline"
+                  size="large"
                   onClick={() => (window.location.href = '/e-panel')}
                 />
               </div>
