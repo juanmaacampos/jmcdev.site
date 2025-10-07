@@ -323,24 +323,24 @@ export default function Servicios() {
               <img src={imgCmsOverview} alt="Visión General del CMS" className={styles.bigCardImage} />
             </div>
             <div className={styles.bigCardText}>
-              <div className={styles.bigCardTitle}>¿Tenés un Restaurante o Negocio? <br /><span className={styles.bigCardTitleAccent}>Mirá Nuestra Solución E-commerce.</span></div>
+              <div className={styles.bigCardTitle}>{t('services.bigCard.title')} <br /><span className={styles.bigCardTitleAccent}>{t('services.bigCard.titleAccent')}</span></div>
               <div className={styles.bigCardDesc}>
-                Llevá tu negocio al siguiente nivel con una tienda online a medida que incluye un sistema de gestión integral. Vendé tus productos, controlá tu stock en tiempo real, gestioná tus pedidos y cobros de forma automática y sencilla.<br />
-                <span className={styles.bigCardDescAccent}>¡Todo listo para vos!</span>
+                {t('services.bigCard.description')}<br />
+                <span className={styles.bigCardDescAccent}>{t('services.bigCard.descriptionAccent')}</span>
               </div>
               <div className={styles.bigCardButtonRow}>
                 <Button 
-                  label="Conocer más" 
+                  label={t('services.bigCard.buttons.learnMore')} 
                   color="#55D3C4" 
-                  effect="neon" 
-                  size="large" 
+                  effect="outline" 
+                  size="medium" 
                   onClick={() => (window.location.href = '/info_panel')}
                 />
                 {/* Nuevo botón para acceder al panel */}
                 <Button
-                  label="Accede a tu panel"
+                  label={t('services.bigCard.buttons.accessPanel')}
                   color="#55D3C4" /* gris oscuro */
-                  effect="outline"
+                  effect="neon"
                   size="large"
                   onClick={() => (window.location.href = '/e-panel')}
                 />

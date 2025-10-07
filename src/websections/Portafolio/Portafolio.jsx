@@ -14,15 +14,16 @@ import { useTranslation } from "../../translations"; // Import useTranslation
 gsap.registerPlugin(ScrollTrigger);
 
 // Importamos el video directamente para que funcione con GitHub Pages
-import saboresVideo from "../../assets/videos/sabores_project.webm";
 import portfolioVideo from "../../assets/videos/portfolio_project.webm";
 import jmcdevwebVideo from "../../assets/videos/jmcdevweb_project.webm";
 import abcVideo from "../../assets/videos/ABC_project.webm";
 import threedDemoVideo from "../../assets/videos/threedDemoVideo.webm";
 import shop_template from "../../assets/videos/shop_templae.webm"
+import groove_project from "../../assets/videos/groove_project.webm"
 
-import saboresThumb from "../../assets/projects_img/sabores_project.webp";
+
 import portfolioThumb from "../../assets/projects_img/portfolio_project.webp";
+import grooveThumb from "../../assets/projects_img/groove_project.webp";
 import jmcdevwebThumb from "../../assets/projects_img/jmcdevweb_project.webp";
 import bianSushiThumb from "../../assets/projects_img/bian_project.webp";
 import abcThumb from "../../assets/projects_img/ABC_project.webp";
@@ -46,22 +47,14 @@ const projectsData = [
     thumbnail: shop_template_thumb,
     url: "https://juanmaacampos.github.io/shop_template/",
   },
-            
-  {
-    id: 2,
-    key: "restaurant", // Key for translations
+            {
+    id: 8,
+    key: "grooveCafe", // Key for translations
     type: "video",
-    media: saboresVideo,
-    thumbnail: saboresThumb,
-    url: "https://juanmaacampos.github.io/project_rest/",
-  },
-  {
-    id: 3,
-    key: "demoBianSushi", // Key for translations
-    type: "video",
-    thumbnail: bianSushiThumb,
-    url: "https://jmcdev.site/bian_demo",
-  },
+    media: groove_project,
+    thumbnail: grooveThumb,
+    url: "https://groovecafe.com.ar/",
+  },       
   {
     id: 5,
     key: "businessDemo", // Key for translations
@@ -70,6 +63,14 @@ const projectsData = [
     thumbnail: abcThumb,
     url: "https://juanmaacampos.github.io/ABC_project/",
   },
+  {
+    id: 3,
+    key: "demoBianSushi", // Key for translations
+    type: "video",
+    thumbnail: bianSushiThumb,
+    url: "https://jmcdev.site/bian_demo",
+  },
+
     {
     id: 1,
     key: "portfolio", // Key for translations

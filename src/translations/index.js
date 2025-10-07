@@ -111,6 +111,16 @@ export const translations = {
             }
           }
         }
+      },
+      bigCard: {
+        title: "¿Tenés un Restaurante o Negocio?",
+        titleAccent: "Mirá Nuestra Solución E-commerce.",
+        description: "Llevá tu negocio al siguiente nivel con una tienda online a medida que incluye un sistema de gestión integral. Vendé tus productos, controlá tu stock en tiempo real, gestioná tus pedidos y cobros de forma automática y sencilla.",
+        descriptionAccent: "¡Todo listo para vos!",
+        buttons: {
+          learnMore: "Conocer más",
+          accessPanel: "Accede a tu panel"
+        }
       }
     },
     
@@ -173,8 +183,8 @@ export const translations = {
           description: "Demostración de mejora de web mobile para Bian Sushi Campana (NO ES EL RESULTADO FINAL)."
         },
         businessDemo: { // New key to match Portafolio.jsx
-          name: "Web Business DEMO",
-          description: "Web para Asnagui Business Consulting elegante y efectiva (NO ES EL RESULTADO FINAL)."
+          name: "Web Business ABC",
+          description: "Web para Asnagui Business Consulting elegante y efectiva para la confianza de sus clientes"
         },
         "3dDemo": { // New key for 3D demo
           name: "Demo 3D Interactivo",
@@ -184,6 +194,10 @@ export const translations = {
         brandPremium: { // New key to match Portafolio.jsx
           name: "Web de marca Premium",
           description: "Página web para nuestra marca, enfocada en branding y experiencia visual impactante."
+        },
+        grooveCafe: {
+          name: "Web Groove Cafe",
+          description: "De Campana, una web para ver el menu de Groove Cafe en tiempo real con nuestro sistema"
         }
       },
       buttons: {
@@ -579,6 +593,16 @@ export const translations = {
             }
           }
         }
+      },
+      bigCard: {
+        title: "Do You Have a Restaurant or Business?",
+        titleAccent: "Check Out Our E-commerce Solution.",
+        description: "Take your business to the next level with a custom online store that includes a comprehensive management system. Sell your products, control your inventory in real time, manage your orders and payments automatically and easily.",
+        descriptionAccent: "Everything ready for you!",
+        buttons: {
+          learnMore: "Learn more",
+          accessPanel: "Access your panel"
+        }
       }
     },
     
@@ -637,8 +661,8 @@ export const translations = {
           description: "Mobile website improvement demonstration for Bian Sushi Campana (NOT THE FINAL RESULT)."
         },
         businessDemo: { // New key
-          name: "Business DEMO Website",
-          description: "Website for Asnagui Business Consulting, elegant and effective (NOT THE FINAL RESULT)."
+          name: "Business ABC Website",
+          description: "Website for Asnagui Business Consulting, elegant and effective for client trust"
         },
         "3dDemo": { // New key for 3D demo
           name: "Interactive 3D Demo",
@@ -647,6 +671,10 @@ export const translations = {
         brandPremium: { // New key
           name: "Premium Brand Website",
           description: "Website for our brand, focused on branding and impactful visual experience."
+        },
+        grooveCafe: {
+          name: "Web Groove Cafe",
+          description: "From Campana, a website to view Groove Cafe's menu in real time with our system"
         }
       },
       buttons: {
@@ -1041,6 +1069,16 @@ export const translations = {
             }
           }
         }
+      },
+      bigCard: {
+        title: "Heeft u een Restaurant of Bedrijf?",
+        titleAccent: "Bekijk Onze E-commerce Oplossing.",
+        description: "Breng uw bedrijf naar het volgende niveau met een op maat gemaakte online winkel die een uitgebreid beheersysteem bevat. Verkoop uw producten, beheer uw voorraad in realtime, beheer uw bestellingen en betalingen automatisch en eenvoudig.",
+        descriptionAccent: "Alles klaar voor u!",
+        buttons: {
+          learnMore: "Meer weten",
+          accessPanel: "Toegang tot uw paneel"
+        }
       }
     },
     
@@ -1099,8 +1137,8 @@ export const translations = {
           description: "Mobiele website verbetering demonstratie voor Bian Sushi Campana (NIET HET EINDRESULTAAT)."
         },
         businessDemo: { // New key
-          name: "Business DEMO Website",
-          description: "Website voor Asnagui Business Consulting, elegant en effectief (NIET HET EINDRESULTAAT)."
+          name: "Business ABC Website",
+          description: "Website voor Asnagui Business Consulting, elegant en effectief voor klantvertrouwen"
         },
         "3dDemo": { // New key for 3D demo
           name: "Interactieve 3D Demo",
@@ -1109,6 +1147,10 @@ export const translations = {
         brandPremium: { // New key
           name: "Premium merk website",
           description: "Website voor ons merk, gericht op branding en impactvolle visuele ervaring."
+        },
+        grooveCafe: {
+          name: "Web Groove Cafe",
+          description: "Van Campana, een website om het menu van Groove Cafe in realtime te bekijken met ons systeem"
         }
       },
       buttons: {
