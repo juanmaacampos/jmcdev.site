@@ -12,16 +12,20 @@ function PageWrapper({ children }) {
   const [contentVisible, setContentVisible] = useState(false);
 
   useEffect(() => {
+    // Precargar contenido antes de ocultar loader
+    setContentVisible(true);
+    
     const timer = setTimeout(() => {
       setLoading(false);
-      setTimeout(() => {
-        setContentVisible(true);
+      // Pequeño delay para asegurar que el contenido está renderizado
+      requestAnimationFrame(() => {
         setTimeout(() => {
           ScrollTrigger.refresh();
           console.log("ScrollTrigger refreshed after content visible.");
-        }, 100);
-      }, 100); 
-    }, 2000);
+        }, 150);
+      });
+    }, 1800); // Ligeramente antes del fadeOut del loader
+    
     return () => clearTimeout(timer);
   }, []);
 

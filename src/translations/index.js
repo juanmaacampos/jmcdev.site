@@ -191,6 +191,14 @@ export const translations = {
           description: "Demostración de efectos 3D y animaciones interactivas para páginas web modernas."
           
         },
+        abadie: {
+          name: "Web Abadie Propiedades",
+          description: "Portal web de búsqueda de propiedades ¡Ultra-rapido, diseño 100% personalizado y facil de usar!"
+        },
+        abadie_web: {
+          name: "Web Abadie Propiedades",
+          description: "Portal web de búsqueda de propiedades ¡Ultra-rapido, diseño 100% personalizado y facil de usar!"
+        },
         brandPremium: { // New key to match Portafolio.jsx
           name: "Web de marca Premium",
           description: "Página web para nuestra marca, enfocada en branding y experiencia visual impactante."
@@ -668,6 +676,14 @@ export const translations = {
           name: "Interactive 3D Demo",
           description: "Demonstration of 3D effects and interactive animations for modern websites."
         },
+        abadie: {
+          name: "Abadie Properties Website",
+          description: "Property management and search system. Ultra-fast and 100% custom design."
+        },
+        abadie_web: {
+          name: "Abadie Properties Website",
+          description: "Property management and search system. Ultra-fast and 100% custom design."
+        },
         brandPremium: { // New key
           name: "Premium Brand Website",
           description: "Website for our brand, focused on branding and impactful visual experience."
@@ -1143,6 +1159,14 @@ export const translations = {
         "3dDemo": { // New key for 3D demo
           name: "Interactieve 3D Demo",
           description: "Demonstratie van 3D-effecten en interactieve animaties voor moderne websites."
+        },
+        abadie: {
+          name: "Abadie Vastgoed Website",
+          description: "Beheer- en zoekssysteem voor onroerend goed. Ultra-snel en 100% op maat ontworpen."
+        },
+        abadie_web: {
+          name: "Abadie Vastgoed Website",
+          description: "Beheer- en zoekssysteem voor onroerend goed. Ultra-snel en 100% op maat ontworpen."
         },
         brandPremium: { // New key
           name: "Premium merk website",

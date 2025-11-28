@@ -14,47 +14,38 @@ import { useTranslation } from "../../translations"; // Import useTranslation
 gsap.registerPlugin(ScrollTrigger);
 
 // Importamos el video directamente para que funcione con GitHub Pages
-import portfolioVideo from "../../assets/videos/portfolio_project.webm";
-import jmcdevwebVideo from "../../assets/videos/jmcdevweb_project.webm";
 import abcVideo from "../../assets/videos/ABC_project.webm";
-import threedDemoVideo from "../../assets/videos/threedDemoVideo.webm";
-import shop_template from "../../assets/videos/shop_templae.webm"
 import groove_project from "../../assets/videos/groove_project.webm"
+import threedDemoVideo from "../../assets/videos/threedDemoVideo.webm";
+import abadie_video from "../../assets/videos/abadie_video.webm";
 
-
-import portfolioThumb from "../../assets/projects_img/portfolio_project.webp";
 import grooveThumb from "../../assets/projects_img/groove_project.webp";
-import jmcdevwebThumb from "../../assets/projects_img/jmcdevweb_project.webp";
+import threeDThumb from "../../assets/projects_img/threeDThumb.webp";
 import bianSushiThumb from "../../assets/projects_img/bian_project.webp";
 import abcThumb from "../../assets/projects_img/ABC_project.webp";
-import threeDThumb from "../../assets/projects_img/threeDThumb.webp";
-import shop_template_thumb from "../../assets/projects_img/shop_template.webp"
+import abadieThumb from "../../assets/projects_img/abadie_thumb.webp";
 // Base data for projects (non-translatable parts)
 const projectsData = [
-        {
-    id: 6,
-    key: "3dDemo", // Key for translations
-    type: "video",
-    media: threedDemoVideo,
-    thumbnail: threeDThumb,
-    url: "https://juanmaacampos.github.io/3d_demo/",
-  },
-          {
-    id: 7,
-    key: "shopTemplate", // Key for translations
-    type: "video",
-    media: shop_template,
-    thumbnail: shop_template_thumb,
-    url: "https://juanmaacampos.github.io/shop_template/",
-  },
-            {
+
+    {
     id: 8,
     key: "grooveCafe", // Key for translations
     type: "video",
     media: groove_project,
     thumbnail: grooveThumb,
     url: "https://groovecafe.com.ar/",
-  },       
+  },  
+
+    {
+    id: 7,
+    key: "abadie_web", // Key for translations
+    type: "video",
+    media: abadie_video,
+    thumbnail: abadieThumb,
+    url: "https://abadiepropiedades.com.ar",
+  }, 
+
+     
   {
     id: 5,
     key: "businessDemo", // Key for translations
@@ -72,20 +63,12 @@ const projectsData = [
   },
 
     {
-    id: 1,
-    key: "portfolio", // Key for translations
+    id: 6,
+    key: "3dDemo", // Key for translations
     type: "video",
-    media: portfolioVideo,
-    thumbnail: portfolioThumb,
-    url: "https://juanmaacampos.github.io/juanmacampos-portfolio/",
-  },
-  {
-    id: 4,
-    key: "brandPremium", // Key for translations
-    type: "video",
-    media: jmcdevwebVideo,
-    thumbnail: jmcdevwebThumb,
-    url: "https://jmcdev.site/",
+    media: threedDemoVideo,
+    thumbnail: threeDThumb,
+    url: "https://juanmaacampos.github.io/3d_demo/",
   },
 ];
 
