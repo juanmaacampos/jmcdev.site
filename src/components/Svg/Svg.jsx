@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Lottie from 'react-lottie';
+import Lottie from 'lottie-react';
 
 const Svg = ({ route }) => {
   const [animationData, setAnimationData] = useState(null);
@@ -27,15 +27,6 @@ const Svg = ({ route }) => {
     }
   }, [route]);
 
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: animationData,
-    rendererSettings: {
-      preserveAspectRatio: 'xMidYMid slice'
-    }
-  };
-
   return (
     <div style={{ 
       width: '64px', 
@@ -48,10 +39,12 @@ const Svg = ({ route }) => {
     }}>
       {animationData && (
         <Lottie
-          options={defaultOptions}
-          height={72}
-          width={72}
+          animationData={animationData}
+          loop={true}
+          autoplay={true}
           style={{
+            width: '72px',
+            height: '72px',
             maxWidth: '120%',
             maxHeight: '120%',
             margin: 0,

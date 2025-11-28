@@ -86,33 +86,56 @@ const VideoGallery = ({ projects, title, description, onProjectClick }) => {
     }
   }, [activeMobileCardId, onProjectClick]);
 
+  const rafRef = useRef(null);
+  const lastMoveTime = useRef(0);
+  
   const handleMouseMove = useCallback((e) => {
     if (isMobile || !galleryRef.current || containerWidth === 0) return;
 
-    const { clientX } = e;
-    const { left, width } = galleryRef.current.getBoundingClientRect();
-    const relativeX = (clientX - left) / width;
-    setMousePosition({ x: relativeX, y: 0 });
-
-    if (!hasInteracted) {
-      setHasInteracted(true);
-      setShowInstructionArrows(true);
-      setTimeout(() => setShowInstructionArrows(false), 3000);
+    const now = Date.now();
+    // Throttle to 30fps for better performance
+    if (now - lastMoveTime.current < 33) return;
+    
+    if (rafRef.current) {
+      cancelAnimationFrame(rafRef.current);
     }
+    
+    rafRef.current = requestAnimationFrame(() => {
+      const { clientX } = e;
+      const { left, width } = galleryRef.current.getBoundingClientRect();
+      const relativeX = (clientX - left) / width;
+      setMousePosition({ x: relativeX, y: 0 });
 
-    const cardWidth = 640;
-    const cardMargin = 25;
-    const leftEdgeSpace = (containerWidth - cardWidth) / 2;
-    const rightEdgeSpace = containerWidth - (cardWidth + leftEdgeSpace);
-    const maxScrollRange = totalContentWidth - containerWidth + cardMargin * 2;
-    const moveRange = maxScrollRange + leftEdgeSpace + rightEdgeSpace;
-    const positionX = leftEdgeSpace - relativeX * moveRange;
+      if (!hasInteracted) {
+        setHasInteracted(true);
+        setShowInstructionArrows(true);
+        setTimeout(() => setShowInstructionArrows(false), 3000);
+      }
 
-    controls.start({
-      x: positionX,
-      transition: { type: "spring", stiffness: 80, damping: 20, mass: 0.5 },
+      const cardWidth = 640;
+      const cardMargin = 25;
+      const leftEdgeSpace = (containerWidth - cardWidth) / 2;
+      const rightEdgeSpace = containerWidth - (cardWidth + leftEdgeSpace);
+      const maxScrollRange = totalContentWidth - containerWidth + cardMargin * 2;
+      const moveRange = maxScrollRange + leftEdgeSpace + rightEdgeSpace;
+      const positionX = leftEdgeSpace - relativeX * moveRange;
+
+      controls.start({
+        x: positionX,
+        transition: { type: "tween", duration: 0.4, ease: "easeOut" },
+      });
+      
+      lastMoveTime.current = now;
     });
   }, [isMobile, containerWidth, totalContentWidth, hasInteracted, controls]);
+  
+  useEffect(() => {
+    return () => {
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current);
+      }
+    };
+  }, []);
 
   const handleMouseEnter = useCallback(() => {
     setShowInstructionArrows(true);

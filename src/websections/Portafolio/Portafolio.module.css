@@ -38,14 +38,15 @@
   height: 100%;
   background-image: radial-gradient(
     circle at 50% 50%, 
-    rgba(85, 211, 196, 0.25) 0%, 
-    rgba(85, 211, 196, 0.15) 20%,
-    rgba(85, 211, 196, 0.05) 40%,
+    rgba(85, 211, 196, 0.2) 0%, 
+    rgba(85, 211, 196, 0.12) 20%,
+    rgba(85, 211, 196, 0.04) 40%,
     transparent 60%
   );
-  transition: background-image 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: background-image 0.2s ease-out;
   mix-blend-mode: screen;
   z-index: 1;
+  pointer-events: none;
 }
 
 .noiseTexture {

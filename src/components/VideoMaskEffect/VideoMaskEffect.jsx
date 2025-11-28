@@ -5,7 +5,8 @@ import VideoSection from "../../websections/VideoSection/VideoSection";
 import JmcDevLogoMaskPath from '../../assets/images/logoeffect.svg'; // Path to your DESKTOP MASK image
 import JmcDevMobileLogoMaskPath from '../../assets/images/mobilelogoeffect.svg'; // Path to your MOBILE MASK image
 
-// gsap.registerPlugin(ScrollTrigger); // Already registered in App.jsx
+// Ensure ScrollTrigger is registered before any animations are created
+gsap.registerPlugin(ScrollTrigger);
 
 const VideoMaskEffect = ({ videoSectionRef, videoOverlayRef, contentVisible }) => {
   useEffect(() => {
@@ -80,9 +81,7 @@ const VideoMaskEffect = ({ videoSectionRef, videoOverlayRef, contentVisible }) =
       };
     } else if (contentVisible && videoSectionRef.current && videoSectionRef.current.offsetHeight === 0) {
       setTimeout(() => ScrollTrigger.refresh(), 100);
-    } else if (!actualVideoOverlayElement && contentVisible) {
     }
-    // Removed mobile-specific static mask or hiding logic.
   }, [contentVisible, videoSectionRef, videoOverlayRef]);
 
   return (

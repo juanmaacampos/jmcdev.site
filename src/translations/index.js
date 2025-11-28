@@ -252,7 +252,7 @@ export const translations = {
           name: "Camila C.",
           position: "Export Control Officer",
           text: "Muy buen laburo! Mi portfolio web quedó buenisimo y llama más la atención de los entrevistadores. El diseño es moderno y funcional.",
-          imagenUrl: "https://media-eze1-1.cdn.whatsapp.net/v/t61.24694-24/469481038_1113125820214248_8066473694455431940_n.jpg?ccb=11-4&oh=01_Q5Aa1gEzGRLCKr5MUHxF9NaSoaL8W5AOYFKBx2wg42qtMZa8lQ&oe=683A270F&_nc_sid=5e03e0&_nc_cat=110"
+          imagenUrl: ""
         },
         {
           name: "Carlos Rodríguez",
@@ -737,7 +737,7 @@ export const translations = {
           name: "Camila C.",
           position: "Export Control Officer",
           text: "Great job! My web portfolio turned out great and catches the attention of interviewers more. The design is modern and functional.",
-          imagenUrl: "https://media-eze1-1.cdn.whatsapp.net/v/t61.24694-24/469481038_1113125820214248_8066473694455431940_n.jpg?ccb=11-4&oh=01_Q5Aa1gEzGRLCKr5MUHxF9NaSoaL8W5AOYFKBx2wg42qtMZa8lQ&oe=683A270F&_nc_sid=5e03e0&_nc_cat=110"
+          imagenUrl: ""
         },
         {
           name: "Carlos Rodríguez",
@@ -1221,7 +1221,7 @@ export const translations = {
           name: "Camila C.",
           position: "Export Control Officer",
           text: "Geweldig werk! Mijn webportfolio is geweldig geworden en trekt meer de aandacht van interviewers. Het ontwerp is modern en functioneel.",
-          imagenUrl: "https://media-eze1-1.cdn.whatsapp.net/v/t61.24694-24/469481038_1113125820214248_8066473694455431940_n.jpg?ccb=11-4&oh=01_Q5Aa1gEzGRLCKr5MUHxF9NaSoaL8W5AOYFKBx2wg42qtMZa8lQ&oe=683A270F&_nc_sid=5e03e0&_nc_cat=110"
+          imagenUrl: ""
         },
         {
           name: "Carlos Rodríguez",

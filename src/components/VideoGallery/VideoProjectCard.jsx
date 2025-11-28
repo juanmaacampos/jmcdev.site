@@ -6,6 +6,7 @@ const VideoProjectCard = ({ project, onProjectClick }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [videoReady, setVideoReady] = useState(false);
   const videoRef = useRef(null);
+  const hoverTimeoutRef = useRef(null);
   
   // Efecto parallax para cada tarjeta al hacer hover
   const y = useMotionValue(0);
@@ -40,12 +41,34 @@ const VideoProjectCard = ({ project, onProjectClick }) => {
     }
   };
 
+  const handleHoverStart = () => {
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+    }
+    setIsHovered(true);
+  };
+  
+  const handleHoverEnd = () => {
+    hoverTimeoutRef.current = setTimeout(() => {
+      setIsHovered(false);
+    }, 50);
+  };
+  
+  useEffect(() => {
+    return () => {
+      if (hoverTimeoutRef.current) {
+        clearTimeout(hoverTimeoutRef.current);
+      }
+    };
+  }, []);
+
   return (
     <motion.div
       className={styles.projectCard}
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
-      whileHover={{ y: -10 }}
+      onHoverStart={handleHoverStart}
+      onHoverEnd={handleHoverEnd}
+      whileHover={{ y: -8 }}
+      transition={{ duration: 0.2 }}
       style={{ y }}
       onClick={handleCardClick}
     >
@@ -61,9 +84,9 @@ const VideoProjectCard = ({ project, onProjectClick }) => {
         <motion.div 
           className={styles.imageContainer}
           animate={{ 
-            filter: isHovered && project.type === 'image' ? "blur(3px) brightness(0.7)" : "blur(0px) brightness(1)"
+            filter: isHovered && project.type === 'image' ? "brightness(0.85)" : "brightness(1)"
           }}
-          transition={{ duration: 0.3 }}
+          transition={{ duration: 0.15, ease: "easeOut" }}
           style={{ position: "relative" }}
         >
           {project.type === 'image' ? (
@@ -72,9 +95,9 @@ const VideoProjectCard = ({ project, onProjectClick }) => {
               alt={project.name} 
               className={styles.projectImage}
               animate={{ 
-                scale: isHovered ? 1.05 : 1
+                scale: isHovered ? 1.02 : 1
               }}
-              transition={{ duration: 0.4 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
             />
           ) : (
             <>
@@ -102,9 +125,9 @@ const VideoProjectCard = ({ project, onProjectClick }) => {
                 loop
                 onLoadedData={handleVideoLoaded}
                 animate={{
-                  scale: isHovered ? 1.05 : 1
+                  scale: isHovered ? 1.02 : 1
                 }}
-                transition={{ duration: 0.4 }}
+                transition={{ duration: 0.25, ease: "easeOut" }}
                 style={{
                   position: "relative",
                   zIndex: 2,

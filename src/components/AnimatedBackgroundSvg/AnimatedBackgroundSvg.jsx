@@ -11,6 +11,7 @@ const AnimatedBackgroundSvg = ({ svgPaths = [], startTriggerId, endTriggerId, co
 
   useEffect(() => {
     if (!contentIsVisible || svgPaths.length === 0 || svgRefs.current.some(ref => !ref.current)) {
+      console.log('AnimatedBackgroundSvg: Skipping animation setup', { contentIsVisible, svgPathsLength: svgPaths.length, refsReady: svgRefs.current.every(ref => ref.current) });
       return;
     }
 
@@ -18,9 +19,11 @@ const AnimatedBackgroundSvg = ({ svgPaths = [], startTriggerId, endTriggerId, co
     const endElement = document.getElementById(endTriggerId);
 
     if (!startElement || !endElement) {
-      console.warn('AnimatedBackgroundSvg: Start or end trigger element not found.');
+      console.warn('AnimatedBackgroundSvg: Start or end trigger element not found.', { startTriggerId, endTriggerId, startElement, endElement });
       return;
     }
+
+    console.log('AnimatedBackgroundSvg: Setting up animations', { startTriggerId, endTriggerId });
 
     const timelines = svgPaths.map((_, index) => {
       const currentSvgRef = svgRefs.current[index].current;
@@ -99,7 +102,7 @@ const AnimatedBackgroundSvg = ({ svgPaths = [], startTriggerId, endTriggerId, co
   return (
     <>
       {svgPaths.map((svgPath, index) => (
-        <div key={`svg-container-${index}`} className={styles.container} ref={svgRefs.current[index]} style={{ zIndex: -1 }}> {/* Ensure all SVGs are in the background */}
+        <div key={`svg-container-${index}`} className={styles.container} ref={svgRefs.current[index]}> {/* Removed inline zIndex style */}
           <img src={svgPath} alt={`Animated Background Logo ${index + 1}`} className={styles.svgImage} />
         </div>
       ))}
