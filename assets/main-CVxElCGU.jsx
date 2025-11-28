@@ -3,6 +3,7 @@ import React, { lazy, Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from "react-router-dom";
 import './index.css';
+import logoImage from './assets/images/jmcdev.webp';
 
 // Optimized loading placeholder
 const MinimalLoader = () => (
@@ -21,27 +22,43 @@ const MinimalLoader = () => (
     fontFamily: 'system-ui, -apple-system, sans-serif'
   }}>
     <div className="loading-logo" style={{
-      fontSize: '2rem',
-      fontWeight: 'bold',
-      marginBottom: '1rem'
-    }}>JMCdev</div>
+      marginBottom: '2rem',
+      width: '200px',
+      height: '200px',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center'
+    }}>
+      <img src={logoImage} alt="JMCdev Logo" style={{
+        width: '100%',
+        height: '100%',
+        objectFit: 'contain'
+      }} />
+    </div>
     <div className="loading-spinner" style={{
-      width: '40px',
-      height: '40px',
-      border: '3px solid rgba(85, 211, 196, 0.3)',
-      borderTop: '3px solid #55d3c4',
-      borderRadius: '50%',
-      animation: 'spin 1s linear infinite'
-    }}></div>
+      width: '150px',
+      height: '4px',
+      backgroundColor: 'rgba(85, 211, 196, 0.2)',
+      borderRadius: '2px',
+      overflow: 'hidden',
+      marginTop: '1rem'
+    }}>
+      <div style={{
+        height: '100%',
+        backgroundColor: '#55d3c4',
+        animation: 'fillBar 3s ease-in-out infinite'
+      }}></div>
+    </div>
   </div>
 );
 
 // Inject minimal CSS for spinner
 const style = document.createElement('style');
 style.textContent = `
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+  @keyframes fillBar {
+    0% { width: 0%; }
+    50% { width: 70%; }
+    100% { width: 100%; }
   }
 `;
 document.head.appendChild(style);
