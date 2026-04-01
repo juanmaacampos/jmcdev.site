@@ -7,16 +7,22 @@ import './PageWrapper.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
+// Module-level flag: persists across route changes (remounts) but resets on full page reload
+let introHasPlayed = false;
+
 function PageWrapper({ children }) {
-  const [loading, setLoading] = useState(true);
-  const [contentVisible, setContentVisible] = useState(false);
+  const [loading, setLoading] = useState(!introHasPlayed);
+  const [contentVisible, setContentVisible] = useState(introHasPlayed);
 
   useEffect(() => {
+    if (introHasPlayed) return;
+
     // Precargar contenido antes de ocultar loader
     setContentVisible(true);
     
     const timer = setTimeout(() => {
       setLoading(false);
+      introHasPlayed = true;
       // Pequeño delay para asegurar que el contenido está renderizado
       requestAnimationFrame(() => {
         setTimeout(() => {

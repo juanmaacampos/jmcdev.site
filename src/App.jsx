@@ -29,7 +29,7 @@ import logoImage from './assets/images/logoanimated.svg'; // Updated logo path
 
 // Define a MainLayout component to hold the common structure
 const MainLayout = ({ contentIsVisible, videoSectionRef, videoOverlayRef }) => (
-  <>
+  <div className="main-layout">
     <Navbar />
     <Header />
     <Servicios id="servicios" />
@@ -51,7 +51,7 @@ const MainLayout = ({ contentIsVisible, videoSectionRef, videoOverlayRef }) => (
       endTriggerId="contacto"
       contentIsVisible={contentIsVisible}
     />
-  </>
+  </div>
 );
 
 function App() {

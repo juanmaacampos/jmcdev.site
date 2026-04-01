@@ -127,19 +127,6 @@ const Navbar = () => {
                 </li>
                 <li className="navbar-item">
                   <Button 
-                    label="Planes"
-                    effect="neon"
-                    size="small"
-                    className="nav-button"
-                    icon={<FaTags className="nav-icon" />}
-                    onClick={() => {
-                      scrollToSection('planes');
-                      closeMenu();
-                    }}
-                  />
-                </li>
-                <li className="navbar-item">
-                  <Button 
                     label="FAQ"
                     effect="neon"
                     size="small"
@@ -170,13 +157,15 @@ const Navbar = () => {
               <>
                 <li className="navbar-item">
                   <Button 
-                    label={t('navbar.services')}
-                    scrollTarget="servicios"
+                    label="JMCpanel"
                     effect="neon"
                     size="small"
                     className="nav-button"
-                    icon={<FaUser className="nav-icon" />}
-                    onClick={closeMenu}
+                    icon={<FaCog className="nav-icon" />}
+                    onClick={() => {
+                      window.location.href = '/info_panel';
+                      closeMenu();
+                    }}
                   />
                 </li>
                 <li className="navbar-item">
