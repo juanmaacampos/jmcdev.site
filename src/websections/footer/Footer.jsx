@@ -34,7 +34,7 @@ const Footer = () => {
                 />
                 <IconLink 
                     icon={FaInstagram}
-                    to="https://www.instagram.com/jmcdev_"
+                    to="https://www.instagram.com/jmcdev_web/"
                     label="Instagram"
                     effect="scale"
                     color="#E4405F"

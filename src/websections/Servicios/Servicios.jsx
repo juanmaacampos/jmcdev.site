@@ -22,7 +22,7 @@ import imgCamera from "../../assets/images/modals_assets/camera.webp";
 import imgDiseno from "../../assets/images/modals_assets/diseño.webp";
 import imgHosting from "../../assets/images/modals_assets/hosting.webp";
 import imgMantenimiento from "../../assets/images/modals_assets/mantenimiento.webp";
-import imgCmsOverview from "../../assets/images/cms_assets/cms_overview.webp";
+import imgCmsOverview from "../../pages/cmsPage/assets/cms_show.png";
 
 import Button from "../../components/Button/Button";
 

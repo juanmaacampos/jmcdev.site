@@ -38,33 +38,53 @@
   text-shadow: 0 0 5px var(--card-title-color, #A3FFE5), 0 0 10px var(--card-title-color, #A3FFE5); /* Updated fallback */
 }
 
-.precioContainer {
-  display: flex;
-  align-items: baseline;
-  justify-content: center;
-  gap: 8px;
-  margin-bottom: 18px;
-}
-
-.precio {
-  font-size: 2.2rem;
-  font-weight: bold;
-  color: var(--card-price-text-color, #fff);
-  text-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
-}
-
 .descripcion {
-  font-size: 0.95rem;
+  font-size: 0.88rem;
   color: var(--card-description-text-color, #ccc);
-  margin: 0;
+  margin: 0 0 16px 0;
+  line-height: 1.45;
+  text-align: center;
 }
 
 .cardContent ul {
   list-style: none;
   padding: 0;
-  margin-bottom: 20px;
+  margin-bottom: 14px;
   text-align: left;
+}
+
+/* Ideal para section */
+.idealParaSection {
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 16px;
+}
+
+.idealParaLabel {
+  font-size: 0.72rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.chip {
+  font-size: 0.75rem;
+  color: #A3FFE5;
+  border: 1px solid rgba(163, 255, 229, 0.3);
+  border-radius: 20px;
+  padding: 3px 10px;
+  background: rgba(163, 255, 229, 0.06);
+  white-space: nowrap;
 }
 
 .cardContent ul li {
@@ -81,4 +101,67 @@
   position: absolute;
   left: 0;
   font-weight: bold;
+}
+
+/* JMCpanel section */
+.jmcpanelSection {
+  margin: 4px 0 16px 0;
+}
+
+.jmcpanelDivider {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.jmcpanelDivider::before,
+.jmcpanelDivider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(182, 135, 247, 0.45);
+}
+
+.jmcpanelDivider span {
+  color: #B687F7;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-shadow: 0 0 8px #B687F7;
+}
+
+.jmcpanelDescription {
+  font-size: 0.82rem;
+  color: #c0a0f0;
+  text-align: left;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.jmcpanelList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 4px 0;
+  text-align: left;
+  flex-grow: 0;
+}
+
+.jmcpanelList li {
+  font-size: 0.85rem;
+  color: #d4b8f5;
+  margin-bottom: 5px;
+  padding-left: 18px;
+  position: relative;
+}
+
+.jmcpanelList li::before {
+  content: "◆";
+  color: #B687F7;
+  position: absolute;
+  left: 0;
+  font-size: 0.6rem;
+  top: 3px;
 }

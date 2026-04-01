@@ -113,13 +113,13 @@ export const translations = {
         }
       },
       bigCard: {
-        title: "¿Tenés un Restaurante o Negocio?",
-        titleAccent: "Mirá Nuestra Solución E-commerce.",
-        description: "Llevá tu negocio al siguiente nivel con una tienda online a medida que incluye un sistema de gestión integral. Vendé tus productos, controlá tu stock en tiempo real, gestioná tus pedidos y cobros de forma automática y sencilla.",
-        descriptionAccent: "¡Todo listo para vos!",
+        title: "¿Listos para automatizar su negocio?",
+        titleAccent: "Conocé JMCPanel.",
+        description: "Gestioná tu menú, catálogo o portafolio de propiedades desde el celular o la compu. Control total, cambios al instante, y presencia digital profesional en tiempo real. 100% autogestionable y sin complicaciones.",
+        descriptionAccent: "¡Nosotros gestionamos la parte técnica, vos vendés!",
         buttons: {
           learnMore: "Conocer más",
-          accessPanel: "Accede a tu panel"
+          accessPanel: "Ingresar al panel"
         }
       }
     },
@@ -407,38 +407,38 @@ export const translations = {
       mainTitle: "Planes web que se adaptan a vos",
       iosButtonGranted: "¡Move el celu!",
       iosButtonPrompt: "¡Activar Tarjetas 3D Interactivas!",
+      idealParaLabel: "Ideal para",
+      jmcpanelMoreInfo: "Más info del panel",
       planDetails: {
         basic: {
-          name: "Web Básica / Landing Page",
-          price: "$200.000*",
-          description: "Presencia online esencial, portfolios simples o landing pages efectivas.",
+          name: "Web Profesional",
+          description: "Tu espacio digital propio, diseñado a medida. No es una plantilla — es una web construida para vos, con calidad profesional.",
           benefits: [
-            "Diseño moderno y responsivo",
-            "Formulario de contacto",
-            "Enlaces a redes sociales",
+            "Diseño único, sin plantillas",
+            "Adaptada a celular y computadora",
+            "Formulario de contacto integrado",
+            "Links a redes sociales",
+            "Optimización SEO básica",
             "Entrega: 1-2 semanas aprox."
-          ]
-        },
-        standard: {
-          name: "Web Estándar / Multi-página",
-          price: "$350.000*",
-          description: "Sitio web completo con múltiples secciones para pequeñas empresas o servicios.",
-          benefits: [
-            "Hasta 5 páginas (Ej: Inicio, Servicios, Nosotros, Galería, Contacto)",
-            "Diseño personalizado y adaptado a tu identidad",
-            "Integración básica (Google Maps, etc.)",
-            "Entrega: 2-4 semanas aprox."
-          ]
+          ],
+          idealPara: ["Portfolios", "Emprendedores", "Profesionales", "Negocios locales"]
         },
         premium: {
-          name: "Web Premium / Avanzada",
-          price: "$450.000*",
-          description: "Soluciones web de alto impacto con funcionalidades avanzadas y diseño exclusivo.",
+          name: "Web Profesional + Gestión",
+          description: "Web completamente personalizada más un panel para administrar tu contenido sin tocar código. Actualizá tu catálogo, menú o propiedades vos mismo.",
           benefits: [
-            "Diseño único y efectos visuales avanzados",
-            "Funcionalidades personalizadas (sliders, galerías interactivas, animaciones)",
-            "Estructura flexible y escalable (múltiples páginas complejas)",
-            "Entrega: desde 4 semanas"
+            "Diseño desde cero, único para tu negocio",
+            "Efectos visuales modernos y animaciones",
+            "Multi-página y estructura escalable",
+            "Adaptado a cualquier escala de negocio",
+            "Entrega según complejidad del proyecto"
+          ],
+          idealPara: ["Restaurantes", "Inmobiliarias", "Empresas", "Tiendas online", "Hoteles"],
+          jmcpanelDescription: "Panel de gestión a medida. Ideal para restaurantes, inmobiliarias y más.",
+          jmcpanelBenefits: [
+            "Gestión de catálogo y menú digital",
+            "Carga de productos o propiedades",
+            "Funciones personalizables a elección"
           ]
         }
       },
@@ -603,13 +603,13 @@ export const translations = {
         }
       },
       bigCard: {
-        title: "Do You Have a Restaurant or Business?",
-        titleAccent: "Check Out Our E-commerce Solution.",
-        description: "Take your business to the next level with a custom online store that includes a comprehensive management system. Sell your products, control your inventory in real time, manage your orders and payments automatically and easily.",
-        descriptionAccent: "Everything ready for you!",
+        title: "Ready to Automate Your Business?",
+        titleAccent: "Meet JMCPanel.",
+        description: "Control your catalog, manage services, and receive orders directly via WhatsApp—without paying commissions per sale.",
+        descriptionAccent: "Simple, fast, and no-code.",
         buttons: {
-          learnMore: "Learn more",
-          accessPanel: "Access your panel"
+          learnMore: "Learn More",
+          accessPanel: "Access Panel"
         }
       }
     },
@@ -891,38 +891,38 @@ export const translations = {
       mainTitle: "Web plans that adapt to you",
       iosButtonGranted: "Move your phone!",
       iosButtonPrompt: "Activate Interactive 3D Cards!",
+      idealParaLabel: "Ideal for",
+      jmcpanelMoreInfo: "More info about the panel",
       planDetails: {
         basic: {
-          name: "Basic Web / Landing Page",
-          price: "$200.000*",
-          description: "Essential online presence, simple portfolios, or effective landing pages.",
+          name: "Professional Web",
+          description: "Your own digital space, built from scratch. Not a template — a website crafted for you, with professional quality.",
           benefits: [
-            "Modern and responsive design",
-            "Contact form",
+            "Unique design, no templates",
+            "Mobile and desktop ready",
+            "Integrated contact form",
             "Social media links",
+            "Basic SEO optimization",
             "Delivery: approx. 1-2 weeks"
-          ]
-        },
-        standard: {
-          name: "Standard Web / Multi-page",
-          price: "$350.000*",
-          description: "Complete website with multiple sections for small businesses or services.",
-          benefits: [
-            "Up to 5 pages (e.g., Home, Services, About Us, Gallery, Contact)",
-            "Custom design adapted to your identity",
-            "Basic integration (Google Maps, etc.)",
-            "Delivery: approx. 2-4 weeks"
-          ]
+          ],
+          idealPara: ["Portfolios", "Freelancers", "Professionals", "Local businesses"]
         },
         premium: {
-          name: "Premium Web / Advanced",
-          price: "$450.000*",
-          description: "High-impact web solutions with advanced features and exclusive design.",
+          name: "Professional Web + Management",
+          description: "Fully custom website plus a panel to manage your content without touching code. Update your catalog, menu, or listings yourself.",
           benefits: [
-            "Unique design and advanced visual effects",
-            "Custom features (sliders, interactive galleries, animations)",
-            "Flexible and scalable structure (multiple complex pages)",
-            "Delivery: from 4 weeks"
+            "Design from scratch, unique to your business",
+            "Modern visual effects and animations",
+            "Multi-page and scalable structure",
+            "Adaptable to any business scale",
+            "Delivery based on project complexity"
+          ],
+          idealPara: ["Restaurants", "Real Estate", "Companies", "Online Stores", "Hotels"],
+          jmcpanelDescription: "Custom management panel. Ideal for restaurants, real estate, and more.",
+          jmcpanelBenefits: [
+            "Catalog & digital menu management",
+            "Product or property listings",
+            "Customizable features of your choice"
           ]
         }
       },
@@ -1087,10 +1087,10 @@ export const translations = {
         }
       },
       bigCard: {
-        title: "Heeft u een Restaurant of Bedrijf?",
-        titleAccent: "Bekijk Onze E-commerce Oplossing.",
-        description: "Breng uw bedrijf naar het volgende niveau met een op maat gemaakte online winkel die een uitgebreid beheersysteem bevat. Verkoop uw producten, beheer uw voorraad in realtime, beheer uw bestellingen en betalingen automatisch en eenvoudig.",
-        descriptionAccent: "Alles klaar voor u!",
+        title: "Klaar om uw bedrijf te automatiseren?",
+        titleAccent: "Leer JMCPanel kennen.",
+        description: "Beheer uw catalogus, diensten en ontvang bestellingen direct via WhatsApp—zonder commissies per verkoop.",
+        descriptionAccent: "Simpel, snel en no-code.",
         buttons: {
           learnMore: "Meer weten",
           accessPanel: "Toegang tot uw paneel"
@@ -1375,38 +1375,38 @@ export const translations = {
       mainTitle: "Webplannen die zich aan jou aanpassen",
       iosButtonGranted: "Beweeg je telefoon!",
       iosButtonPrompt: "Activeer Interactieve 3D Kaarten!",
+      idealParaLabel: "Ideaal voor",
+      jmcpanelMoreInfo: "Meer info over het paneel",
       planDetails: {
         basic: {
-          name: "Basis Web / Landingspagina",
-          price: "$200.000*",
-          description: "Essentiële online aanwezigheid, eenvoudige portfolio's of effectieve landingspagina's.",
+          name: "Professionele Website",
+          description: "Uw eigen digitale ruimte, op maat gemaakt. Geen template — een website gebouwd voor u, met professionele kwaliteit.",
           benefits: [
-            "Modern en responsief ontwerp",
-            "Contactformulier",
+            "Uniek ontwerp, geen templates",
+            "Mobiel en desktop klaar",
+            "Geïntegreerd contactformulier",
             "Social media links",
+            "Basis SEO-optimalisatie",
             "Levering: ca. 1-2 weken"
-          ]
-        },
-        standard: {
-          name: "Standaard Web / Multi-pagina",
-          price: "$350.000*",
-          description: "Complete website met meerdere secties voor kleine bedrijven of diensten.",
-          benefits: [
-            "Tot 5 pagina's (bijv. Home, Diensten, Over Ons, Galerij, Contact)",
-            "Aangepast ontwerp aangepast aan uw identiteit",
-            "Basisintegratie (Google Maps, enz.)",
-            "Levering: ca. 2-4 weken"
-          ]
+          ],
+          idealPara: ["Portfolio's", "Freelancers", "Professionals", "Lokale bedrijven"]
         },
         premium: {
-          name: "Premium Web / Geavanceerd",
-          price: "$450.000*",
-          description: "Hoogwaardige weboplossingen met geavanceerde functionaliteiten en exclusief ontwerp.",
+          name: "Professionele Website + Beheer",
+          description: "Volledig op maat gemaakte website plus een paneel om uw inhoud te beheren zonder code. Update uw catalogus, menu of vermeldingen zelf.",
           benefits: [
-            "Uniek ontwerp en geavanceerde visuele effecten",
-            "Aangepaste functionaliteiten (sliders, interactieve galerijen, animaties)",
-            "Flexibele en schaalbare structuur (meerdere complexe pagina's)",
-            "Levering: vanaf 4 weken"
+            "Ontwerp vanaf nul, uniek voor uw bedrijf",
+            "Moderne visuele effecten en animaties",
+            "Multi-pagina en schaalbare structuur",
+            "Aanpasbaar aan elke bedrijfsschaal",
+            "Levering op basis van projectcomplexiteit"
+          ],
+          idealPara: ["Restaurants", "Makelaars", "Bedrijven", "Webwinkels", "Hotels"],
+          jmcpanelDescription: "Maatwerk beheerpaneel. Ideaal voor restaurants, makelaars en meer.",
+          jmcpanelBenefits: [
+            "Catalogus- en digitaal menubeheer",
+            "Product- of vastgoedvermeldingen",
+            "Aanpasbare functies naar keuze"
           ]
         }
       },

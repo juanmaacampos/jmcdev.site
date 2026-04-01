@@ -76,7 +76,7 @@ const Navbar = () => {
   if (isBianRoute) return null;
 
   // Check if we're on the CMS page
-  const isCMSRoute = typeof window !== 'undefined' && window.location.pathname === '/e-panel';
+  const isCMSRoute = typeof window !== 'undefined' && window.location.pathname === '/info_panel';
 
   // Function to scroll to a section, with fallback for CMS page sections
   const scrollToSection = (sectionId) => {
@@ -107,7 +107,7 @@ const Navbar = () => {
                     className="nav-button"
                     icon={<FaHome className="nav-icon" />}
                     onClick={() => {
-                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                      window.location.href = '/';
                       closeMenu();
                     }}
                   />

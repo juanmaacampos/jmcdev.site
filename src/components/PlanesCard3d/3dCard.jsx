@@ -113,22 +113,48 @@ const Card3D = ({ plan, destacado, motionActive }) => { // Added motionActive pr
       ref={cardRef}
       onMouseMove={!isMobile ? handleMouseMove : undefined}
       onMouseLeave={!isMobile ? handleMouseLeave : undefined}
-      style={{
+      style={!isMobile ? {
         transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(${translateZ}px)`,
-        transition: isMobile ? 'transform 0.1s ease-out' : 'transform 0.1s linear, box-shadow 0.3s ease', 
-      }}
+        transition: 'transform 0.1s linear, box-shadow 0.3s ease',
+      } : {}}
     >
       <div className={styles.cardContent}>
         <h3>{plan.nombre}</h3>
-        <div className={styles.precioContainer}>
-          <span className={styles.precio}>{plan.precio}</span>
-          <span className={styles.descripcion}>{plan.descripcion}</span>
-        </div>
+        <p className={styles.descripcion}>{plan.descripcion}</p>
         <ul>
           {plan.beneficios.map((b, j) => (
             <li key={`benefit-${j}-${b.substring(0, 10)}`}>{b}</li>
           ))}
         </ul>
+        {Array.isArray(plan.idealPara) && plan.idealPara.length > 0 && (
+          <div className={styles.idealParaSection}>
+            <span className={styles.idealParaLabel}>{t('planesSection.idealParaLabel')}</span>
+            <div className={styles.chips}>
+              {plan.idealPara.map((tag, i) => (
+                <span key={i} className={styles.chip}>{tag}</span>
+              ))}
+            </div>
+          </div>
+        )}
+        {plan.jmcpanel && (
+          <div className={styles.jmcpanelSection}>
+            <div className={styles.jmcpanelDivider}>
+              <span>JMCpanel</span>
+            </div>
+            <p className={styles.jmcpanelDescription}>{plan.jmcpanelDescription}</p>
+            <ul className={styles.jmcpanelList}>
+              {plan.jmcpanelBenefits.map((b, j) => (
+                <li key={`jmcp-${j}`}>{b}</li>
+              ))}
+            </ul>
+            <Button
+              label={t('planesSection.jmcpanelMoreInfo')}
+              effect="neon"
+              size="small"
+              to="/info_panel"
+            />
+          </div>
+        )}
         <Button 
           label={t('common.meInteresa')} // Use translated label
           effect="neon" 

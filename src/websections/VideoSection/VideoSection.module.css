@@ -30,3 +30,67 @@
   pointer-events: none; /* Ensure overlay doesn't capture events */
   /* Mask properties will be applied by GSAP via App.jsx */
 }
+
+/* Scroll indicator */
+.scrollIndicator {
+  position: absolute;
+  bottom: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  pointer-events: none;
+}
+
+.scrollHintText {
+  font-family: 'DM Sans', 'Rajdhani', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 6px;
+  white-space: nowrap;
+}
+
+.scrollIndicatorVisible {
+  opacity: 1;
+}
+
+.scrollChevron {
+  display: block;
+  width: 26px;
+  height: 26px;
+  border-right: 2.5px solid #fff;
+  border-bottom: 2.5px solid #fff;
+  transform: rotate(45deg);
+  animation: scrollBounce 1.4s ease-in-out infinite;
+}
+
+.scrollChevron:nth-child(2) {
+  animation-delay: 0.18s;
+  opacity: 0.55;
+}
+
+@keyframes scrollBounce {
+  0%, 100% {
+    transform: rotate(45deg) translate(0, 0);
+    opacity: 1;
+  }
+  50% {
+    transform: rotate(45deg) translate(6px, 6px);
+    opacity: 0.35;
+  }
+}
+
+@media (max-width: 768px) {
+  .scrollChevron {
+    width: 22px;
+    height: 22px;
+  }
+}

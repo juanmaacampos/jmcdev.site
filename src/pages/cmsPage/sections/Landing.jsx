@@ -1,27 +1,312 @@
 import React, { useEffect, useState } from 'react';
 import Button from '../../../components/Button/Button';
 import CoolTitle from '../../../components/CoolTitle/CoolTitle';
-// Import PlanesCard3d component
-import Card3D from '../../../components/PlanesCard3d/3dCard';
 import styles from './Landing.module.css';
-import { FaChevronDown, FaGlobe, FaCog, FaHeadset, FaPlus, FaMinus } from 'react-icons/fa';
-import { useIsMobile } from '../../../hooks/useMediaQuery';
+import { FaChevronDown, FaMobileAlt, FaCog, FaHeadset, FaPlus, FaMinus, FaLaptop, FaBolt, FaCloud, FaTabletAlt, FaPaintBrush, FaPuzzlePiece, FaUserCheck, FaBoxOpen, FaGlobe, FaUtensils, FaBuilding, FaHotel } from 'react-icons/fa';
 import TopButton from '../../../components/TopButton/TopButton';
 
-// Import CMS images
+// Import images (placeholders)
 import cmsShowImage from '../assets/cms_show.png';
-import cmsStockImage from '../assets/cms_stock.png';
 import catalogoCmsImage from '../assets/catalogo_cms.png';
-import mediosPagoImage from '../assets/medios de pago.png';
 import paginasImage from '../assets/paginas.png';
-import soporteImage from '../assets/soporte.png';
+
+const RestaurantArt = () => (
+  <svg viewBox="0 0 400 300" style={{ width: '100%', height: '100%', background: 'transparent', display: 'block' }} xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="restBaseFill" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#110d1a" />
+        <stop offset="100%" stopColor="#08050a" />
+      </linearGradient>
+      <linearGradient id="glass1" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#8b45ff" stopOpacity="0.15"/>
+        <stop offset="100%" stopColor="#55d3c4" stopOpacity="0.05"/>
+      </linearGradient>
+      <linearGradient id="glass2" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#8b45ff" stopOpacity="0.08"/>
+        <stop offset="100%" stopColor="#ffffff" stopOpacity="0.02"/>
+      </linearGradient>
+      {/* Glow for the fork and knife */}
+      <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+        <feGaussianBlur stdDeviation="8" result="blur" />
+        <feComposite in="SourceGraphic" in2="blur" operator="over" />
+      </filter>
+    </defs>
+
+    {/* Lines pointing to sub-nodes */}
+    <line x1="200" y1="200" x2="100" y2="240" stroke="rgba(255,255,255,0.15)" strokeWidth="1" />
+    <line x1="200" y1="200" x2="120" y2="140" stroke="rgba(255,255,255,0.15)" strokeWidth="1" />
+    <line x1="200" y1="200" x2="300" y2="250" stroke="rgba(255,255,255,0.15)" strokeWidth="1" />
+
+    {/* Bottom Base (The Plate) */}
+    <g transform="translate(200, 200) scale(1, 0.5) rotate(45)">
+      {/* Outer plate border */}
+      <circle cx="0" cy="0" r="110" fill="url(#restBaseFill)" stroke="#8b45ff" strokeWidth="2" />
+      {/* Inner plate circle */}
+      <circle cx="0" cy="0" r="80" fill="none" stroke="rgba(85, 211, 196, 0.4)" strokeWidth="1" strokeDasharray="5,5" />
+      
+      {/* Glowing center */}
+      <circle cx="0" cy="0" r="40" fill="#8b45ff" opacity="0.15" filter="blur(8px)" />
+      
+      {/* Abstract Food/Burger layer in center */}
+      <rect x="-25" y="-15" width="50" height="30" rx="15" fill="#55d3c4" opacity="0.9" />
+      <rect x="-20" y="-5" width="40" height="10" rx="5" fill="#8b45ff" />
+    </g>
+
+    {/* Middle Glass Layer */}
+    <g transform="translate(200, 130) scale(1, 0.5) rotate(45)">
+      <rect x="-90" y="-90" width="180" height="180" rx="20" fill="url(#glass1)" />
+      <rect x="-90" y="-90" width="180" height="180" rx="20" fill="none" stroke="#8b45ff" strokeWidth="1.5" />
+      
+      {/* Digital Menu Items dots */}
+      <circle cx="-50" cy="-50" r="8" fill="#55d3c4" />
+      <rect x="-30" y="-53" width="60" height="6" rx="3" fill="rgba(255,255,255,0.3)" />
+      
+      <circle cx="-50" cy="-20" r="8" fill="#8b45ff" />
+      <rect x="-30" y="-23" width="40" height="6" rx="3" fill="rgba(255,255,255,0.3)" />
+      
+      <circle cx="-50" cy="10" r="8" fill="#55d3c4" />
+      <rect x="-30" y="7" width="70" height="6" rx="3" fill="rgba(255,255,255,0.3)" />
+    </g>
+
+    {/* Top Glass Layer (Cutlery) */}
+    <g transform="translate(200, 60) scale(1, 0.5) rotate(45)">
+      <rect x="-100" y="-100" width="200" height="200" rx="24" fill="url(#glass2)" />
+      <rect x="-100" y="-100" width="200" height="200" rx="24" fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
+      
+      {/* Fork */}
+      <g transform="translate(-20, 0)">
+        <rect x="-4" y="-30" width="8" height="60" rx="4" fill="#a742fb" filter="url(#glow)" />
+        {/* Prongs */}
+        <rect x="-12" y="-50" width="4" height="25" rx="2" fill="#a742fb" />
+        <rect x="-4" y="-50" width="8" height="30" rx="3" fill="#a742fb" />
+        <rect x="8" y="-50" width="4" height="25" rx="2" fill="#a742fb" />
+      </g>
+
+      {/* Knife */}
+      <g transform="translate(20, 0)">
+        <rect x="-4" y="-30" width="8" height="60" rx="4" fill="#55d3c4" filter="url(#glow)" />
+        <path d="M -4 -30 L 4 -30 L 4 -60 C -4 -50 -4 -40 -4 -30 Z" fill="#55d3c4" filter="url(#glow)" />
+      </g>
+    </g>
+
+    {/* Sub-node 1 (Top Left) - QR */}
+    <g transform="translate(120, 140) scale(1, 0.5) rotate(45)">
+      <rect x="-25" y="-25" width="50" height="50" rx="10" fill="#110d1a" />
+      <rect x="-25" y="-25" width="50" height="50" rx="10" fill="none" stroke="#8b45ff" strokeWidth="2" />
+      <rect x="-10" y="-10" width="6" height="6" fill="#fff" />
+      <rect x="4" y="-10" width="6" height="6" fill="#fff" />
+      <rect x="-10" y="4" width="6" height="6" fill="#fff" />
+      <rect x="4" y="4" width="6" height="6" fill="#55d3c4" />
+    </g>
+
+    {/* Sub-node 2 (Bottom Left) - Ticket/Receipt */}
+    <g transform="translate(100, 240) scale(1, 0.5) rotate(45)">
+      <rect x="-25" y="-25" width="50" height="50" rx="10" fill="#110d1a" />
+      <rect x="-25" y="-25" width="50" height="50" rx="10" fill="none" stroke="#55d3c4" strokeWidth="2" />
+      <rect x="-12" y="-15" width="24" height="30" fill="rgba(255,255,255,0.8)" />
+      <rect x="-8" y="-10" width="16" height="2" fill="#110d1a" />
+      <rect x="-8" y="-4" width="16" height="2" fill="#110d1a" />
+      <rect x="-8" y="2" width="10" height="2" fill="#110d1a" />
+    </g>
+
+    {/* Sub-node 3 (Bottom Right) - Chef Hat */}
+    <g transform="translate(300, 250) scale(1, 0.5) rotate(45)">
+      <rect x="-25" y="-25" width="50" height="50" rx="10" fill="#110d1a" />
+      <rect x="-25" y="-25" width="50" height="50" rx="10" fill="none" stroke="#8b45ff" strokeWidth="2" />
+      <path d="M -12 10 L 12 10 L 10 -5 C 15 -10 10 -15 5 -12 C 0 -18 -5 -12 -10 -15 C -15 -10 -10 -5 -12 10 Z" fill="#fff" />
+    </g>
+  </svg>
+);
+
+const InmobiliariaArt = () => (
+  <svg viewBox="0 0 400 300" style={{ width: '100%', height: '100%', background: 'transparent', display: 'block' }} xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="inmoBaseFill" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#0d111a" />
+        <stop offset="100%" stopColor="#05080a" />
+      </linearGradient>
+      <linearGradient id="glassInmo" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#55d3c4" stopOpacity="0.15"/>
+        <stop offset="100%" stopColor="#8b45ff" stopOpacity="0.05"/>
+      </linearGradient>
+      <filter id="glowInmo" x="-20%" y="-20%" width="140%" height="140%">
+        <feGaussianBlur stdDeviation="8" result="blur" />
+        <feComposite in="SourceGraphic" in2="blur" operator="over" />
+      </filter>
+    </defs>
+
+    <line x1="200" y1="200" x2="100" y2="240" stroke="rgba(255,255,255,0.15)" strokeWidth="1" />
+    <line x1="200" y1="200" x2="120" y2="140" stroke="rgba(255,255,255,0.15)" strokeWidth="1" />
+    <line x1="200" y1="200" x2="300" y2="250" stroke="rgba(255,255,255,0.15)" strokeWidth="1" />
+
+    {/* Bottom Base (Blueprint / Map layer) */}
+    <g transform="translate(200, 200) scale(1, 0.5) rotate(45)">
+      <rect x="-90" y="-90" width="180" height="180" rx="4" fill="url(#inmoBaseFill)" stroke="#55d3c4" strokeWidth="2" />
+      {/* Blueprint grid lines */}
+      <line x1="-90" y1="-45" x2="90" y2="-45" stroke="rgba(85, 211, 196, 0.2)" strokeWidth="1" />
+      <line x1="-90" y1="0" x2="90" y2="0" stroke="rgba(85, 211, 196, 0.2)" strokeWidth="1" />
+      <line x1="-90" y1="45" x2="90" y2="45" stroke="rgba(85, 211, 196, 0.2)" strokeWidth="1" />
+      <line x1="-45" y1="-90" x2="-45" y2="90" stroke="rgba(85, 211, 196, 0.2)" strokeWidth="1" />
+      <line x1="0" y1="-90" x2="0" y2="90" stroke="rgba(85, 211, 196, 0.2)" strokeWidth="1" />
+      <line x1="45" y1="-90" x2="45" y2="90" stroke="rgba(85, 211, 196, 0.2)" strokeWidth="1" />
+    </g>
+
+    {/* Middle Glass Layer */}
+    <g transform="translate(200, 130) scale(1, 0.5) rotate(45)">
+      <rect x="-90" y="-90" width="180" height="180" rx="10" fill="url(#glassInmo)" />
+      <rect x="-90" y="-90" width="180" height="180" rx="10" fill="none" stroke="#55d3c4" strokeWidth="1.5" />
+      
+      {/* Map location pins */}
+      <circle cx="-30" cy="-30" r="15" fill="#8b45ff" opacity="0.3" filter="blur(4px)" />
+      <path d="M -30 -40 C -38 -40 -38 -30 -30 -25 L -30 -20 L -30 -25 C -22 -30 -22 -40 -30 -40 Z" fill="#8b45ff" />
+      <circle cx="-30" cy="-35" r="3" fill="#fff" />
+      
+      <circle cx="20" cy="10" r="15" fill="#55d3c4" opacity="0.3" filter="blur(4px)" />
+      <path d="M 20 0 C 12 0 12 10 20 15 L 20 20 L 20 15 C 28 10 28 0 20 0 Z" fill="#55d3c4" />
+      <circle cx="20" cy="5" r="3" fill="#fff" />
+    </g>
+
+    {/* Top Layer (House/Keys) */}
+    <g transform="translate(200, 60) scale(1, 0.5) rotate(45)">
+      {/* Glowing base for house */}
+      <circle cx="0" cy="0" r="40" fill="#55d3c4" opacity="0.2" filter="blur(15px)" />
+      
+      {/* House outline */}
+      <path d="M -40 0 L 0 -40 L 40 0 L 30 0 L 30 40 L -30 40 L -30 0 Z" fill="none" stroke="#55d3c4" strokeWidth="4" filter="url(#glowInmo)" />
+      <rect x="-10" y="10" width="20" height="30" fill="#a742fb" filter="url(#glowInmo)" />
+      <rect x="-20" y="-10" width="10" height="10" fill="rgba(85, 211, 196, 0.5)" />
+      <rect x="10" y="-10" width="10" height="10" fill="rgba(85, 211, 196, 0.5)" />
+    </g>
+
+    {/* Sub-node 1 (Top Left) - Key */}
+    <g transform="translate(120, 140) scale(1, 0.5) rotate(45)">
+      <rect x="-25" y="-25" width="50" height="50" rx="10" fill="#110d1a" />
+      <rect x="-25" y="-25" width="50" height="50" rx="10" fill="none" stroke="#55d3c4" strokeWidth="2" />
+      <circle cx="-8" cy="0" r="6" fill="none" stroke="#fff" strokeWidth="2" />
+      <line x1="-2" y1="0" x2="12" y2="0" stroke="#fff" strokeWidth="2" />
+      <line x1="8" y1="0" x2="8" y2="6" stroke="#fff" strokeWidth="2" />
+      <line x1="12" y1="0" x2="12" y2="6" stroke="#fff" strokeWidth="2" />
+    </g>
+
+    {/* Sub-node 2 (Bottom Left) - Catalog/List */}
+    <g transform="translate(100, 240) scale(1, 0.5) rotate(45)">
+      <rect x="-25" y="-25" width="50" height="50" rx="10" fill="#110d1a" />
+      <rect x="-25" y="-25" width="50" height="50" rx="10" fill="none" stroke="#8b45ff" strokeWidth="2" />
+      <rect x="-12" y="-12" width="10" height="8" rx="1" fill="#55d3c4" />
+      <rect x="2" y="-10" width="12" height="4" rx="1" fill="#fff" />
+      <rect x="-12" y="0" width="10" height="8" rx="1" fill="#55d3c4" />
+      <rect x="2" y="2" width="12" height="4" rx="1" fill="#fff" />
+    </g>
+
+    {/* Sub-node 3 (Bottom Right) - Sold/Tag */}
+    <g transform="translate(300, 250) scale(1, 0.5) rotate(45)">
+      <rect x="-25" y="-25" width="50" height="50" rx="10" fill="#110d1a" />
+      <rect x="-25" y="-25" width="50" height="50" rx="10" fill="none" stroke="#55d3c4" strokeWidth="2" />
+      <path d="M -10 -10 L 10 -10 L 15 0 L 10 10 L -10 10 Z" fill="none" stroke="#fff" strokeWidth="2" />
+      <circle cx="-2" cy="0" r="2" fill="#8b45ff" />
+    </g>
+  </svg>
+);
+
+const HotelArt = () => (
+  <svg viewBox="0 0 400 300" style={{ width: '100%', height: '100%', background: 'transparent', display: 'block' }} xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="hotelBaseFill" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#1a0d17" />
+        <stop offset="100%" stopColor="#0a0508" />
+      </linearGradient>
+      <linearGradient id="glassHotel" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#ff4582" stopOpacity="0.15"/>
+        <stop offset="100%" stopColor="#8b45ff" stopOpacity="0.05"/>
+      </linearGradient>
+      <filter id="glowHotel" x="-20%" y="-20%" width="140%" height="140%">
+        <feGaussianBlur stdDeviation="8" result="blur" />
+        <feComposite in="SourceGraphic" in2="blur" operator="over" />
+      </filter>
+    </defs>
+
+    <line x1="200" y1="200" x2="100" y2="240" stroke="rgba(255,255,255,0.15)" strokeWidth="1" />
+    <line x1="200" y1="200" x2="120" y2="140" stroke="rgba(255,255,255,0.15)" strokeWidth="1" />
+    <line x1="200" y1="200" x2="300" y2="250" stroke="rgba(255,255,255,0.15)" strokeWidth="1" />
+
+    {/* Bottom Base (Pool / Platform) */}
+    <g transform="translate(200, 200) scale(1, 0.5) rotate(45)">
+      <rect x="-90" y="-90" width="180" height="180" rx="16" fill="url(#hotelBaseFill)" stroke="#8b45ff" strokeWidth="2" />
+      {/* Pool area */}
+      <rect x="-70" y="10" width="60" height="60" rx="8" fill="#55d3c4" opacity="0.3" />
+      <path d="M-60 20 Q -40 30 -20 20 T 0 30" fill="none" stroke="#55d3c4" strokeWidth="1" opacity="0.5" />
+      <path d="M-60 40 Q -40 50 -20 40 T 0 50" fill="none" stroke="#55d3c4" strokeWidth="1" opacity="0.5" />
+    </g>
+
+    {/* Middle Glass Layer */}
+    <g transform="translate(200, 130) scale(1, 0.5) rotate(45)">
+      <rect x="-90" y="-90" width="180" height="180" rx="16" fill="url(#glassHotel)" />
+      <rect x="-90" y="-90" width="180" height="180" rx="16" fill="none" stroke="#8b45ff" strokeWidth="1.5" />
+      
+      {/* Room doors representation */}
+      <rect x="-60" y="-60" width="30" height="40" rx="2" fill="rgba(255,255,255,0.1)" />
+      <circle cx="-55" cy="-40" r="1.5" fill="#fff" />
+      
+      <rect x="-20" y="-60" width="30" height="40" rx="2" fill="rgba(255,255,255,0.1)" />
+      <circle cx="-15" cy="-40" r="1.5" fill="#fff" />
+      
+      <rect x="20" y="-60" width="30" height="40" rx="2" fill="rgba(85, 211, 196, 0.3)" />
+      <circle cx="25" cy="-40" r="1.5" fill="#55d3c4" />
+    </g>
+
+    {/* Top Layer (Hotel Building / Bed) */}
+    <g transform="translate(200, 60) scale(1, 0.5) rotate(45)">
+      {/* Glowing base for bed */}
+      <circle cx="0" cy="0" r="45" fill="#8b45ff" opacity="0.2" filter="blur(15px)" />
+      
+      {/* Bed representation */}
+      <rect x="-30" y="-40" width="60" height="80" rx="6" fill="none" stroke="#8b45ff" strokeWidth="3" filter="url(#glowHotel)" />
+      {/* Pillows */}
+      <rect x="-25" y="-35" width="22" height="15" rx="4" fill="#55d3c4" filter="url(#glowHotel)" />
+      <rect x="3" y="-35" width="22" height="15" rx="4" fill="#a742fb" filter="url(#glowHotel)" />
+      {/* Blanket */}
+      <path d="M -30 -10 L 30 -10 L 30 40 Q 0 45 -30 40 Z" fill="rgba(139, 69, 255, 0.4)" stroke="#8b45ff" strokeWidth="2" />
+    </g>
+
+    {/* Sub-node 1 (Top Left) - Calendar/Booking */}
+    <g transform="translate(120, 140) scale(1, 0.5) rotate(45)">
+      <rect x="-25" y="-25" width="50" height="50" rx="10" fill="#110d1a" />
+      <rect x="-25" y="-25" width="50" height="50" rx="10" fill="none" stroke="#8b45ff" strokeWidth="2" />
+      <rect x="-12" y="-10" width="24" height="22" rx="2" fill="none" stroke="#fff" strokeWidth="2" />
+      <line x1="-15" y1="-2" x2="15" y2="-2" stroke="#fff" strokeWidth="2" />
+      <rect x="-6" y="-14" width="2" height="4" fill="#55d3c4" />
+      <rect x="4" y="-14" width="2" height="4" fill="#55d3c4" />
+      <circle cx="-6" cy="4" r="2" fill="#55d3c4" />
+    </g>
+
+    {/* Sub-node 2 (Bottom Left) - Bell/Concierge */}
+    <g transform="translate(100, 240) scale(1, 0.5) rotate(45)">
+      <rect x="-25" y="-25" width="50" height="50" rx="10" fill="#110d1a" />
+      <rect x="-25" y="-25" width="50" height="50" rx="10" fill="none" stroke="#55d3c4" strokeWidth="2" />
+      <path d="M -12 8 C -12 -5 12 -5 12 8 Z" fill="none" stroke="#fff" strokeWidth="2" />
+      <circle cx="0" cy="-6" r="2" fill="#fff" />
+      <rect x="-15" y="8" width="30" height="2" fill="#fff" />
+    </g>
+
+    {/* Sub-node 3 (Bottom Right) - Sun/Vacation */}
+    <g transform="translate(300, 250) scale(1, 0.5) rotate(45)">
+      <rect x="-25" y="-25" width="50" height="50" rx="10" fill="#110d1a" />
+      <rect x="-25" y="-25" width="50" height="50" rx="10" fill="none" stroke="#8b45ff" strokeWidth="2" />
+      <circle cx="0" cy="0" r="6" fill="#55d3c4" />
+      <line x1="0" y1="-12" x2="0" y2="-8" stroke="#55d3c4" strokeWidth="2" />
+      <line x1="0" y1="8" x2="0" y2="12" stroke="#55d3c4" strokeWidth="2" />
+      <line x1="-12" y1="0" x2="-8" y2="0" stroke="#55d3c4" strokeWidth="2" />
+      <line x1="8" y1="0" x2="12" y2="0" stroke="#55d3c4" strokeWidth="2" />
+      <line x1="-8" y1="-8" x2="-5" y2="-5" stroke="#55d3c4" strokeWidth="2" />
+      <line x1="5" y1="5" x2="8" y2="8" stroke="#55d3c4" strokeWidth="2" />
+    </g>
+  </svg>
+);
 
 const Landing = () => {
-  const isMobile = useIsMobile();
   const [expandedFaq, setExpandedFaq] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
-  
-  // Effect to start loading the CMS image early
+
   useEffect(() => {
     const img = new Image();
     img.src = cmsShowImage;
@@ -30,40 +315,39 @@ const Landing = () => {
   // FAQ data
   const faqData = [
     {
-      question: "¿Necesito tener conocimientos técnicos para usar la plataforma o crear mi web?",
-      answer: "¡Absolutamente no! Nos encargamos de construir tu página web exclusiva desde cero, a tu gusto y sin que tengas que mover un dedo. El panel de gestión está diseñado para ser súper intuitivo y fácil de usar, sin necesidad de conocimientos de programación. Además, contarás con tutoriales y mi soporte personal para guiarte en cada paso."
+      question: "¿Necesito saber programar para usar JMCPanel?",
+      answer: "No. El panel está diseñado para que cualquier persona pueda usarlo sin conocimientos técnicos. Subís fotos, cambiás precios, activás o desactivás productos — todo desde una interfaz simple e intuitiva."
     },
     {
-      question: "¿Cuánto tiempo tarda en estar lista mi página web?",
-      answer: "Tu nueva página web estará lista y funcionando para recibir pedidos en un plazo de 1 a 2 semanas desde que tengamos toda la información inicial de tu negocio (menú/productos, logos, etc.). Nos enfocamos en la eficiencia sin comprometer la calidad del diseño exclusivo."
+      question: "¿Cuánto tarda en estar listo mi sitio?",
+      answer: "Dependiendo de la complejidad, entre 1 y 3 semanas. Te entregamos tu web funcionando y tu panel configurado, listo para que empieces a cargar contenido."
     },
     {
-      question: "¿Hay costos ocultos o comisiones sobre mis ventas, además de la mensualidad?",
-      answer: "¡No hay costos ocultos! La única comisión por ventas es la que cobra directamente Mercado Pago (actualmente alrededor del 5%), y esta se aplica únicamente cuando tus clientes te pagan a través de su plataforma (con tarjeta de crédito, débito, u otros medios de pago online de Mercado Pago). Si tus clientes eligen pagar en efectivo al retirar o mediante transferencia bancaria, no se cobra ningún tipo de comisión. Todos estos métodos de pago se registran en tu panel de gestión para que lleves un control total de tus pedidos, confirmes pagos y actualices tu stock sin problemas. Nosotros NO cobramos ninguna comisión sobre tus ventas, ¡tu facturación es 100% tuya!"
+      question: "¿Puedo actualizar mi web desde el celular?",
+      answer: "Sí. JMCPanel funciona desde cualquier navegador: celular, tablet o computadora. No necesitás instalar nada."
     },
     {
-      question: "¿Puedo probar el sistema de gestión antes de comprometerme?",
-      answer: "¡Sí, claro! Te ofrecemos una primera semana GRATIS de acceso a nuestro panel de gestión para que puedas explorarlo sin compromiso, cargar tus productos y experimentar lo fácil que es manejar tu negocio online."
+      question: "¿Qué pasa si necesito una función que no viene incluida?",
+      answer: "Se desarrolla a medida. El sistema es flexible y crece con tu negocio. Si necesitás algo nuevo, lo analizamos y lo agregamos."
     },
     {
-      question: "¿Qué métodos de pago puedo ofrecer a mis clientes?",
-      answer: "Tu página web contará con la integración directa de Mercado Pago, permitiendo pagos rápidos y seguros con tarjeta de crédito, débito y otros medios. Además, podrás configurar opciones para que tus clientes paguen en efectivo al retirar o con transferencia bancaria. Todos estos métodos se gestionan fácilmente desde tu panel para un control total."
+      question: "¿Mi web es solo para restaurantes o inmobiliarias?",
+      answer: "No. JMCPanel se adapta a cualquier negocio que necesite mostrar productos, servicios o contenido actualizado: tiendas, estudios, consultorios, catálogos y más."
     },
     {
-      question: "¿Qué tipo de soporte ofrecen si tengo un problema o una duda?",
-      answer: "Tendrás acceso a mi soporte prioritario y cercano. Estoy disponible para resolver cualquier duda o ayudarte con lo que necesites, garantizando que tu negocio siempre funcione al 100%. Además, el sistema incluye tutoriales paso a paso para que aprendas a manejar todo a tu ritmo."
+      question: "¿Los cambios que hago se ven al instante?",
+      answer: "Sí. Cualquier modificación que hagas desde el panel se refleja en tu web en segundos. No hay que esperar aprobaciones ni procesos intermedios."
     },
     {
-      question: "¿Qué pasa con la seguridad de mis datos y los de mis clientes?",
-      answer: "La seguridad es nuestra prioridad. Toda la información de tu negocio (productos, pedidos, clientes) se guarda de forma súper segura en los servidores de Google (con tecnología Firebase). Respecto a los pagos, Mercado Pago es una empresa líder en seguridad de transacciones, y ellos son los únicos responsables de procesar y proteger los datos de pago con los más altos estándares. Es como tener un banco de alta seguridad cuidando tus datos y transacciones."
+      question: "¿Qué pasa con la seguridad de mis datos?",
+      answer: "Tu información se almacena de forma segura en servidores de Google (Firebase). Los datos están protegidos con tecnología de primer nivel, la misma que usan grandes empresas."
     },
     {
-      question: "¿Qué sucede si dejo de pagar la cuota mensual del sistema de gestión?",
-      answer: "Tu página web, una vez construida y entregada, es tuya para siempre. Sin embargo, la cuota mensual cubre el acceso a tu panel de gestión, el mantenimiento y el soporte. Si la cuota mensual no es abonada, el acceso a tu panel de gestión se suspenderá. Esto significa que no podrás gestionar tus productos, pedidos o stock (PERO TU WEB NO SE VA A ELIMINAR NUNCA, ES TUYA). Si el abono mensual se retrasa mas de un mes, los datos del catalogo seran borrados por temas de mantenimiento y servidores"
+      question: "¿Y si necesito soporte o tengo una duda?",
+      answer: "Tenés contacto directo conmigo para cualquier consulta. No hay tickets ni esperas eternas — soporte real y personalizado."
     }
   ];
 
-  // Toggle FAQ expansion
   const toggleFaq = (index) => {
     setExpandedFaq(expandedFaq === index ? null : index);
   };
@@ -76,59 +360,32 @@ const Landing = () => {
     setSelectedImage(null);
   };
 
-  // Define plans data based on the pasted image
-  const planesData = [
-    {
-      nombre: "Tu web, la que van a ver tus clientes",
-      precio: "Precio a medida",
-      beneficios: [
-        "PAGO UNICO, la web es tuya para siempre",
-        "El precio depende de la calidad que quieras para tu web.",
-        "Branding de tu marca y mucho más",
-        "Tu inversión: hasta en 3 cuotas sin interes (solo transferencia)"
-      ]
-    },
-    {
-      nombre: "Acceso total al sistema de gestión",
-      precio: "$25.000",
-      descripcion: "precio base",
-      beneficios: [
-        "PAGO MENSUAL PARA MANTENER EL SISTEMA DE GESTIÓN. EL PRECIO SE AJUSTA AL VOLUMEN DEL NEGOCIO",
-        "Gestión de productos, categorías y precios (SE REFLEJAN EN TU WEB DIRECTAMENTE)",
-        "Control de stock inteligente y automático",
-        "Manejo de pedidos y clientes",
-        "Integración con Mercado Pago y otras opciones de pago",
-        "Soporte, Mantenimiento constante y actualizaciones de sistema",
-        "Primera semana GRATIS! Te damos 7 días para que pruebes el sistema sin compromiso"
-      ]
-    }
-  ];
+
 
   return (
     <div className={styles.landing}>
       <div className={styles.container}>
-        {/* Header Content */}
+        {/* Hero */}
         <div className={styles.content}>
-          {/* Main content */}
           <div className={styles.mainContent}>
             <h1 className={styles.mainTitle}>
-              <span className={styles.titlePurple}>Tu negocio en automático.</span>
+              <span className={styles.titlePurple}>Tu negocio online,</span>
               <br />
-              <span className={styles.titleWhite}>Nosotros gestionamos, vos vendés.</span>
+              <span className={styles.titleWhite}>sin complicaciones.</span>
             </h1>
 
             <p className={styles.description}>
-              <strong>Olvídate del estrés</strong> de los pedidos por WhatsApp, comprobantes de pago y el control manual de stock.
+              <strong>Gestioná tu menú, catálogo o portafolio de propiedades</strong> desde el celular o la compu
               <br />
-              Te ofrecemos una solución web a medida, adaptada a los requerimientos únicos de tu <strong>negocio</strong>,
+              — sin saber programación, sin llamar a nadie.
               <br />
-              con <strong>tu propia página web y un sistema inteligente</strong> para operar con total tranquilidad y eficiencia <strong>(¡SIN COMISIONES!)</strong>
+              Con <strong>JMCPanel</strong>, vos controlás todo y tu cliente lo ve al instante.
             </p>
 
             <div className={styles.ctaSection}>
-              <a href="https://wa.me/5491173677628?text=Hola,%20vi%20tu%20página%20y%20estoy%20interesado%20en%20el%20servicio%20de%20e-commerce.%20Me%20gustaría%20saber%20más%20sobre%20cómo%20pueden%20ayudar%20a%20mi%20negocio%20a%20crecer.%20¡Gracias!" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/5491173677628?text=Hola,%20vi%20tu%20página%20y%20estoy%20interesado%20en%20JMCPanel.%20Me%20gustaría%20saber%20más%20sobre%20cómo%20puede%20ayudar%20a%20mi%20negocio.%20¡Gracias!" target="_blank" rel="noopener noreferrer">
                 <Button 
-                  label="¡Quiero modernizar mi negocio!"
+                  label="¡Quiero mi panel!"
                   effect="primary"
                   size="large"
                   className={styles.ctaButton}
@@ -142,17 +399,16 @@ const Landing = () => {
             </div>
           </div>
 
-          {/* Image section */}
           <div className={styles.imageSection}>
             <img 
               src={cmsShowImage} 
-              alt="Dashboard del sistema CMS" 
+              alt="Dashboard de JMCPanel" 
               className={styles.dashboardImage}
             />
           </div>
         </div>
 
-        {/* Resumen Content */}
+        {/* ¿Qué es JMCPanel? */}
         <div className={styles.titleSection}>
           <div className={styles.titleLeft}>
             <CoolTitle 
@@ -160,56 +416,52 @@ const Landing = () => {
               animation="slide"
               fontTransition="0.4s"
             >
-              Nosotros te ayudamos a construir<br />
-              la web que siempre soñaste
+              ¿Qué es JMCPanel?
             </CoolTitle>
           </div>
           <div className={styles.titleRight}>
             <p className={styles.subtitle}>
-              <strong>JMCDEV ECOMMERCE</strong> es la solución completa para tu presencia 
-              digital: una página web única y personalizada para tu negocio, y un 
-              potente sistema de gestión propio que simplifica el control de tu stock, 
-              pedidos y pagos. <strong>¡Tu negocio en internet, bajo tu control y a tu medida!</strong>
+              Es un sistema que le da a tu negocio una <strong>presencia digital profesional y actualizada en tiempo real</strong>. 
+              Vos controlás todo: subís una foto, cambiás un precio, activás o desactivás un producto 
+              — y en segundos tu cliente lo ve reflejado en tu sitio web. 
+              <strong> Sin esperar. Sin pedirle nada a un desarrollador.</strong>
             </p>
           </div>
         </div>
 
         <div className={styles.cardsGrid}>
-          {/* Card 1: Web Única y Profesional */}
           <div className={styles.featureCard} onClick={() => openImageModal(cmsShowImage)}>
             <div className={styles.cardIcon}>
-              <FaGlobe />
+              <FaMobileAlt />
             </div>
-            <h3 className={styles.cardTitle}>Web única y profesional</h3>
+            <h3 className={styles.cardTitle}>Control total desde tu celular</h3>
             <p className={styles.cardDescription}>
-              Diseño exclusivo que refleja la personalidad de tu marca y donde tus clientes compran
+              Subí fotos, cambiá precios, activá o desactivá productos — todo desde cualquier dispositivo, en cualquier momento.
             </p>
           </div>
 
-          {/* Card 2: Gestión Sin Estrés */}
           <div className={styles.featureCard} onClick={() => openImageModal(cmsShowImage)}>
             <div className={styles.cardIcon}>
               <FaCog />
             </div>
-            <h3 className={styles.cardTitle}>Gestión sin estres</h3>
+            <h3 className={styles.cardTitle}>Cambios en tiempo real</h3>
             <p className={styles.cardDescription}>
-              Sistema automatizado que maneja pedidos, stock y pagos mientras vos te enfocás en vender. SIN COMISIONES
+              Lo que modificás en el panel se refleja al instante en tu web. Sin esperas, sin intermediarios.
             </p>
           </div>
 
-          {/* Card 3: Soporte Personalizado */}
           <div className={styles.featureCard} onClick={() => openImageModal(cmsShowImage)}>
             <div className={styles.cardIcon}>
               <FaHeadset />
             </div>
-            <h3 className={styles.cardTitle}>Soporte Personalizado</h3>
+            <h3 className={styles.cardTitle}>Soporte personalizado</h3>
             <p className={styles.cardDescription}>
-              No tenes que hacer nada, nos ocupamos nosotros de crear tu web. Además siempre vamos a estar por cualquier duda que tengas
+              Nos encargamos de crear tu web. Y si tenés alguna duda con el panel, estamos para ayudarte.
             </p>
           </div>
         </div>
 
-        {/* Características Content */}
+        {/* Verticales: Restaurantes e Inmobiliarias */}
         <div className={styles.caracteristicasSection} id="caracteristicas">
           <div className={styles.caracteristicasHeader}>
             <CoolTitle 
@@ -217,162 +469,181 @@ const Landing = () => {
               animation="slide"
               fontTransition="0.4s"
             >
-              JMCDEV: tu plataforma<br />
-              <span className={styles.titlePurple}>Todo en uno.</span>
+              Adaptado a tu<br />
+              <span className={styles.titlePurple}>tipo de negocio.</span>
             </CoolTitle>
             <p className={styles.caracteristicasSubtitle}>
-              Eficiencia total para tu negocio. Una web moderna y un sistema 
-              de gestión intuitivo para vender tu catálogo sin esfuerzo con 
-              nuestro E-commerce Panel:
+              JMCPanel se adapta a las necesidades específicas de tu rubro. 
+              Así funciona para algunos de los sectores más demandados:
             </p>
           </div>
         </div>
 
         <div className={styles.caracteristicasGrid}>
-          {/* Card 1: Control de Stock Automático */}
-          <div className={styles.caracteristicaCard} onClick={() => openImageModal(cmsStockImage)}>
+          {/* Restaurantes */}
+          <div className={styles.caracteristicaCard}>
             <div className={styles.cardImageContainer}>
-              <img 
-                src={cmsStockImage} 
-                alt="Control de Stock Automático" 
-                className={styles.cardImage}
-              />
+              <RestaurantArt />
             </div>
             <div className={styles.cardContent}>
-              <h3 className={styles.cardTitle}>Control de Stock Automático</h3>
+              <h3 className={styles.cardTitle}><FaUtensils className={styles.cardTitleIcon} /> Para restaurantes</h3>
               <p className={styles.cardDescription}>
-Control de stock inteligente y automático.
-Vendé sin miedos, el sistema descuenta solo 
-y te alerta stock en tiempo real.
+                ¿Cambiaste el menú del día? ¿Se terminó un plato? <strong>Actualizalo en segundos desde tu celular.</strong>
               </p>
+              <ul className={styles.cardList}>
+                <li>Tu carta siempre actualizada, con fotos y precios reales</li>
+                <li>Múltiples cartas: menú del día, carta principal, bebidas</li>
+                <li>Si se agota un producto, se bloquea solo</li>
+                <li>Notificación en tu celular con cada pedido</li>
+              </ul>
             </div>
           </div>
 
-          {/* Card 2: Tu Menú/Productos al Instante */}
-          <div className={styles.caracteristicaCard} onClick={() => openImageModal(catalogoCmsImage)}>
+          {/* Inmobiliarias */}
+          <div className={styles.caracteristicaCard}>
             <div className={styles.cardImageContainer}>
-              <img 
-                src={catalogoCmsImage} 
-                alt="Tu Menú/Productos al Instante" 
-                className={styles.cardImage}
-              />
+              <InmobiliariaArt />
             </div>
             <div className={styles.cardContent}>
-              <h3 className={styles.cardTitle}>Tu Menú/Productos al Instante</h3>
+              <h3 className={styles.cardTitle}><FaBuilding className={styles.cardTitleIcon} /> Para inmobiliarias</h3>
               <p className={styles.cardDescription}>
-                Actualizá vos mismo precios, imagenes
-o agregá productos en segundos desde el 
-panel. ¡Vos tenés el control total y al momento!
+                ¿Vendiste una propiedad? ¿Cambiaron las condiciones? <strong>Dos clicks y listo.</strong>
               </p>
+              <ul className={styles.cardList}>
+                <li>Cargás propiedades con fotos, descripción, ambientes y más</li>
+                <li>Organizás por tipo: casas, deptos, locales, terrenos</li>
+                <li>Filtrás por operación: venta, alquiler, temporario</li>
+                <li>Siempre con la información correcta y actualizada</li>
+              </ul>
             </div>
           </div>
 
-          {/* Card 3: Cobros con Mercado Pago Checkout */}
-          <div className={styles.caracteristicaCard} onClick={() => openImageModal(mediosPagoImage)}>
+          {/* Hoteles y cabañas */}
+          <div className={styles.caracteristicaCard}>
             <div className={styles.cardImageContainer}>
-              <img 
-                src={mediosPagoImage} 
-                alt="Cobros con Mercado Pago Checkout" 
-                className={styles.cardImage}
-              />
+              <HotelArt />
             </div>
             <div className={styles.cardContent}>
-              <h3 className={styles.cardTitle}>Cobros con Mercado Pago Checkout</h3>
+              <h3 className={styles.cardTitle}><FaHotel className={styles.cardTitleIcon} /> Para hoteles, cabañas y complejos</h3>
               <p className={styles.cardDescription}>
-              MercadoPago integrado para pagos rápidos y
-seguros. Además de pagos por transferencia
-y efectivo con validación manual en el panel.
-                <br />
-                <strong>NO COBRAMOS COMISIONES POR VENTAS.</strong>
+                ¿Tenés un complejo de cabañas, un hotel boutique o una unidad de alquiler temporario? <strong>Manejá todo desde un solo lugar.</strong>
               </p>
+              <ul className={styles.cardList}>
+                <li>Seguimiento de reservas y ocupación en tiempo real</li>
+                <li>Gestión de calendario, check-in y check-out</li>
+                <li>Administrás cada unidad o tipo de alojamiento por separado</li>
+                <li>Control de ingresos estimados y disponibilidad</li>
+                <li>Publicás anuncios y novedades directamente en tu web</li>
+              </ul>
             </div>
           </div>
 
-          {/* Card 4: Tu Web ÚNICA, sin plantillas genéricas */}
-          {isMobile ? (
-            // Versión móvil: Card normal
-            <div className={styles.caracteristicaCard} onClick={() => openImageModal(paginasImage)}>
-              <div className={styles.cardImageContainer}>
-                <img 
-                  src={paginasImage} 
-                  alt="Tu Web ÚNICA, sin plantillas genéricas" 
-                  className={styles.cardImage}
-                />
-              </div>
-              <div className={styles.cardContent}>
-                <h3 className={styles.cardTitle}>Tu Web ÚNICA, sin plantillas genéricas</h3>
-                <p className={styles.cardDescription}>
-                  Nos encargamos de crear una página web exclusiva y 100% personalizada para tu negocio, 
-                  que refleje tu estilo y tu marca. Vos solo nos lo pedís, ¡y nosotros construimos toda tu página 
-                  a tu gusto! <strong>(¡Olvidate de los diseños repetidos de Tienda Nube!)</strong>
-                </p>
-              </div>
-            </div>
-          ) : (
-            // Versión desktop/tablet: Card doble
-            <div className={styles.caracteristicaCardDoble} onClick={() => openImageModal(paginasImage)}>
-              <div className={styles.cardImageContainer}>
-                <img 
-                  src={paginasImage} 
-                  alt="Tu Web ÚNICA, sin plantillas genéricas" 
-                  className={styles.cardImage}
-                />
-              </div>
-              <div className={styles.cardContent}>
-                <h3 className={styles.cardTitle}>Tu Web ÚNICA, sin plantillas genéricas</h3>
-                <p className={styles.cardDescription}>
-                  Nos encargamos de crear una página web exclusiva y 100% personalizada para tu negocio, 
-que refleje tu estilo y tu marca. Vos solo nos lo pedís, ¡y nosotros construimos toda tu página 
-a tu gusto! <strong>(¡Olvidate de los diseños repetidos de Tienda Nube!)</strong>
-                </p>
-              </div>
-            </div>
-          )}
+        </div>
 
-          {/* Card 6: Soporte Personal y Seguridad Total */}
-          <div className={styles.caracteristicaCard} onClick={() => openImageModal(soporteImage)}>
-            <div className={styles.cardImageContainer}>
-              <img 
-                src={soporteImage} 
-                alt="Soporte Personal y Seguridad Total" 
-                className={styles.cardImage}
-              />
-            </div>
-            <div className={styles.cardContent}>
-              <h3 className={styles.cardTitle}>Soporte Personal y Seguridad Total</h3>
-              <p className={styles.cardDescription}>
-Contacto directo conmigo para soporte completo. Tus datos
-protegidos con tecnologia de Google y pagos con tarjetas 
-directamente por Mercado Pago. <strong>Seguridad 100% garantizada.</strong>
-              </p>
-            </div>
+        {/* ¿Por qué es diferente? */}
+        <div className={styles.caracteristicasSection}>
+          <div className={styles.caracteristicasHeader}>
+            <CoolTitle 
+              className={styles.caracteristicasTitle}
+              animation="slide"
+              fontTransition="0.4s"
+            >
+              ¿Por qué es<br />
+              <span className={styles.titlePurple}>diferente?</span>
+            </CoolTitle>
+            <p className={styles.caracteristicasSubtitle}>
+              La mayoría de los negocios depende de un desarrollador para cambiar 
+              hasta el precio de un producto. Con JMCPanel, eso se acabó.
+            </p>
           </div>
         </div>
 
-        {/* Planes Content */}
+        <div className={styles.cardsGrid}>
+          <div className={styles.featureCard}>
+            <div className={styles.cardIcon}><FaLaptop /></div>
+            <h3 className={styles.cardTitle}>Panel propio</h3>
+            <p className={styles.cardDescription}>Entrás desde el navegador, sin instalar nada</p>
+          </div>
+          <div className={styles.featureCard}>
+            <div className={styles.cardIcon}><FaBolt /></div>
+            <h3 className={styles.cardTitle}>Cambios al instante</h3>
+            <p className={styles.cardDescription}>Lo que modificás se ve de inmediato en tu web</p>
+          </div>
+          <div className={styles.featureCard}>
+            <div className={styles.cardIcon}><FaCloud /></div>
+            <h3 className={styles.cardTitle}>Siempre disponible</h3>
+            <p className={styles.cardDescription}>Funciona en la nube, 24/7, sin servidores que cuidar</p>
+          </div>
+          <div className={styles.featureCard}>
+            <div className={styles.cardIcon}><FaTabletAlt /></div>
+            <h3 className={styles.cardTitle}>Cualquier dispositivo</h3>
+            <p className={styles.cardDescription}>Lo manejás desde la compu, la tablet o el celular</p>
+          </div>
+          <div className={styles.featureCard}>
+            <div className={styles.cardIcon}><FaPaintBrush /></div>
+            <h3 className={styles.cardTitle}>Tu web, tu imagen</h3>
+            <p className={styles.cardDescription}>Se integra con el diseño que ya tenés</p>
+          </div>
+          <div className={styles.featureCard}>
+            <div className={styles.cardIcon}><FaPuzzlePiece /></div>
+            <h3 className={styles.cardTitle}>Funciones a medida</h3>
+            <p className={styles.cardDescription}>Si necesitás algo nuevo, se desarrolla — el sistema crece con tu negocio</p>
+          </div>
+        </div>
+
+        {/* Así funciona */}
         <div className={styles.titleSection} id="planes">
           <CoolTitle 
             className={styles.planesTitle}
             animation="slide"
             fontTransition="0.4s"
           >
-            Tu web y sistema de gestión<br />
-            <span className={styles.titlePurple}>No necesitas nada más.</span>
+            Así funciona<br />
+            <span className={styles.titlePurple}>Simple. Rápido. Tuyo.</span>
           </CoolTitle>
         </div>
 
-        <div className={styles.planesGrid}>
-          {planesData.map((plan, index) => (
-            <Card3D
-              key={index}
-              plan={plan}
-              destacado={index === 1} // Destacar el segundo plan (sistema de gestión)
-              motionActive={true} // Activar efectos de movimiento
-            />
-          ))}
+        <div className={styles.cardsGrid}>
+          <div className={styles.featureCard}>
+            <div className={styles.cardIcon}><FaUserCheck /></div>
+            <h3 className={styles.cardTitle}>1. Te entregamos tu panel listo</h3>
+            <p className={styles.cardDescription}>Entrás con usuario y contraseña. Todo configurado para tu negocio. Sin instalaciones.</p>
+          </div>
+          <div className={styles.featureCard}>
+            <div className={styles.cardIcon}><FaBoxOpen /></div>
+            <h3 className={styles.cardTitle}>2. Cargás tu contenido vos mismo</h3>
+            <p className={styles.cardDescription}>Fotos, precios, descripciones, categorías — todo desde una interfaz simple e intuitiva.</p>
+          </div>
+          <div className={styles.featureCard}>
+            <div className={styles.cardIcon}><FaGlobe /></div>
+            <h3 className={styles.cardTitle}>3. Tus clientes lo ven en tu web</h3>
+            <p className={styles.cardDescription}>Actualizado, prolijo y profesional. Sin que toques una línea de código.</p>
+          </div>
         </div>
 
-        {/* FAQ Content */}
+        {/* Diseñado para durar */}
+        <div className={styles.titleSection}>
+          <div className={styles.titleLeft}>
+            <CoolTitle 
+              className={styles.resumenTitle}
+              animation="slide"
+              fontTransition="0.4s"
+            >
+              Diseñado para<br />
+              <span className={styles.titlePurple}>durar.</span>
+            </CoolTitle>
+          </div>
+          <div className={styles.titleRight}>
+            <p className={styles.subtitle}>
+              Por detrás corre tecnología de primer nivel usada por empresas como Google y Netflix 
+              — lo que significa que <strong>tu sistema escala con vos</strong>, no te frena cuando crecés. 
+              Y si en algún momento necesitás algo nuevo o diferente, <strong>se puede desarrollar a pedido</strong>. 
+              No estás comprando algo cerrado. Estás invirtiendo en una plataforma que se adapta a lo que vos necesitás.
+            </p>
+          </div>
+        </div>
+
+        {/* FAQ */}
         <div className={styles.faqTitleSection} id="faq">
           <CoolTitle 
             className={styles.faqTitle}
@@ -383,8 +654,8 @@ directamente por Mercado Pago. <strong>Seguridad 100% garantizada.</strong>
             <span className={styles.titlePurple}>Resolvemos tus dudas</span>
           </CoolTitle>
           <p className={styles.subtitle}>
-            Encuentra respuestas a las preguntas más comunes sobre nuestros servicios.
-            Si no encuentras lo que buscas, ¡contáctanos directamente!
+            Encontrá respuestas a las preguntas más comunes sobre JMCPanel.
+            Si no encontrás lo que buscás, ¡contactanos directamente!
           </p>
         </div>
 
@@ -410,27 +681,24 @@ directamente por Mercado Pago. <strong>Seguridad 100% garantizada.</strong>
           ))}
         </div>
 
-        {/* Final CTA Content */}
+        {/* CTA Final */}
         <div className={styles.finalCtaContent} id="contacto">
           <h2 className={styles.finalCtaTitle}>
-            Es Hora de Impulsar tu Negocio Online.
+            ¿Tenés un negocio con productos o servicios para mostrar?
           </h2>
           <p className={styles.finalCtaSubtitle}>
-            No esperes más.
-            Unite a los emprendedores que transformaron su negocio con nuestra plataforma.
+            Restaurantes, inmobiliarias, tiendas, estudios — si necesitás que tus clientes 
+            vean lo que ofrecés, actualizado y profesional, JMCPanel es para vos.
           </p>
           <div className={styles.finalCtaButtonContainer}>
-            <a href="https://wa.me/5491173677628?text=Hola,%20vi%20tu%20página%20y%20estoy%20interesado%20en%20el%20servicio%20de%20e-commerce.%20Me%20gustaría%20saber%20más%20sobre%20cómo%20pueden%20ayudar%20a%20mi%20negocio%20a%20crecer.%20¡Gracias!" target="_blank" rel="noopener noreferrer">
+            <a href="https://wa.me/5491173677628?text=Hola,%20vi%20tu%20página%20y%20estoy%20interesado%20en%20JMCPanel.%20Me%20gustaría%20saber%20más%20sobre%20cómo%20puede%20ayudar%20a%20mi%20negocio.%20¡Gracias!" target="_blank" rel="noopener noreferrer">
               <Button 
-                label="¡Empezar Ahora!"
+                label="Hablemos"
                 effect="primary"
                 size="large"
                 className={styles.finalCtaButton}
               />
             </a>
-            <p className={styles.finalCtaNote}>
-              Primera semana GRATIS - Sin compromiso
-            </p>
           </div>
         </div>
       </div>
