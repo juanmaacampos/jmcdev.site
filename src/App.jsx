@@ -18,6 +18,7 @@ import TopButton from "./components/TopButton/TopButton"; // Import TopButton co
 import BianDemoPage from "./pages/BianDemoPage/BianDemoPage"; // Import the new BianDemoPage component
 import CMSPage from "./pages/cmsPage/CMSPage"; // Import CMSPage component
 import EPanelRedirect from "./pages/EPanelRedirect/EPanelRedirect";
+import KobeDemoRedirect from "./pages/KobeDemoRedirect/KobeDemoRedirect";
 
 // gsap, ScrollTrigger, Lenis imports removed
 import VideoMaskEffect from "./components/VideoMaskEffect/VideoMaskEffect";
@@ -120,6 +121,8 @@ function App() {
               <Route path="info_panel" element={<CMSPage />} />
               {/* External admin panel redirect at /e-panel */}
               <Route path="e-panel" element={<EPanelRedirect />} />
+              {/* Kobe demo redirect at /kobe_demo */}
+              <Route path="kobe_demo" element={<KobeDemoRedirect />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         )}
