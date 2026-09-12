@@ -1,0 +1,1 @@
+:root{--font-primary: "DM Sans", sans-serif;--font-headings: "Geologica", sans-serif}*{margin:0;padding:0;box-sizing:border-box}html,body{background-color:#171717}body{font-family:var(--font-primary)}h1,h2,h3,h4,h5,h6{font-family:var(--font-headings)}img{max-width:100%;height:auto;display:block}.logo-container{position:relative;width:200px;height:80px;overflow:hidden}
