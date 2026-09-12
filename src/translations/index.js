@@ -402,6 +402,29 @@ export const translations = {
       meInteresa: "Me interesa" // Added for Card3D button
     },
 
+    // Inmobiliaria Section
+    inmobiliariaSection: {
+      title: "El estándar que tu inmobiliaria merece.",
+      subtitle: "Tu propia web a medida, consultas que llegan listas a tu WhatsApp y el control total para publicar tus propiedades en un minuto desde el celular.",
+      features: {
+        brand: {
+          title: "Tu marca propia",
+          description: "Dominio exclusivo y diseño profesional. No dependas ni compitas dentro de portales masivos de terceros."
+        },
+        whatsapp: {
+          title: "Consultas directas a WhatsApp",
+          description: "Fichas técnicas con botón directo que envían los datos de la propiedad para cerrar visitas al instante."
+        },
+        crm: {
+          title: "Control total en 1 minuto",
+          description: "Subí fotos, cambiá precios, activá o pausá inmuebles en tiempo real desde el celular o computadora."
+        }
+      },
+      clientsLabel: "Inmobiliarias activas en la plataforma:",
+      ctaButton: "Saber más",
+      previewBadge: "EN VIVO",
+    },
+
     // Planes Section (New specific section for Planes.jsx)
     planesSection: {
       mainTitle: "Planes web que se adaptan a vos",
@@ -886,6 +909,29 @@ export const translations = {
       meInteresa: "I'm interested"
     },
 
+    // Inmobiliaria Section
+    inmobiliariaSection: {
+      title: "The standard your real estate agency deserves.",
+      subtitle: "Your own custom website, inquiries that arrive ready on WhatsApp, and total control to publish properties in one minute from your phone.",
+      features: {
+        brand: {
+          title: "Your Own Brand",
+          description: "Exclusive domain and professional design. Don't rely on or compete within crowded third-party portals."
+        },
+        whatsapp: {
+          title: "Direct WhatsApp Inquiries",
+          description: "Property listings with direct buttons sending property details to book visits instantly."
+        },
+        crm: {
+          title: "Total Control in 1 Minute",
+          description: "Upload photos, update prices, activate or pause listings in real time from your mobile or PC."
+        }
+      },
+      clientsLabel: "Active real estate agencies on the platform:",
+      ctaButton: "Learn more",
+      previewBadge: "LIVE",
+    },
+
     // Planes Section (New specific section for Planes.jsx)
     planesSection: {
       mainTitle: "Web plans that adapt to you",
@@ -1368,6 +1414,29 @@ export const translations = {
       contactUs: "Neem contact op",
       learnMore: "Meer weten",
       meInteresa: "Ik ben geïnteresseerd" // Added for Card3D button
+    },
+
+    // Inmobiliaria Section
+    inmobiliariaSection: {
+      title: "De standaard die uw makelaardij verdient.",
+      subtitle: "Uw eigen website op maat, directe WhatsApp-aanvragen en volledige controle om panden binnen één minuut vanaf uw telefoon te beheren.",
+      features: {
+        brand: {
+          title: "Eigen Merkidentiteit",
+          description: "Exclusief domein en professioneel design. Niet afhankelijk van drukke externe portalen."
+        },
+        whatsapp: {
+          title: "Direct WhatsApp-contact",
+          description: "Technische fiches met directe knoppen om bezichtigingen direct in te plannen."
+        },
+        crm: {
+          title: "Volledige Controle in 1 Minuut",
+          description: "Foto's uploaden, prijzen aanpassen en panden activeren of pauzeren in realtime vanaf mobiel of pc."
+        }
+      },
+      clientsLabel: "Actieve makelaarskantoren op het platform:",
+      ctaButton: "Meer weten",
+      previewBadge: "LIVE",
     },
 
     // Planes Section (New specific section for Planes.jsx)

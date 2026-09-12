@@ -6,12 +6,12 @@ import Navbar from "./websections/Navbar/Navbar";
 import Footer from "./websections/footer/Footer";
 import Proceso from "./websections/Proceso/Proceso"
 import Planes from "./websections/Planes/Planes" // Corrected import path
+import Inmobiliaria from "./websections/Inmobiliaria/Inmobiliaria";
 import './App.css';
 // import Svg from "./components/Svg/Svg"; // Not used in this simplified version
 import Servicios from "./websections/Servicios/Servicios";
 // import VideoSection from "./websections/VideoSection/VideoSection"; // No longer directly used here
 import Portafolio from "./websections/Portafolio/Portafolio";
-import Testimonios from "./websections/Testimonios/Testimonios";
 import Contacto from "./websections/Contacto/Contacto";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage"; // Import NotFoundPage
 import TopButton from "./components/TopButton/TopButton"; // Import TopButton component
@@ -33,6 +33,7 @@ const MainLayout = ({ contentIsVisible, videoSectionRef, videoOverlayRef }) => (
   <div className="main-layout">
     <Navbar />
     <Header />
+    <Inmobiliaria />
     <Servicios id="servicios" />
     <VideoMaskEffect
       videoSectionRef={videoSectionRef}
@@ -42,7 +43,6 @@ const MainLayout = ({ contentIsVisible, videoSectionRef, videoOverlayRef }) => (
     <Proceso />
     <Portafolio />
     <Planes />
-    <Testimonios />
     <Contacto />
     <Footer />
     <TopButton /> {/* Add TopButton component here */}

@@ -383,7 +383,7 @@ const Landing = () => {
             </p>
 
             <div className={styles.ctaSection}>
-              <a href="https://wa.me/5491173677628?text=Hola,%20vi%20tu%20página%20y%20estoy%20interesado%20en%20JMCPanel.%20Me%20gustaría%20saber%20más%20sobre%20cómo%20puede%20ayudar%20a%20mi%20negocio.%20¡Gracias!" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/5491178201853?text=Hola,%20vi%20tu%20página%20y%20estoy%20interesado%20en%20JMCPanel.%20Me%20gustaría%20saber%20más%20sobre%20cómo%20puede%20ayudar%20a%20mi%20negocio.%20¡Gracias!" target="_blank" rel="noopener noreferrer">
                 <Button 
                   label="¡Quiero mi panel!"
                   effect="primary"
@@ -691,7 +691,7 @@ const Landing = () => {
             vean lo que ofrecés, actualizado y profesional, JMCPanel es para vos.
           </p>
           <div className={styles.finalCtaButtonContainer}>
-            <a href="https://wa.me/5491173677628?text=Hola,%20vi%20tu%20página%20y%20estoy%20interesado%20en%20JMCPanel.%20Me%20gustaría%20saber%20más%20sobre%20cómo%20puede%20ayudar%20a%20mi%20negocio.%20¡Gracias!" target="_blank" rel="noopener noreferrer">
+            <a href="https://wa.me/5491178201853?text=Hola,%20vi%20tu%20página%20y%20estoy%20interesado%20en%20JMCPanel.%20Me%20gustaría%20saber%20más%20sobre%20cómo%20puede%20ayudar%20a%20mi%20negocio.%20¡Gracias!" target="_blank" rel="noopener noreferrer">
               <Button 
                 label="Hablemos"
                 effect="primary"

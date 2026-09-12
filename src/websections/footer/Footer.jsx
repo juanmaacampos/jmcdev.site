@@ -26,7 +26,7 @@ const Footer = () => {
             <div className={`${styles.footerSection} ${styles.socialLinks}`}>
                 <IconLink 
                     icon={FaWhatsapp}
-                    to="https://wa.me/+5491173677628"
+                    to="https://wa.me/+5491178201853"
                     label="WhatsApp"
                     effect="scale"
                     color="#25D366"

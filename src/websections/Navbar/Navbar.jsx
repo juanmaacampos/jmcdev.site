@@ -158,14 +158,12 @@ const Navbar = () => {
                 <li className="navbar-item">
                   <Button 
                     label="JMCpanel"
+                    scrollTarget="inmobiliaria"
                     effect="neon"
                     size="small"
                     className="nav-button"
                     icon={<FaCog className="nav-icon" />}
-                    onClick={() => {
-                      window.location.href = '/info_panel';
-                      closeMenu();
-                    }}
+                    onClick={closeMenu}
                   />
                 </li>
                 <li className="navbar-item">

@@ -76,7 +76,7 @@ export default function Contacto() {
         message += `📝 *${t('contacto.whatsapp.aboutMyProjectLabel')}:*\n${formData.mensaje}\n\n`;
         message += t('contacto.whatsapp.waitingForReply');
 
-        const whatsappNumber = "5491173677628";
+        const whatsappNumber = "5491178201853";
         const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(message)}`;
 
         const whatsappWindow = window.open(whatsappUrl, '_blank');
@@ -224,7 +224,7 @@ export default function Contacto() {
             <div className={styles.infoItem}>
               <IconLink
                 icon={FaWhatsapp}
-                to="https://wa.me/5491173677628"
+                to="https://wa.me/5491178201853"
                 label="WhatsApp"
                 effect="scale"
                 color="#25D366"
@@ -235,8 +235,8 @@ export default function Contacto() {
               />
               <div>
                 <strong>{t('contacto.info.whatsapp')}</strong>
-                <a href="https://wa.me/5491173677628" target="_blank" rel="noopener noreferrer" className={styles.infoLink}>
-                +54 9 11 7367-7628
+                <a href="https://wa.me/5491178201853" target="_blank" rel="noopener noreferrer" className={styles.infoLink}>
+                +54 9 11 7820-1853
                 </a>
               </div>
             </div>

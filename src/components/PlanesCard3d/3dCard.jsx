@@ -151,7 +151,7 @@ const Card3D = ({ plan, destacado, motionActive }) => { // Added motionActive pr
               label={t('planesSection.jmcpanelMoreInfo')}
               effect="neon"
               size="small"
-              to="/info_panel"
+              to="https://inmo.jmcdev.site"
             />
           </div>
         )}
