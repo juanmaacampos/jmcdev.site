@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import LoaderDiagonal from '../Loader/Loader'; // Adjusted path
+import LoaderDiagonal from '../Loader/Loader';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from 'lenis';
@@ -23,38 +23,44 @@ function PageWrapper({ children }) {
     const timer = setTimeout(() => {
       setLoading(false);
       introHasPlayed = true;
-      // Pequeño delay para asegurar que el contenido está renderizado
       requestAnimationFrame(() => {
         setTimeout(() => {
           ScrollTrigger.refresh();
-          console.log("ScrollTrigger refreshed after content visible.");
-        }, 150);
+        }, 100);
       });
-    }, 1800); // Ligeramente antes del fadeOut del loader
+    }, 1500);
     
     return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
-    const lenis = new Lenis({
-      wheelMultiplier: 0.4, 
-      smoothWheel: true, 
-      smoothTouch: true, // Enable for better touch feel
-      // syncTouch: true, // Disabled as it caused issues
-      touchMultiplier: 0.8, // Moderate value for slower touch scroll, adjust between 0.5-0.8
-    });
-    lenis.on('scroll', ScrollTrigger.update);
-    const raf = (time) => {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
+    // Only initialize Lenis on non-touch devices or desktop
+    const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    
+    // On small mobile touch devices, native momentum scrolling is 120Hz hardware-accelerated.
+    // Overriding touch scroll with JS creates high TBT and forced reflows.
+    if (isTouch && window.innerWidth <= 768) {
+      return;
     }
-    const rafId = requestAnimationFrame(raf);
-    gsap.ticker.add(lenis.raf, lenis);
+
+    const lenis = new Lenis({
+      wheelMultiplier: 0.8, 
+      smoothWheel: true, 
+      smoothTouch: false, // Leave touch scrolling native to prevent TBT / reflows
+    });
+
+    lenis.on('scroll', ScrollTrigger.update);
+    
+    const tickerCallback = (time) => {
+      lenis.raf(time * 1000);
+    };
+    
+    gsap.ticker.add(tickerCallback);
     gsap.ticker.lagSmoothing(0);
+
     return () => {
-      cancelAnimationFrame(rafId);
       lenis.destroy();
-      gsap.ticker.remove(lenis.raf);
+      gsap.ticker.remove(tickerCallback);
     };
   }, []);
 

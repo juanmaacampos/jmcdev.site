@@ -54,7 +54,7 @@ export default function Inmobiliaria() {
 
         {/* Two Column Grid */}
         <div className={styles.grid}>
-          {/* Left Column: Feature Highlights (all clickable links to inmo.jmcdev.site) & CTA */}
+          {/* Left Column: Feature Highlights & CTA */}
           <div className={styles.contentCol}>
             <div className={styles.featuresList}>
               <a 
@@ -119,7 +119,15 @@ export default function Inmobiliaria() {
                   className={styles.clientCard}
                   title="Visitar Abadie Propiedades"
                 >
-                  <img src={logoAbadie} alt="Abadie Propiedades" className={styles.clientLogo} />
+                  <img 
+                    src={logoAbadie} 
+                    alt="Abadie Propiedades" 
+                    className={styles.clientLogo}
+                    loading="lazy"
+                    decoding="async"
+                    width="116"
+                    height="27"
+                  />
                   <span className={styles.clientName}>Abadie Propiedades</span>
                   <FaExternalLinkAlt className={styles.clientLinkIcon} />
                 </a>
@@ -131,7 +139,15 @@ export default function Inmobiliaria() {
                   className={styles.clientCard}
                   title="Visitar Fabiana Peirano Propiedades"
                 >
-                  <img src={logoPeirano} alt="Fabiana Peirano Propiedades" className={styles.clientLogo} />
+                  <img 
+                    src={logoPeirano} 
+                    alt="Fabiana Peirano Propiedades" 
+                    className={styles.clientLogo}
+                    loading="lazy"
+                    decoding="async"
+                    width="103"
+                    height="27"
+                  />
                   <span className={styles.clientName}>Fabiana Peirano</span>
                   <FaExternalLinkAlt className={styles.clientLinkIcon} />
                 </a>
@@ -190,6 +206,9 @@ export default function Inmobiliaria() {
                     alt="Plataforma inmobiliaria en vivo - inmo.jmcdev.site" 
                     className={styles.previewImage}
                     loading="lazy"
+                    decoding="async"
+                    width="521"
+                    height="281"
                   />
                   <div className={styles.imageOverlay}>
                     <span className={styles.overlayCta}>

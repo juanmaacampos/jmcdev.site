@@ -21,7 +21,6 @@ import abadie_video from "../../assets/videos/abadie_video.webm";
 
 import grooveThumb from "../../assets/projects_img/groove_project.webp";
 import threeDThumb from "../../assets/projects_img/threeDThumb.webp";
-import bianSushiThumb from "../../assets/projects_img/bian_project.webp";
 import abcThumb from "../../assets/projects_img/ABC_project.webp";
 import abadieThumb from "../../assets/projects_img/abadie_thumb.webp";
 // Base data for projects (non-translatable parts)
@@ -54,13 +53,7 @@ const projectsData = [
     thumbnail: abcThumb,
     url: "https://juanmaacampos.github.io/ABC_project/",
   },
-  {
-    id: 3,
-    key: "demoBianSushi", // Key for translations
-    type: "video",
-    thumbnail: bianSushiThumb,
-    url: "https://jmcdev.site/bian_demo",
-  },
+
 
     {
     id: 6,

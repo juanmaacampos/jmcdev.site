@@ -32,6 +32,7 @@ export default function Servicios() {
 
   const [cursor, setCursor] = useState({ x: 0, y: 0, visible: false });
   const [maskActive, setMaskActive] = useState(false);
+  const [canRenderVideo, setCanRenderVideo] = useState(false);
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -39,6 +40,25 @@ export default function Servicios() {
       duration: 800,
       once: true
     });
+
+    // Only enable video background on desktop (> 900px) where cursor hover effect is active
+    const isDesktop = window.innerWidth > 900;
+    if (!isDesktop) return;
+
+    // Pre-load video only when approaching the section on desktop
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setCanRenderVideo(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "400px 0px" }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
 
     const handleMouseMove = (e) => {
       if (!sectionRef.current) return;
@@ -49,6 +69,7 @@ export default function Servicios() {
         visible: true,
       });
       setMaskActive(true);
+      setCanRenderVideo(true);
     };
     const handleMouseLeave = () => {
       setCursor((c) => ({ ...c, visible: false }));
@@ -61,6 +82,7 @@ export default function Servicios() {
       section.addEventListener("mouseleave", handleMouseLeave);
     }
     return () => {
+      observer.disconnect();
       if (section) {
         section.removeEventListener("mousemove", handleMouseMove);
         section.removeEventListener("mouseleave", handleMouseLeave);
@@ -96,20 +118,25 @@ export default function Servicios() {
                 }
           }
         >
-          <video
-            className={styles.parallaxVideo}
-            src={parallaxVideo}
-            type={videoType}
-            autoPlay
-            loop
-            muted
-            playsInline
-            poster={parallaxPoster}
-          />
+          {canRenderVideo && (
+            <video
+              className={styles.parallaxVideo}
+              src={parallaxVideo}
+              type={videoType}
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="none"
+              poster={parallaxPoster}
+            />
+          )}
           <img 
             src={parallaxPoster}
             alt="Background"
             className={styles.parallaxImage}
+            loading="lazy"
+            decoding="async"
           />
         </div>
       </div>

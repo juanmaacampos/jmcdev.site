@@ -6,11 +6,13 @@ import { useIsMobile } from '../../hooks/useMediaQuery';
 // Import both video formats
 import videoBgPathWebm from '../../assets/videos/parallax_servicio.webm';
 import videoBgPathMp4 from '../../assets/videos/parallax_servicio.mp4';
+import parallaxPoster from '../../assets/images/parallax_service.webp';
 
 // Modified to accept an overlayRef prop
 const VideoSection = forwardRef(({ overlayRef }, sectionRef) => {
   const innerRef = useRef(null);
   const [visible, setVisible] = useState(false);
+  const [loadVideo, setLoadVideo] = useState(false);
   const isMobile = useIsMobile();
   const scrollHintText = isMobile ? 'Sigue deslizando' : 'Scroll para continuar';
 
@@ -37,12 +39,25 @@ const VideoSection = forwardRef(({ overlayRef }, sectionRef) => {
       { threshold: 0.1 }
     );
 
+    // Pre-load video when user scrolls within 800px of this section
+    const loadObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setLoadVideo(true);
+          loadObserver.disconnect();
+        }
+      },
+      { rootMargin: '800px 0px' }
+    );
+
     showObserver.observe(el);
     hideObserver.observe(el);
+    loadObserver.observe(el);
 
     return () => {
       showObserver.disconnect();
       hideObserver.disconnect();
+      loadObserver.disconnect();
     };
   }, []);
 
@@ -58,7 +73,9 @@ const VideoSection = forwardRef(({ overlayRef }, sectionRef) => {
         loop
         muted
         playsInline
-        src={videoSrc}
+        preload={loadVideo ? 'auto' : 'none'}
+        poster={parallaxPoster}
+        src={loadVideo ? videoSrc : undefined}
         type={videoType}
       />
       {/* Attach the passed overlayRef here */}

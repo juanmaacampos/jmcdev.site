@@ -1,167 +1,175 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef } from 'react';
 import styles from './3dCard.module.css';
-import Button from '../Button/Button'; // Adjusted path relative to current file
-import { useLanguageTranslation } from '../../utils/languageUtils'; // Import the hook
+import Button from '../Button/Button';
+import { useLanguageTranslation } from '../../utils/languageUtils';
+import { 
+  FaPalette, 
+  FaMobileAlt, 
+  FaEnvelopeOpenText, 
+  FaShareAlt, 
+  FaSearch, 
+  FaClock,
+  FaPaintBrush,
+  FaBolt,
+  FaLayerGroup,
+  FaChartLine,
+  FaStore,
+  FaDatabase,
+  FaSlidersH,
+  FaArrowRight,
+  FaExternalLinkAlt,
+  FaCheckCircle,
+  FaCogs
+} from 'react-icons/fa';
 
-const Card3D = ({ plan, destacado, motionActive }) => { // Added motionActive prop
+const basicIcons = [FaPalette, FaMobileAlt, FaEnvelopeOpenText, FaShareAlt, FaSearch, FaClock];
+const premiumIcons = [FaPaintBrush, FaBolt, FaLayerGroup, FaChartLine, FaClock];
+const panelIcons = [FaStore, FaDatabase, FaSlidersH];
+
+const Card3D = ({ plan, destacado }) => {
   const cardRef = useRef(null);
-  const [rotateX, setRotateX] = useState(0);
-  const [rotateY, setRotateY] = useState(0);
-  const [translateZ, setTranslateZ] = useState(0); // New state for depth
-  const [glow, setGlow] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-  const { t } = useLanguageTranslation(); // Initialize the translation function
-
-  useEffect(() => {
-    const mobileCheck = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    setIsMobile(mobileCheck); 
-
-    if (mobileCheck && motionActive) { // Check motionActive prop here
-      const handleOrientation = (event) => {
-        let { beta, gamma } = event; 
-        beta = beta || 0; // Typically -180 to 180. 0=flat screen up, 90=vertical.
-        gamma = gamma || 0; // Typically -90 to 90. 0=neutral.
-
-        const maxRotate = 15; 
-        
-        // --- Rotation X (Up/Down Tilt) ---
-        const neutralBetaForRotateX = 75; // Neutral phone holding angle for X rotation (e.g., 75 degrees from flat)
-        // Sensitivity for X-axis rotation: degrees of phone tilt from neutralBetaForRotateX to achieve maxRotate.
-        // Smaller value = more sensitive.
-        const betaRotationSensitivity = 20; 
-        let deviationBeta = beta - neutralBetaForRotateX;
-        // Tilting phone forward (beta decreases, e.g., towards 0) -> positive rotateX (top of card away)
-        // Tilting phone backward (beta increases, e.g., towards 90 from 75) -> negative rotateX (top of card towards)
-        let newRotateX = -(deviationBeta / betaRotationSensitivity) * maxRotate;
-
-        // --- Rotation Y (Left/Right Tilt) ---
-        // Sensitivity for Y-axis rotation: degrees of phone tilt from neutral gamma (0) to achieve maxRotate.
-        const gammaRotationSensitivity = 20; 
-        let newRotateY = (gamma / gammaRotationSensitivity) * maxRotate;
-
-        // Clamp rotations
-        newRotateX = Math.max(-maxRotate, Math.min(maxRotate, newRotateX));
-        newRotateY = Math.max(-maxRotate, Math.min(maxRotate, newRotateY));
-        
-        setRotateX(newRotateX);
-        setRotateY(newRotateY);
-
-        // --- Depth (translateZ) calculation based on beta ---
-        const neutralBetaForDepth = 60; // Assumed neutral holding angle for depth effect
-        const maxDepthChange = 40; 
-        // Range of beta tilt (from neutralBetaForDepth) that causes full depth change.
-        // e.g., if 30, then beta changing by +/-30 from neutralBetaForDepth gives +/-maxDepthChange.
-        const betaRangeForDepth = 30; 
-
-        let depthFactor = (beta - neutralBetaForDepth) / betaRangeForDepth;
-        let newTranslateZ = depthFactor * maxDepthChange;
-        newTranslateZ = Math.max(-maxDepthChange, Math.min(maxDepthChange, newTranslateZ));
-        
-        setTranslateZ(newTranslateZ);
-
-        setGlow(true); 
-      };
-
-      const addOrientationListener = () => {
-        if (window.DeviceOrientationEvent) {
-          window.addEventListener('deviceorientation', handleOrientation, true);
-        }
-      };
-
-      // Directly add listener if motionActive is true and it's a mobile device
-      addOrientationListener();
-
-      return () => {
-        if (window.DeviceOrientationEvent) {
-          window.removeEventListener('deviceorientation', handleOrientation, true);
-        }
-      };
-    }
-  }, [isMobile, motionActive]); // Depend on motionActive
+  const { t } = useLanguageTranslation();
+  const isPremium = destacado;
 
   const handleMouseMove = (e) => {
-    if (isMobile || !cardRef.current) return;
+    if (window.innerWidth < 1024 || !cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
-    // Calculate mouse position relative to the card center
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    const deltaX = x - centerX;
-    const deltaY = y - centerY;
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    const rotateY = (x / (rect.width / 2)) * 3.5;
+    const rotateX = -(y / (rect.height / 2)) * 3.5;
 
-    // Define max rotation, e.g., 15 degrees
-    const maxRotate = 15;
-    const newRotateX = (deltaY / centerY) * -maxRotate;
-    const newRotateY = (deltaX / centerX) * maxRotate;
-
-    setRotateX(newRotateX);
-    setRotateY(newRotateY);
-    setGlow(true);
+    cardRef.current.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.015, 1.015, 1.015)`;
   };
 
   const handleMouseLeave = () => {
-    if (isMobile) return;
-    setRotateX(0);
-    setRotateY(0);
-    setGlow(false);
+    if (!cardRef.current) return;
+    cardRef.current.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
   };
+
+  const icons = isPremium ? premiumIcons : basicIcons;
 
   return (
     <div
-      className={`${styles.cardContainer} ${destacado ? styles.destacado : ''}`}
+      className={`${styles.cardContainer} ${isPremium ? styles.destacado : ''}`}
       ref={cardRef}
-      onMouseMove={!isMobile ? handleMouseMove : undefined}
-      onMouseLeave={!isMobile ? handleMouseLeave : undefined}
-      style={!isMobile ? {
-        transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(${translateZ}px)`,
-        transition: 'transform 0.1s linear, box-shadow 0.3s ease',
-      } : {}}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
     >
-      <div className={styles.cardContent}>
-        <h3>{plan.nombre}</h3>
-        <p className={styles.descripcion}>{plan.descripcion}</p>
-        <ul>
-          {plan.beneficios.map((b, j) => (
-            <li key={`benefit-${j}-${b.substring(0, 10)}`}>{b}</li>
-          ))}
-        </ul>
+      <div>
+        {/* Top Badge */}
+        <div className={styles.topBadgeWrapper}>
+          {isPremium ? (
+            <div className={styles.badgePremium}>
+              <span className={styles.pulseDotPurple} />
+              SISTEMA + WEB · MÁS COMPLETO
+            </div>
+          ) : (
+            <div className={styles.badgeBasic}>
+              <span className={styles.pulseDotTeal} />
+              WEB A MEDIDA · SIN PLANTILLAS
+            </div>
+          )}
+        </div>
+
+        {/* Header Info */}
+        <div className={styles.cardHeader}>
+          <h3 className={isPremium ? styles.titlePremium : styles.titleBasic}>
+            {plan.nombre}
+          </h3>
+          <p className={styles.descripcion}>{plan.descripcion}</p>
+        </div>
+
+        {/* Feature Items List Styled Like Inmobiliaria */}
+        <div className={styles.featuresList}>
+          {plan.beneficios.map((b, j) => {
+            const IconComponent = icons[j] || FaCheckCircle;
+            return (
+              <div key={`benefit-${j}`} className={styles.featureItem}>
+                <div className={`${styles.featureIconWrap} ${isPremium ? styles.iconWrapPremium : styles.iconWrapBasic}`}>
+                  <IconComponent className={styles.featureIcon} />
+                </div>
+                <span className={styles.featureText}>{b}</span>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* JMCpanel Highlight Box */}
+        {plan.jmcpanel && (
+          <div className={styles.jmcpanelBox}>
+            <div className={styles.jmcpanelHeader}>
+              <div className={styles.panelTitleGroup}>
+                <div className={styles.panelIconWrap}>
+                  <FaCogs className={styles.panelIcon} />
+                </div>
+                <div>
+                  <h4 className={styles.jmcpanelTitle}>JMCpanel Autoadministrable</h4>
+                  <p className={styles.jmcpanelSubtitle}>{plan.jmcpanelDescription}</p>
+                </div>
+              </div>
+            </div>
+
+            <div className={styles.jmcpanelFeatures}>
+              {plan.jmcpanelBenefits.map((b, j) => {
+                const PanelIcon = panelIcons[j] || FaCheckCircle;
+                return (
+                  <div key={`jmcp-${j}`} className={styles.jmcpanelItem}>
+                    <PanelIcon className={styles.jmcpanelItemIcon} />
+                    <span>{b}</span>
+                  </div>
+                );
+              })}
+            </div>
+
+            <div className={styles.panelLinkWrapper}>
+              <a 
+                href="https://inmo.jmcdev.site" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className={styles.panelDemoLink}
+                title="Ver demo del panel en vivo"
+              >
+                <span>Ver demo del panel en vivo</span>
+                <FaExternalLinkAlt className={styles.panelLinkIcon} />
+              </a>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Footer Area: Ideal Para + CTA Button */}
+      <div className={styles.cardFooter}>
         {Array.isArray(plan.idealPara) && plan.idealPara.length > 0 && (
           <div className={styles.idealParaSection}>
-            <span className={styles.idealParaLabel}>{t('planesSection.idealParaLabel')}</span>
+            <span className={styles.idealParaLabel}>
+              {t('planesSection.idealParaLabel')}
+            </span>
             <div className={styles.chips}>
               {plan.idealPara.map((tag, i) => (
-                <span key={i} className={styles.chip}>{tag}</span>
+                <span key={i} className={`${styles.chip} ${isPremium ? styles.chipPremium : styles.chipBasic}`}>
+                  {tag}
+                </span>
               ))}
             </div>
           </div>
         )}
-        {plan.jmcpanel && (
-          <div className={styles.jmcpanelSection}>
-            <div className={styles.jmcpanelDivider}>
-              <span>JMCpanel</span>
-            </div>
-            <p className={styles.jmcpanelDescription}>{plan.jmcpanelDescription}</p>
-            <ul className={styles.jmcpanelList}>
-              {plan.jmcpanelBenefits.map((b, j) => (
-                <li key={`jmcp-${j}`}>{b}</li>
-              ))}
-            </ul>
-            <Button
-              label={t('planesSection.jmcpanelMoreInfo')}
-              effect="neon"
-              size="small"
-              to="https://inmo.jmcdev.site"
-            />
-          </div>
-        )}
-        <Button 
-          label={t('common.meInteresa')} // Use translated label
-          effect="neon" 
-          size="medium" 
-          scrollTarget="contacto" 
-          scrollTargetQuery={{ param: 'plan', value: plan.nombre }} 
-        />
+
+        <div className={styles.buttonWrapper}>
+          <Button 
+            label={
+              <span className={styles.buttonLabelWithIcon}>
+                {t('common.meInteresa')}
+                <FaArrowRight className={styles.buttonArrow} />
+              </span>
+            }
+            effect="neon" 
+            size="medium" 
+            scrollTarget="contacto" 
+            scrollTargetQuery={{ param: 'plan', value: plan.nombre }} 
+            className={`${styles.ctaButton} ${isPremium ? styles.ctaPremium : styles.ctaBasic}`}
+          />
+        </div>
       </div>
     </div>
   );

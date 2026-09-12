@@ -78,11 +78,6 @@ const App = lazy(() => {
       import('./components/VideoMaskEffect/VideoMaskEffect'),
       import('./components/ParticleBackground/ParticleBackground')
     );
-  } else {
-    // Preload mobile-specific components
-    preloadPromises.push(
-      import('./pages/BianDemoPage/websections/MobileNav/MobileNav')
-    );
   }
   
   return Promise.all([

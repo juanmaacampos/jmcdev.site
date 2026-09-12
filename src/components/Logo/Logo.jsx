@@ -3,14 +3,8 @@ import logoImage from '../../assets/images/jmcdev.webp';
 
 const Logo = ({ onClick }) => {
   const handleClick = () => {
-    // Si se está en la página CMS, redirigir a jmcdev.site
-    if (window.location.pathname.includes('/info_panel')) {
-      window.location.href = '/';
-    } else {
-      // En la página principal, ejecutar el onClick pasado (scroll al top)
-      if (onClick) {
-        onClick();
-      }
+    if (onClick) {
+      onClick();
     }
   };
 

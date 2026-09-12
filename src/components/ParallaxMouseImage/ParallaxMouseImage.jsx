@@ -1,9 +1,8 @@
 import React, { useRef, useEffect } from 'react';
 import { useIsMobile } from '../../hooks/useMediaQuery';
-import LazyImage from '../LazyImage/LazyImage';
 import styles from './ParallaxMouseImage.module.css';
 
-function ParallaxMouseImage({ src, alt, className, draggable, mobileSrc }) {
+function ParallaxMouseImage({ src, alt, className, draggable, mobileSrc, priority = false }) {
   const imageWrapperRef = useRef(null);
   const isMobile = useIsMobile();
 
@@ -44,18 +43,24 @@ function ParallaxMouseImage({ src, alt, className, draggable, mobileSrc }) {
     };
   }, [isMobile]);
 
+  const finalSrc = isMobile && mobileSrc ? mobileSrc : src;
+
   return (
     <div 
       ref={imageWrapperRef} 
       className={styles.parallaxContainer}
     >
-      <LazyImage 
-        src={src} 
-        mobileSrc={mobileSrc}
+      <img 
+        src={finalSrc} 
         alt={alt} 
-        className={className}
+        className={`${className} loaded`}
         draggable={draggable}
-        loading="lazy"
+        loading={priority ? "eager" : "lazy"}
+        fetchpriority={priority ? "high" : "auto"}
+        decoding="async"
+        width="480"
+        height="480"
+        style={{ transition: 'opacity 0.3s', opacity: 1 }}
       />
     </div>
   );
